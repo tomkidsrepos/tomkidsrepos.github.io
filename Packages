@@ -120,6 +120,19 @@ Description: Opera mini for low ios
 Author: Converted ipa to deb by Tomkids's tool
 Name: Opera Mini
 
+Package: Tomkids.YoutubeFix
+Version: 1.3-1.0.6
+Architecture: iphoneos-arm
+Maintainer: Tomkids Converted
+Filename: debs/Tomkids.Youtube & Tubereplacer Fix chạy nền.deb
+Size: 7214720
+MD5sum: 6d24f421c721ccb9ac25d9174bf48a26
+SHA1: 4ae57955db3baf5751bfc88dad0ece46f97559cc
+SHA256: 64db204a06edf9db338feacd7d8d26c3b731146b1cb9bc449ec04af4bd7b80d6
+Description: Youtube & Tubereplacer  Merged by Tomkids
+Author: Tomkids Converted
+Name: Youtube & Tubereplacer Fix chạy nền
+
 Package: applist
 Version: 1.5.16
 Architecture: iphoneos-arm
