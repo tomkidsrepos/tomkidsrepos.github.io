@@ -120,20 +120,6 @@ Description: Opera mini for low ios
 Author: Converted ipa to deb by Tomkids's tool
 Name: Opera Mini
 
-Package: Tomkids.WeatherStocksForecast
-Version: 3.5
-Architecture: iphoneos-arm
-Maintainer: Merged by Tomkids
-Depends: mobilesubstrate (>= 0.9.2586), firmware (>= 2.0), firmware (<= 7.9), preferenceloader
-Filename: debs/Tomkids.Fix Thời tiết.deb
-Size: 213422
-MD5sum: 7c3e98b98e63ccb063eeb084b9d9c932
-SHA1: 0cfd21a1e0889008c9a07107ac5b0e3565f51b7d
-SHA256: 95ae8b72451e80c78777c0e068100a33d63e8d52fa1bade9d95f940858a96b34
-Description: Weather & Stocks & Forecast & Weepreferenceloader Merged by Tomkids
-Author: Merged by Tomkids
-Name: Fix Thời tiết IOS 5 - 6
-
 Package: applist
 Version: 1.5.16
 Architecture: iphoneos-arm
@@ -517,6 +503,19 @@ Description: Repackage any of your tweaks locally, without the need to download 
 Author: T.Herak <50dc856b@opayq.com>
 Depiction: https://wiety.github.io/cydia/depictions/?p=com.vsz.redeb
 Name: redeb
+
+Package: com.weatherforecast.tweak
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Tomkids
+Filename: debs/FixThoiTietIOS6.deb
+Size: 580
+MD5sum: 64e8c2d52075b33e735eb5923b8ec83a
+SHA1: 802ac62ad89b11b105b860cc09f798445eb77c8d
+SHA256: f625e7f880725b7884dd8f45fcb571b806409d3caca3ff8ba6a83ac4d4f61995
+Description: Weather Merged from multiple tweaks
+Author: Tomkids
+Name: Fix thoi tiet ios 6
 
 Package: cydia
 Version: 1.1.30
