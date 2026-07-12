@@ -521,18 +521,18 @@ Author: T.Herak <50dc856b@opayq.com>
 Depiction: https://wiety.github.io/cydia/depictions/?p=com.vsz.redeb
 Name: redeb
 
-Package: com.weatherforecast.tweak
+Package: com.weather.forecast.tweak
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Tomkids
-Filename: debs/FixThoiTietIOS6.deb
-Size: 580
-MD5sum: 64e8c2d52075b33e735eb5923b8ec83a
-SHA1: 802ac62ad89b11b105b860cc09f798445eb77c8d
-SHA256: f625e7f880725b7884dd8f45fcb571b806409d3caca3ff8ba6a83ac4d4f61995
-Description: Weather Merged from multiple tweaks
+Filename: debs/FixThoiTietChoIOS6.deb
+Size: 602
+MD5sum: 74b6bb11a1fc56aca4899f5d2e2361ac
+SHA1: a8deb2107c2abe08ce861668745f3cd9bcc6e577
+SHA256: 0e5194017b8799dce3c0feae336af42353bbd985fe7823e578be9107833e2eb8
+Description: Fix hien thi thoi tiet tren man hinh khoa cho IOS 6
 Author: Tomkids
-Name: Fix thoi tiet ios 6
+Name: Fix Thời tiết cho IOS 6
 
 Package: cydia
 Version: 1.1.30
