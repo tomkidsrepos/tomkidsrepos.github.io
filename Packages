@@ -808,12 +808,12 @@ Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: @tomkids
 Filename: debs/tomkids.font.vntfap01_1.0_iphoneos-arm.deb
-Size: 656286
-MD5sum: 0d3d67b375091f0c615509e721f8ebd0
-SHA1: 08856a259c4f10e00dd752afc1dc9d072b371c9c
-SHA256: 3d0f9de33a4dc9889add6b20bceae9fd73e684cfcca39dcb320eded08408893f
+Size: 656722
+MD5sum: 4253d582435a9bed83b7fc9ce73299c2
+SHA1: cb8743a76c557e37b159d571fb44111c7cc5f596
+SHA256: 9aa903c9b7701bc9a519b36c78745c539641edf2dcde5e6a825c28f1c8aecefa
 Section: Fonts
-Description: Font chu thu phap
+Description: Font chu thu phap Vn
 Author: @tomkids
 Name: Font VN Thư pháp
 
