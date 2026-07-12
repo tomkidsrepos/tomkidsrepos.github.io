@@ -479,13 +479,12 @@ Version: 1.3.6
 Architecture: iphoneos-arm
 Maintainer: Tomkids
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader, firmware (>= 5.0), firmware (<< 11.0)
-Filename: debs/youtube1.3.0-tubereplacer1.0.6-fix.deb
-Size: 7194940
-MD5sum: a3ba0e451cca76e7ff3170510cfe0ac8
-SHA1: 8baf34bc6bf84b918df2fd50cb4f89c711f199b8
-SHA256: 2f268526c3e4d2b996cf35c9d14b0d187201cd69fac7ee185a83b90df0073bc7
-Section: Applications
-Description: Cai Youtube 1.3.0 (cho Ios 5.1 -  8) va Fix chay nen cho Ios 6  - 8
+Filename: debs/youtube1.3.6-tubereplacer-fix.deb
+Size: 7214820
+MD5sum: 11ec71325aa90a0fe460beb50f3c835c
+SHA1: b58261b72afcbe203be8b458e75f7d75cbe1a39b
+SHA256: 2deda8fed97013687a3f500f61cd1c25718f6f531220d550734045af4eeb0121
+Description: Merged from multiple tweaks
 Author: Tomkids
 Name: Youtube & Tubereplacer Fix
 
@@ -526,12 +525,11 @@ Package: com.weather.forecast.tweak
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Tomkids
-Filename: debs/FixThoiTietKhoaManHinhChoIOS6.deb
-Size: 582
-MD5sum: 2caceee42a174ae81fb5c50071e6381a
-SHA1: 30624ec86f97cbe3e90784cae9a76e6cef207c1a
-SHA256: a38b4a07bbbfa028626ddd2b77d74b68b51a5ab6945425b612019653ba3686a4
-Section: Tweak
+Filename: debs/FixThoiTietChoIOS6.deb
+Size: 602
+MD5sum: 74b6bb11a1fc56aca4899f5d2e2361ac
+SHA1: a8deb2107c2abe08ce861668745f3cd9bcc6e577
+SHA256: 0e5194017b8799dce3c0feae336af42353bbd985fe7823e578be9107833e2eb8
 Description: Fix hien thi thoi tiet tren man hinh khoa cho IOS 6
 Author: Tomkids
 Name: Fix Thời tiết cho IOS 6
