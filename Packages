@@ -803,6 +803,20 @@ Description: Converted from IPA
 Author: Unknown
 Name: Contra 1.2.3
 
+Package: tomkids.font.vntfap01
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: @tomkids
+Filename: debs/tomkids.font.vntfap01_1.0_iphoneos-arm.deb
+Size: 663970
+MD5sum: a91cd4ad67ca62154a71ad3cd122f7ec
+SHA1: ddcf154ba2741777ab65ea49057bdf400da38d1f
+SHA256: 15398fc53fff519f0e473a8ffe0106b13eca5099418f724993bb8d5bb5768b18
+Section: Fonts
+Description: Font chu thu phap
+Author: @tomkids
+Name: Font VN Thư pháp
+
 Package: tomkids.gamethung
 Version: 1.0
 Architecture: iphoneos-arm
