@@ -479,12 +479,13 @@ Version: 1.3.6
 Architecture: iphoneos-arm
 Maintainer: Tomkids
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader, firmware (>= 5.0), firmware (<< 11.0)
-Filename: debs/youtube1.3.6-tubereplacer-fix.deb
-Size: 7214820
-MD5sum: 11ec71325aa90a0fe460beb50f3c835c
-SHA1: b58261b72afcbe203be8b458e75f7d75cbe1a39b
-SHA256: 2deda8fed97013687a3f500f61cd1c25718f6f531220d550734045af4eeb0121
-Description: Merged from multiple tweaks
+Filename: debs/youtube1.3.0-tubereplacer1.0.6-fix.deb
+Size: 7194948
+MD5sum: 7c4ace20923ff4c96306d71b650ed495
+SHA1: de0e0859a397cb353ae27cffbe774df885b8c752
+SHA256: 50c6d20470412f0086e20bbe81716791d4c2eedf21855a82eefdc6f78a78ba84
+Section: Applications
+Description: Cai app Youtube 1.3.0 (cho Ios 5.1 -  8) va Fix chay nen cho Ios 6  - 8
 Author: Tomkids
 Name: Youtube & Tubereplacer Fix
 
