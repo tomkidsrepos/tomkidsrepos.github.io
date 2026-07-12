@@ -759,6 +759,22 @@ Author: Tomkids
 Icon: https://tomkidss.github.io/cydia/icons/oldtiktokcn.png
 Name: OldTikTokCN
 
+Package: tomkids.StickMan
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/tomkids.StickMan_1.0_iphoneos-arm.deb
+Size: 72210
+MD5sum: 7db6a2297ad3e1d780ef4b77d5f606a1
+SHA1: 51e82361598e3120dce3606653bf25d32c37dda0
+SHA256: 08e43a3cd713b366f109f2e94c6780dce244d910bc280bf92c91a3af3202e165
+Section: Game
+Description: Game StickMan Movies_1.0
+ .
+ Converted by Tomkids
+Author: Converted ipa to deb by Tomkids's tool
+Name: StickMan Movies_1.0
+
 Package: tomkids.contra
 Version: 1.2.3
 Architecture: iphoneos-arm
