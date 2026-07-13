@@ -808,14 +808,14 @@ Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: @tomkids
 Filename: debs/tomkids.font.vntfap01_1.0_iphoneos-arm.deb
-Size: 656370
-MD5sum: 83e2df111f2ebc2fb0f25cda297ed37b
-SHA1: 632aa2dac9099015badcbed967868c299d5694c7
-SHA256: ff906d7dbf3ca87df18ae4c107901e3bf81972e2a65c1df5ef108ea682a87aee
+Size: 656486
+MD5sum: 1fa993ca3faaf3f86d3ce09f8cb8060e
+SHA1: cb4d9ec2dbe1e2ab6a563a8be0d9bb0031c7a025
+SHA256: b62da3ec5eb388a5438760bff27a2d1daa6dcdabb845388560e7bdd481dcef13
 Section: Fonts
-Description: Font chu thu phap VN. Dung BytaFont de kich hoat
+Description: Font chu Thu phap VN 01
 Author: @tomkids
-Name: Font VN Thư pháp
+Name: Font chữ Thư pháp VN
 
 Package: tomkids.gamethung
 Version: 1.0
