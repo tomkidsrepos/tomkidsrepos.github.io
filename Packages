@@ -523,16 +523,17 @@ Depiction: https://wiety.github.io/cydia/depictions/?p=com.vsz.redeb
 Name: redeb
 
 Package: com.weather.tweak
-Version: 1.1
+Version: 1.2
 Architecture: iphoneos-arm
 Maintainer: Tomkids
-Filename: debs/FixThoiTietChoIOS6_1.1.deb
-Size: 681792
-MD5sum: bc59b4c307c6e4e2e71bfffd2a33bc08
-SHA1: 48306cfdf9142ba04731e863d3fc568532fc76fb
-SHA256: c8192b7cdcd692ac79681374084f9fb618b1d0169fc080456831206b91d3f3b8
+Depends: firmware (>= 5.0), mobilesubstrate, com.arichardson.weepreferenceloader, mobilesubstrate (>= 0.9.2586), firmware (>= 2.0), firmware (<= 7.9), preferenceloader
+Filename: debs/FixThoiTietChoIOS6_1.2.deb
+Size: 211140
+MD5sum: 39a36f081313404f7ae62b00e4badca8
+SHA1: 6b8c3d94a05c93bcada9478eef170dd0037652eb
+SHA256: 2b0bb56525d4fa24839e5a84696b033bf821f0fc20191ba7cf0888273785d27d
 Section: Hệ thống
-Description: Fix hien thi thoi tiet tren man hinh khoa va notification
+Description: Cai dat hien thi thoi tiet tren man hinh khoa va Notification cho IOS 6
 Author: Tomkids
 Name: Fix thời tiết màn hình khóa IOS 6
 
