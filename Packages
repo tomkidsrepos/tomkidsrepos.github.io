@@ -503,6 +503,50 @@ Description: Cai app Youtube 1.3.0 (cho Ios 5.1 -  8) va Fix chay nen cho Ios 6 
 Author: Tomkids
 Name: Youtube & Tubereplacer Fix
 
+Package: com.tqm-mos.kdfuapp
+Version: 1.0.3
+Architecture: iphoneos-arm
+Maintainer: @tqmmos
+Depends: openssl, libcrippy-1.0.0, libpartialzip-1.0.0, curl, kloader, com.tqm-mos.kdfubundles, firmware (>= 6.0), firmware (<= 9.3.6)
+Conflicts: org.tihmstar.kdfuapp
+Provides: org.tihmstar.kdfuapp
+Filename: debs/tomkids.kdfuapp_1.0.3_iphoneos-arm.deb
+Size: 80412
+MD5sum: 26def507bfe5b24371e2572f499512b5
+SHA1: 002d3a297430ac1b90fa9c0e9eab2555a3d3bb2c
+SHA256: 596d6e426053dd9a018dd1bc27f871e5e43d810310c182f371f787c4eb3f7658
+Section: System
+Priority: optional
+Homepage: https://tqm-mos.com/info/kDFUApp/?p=info
+Description: DFUApp là một cách dễ dàng để vào chế độ kDFU , chỉ cần kích hoạt tất cả các công tắc và nhấn nút , KHÔNG TƯƠNG THÍCH VỚI THIẾT BỊ 64BIT!
+Author: tihmstar
+Depiction: https://tqm-mos.com/info/kDFUApp/?p=info
+Dev: tihmstar
+Name: kDFUApp
+Sileodepiction: https://tqm-mos.com/info/kDFUApp.json
+Website: https://tqm-mos.com/info/kDFUApp/?p=info
+
+Package: com.tqm-mos.kdfubundles
+Version: 1.0.1
+Architecture: iphoneos-arm
+Maintainer: @tqmmos
+Depends: com.tqm-mos.kdfuapp
+Conflicts: com.lukezgd.kdfubundles
+Provides: com.lukezgd.kdfubundles
+Filename: debs/tomkids.kdfubundles_1.0.1_iphoneos-arm.deb
+Size: 10836
+MD5sum: 458aaf804819ec3d4c07488e2be65bde
+SHA1: 3304edd4b863214410f21c7dced1e8c034514fc7
+SHA256: d571ca93faa47d7e7a45f31ee992040a5c89b2e99c96360cc599cac08b46607d
+Section: System
+Homepage: https://tqm-mos.com/info/kDFUBundles/?p=info
+Description: Hỗ trợ nhiều thiết bị hơn cho kDFUApp
+Author: LukeZGD
+Depiction: https://tqm-mos.com/info/kDFUBundles/?p=info
+Name: kDFUApp Bundles
+Sileodepiction: https://tqm-mos.com/info/kDFUBundles.json
+Website: https://tqm-mos.com/info/kDFUBundles/?p=info
+
 Package: com.tuanem.ytbackground
 Version: 1.1
 Architecture: iphoneos-arm
