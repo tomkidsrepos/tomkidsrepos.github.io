@@ -634,6 +634,41 @@ Priority: required
 Description: the advanced packaging library from Debian
 Name: APT 0.7 Strict (lib)
 
+Package: bag.skyglow.bluetweety
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Requis, bag.xml
+Installed-Size: 948
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Filename: debs/bag.skyglow.bluetweety_1.0_iphoneos-arm.deb
+Size: 111010
+MD5sum: f32c4f1b3f728762ccb997ef62e4656e
+SHA1: 24d850223ca9966304324344d5c33164bc237c1e
+SHA256: baadc0ab0c67762ee605068e111e87776dffa05ea6e8209315b0d7a4fd3faa72
+Section: Tweaks
+Description: Fix the iOS integration with Twitter across the system, as well as the Twitter app.
+Author: Requis, bag.xml
+Depiction: http://cydia.skyglow.es/depictions/bag.skyglow.bluetweety/depictions/index.html
+Icon: file:///Library/Application%20Support/bag.skyglow.bluetweety/BlueTweety-Icon.png
+Name: BlueTweety
+
+Package: bag.skyglow.bluetweety
+Version: 2.0
+Architecture: iphoneos-arm
+Maintainer: Requis, bag.xml
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Filename: debs/BlueTweety-Legacy.deb
+Size: 164540
+MD5sum: 2d8fa86eacc3b3422bff62dd514a92b6
+SHA1: ca89f3be01fe0c35980aa4ab2d769a728a1a1429
+SHA256: 436a4555e15c037f2b999d3c0ef67caf5c9ed63d9d4cad22f4350d3c7a3ac6ca
+Section: Tweaks
+Description: Fix the iOS integration with Twitter across the system, as well as the Twitter app.
+Author: Requis, bag.xml
+Depiction: http://cydia.skyglow.es/depictions/bag.skyglow.bluetweety/depictions/index.html
+Icon: file:///Library/Application%20Support/bag.skyglow.bluetweety/BlueTweety-Icon.png
+Name: BlueTweety
+
 Package: bag.xml.tuberepair
 Version: 1.2-Beta-1
 Architecture: iphoneos-arm
@@ -651,6 +686,71 @@ Author: bag.xml, Requis
 Depiction: http://cydia.skyglow.es/depictions/com.skyglow.tuberepair/depictions/index.html
 Icon: file:///Library/Application%20Support/bag.xml.tuberepair/TubeRepair-Icon.png
 Name: TubeRepair [BETA]
+
+Package: ca-certificates
+Version: 0.0.1-1
+Architecture: all
+Maintainer: Sam Bingner
+Depends: firmware (>= 2.0)
+Conflicts: org.thebigboss.cacerts
+Replaces: org.thebigboss.cacerts
+Provides: org.thebigboss.cacerts
+Filename: debs/ca-certificates_0-1_all.deb
+Size: 134436
+MD5sum: 5d4744afecd3bd84d9921bfa8755f70e
+SHA1: 2887452fc6e3007ead9053e9afbcd5d6dc3ebf99
+SHA256: 1c90511fd002151b274c28e50adb8654ecf210a305a891557dcd7d235dd95cf1
+Section: Utilities
+Priority: optional
+Multi-Arch: foreign
+Description: CA certs for curl, wget, git.
+Tag: purpose::console, role::hacker
+Name: CA Certs
+
+Package: ca-certificates
+Version: 0.0.2
+Architecture: all
+Maintainer: Sam Bingner
+Depends: firmware (>= 2.0)
+Conflicts: org.thebigboss.cacerts, openssl (<< 1.0.2r)
+Replaces: org.thebigboss.cacerts
+Provides: org.thebigboss.cacerts
+Filename: debs/ca-certificates_0.0.2_all.deb
+Size: 125710
+MD5sum: c9e280b321aba40459c988eac9625957
+SHA1: 878696ce1037a53c58d3d75dfcf39507a942f18c
+SHA256: 29d3d0d5b09686f117a0402796f3f99224e30168e44178a49a78f504f3c84ba2
+Section: Utilities
+Priority: optional
+Multi-Arch: foreign
+Description: CA certs for curl, wget, git.
+Tag: purpose::console, role::hacker
+Name: CA Certs
+
+Package: ca-certificates
+Version: 20231103-1
+Architecture: iphoneos-arm
+Maintainer: Sam Bingner <maintainer@sbdhi.com>
+Installed-Size: 472
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: firmware (>= 2.0)
+Filename: debs/ca-certificates_20231103-1_iphoneos-arm.deb
+Size: 124184
+MD5sum: a94018ea68b836fe5b059e4d6a705663
+SHA1: 73404bd7cfb76fb0b0d97b9b14b86a8a77c0a70e
+SHA256: 0ad2ad987e7336ff37285a533a2404de7c3963123794d79e4adbebf44d22e2de
+Section: Security
+Priority: important
+Description: Common CA certificates
+ Contains the certificate authorities shipped with Mozilla's browser to
+ allow SSL-based applications to check for the authenticity of SSL
+ connections.
+ .
+ Please note that Elucubratus can neither confirm nor deny whether the
+ certificate authorities whose certificates are included in this package
+ have in any way been audited for trustworthiness or RFC 3647
+ compliance.  Full responsibility to assess them belongs to the local
+ system administrator.
 
 Package: ca.adrien.appdrop
 Version: 2.0
@@ -747,6 +847,27 @@ Author: Andrew Richardson <andrewr114@gmail.com>
 Depiction: http://modmyi.com/info/weepreferenceloader.d.php
 Name: WeePreferenceLoader
 Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
+
+Package: com.autopear.installipa
+Version: 3.4.1-1
+Architecture: iphoneos-arm
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Installed-Size: 238
+Depends: firmware (>= 4.0)
+Filename: debs/com.autopear.installipa_3.4.1-1_iphoneos-arm.deb
+Size: 151630
+MD5sum: 4d4941448d74d531e0b25fc53efbc9ed
+SHA1: 86fa2801be6a76cdb5d2f91980124914cb789d52
+SHA256: 98724f95b177a47ee1143d13990d5c2bcafde53056cc4f46b77126d2bea1db41
+Section: Utilities
+Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ipainstallerconsoleDp
+Description: Install IPA from the command line
+Tag: purpose::console, role::enduser, compatible::ios7, compatible::ios8
+Author: Merlin <lonelystars@gmail.com>
+Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ipainstallerconsoleDp
+Dev: lonelystars
+Name: IPA Installer Console
+Sponsor: thebigboss.org <http://thebigboss.org>
 
 Package: com.autopear.lunarcalendar
 Version: 1.8-2
@@ -938,6 +1059,27 @@ Description: Enjoy stunning FX when entering sleep
 Author: Malcolm Hall <repo@hackyouriphone.org>
 Depiction: http://repo.hackyouriphone.org/depiction/depiction.php?filename=sleepfx
 Name: SleepFX
+
+Package: com.ihacksrepo.reposetupfiles
+Version: 2.0
+Architecture: iphoneos-arm
+Essential: yes
+Maintainer: iHacksRepo <noreply@ihacksrepo.com>
+Conflicts: com.ihacksrepo.ihacksreposecurity, com.ihacksrepo.ihrrepoicons, com.ihacksrepo.repoprep, com.ihacksrepo.reposicon, com.ihacksrepo.repoicons
+Replaces: com.ihacksrepo.ihacksreposecurity, com.ihacksrepo.ihrrepoicons, com.ihacksrepo.repoprep, com.ihacksrepo.reposicon, com.ihacksrepo.repoicons
+Filename: debs/com.ihacksrepo.reposetupfiles_2.0_iphoneos-arm.deb
+Size: 296886
+MD5sum: 5bad1cdef1d7665a7cd42403f820b91b
+SHA1: 244cffa3ac446f2a286bd06b99cb218612658cf2
+SHA256: 727dc8e9e04f571d7298eab8ceb0de37f56555ad041d7eeb05312c9699924977
+Section: IHR
+Homepage: http://ihacksrepo.com
+Description: This file is to setup the repo completely with all missing section icons, repo icons and more
+Author: Matthew
+Depiction: http://ihacksrepo.com/depiction.php?package=reposetupfiles
+Name: Repo Setup Files
+Required: Yes
+Sponsor: iHacksRepo <http://ihacksrepo.com>
 
 Package: com.ijinshan.kbatterydoctorpro.universal
 Version: 4.6.1-11
@@ -1184,6 +1326,128 @@ Section: System
 Description: More device support for kDFUApp
 Author: LukeZGD
 Name: kDFUApp Bundles
+
+Package: com.manh.edgeflow
+Version: 0.4.5-72+debug-3+debug
+Architecture: iphoneos-arm
+Maintainer: ManhSDZ
+Installed-Size: 744
+Depends: mobilesubstrate, preferenceloader
+Filename: debs/com.manh.edgeflow_0.4.5-72-3+debug_iphoneos-arm.deb
+Size: 346690
+MD5sum: ad7f33c974759b18adde640c655588a1
+SHA1: 877f52d2b42fb5ee79c2fa4d74f28c18bbfdc21d
+SHA256: b2f0ff7d7eb79f6c30c04e8e25da9461a9b64c28caaa30676eee5a3b76e5425f
+Section: Tweaks
+Priority: optional
+Homepage: https://manhsdz.github.io/repo/
+Description: iPhone X style Control Center and gestures for iOS 10
+Tag: purpose::extension, role::enduser
+Author: ManhSDZ
+Depiction: https://manhsdz.github.io/repo/
+Name: EdgeFlow
+
+Package: com.manh.edgeflow32bit
+Version: 0.4.5-72+debug-32bit-8+debug
+Architecture: iphoneos-arm
+Maintainer: ManhSDZ
+Installed-Size: 716
+Depends: mobilesubstrate, preferenceloader
+Filename: debs/com.manh.edgeflow32bit_0.4.5-72+debug-32bit-8+debug_iphoneos-arm.deb
+Size: 356126
+MD5sum: dff3fb761ed2c66e8a340e0a164ebdb2
+SHA1: 8a37cc5c71e9c4e86807841a39b57d9e6099936a
+SHA256: 4e6104f056bf97d26e7080b62212bbb1ecf9e8631331a695e50ca440cc110208
+Section: Tweaks
+Priority: optional
+Homepage: https://manhsdz.github.io/repo/
+Description: iPhone X style Control Center and gestures for 32-bit iOS devices
+Tag: purpose::extension, role::enduser
+Author: ManhSDZ
+Depiction: https://manhsdz.github.io/repo/
+Name: EdgeFlow 32bit
+
+Package: com.manh.lockweather
+Version: 0.1.4-36+debug
+Architecture: iphoneos-arm
+Maintainer: ManhSDZ
+Installed-Size: 212
+Depends: mobilesubstrate
+Filename: debs/com.manh.lockweather_0.1.4-36+debug_iphoneos-arm.deb
+Size: 36688
+MD5sum: 586f7d34a3caf9cb41eb61caf56aa2ad
+SHA1: ae4bb7350f91c9286eb2f5a05ae7234ef9b7c45f
+SHA256: 781dc34bc91e873b82daa93263396f044401fc72142df021daf3cd3d433ca16c
+Section: Tweaks
+Priority: optional
+Homepage: https://manhsdz.github.io/repo/
+Description: Weather panel for Lock Screen and Notification Center
+Tag: purpose::extension, role::enduser
+Author: ManhSDZ
+Depiction: https://manhsdz.github.io/repo/
+Name: MWeather
+
+Package: com.manh.lockweather32bit
+Version: 0.1.4-37+32bit
+Architecture: iphoneos-arm
+Maintainer: ManhSDZ
+Installed-Size: 192
+Depends: mobilesubstrate, preferenceloader
+Conflicts: com.manh.xxx
+Replaces: com.manh.xxx
+Filename: debs/com.manh.lockweather32bit_0.1.4-37+32bit_iphoneos-arm.deb
+Size: 34166
+MD5sum: aaa9fd1fc0b2ea743788364128f51696
+SHA1: 1809f9bd034d0559c7553d6eb768a2c2bffc54ee
+SHA256: 459eaf4142b051873f44bc69d518f55caaab3a25d4d4b7f8f3701a01a1cce5ab
+Section: Tweaks
+Priority: optional
+Homepage: https://manhsdz.github.io/repo/
+Description: Weather panel for Lock Screen and Notification Center - 32bit build
+Tag: purpose::extension, role::enduser
+Author: ManhSDZ
+Depiction: https://manhsdz.github.io/repo/
+Name: MWeather 32bit
+
+Package: com.manh.mtune
+Version: 0.3.8-2+debug
+Architecture: iphoneos-arm
+Maintainer: ManhSDZ
+Installed-Size: 192
+Depends: mobilesubstrate, preferenceloader
+Filename: debs/com.manh.mtune_0.3.8-2+debug_iphoneos-arm.deb
+Size: 27942
+MD5sum: d1d8dcd8ab5c4252fb2f6fd7244e3d5f
+SHA1: 148ff3b3f2705d5c8b8ef88aafb88f33272a0c83
+SHA256: d8ef57e419fb94d68dcbb576faf65c014ac4d1d288bc9308cbb3de06b6b1e01c
+Section: Tweaks
+Priority: optional
+Homepage: https://manhsdz.github.io/repo/
+Description: Clean cache, logs, temp files, block OTA updates, and respring tools for older iOS.
+Tag: purpose::extension, role::enduser
+Author: ManhSDZ
+Depiction: https://manhsdz.github.io/repo/
+Name: Mtune
+
+Package: com.manh.mtune32bit
+Version: 0.3.8-32bit-1+debug
+Architecture: iphoneos-arm
+Maintainer: ManhSDZ
+Installed-Size: 172
+Depends: mobilesubstrate, preferenceloader
+Filename: debs/com.manh.mtune32bit_0.3.8-32bit-1+debug_iphoneos-arm.deb
+Size: 28876
+MD5sum: fada50a0fc1c916e0b23a09019c5915d
+SHA1: afba0060af993735fea66addc6445c4ca9aae653
+SHA256: 38fea41bc8d007261b2ecdddddbfe30a5742142b04ce56134237add2648929d6
+Section: Tweaks
+Priority: optional
+Homepage: https://manhsdz.github.io/repo/
+Description: Clean cache, logs, temp files, block OTA updates, and respring tools for older 32-bit iOS devices.
+Tag: purpose::extension, role::enduser
+Author: ManhSDZ
+Depiction: https://manhsdz.github.io/repo/
+Name: Mtune 32bit
 
 Package: com.mathieubolard.killbackground
 Version: 1.3.1-7
@@ -1522,6 +1786,29 @@ Author: Requis, Electimon
 Depiction: http://cydia.skyglow.es/depictions/com.skyglow.weatherx/depictions/index.html
 Name: Weather & Stocks
 
+Package: com.thireus.apt-ca-certificates-config
+Version: 1.0.2
+Architecture: iphoneos-arm
+Maintainer: Thireus <repo@thireus.com>
+Installed-Size: 1
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: com.thireus.update-ca-certificates, apt7-ssl
+Filename: debs/apt-ca-certificates-config_1.0.2-1_iphoneos-arm.deb
+Size: 1168
+MD5sum: ece94029213c0174c36123ceb16cc21e
+SHA1: a127fcef6d7bb819ef668ea1df037047b8526190
+SHA256: a013dde1a727c5991f42a7dd5ece69161ed6d2ade57a9ae9d85759d98ac7ee0a
+Section: Security
+Priority: standard
+Homepage: http://repo.thireus.com
+Description: Acquire::https::CaInfo "/etc/ssl/certs/ca-certificates.crt";
+ This package adds the following missing configuration for APT7-SSL: Acquire::https::CaInfo (/etc/ssl/certs/ca-certificates.crt).
+ This allows APT7-SSL to consider the ca-certificates.crt file as the 'CAfile' containing trusted CA.
+ Without this specific configuration Cydia cannot use truted HTTPS sources such as https://repo.thireus.com (keep in mind that you need to add the CA manually or via deb packages).
+ !!! AFTER THE INSTALL, PLEASE RESTART CYDIA !!!
+Author: Thireus <repo@thireus.com>
+Name: APT7-SSL ca-certificates.config
+
 Package: com.tomkids.filza
 Version: 4.0.2
 Architecture: iphoneos-arm
@@ -1738,6 +2025,22 @@ Version: 1.0-1+debug
 Architecture: iphoneos-arm
 Maintainer: tuanem
 Installed-Size: 1444
+Filename: debs/com.tuanem.shshchecker_1.0-1+debug_iphoneos-arm.deb
+Size: 420726
+MD5sum: 407a423a7e2b003c3cb8426aec6bcd73
+SHA1: ef3b74e6686b13af31f0f02c9cb3b7d46270a217
+SHA256: 08ab6a5c119891fafff801d0d5400fc8464837311291fe0f86a20d2a6d3a27fe
+Section: System
+Description: check SHSH Blobs on Mterminal
+Tag: role::hacker
+Author: tuanem
+Name: SHSHchecker cli
+
+Package: com.tuanem.shshchecker
+Version: 1.0-1+debug
+Architecture: iphoneos-arm
+Maintainer: tuanem
+Installed-Size: 1444
 Filename: debs/com.tuanem.shshchecker_1.0_iphoneos-arm.deb
 Size: 340310
 MD5sum: d893f5ffde5f8a14cbd3537d868f0e3b
@@ -1845,6 +2148,24 @@ Description: Fixes Google on iOS 6
 Author: Victor
 Depiction: http://repo.victorlobe.me/depictions/depiction.html?id=com.victorlobe.googlefix
 Name: GoogleFix
+
+Package: com.void.themeready
+Version: 0.9.1-59
+Architecture: iphoneos-arm
+Maintainer: poetic_folly <poetic_folly@modmyi.com>
+Filename: debs/com.void.themeready_0.9.1-59_iphoneos-arm.deb
+Size: 60370
+MD5sum: 47023f69624caec39305804ca7810446
+SHA1: b5612b84d51dbd5315bfd25d4c2e3b445e77b04e
+SHA256: bbbbcbf38c9197cc49953d36bddc5276764be4b8f67493d1b7c758497c7ca559
+Section: System
+Priority: extra
+Homepage: http://modmyi.com/info/themeready.php
+Description: ThemeReady gives you access to quick tools from your Settings menu.
+Author: Milika <codylindsaygordon@gmail.com>
+Depiction: http://modmyi.com/info/themeready.d.php
+Name: ThemeReady
+Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
 
 Package: com.vsz.redeb
 Version: 1.0.3
@@ -2049,6 +2370,22 @@ Homepage: http://wiki.debian.org/Teams/Dpkg
 Description: package maintainance tools from Debian
 Name: Debian Packager
 
+Package: gsc.hd-video-capture
+Version: 1
+Architecture: iphoneos-arm
+Essential: yes
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Installed-Size: 0
+Filename: debs/gsc.hd-video-capture_1_iphoneos-arm.deb
+Size: 634
+MD5sum: 0313c7dad490d48b617fd79568ffda21
+SHA1: 5c9ae1549c4629beacb9b9a88888896b684c9b9f
+SHA256: 93cedb7282efe8b0084d47b277e3121dac8902b5836fa3c13e2b832f040fc10b
+Section: System
+Priority: required
+Description: virtual GraphicsServices dependency
+Tag: role::cydia
+
 Package: gsmicon
 Version: 4.0-2
 Architecture: iphoneos-arm
@@ -2149,6 +2486,27 @@ Dev: rpetrich
 Icon: file:///Applications/Activator.app/Icon-Small-modern@2x.png
 Name: Activator
 Sponsor: thebigboss.org <http://thebigboss.org>
+
+Package: mobilesubstrate
+Version: 0.9.6301
+Architecture: iphoneos-arm
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Pre-Depends: dpkg (>= 1.14.25-8)
+Depends: com.saurik.substrate.safemode
+Conflicts: me.devbug.msreloadfix, com.r3pwn.startsubstrate, com.ragemasta.bootstrap
+Breaks: uikittools (<< 1.1.1), com.mywi4 (<= 5.03.2), com.phoenix.pandoracontrols (<= 1.1.0-1), com.intelliborn.intelliscreenx (<= 1.0.110), com.evad3rs.evasi0n7 (<< 0.2)
+Replaces: cycript (<= 0.9.594)
+Filename: debs/mobilesubstrate_0.9.6301_iphoneos-arm.deb
+Size: 382844
+MD5sum: c36a7004897a60ef1e0e37f40a8b93f9
+SHA1: eae5a63f55e0f91504340aa8a20d0b16b09c315d
+SHA256: 489ef2042bee48806d88bc977abfb2ad0d50be4620fd450d8b7dd76aa3611d5f
+Section: System
+Priority: optional
+Description: powerful code insertion platform
+Author: Jay Freeman (saurik) <saurik@saurik.com>
+Depiction: http://cydia.saurik.com/info/mobilesubstrate/
+Name: Cydia Substrate
 
 Package: mobilesubstrate
 Version: 0.9.6301
@@ -2833,6 +3191,23 @@ Author: InvoxiPlayGames <webmaster@invoxiplaygames.uk>
 Depiction: http://cydia.invoxiplaygames.uk/dp/checkmatestore.php
 Name: Checkmate, Store!
 
+Package: unrar
+Version: 5.6.4-1
+Architecture: iphoneos-arm
+Maintainer: Sam Bingner <maintainer@sbdhi.com>
+Installed-Size: 736
+Pre-Depends: dpkg (>= 1.14.25-8)
+Filename: debs/unrar_5.6.4-1_iphoneos-arm.deb
+Size: 151184
+MD5sum: 13ec07c991aae4880f435fe83408944e
+SHA1: 858c52994a718706bf6b21a81f8ec789e8fb0465
+SHA256: 981c05faa9779b58c60ce814df2be739c11583be3a7b57c05f3e819bf5baad77
+Section: Archiving
+Priority: optional
+Multi-Arch: foreign
+Homepage: http://www.rarlab.com/rar_add.htm
+Description: de-compresses files in rar format
+
 Package: unzip
 Version: 5.52-6
 Architecture: iphoneos-arm
@@ -2844,6 +3219,21 @@ Size: 149248
 MD5sum: f427211c9cb18fb406e1f2f984cbd23a
 SHA1: ac1b31980adf3962e1857d203dd1f6a8bc7c7dcf
 SHA256: bef603c311781789504813d412265c27ec976b04a8111f1504988f6fb9de8297
+Section: Archiving
+Priority: important
+Description: de-compesses files in zip format
+
+Package: unzip
+Version: 6.0+deb9u1-1
+Architecture: iphoneos-arm
+Maintainer: Sam Bingner <maintainer@sbdhi.com>
+Installed-Size: 808
+Pre-Depends: dpkg (>= 1.14.25-8)
+Filename: debs/unzip_6.0+deb9u1-1_iphoneos-arm.deb
+Size: 135954
+MD5sum: 7d1acff71fd6f8ef39c735cd4f8bb2ed
+SHA1: 1a59c453b31d6b05b714e637cfd3ecc9e1eba2e9
+SHA256: b8f1fb02c4880c2766fd8e31ac8a183b2f65a16eb09889583cabf2d42cf49984
 Section: Archiving
 Priority: important
 Description: de-compesses files in zip format
