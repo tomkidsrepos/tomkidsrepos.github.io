@@ -1522,6 +1522,22 @@ Author: Requis, Electimon
 Depiction: http://cydia.skyglow.es/depictions/com.skyglow.weatherx/depictions/index.html
 Name: Weather & Stocks
 
+Package: com.tomkids.filza
+Version: 4.0.2
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/com.tomkids.filza_4.0.2_iphoneos-arm.deb
+Size: 12651128
+MD5sum: d0008c886a6547a2a12634c93c9805bb
+SHA1: 360a980162bad0693b14c55c0aff9c312cd83ba4
+SHA256: c7da63e45f59b80e835eda554e89f2b6c01f8b79c85d3322e1caac9e88770431
+Section: Applications
+Description: App Filza 4.0.2
+ .
+ Converted by Tomkids
+Author: Converted ipa to deb by Tomkids's tool
+Name: Filza 4.0.2
+
 Package: com.tomkids.flappybird
 Version: 1.2
 Architecture: iphoneos-arm
@@ -1565,6 +1581,22 @@ Description: App Google Map
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
 Name: Google Map
+
+Package: com.tomkids.h3lix
+Version: 8
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/com.tomkids.h3lix_8_iphoneos-arm.deb
+Size: 11360300
+MD5sum: 1ffe170d5b0344e17a20c5d642dc4c88
+SHA1: 22e88fe8a2d102e7aa5435d0af03839ec9747cc4
+SHA256: 0c49fe6d16d21987d026adfaba99e9dec5ad8f0a340e4b12971e2f48379cde93
+Section: Applications
+Description: H3lix-RC8 jailkbreak ios10
+ .
+ Converted by Tomkids
+Author: Converted ipa to deb by Tomkids's tool
+Name: H3lix-RC8
 
 Package: com.tomkids.instagram
 Version: 6.5.1
