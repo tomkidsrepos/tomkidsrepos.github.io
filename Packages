@@ -1371,6 +1371,22 @@ Depiction: https://poomsmart.github.io/repo/depictions/ytlegacy.html
 Name: YouTube Legacy
 Sileodepiction: https://poomsmart.github.io/repo/sileodepictions/ytlegacy.json
 
+Package: com.pulandres.safestdn
+Version: 1.60
+Architecture: iphoneos-arm
+Maintainer: Pulandres
+Depends: mobilesubstrate, firmware (>= 10.0), preferenceloader, net.limneos.libbulletin, ws.hbang.common (>= 1.11)
+Filename: debs/Tomkids.Tweak.SafeShutDown_1.6.deb
+Size: 9294742
+MD5sum: be70cfcb387c59718fea3a74f896250e
+SHA1: 34cabb2ee4ebed227132dabacb479b85a345e62d
+SHA256: a6a10da95e641ceffc21505bf4fcdaf94408b63ad2938934cbca7437ba890e5b
+Section: Tweaks
+Description: Avoid re-jailbreaking when your iDevice have not battery.
+Author: Pulandres
+Icon: https://repo.pulandres.me/CydiaIcon.png
+Name: SafeShutdown Cracked
+
 Package: com.ravirajm.torch
 Version: 1.5.2
 Architecture: iphoneos-arm
