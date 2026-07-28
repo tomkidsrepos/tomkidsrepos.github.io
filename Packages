@@ -1308,19 +1308,6 @@ Description: Disables YouTube update prompts
 Author: Patrick_Griffin
 Name: DisableYouTubeUpdates
 
-Package: com.phucnguyenvlog.protubehd
-Version: 1.2
-Architecture: iphoneos-arm
-Maintainer: PhucNguyen
-Filename: debs/com.phucnguyenvlog.protubehd_1.2_iphoneos-arm.deb
-Size: 613318
-MD5sum: d7e99c15c5406731214f6614a321e0fd
-SHA1: 8003b14c3812b75d3365266c860dfb2bf3500039
-SHA256: 14e52cf0e99734512943f5cd89b1b0a57e131c0d5e876a9b5f7c706f3ff5822f
-Section: Applications
-Description: Đóng gói từ IPA bởi PhucNguyenVlog
-Name: ProtubeHD
-
 Package: com.phucnguyenvlog.tiktok
 Version: 1.0
 Architecture: iphoneos-arm
@@ -1562,6 +1549,19 @@ Section: Applications
 Description: Converted from IPA
 Author: Unknown
 Name: Pac-Man
+
+Package: com.tomkids.protubehd
+Version: 1.2
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/com.tomkids.protubehd_1.2_iphoneos-arm.deb
+Size: 611906
+MD5sum: ea33bf6c141b95389c759c6992c03193
+SHA1: c53b305ff7a3d01af604dbe7b01a1a4dc9830044
+SHA256: ff099e5446b4494a3f8dae4be06b613281d6511fafaaa418f7f97bf59637c2e6
+Section: Applications
+Description: Đóng gói từ IPA
+Name: ProtubeHD
 
 Package: com.tomkids.youtubefix
 Version: 1.3.6
@@ -2648,20 +2648,6 @@ Section: Applications
 Description: Converted from IPA
 Author: Unknown
 Name: Phoenix6
-
-Package: tomkids.soundwave
-Version: 1.0
-Architecture: iphoneos-arm
-Maintainer: Unknown
-Filename: debs/codevn-com.soundwave.app_1.0.0-102+debug_iphoneos-arm_Deb (1).deb
-Size: 819398
-MD5sum: da4d2cee9adf95a7d7475ba9a6e14961
-SHA1: 665939129dfcf95d9365251aef4a3c5d366bba08
-SHA256: 222ac094feff2640f7f5ee83b09e1ef9d1d82945405226b47ac9efe42553777e
-Section: Applications
-Description: Converted from IPA
-Author: Unknown
-Name: Sound Cloud
 
 Package: tomkids.soundwave
 Version: 1.0
