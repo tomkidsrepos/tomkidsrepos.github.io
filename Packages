@@ -62,22 +62,6 @@ Description: Mô tả ngắn gọn về app/tweak
 Author: Air Hockey
 Name: Air Hockey
 
-Package: Tomkids.App.iBooks
-Version: 3.1.3
-Architecture: iphoneos-arm
-Maintainer: Unknown
-Filename: debs/Tomkids.App.iBooks_3.1.3_iphoneos-arm.deb
-Size: 29763674
-MD5sum: bd53533d29fe320c1cce13c613ea67be
-SHA1: 4e653fab32a9ae89dee26193766d09f0025dfef0
-SHA256: 84e1013bd7c1576794970ef377e4851ea3477a6374c656093a92c212df36d382
-Section: Applications
-Description: iBook 3.1.3 for IOS 6-8
- .
- Converted by Tomkids
-Author: Converted ipa to deb by Tomkids's tool
-Name: iBook 3.1.3 for IOS 6-8
-
 Package: Tomkids.AvatarOfWar
 Version: 1.0
 Architecture: iphoneos-arm
@@ -453,19 +437,6 @@ Description: Mô tả ngắn gọn về app/tweak
 Author: Unknown
 Name: Truyện Việt Nam
 
-Package: Tomkids.YoutubeFix
-Version: 1.3-1.0.6
-Architecture: iphoneos-arm
-Maintainer: Tomkids Converted
-Filename: debs/Tomkids.Youtube & Tubereplacer Fix chạy nền.deb
-Size: 7214720
-MD5sum: 6d24f421c721ccb9ac25d9174bf48a26
-SHA1: 4ae57955db3baf5751bfc88dad0ece46f97559cc
-SHA256: 64db204a06edf9db338feacd7d8d26c3b731146b1cb9bc449ec04af4bd7b80d6
-Description: Youtube & Tubereplacer  Merged by Tomkids
-Author: Tomkids Converted
-Name: Youtube & Tubereplacer Fix chạy nền
-
 Package: Tomkids.ZingMp3
 Version: 3.2.1
 Architecture: iphoneos-arm
@@ -539,7 +510,7 @@ Depends: firmware (>= 5.0), mobilesubstrate (>= 0.9.5100), firmware (<= 16.3.1)
 Conflicts: us.hackulo.appsync50, us.hackulo.appsync50plus, com.hackyouriphone.appsync7, com.teiron.ppsync, appsync50plus2.25pp, com.linusyang.appsync, com.sull.appsyncunified, com.sull.appsyncunifiedbeta, com.xsellize.appsync50, com.xsellize.appsync50plus, appsync50plus.178, appsync50plus2.178, cydia.net.angelxwind.appsyncunified, com.ifucker.appsync, com.sexyphonetech.appsyncunified, appsyncunifiedofficial, org.digbick.asufixed, cn.mingmei.asu623517234615234813, technology.goated.appsync, technology.goated.appsyncunified, vaginalfisting.appsynctool, science.xnu.substitute
 Replaces: us.hackulo.appsync50, net.angelxwind.appsyncunified
 Provides: appsync, net.angelxwind.appsyncunified
-Filename: debs/nodelete-ai.akemi.appsyncunified.deb
+Filename: debs/nodelete-ai.akemi.appsyncunified_110.deb
 Size: 58440
 MD5sum: 26f898f0b80f3bd842527aa9a9859bb1
 SHA1: f0392e1c1992789ac92c17dc7db3718fca6df899
@@ -1592,49 +1563,20 @@ Description: Converted from IPA
 Author: Unknown
 Name: Pac-Man
 
-Package: com.tomkids.repoicon
-Version: 1.0.1
-Architecture: iphoneos-arm
-Maintainer: Tomkids
-Filename: debs/com.tomkids.repoicon_1.0.1_iphoneos-arm.deb
-Size: 823592
-MD5sum: 84d926d8a7dc6e2d920433b85cb1d860
-SHA1: c70547e36f9a268a4bdc111696abe8688510927a
-SHA256: f7d1cdc36798fbb0456bf59050595831d534ab5678f6cb20f0d1224556c1e517
-Section: System
-Description: Copy Tomkids repo icon to Cydia Sections folder.
-Author: Tomkids
-Icon: file:///Applications/Cydia.app/Sections/Applications.png
-Name: Tomkids Repo Icon
-
 Package: com.tomkids.youtubefix
 Version: 1.3.6
 Architecture: iphoneos-arm
 Maintainer: Tomkids
 Depends: mobilesubstrate (>= 0.9.5000), preferenceloader, firmware (>= 5.0), firmware (<< 11.0)
-Filename: debs/youtube1.3.0-tubereplacer1.0.6-fix.deb
-Size: 7194948
-MD5sum: 7c4ace20923ff4c96306d71b650ed495
-SHA1: de0e0859a397cb353ae27cffbe774df885b8c752
-SHA256: 50c6d20470412f0086e20bbe81716791d4c2eedf21855a82eefdc6f78a78ba84
+Filename: debs/tomkids.App.youtube1.3.0-tubereplacer1.0.6-fix.deb
+Size: 7194952
+MD5sum: b87ea9824bf30d894d63cdd83c057646
+SHA1: 22e6da1d4ab2c49db3f80dcae64d875d15d8e783
+SHA256: e81f9f6f6446930ffd83e484a9f928fe730b40d849ca420784200649bd5cdc61
 Section: Applications
-Description: Cai app Youtube 1.3.0 (cho Ios 5.1 -  8) va Fix chay nen cho Ios 6  - 8
+Description: Cai app Youtube 1.3.0 (cho Ios 5.1 -  10) va Fix chay nen cho Ios 6  - 10
 Author: Tomkids
-Name: Youtube & Tubereplacer Fix
-
-Package: com.tomkids.youtubefix
-Version: 1.3.6
-Architecture: iphoneos-arm
-Maintainer: Tomkids
-Depends: mobilesubstrate (>= 0.9.5000), preferenceloader, firmware (>= 5.0), firmware (<< 11.0)
-Filename: debs/youtube1.3.6-tubereplacer-fix.deb
-Size: 7214820
-MD5sum: 11ec71325aa90a0fe460beb50f3c835c
-SHA1: b58261b72afcbe203be8b458e75f7d75cbe1a39b
-SHA256: 2deda8fed97013687a3f500f61cd1c25718f6f531220d550734045af4eeb0121
-Description: Merged from multiple tweaks
-Author: Tomkids
-Name: Youtube & Tubereplacer Fix
+Name: Youtube 1.3 & Tubereplacer 1.0.6 Fix
 
 Package: com.tqm-mos.batterydragon
 Version: 1.0
@@ -1696,50 +1638,6 @@ Description: Phông chữ thay trực tiếp hệ thống.
 Author: @tqmmos
 Depiction: https://tqm-mos.com/Classic/Info/com.tqm-mos.fontchococooky
 Name: Chococooky (iOS6)
-
-Package: com.tqm-mos.kdfuapp
-Version: 1.0.3
-Architecture: iphoneos-arm
-Maintainer: @tqmmos
-Depends: openssl, libcrippy-1.0.0, libpartialzip-1.0.0, curl, kloader, com.tqm-mos.kdfubundles, firmware (>= 6.0), firmware (<= 9.3.6)
-Conflicts: org.tihmstar.kdfuapp
-Provides: org.tihmstar.kdfuapp
-Filename: debs/tomkids.kdfuapp_1.0.3_iphoneos-arm.deb
-Size: 80412
-MD5sum: 26def507bfe5b24371e2572f499512b5
-SHA1: 002d3a297430ac1b90fa9c0e9eab2555a3d3bb2c
-SHA256: 596d6e426053dd9a018dd1bc27f871e5e43d810310c182f371f787c4eb3f7658
-Section: System
-Priority: optional
-Homepage: https://tqm-mos.com/info/kDFUApp/?p=info
-Description: DFUApp là một cách dễ dàng để vào chế độ kDFU , chỉ cần kích hoạt tất cả các công tắc và nhấn nút , KHÔNG TƯƠNG THÍCH VỚI THIẾT BỊ 64BIT!
-Author: tihmstar
-Depiction: https://tqm-mos.com/info/kDFUApp/?p=info
-Dev: tihmstar
-Name: kDFUApp
-Sileodepiction: https://tqm-mos.com/info/kDFUApp.json
-Website: https://tqm-mos.com/info/kDFUApp/?p=info
-
-Package: com.tqm-mos.kdfubundles
-Version: 1.0.1
-Architecture: iphoneos-arm
-Maintainer: @tqmmos
-Depends: com.tqm-mos.kdfuapp
-Conflicts: com.lukezgd.kdfubundles
-Provides: com.lukezgd.kdfubundles
-Filename: debs/tomkids.kdfubundles_1.0.1_iphoneos-arm.deb
-Size: 10836
-MD5sum: 458aaf804819ec3d4c07488e2be65bde
-SHA1: 3304edd4b863214410f21c7dced1e8c034514fc7
-SHA256: d571ca93faa47d7e7a45f31ee992040a5c89b2e99c96360cc599cac08b46607d
-Section: System
-Homepage: https://tqm-mos.com/info/kDFUBundles/?p=info
-Description: Hỗ trợ nhiều thiết bị hơn cho kDFUApp
-Author: LukeZGD
-Depiction: https://tqm-mos.com/info/kDFUBundles/?p=info
-Name: kDFUApp Bundles
-Sileodepiction: https://tqm-mos.com/info/kDFUBundles.json
-Website: https://tqm-mos.com/info/kDFUBundles/?p=info
 
 Package: com.tuanem.shshchecker
 Version: 1.0-1+debug
@@ -3666,25 +3564,6 @@ Description: AppSync Unified allows you to sync and install unsigned iOS applica
 Author: Karen/あけみ, Dissident <angelXwind@angelxwind.net>
 Depiction: https://cydia.angelxwind.net/?page/net.angelxwind.appsync40plus
 Name: AppSync for iOS 4.0
-
-Package: vn.iossp.appsyncunified
-Version: 110.0
-Architecture: iphoneos-arm
-Maintainer: iOSSupport <iossp@hotmail.com
-Depends: firmware (>= 5.0), mobilesubstrate (>= 0.9.5100), firmware (<= 16.3.1), vn.iossp.iconrepo
-Conflicts: us.hackulo.appsync50, us.hackulo.appsync50plus, com.hackyouriphone.appsync7, com.teiron.ppsync, appsync50plus2.25pp, com.linusyang.appsync, com.sull.appsyncunified, com.sull.appsyncunifiedbeta, com.xsellize.appsync50, com.xsellize.appsync50plus, appsync50plus.178, appsync50plus2.178, cydia.net.angelxwind.appsyncunified, com.ifucker.appsync, com.sexyphonetech.appsyncunified, appsyncunifiedofficial, org.digbick.asufixed, cn.mingmei.asu623517234615234813, technology.goated.appsync, technology.goated.appsyncunified, vaginalfisting.appsynctool, science.xnu.substitute
-Replaces: us.hackulo.appsync50, net.angelxwind.appsyncunified
-Provides: appsync, net.angelxwind.appsyncunified
-Filename: debs/vn.iossp.appsyncunified_110.0_iphoneos-arm.deb
-Size: 87186
-MD5sum: 7dbb704d323c12aef2552edfefc796a8
-SHA1: 92e646047c458caa7a83f121c21537919dc0911f
-SHA256: 2e7ec2e907bb5d2b823e15261bec4871fbc77999b05c82d7ab4b20c3c38899ab
-Section: Tweak
-Description: iOS 5 - 16.3.1.
-Author: Karen/あけみ, Linus Yang <karen@akemi.ai>
-Depiction: https://cydia.akemi.ai/?page/ai.akemi.appsyncunified
-Name: AppSync Unified
 
 Package: vn.iossp.googlefix
 Version: 1.0.2
