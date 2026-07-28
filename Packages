@@ -216,18 +216,16 @@ Author: Converted ipa to deb by Tomkids's tool
 Name: FIFA 1O
 
 Package: Tomkids.GoTV
-Version: 1.0
+Version: 1.1
 Architecture: iphoneos-arm
-Maintainer: Unknown
-Filename: debs/Tomkids.App.GoTV_1.0_iphoneos-arm.deb
-Size: 20235134
-MD5sum: 5cb21be3d74e6411e8c9a510eb6fbd60
-SHA1: ca62d02f78e2c72583144896062d9209324eacc5
-SHA256: 44905ae65b4656439b752a8fef972e0a951343e686e9e3086aea8a932e8b6dae
+Maintainer: Converted ipa to deb by Tomkids's tool
+Filename: debs/Tomkids.App.GoTV_1.1_iphoneos-arm.deb
+Size: 20211944
+MD5sum: 17e75777d76421c2511070e97bfa435a
+SHA1: 120db3bdcb527d7808e4953f13012bb59840a96e
+SHA256: 57f7a0f29a34e40292f26fdfadde7dfef350b5a42f922a6958bb9c393d0c894a
 Section: Applications
-Description: TV app for IOS 8
- .
- Converted by Tomkids
+Description: https://iptv-org.github.io/iptv/languages/vie.m3u
 Author: Converted ipa to deb by Tomkids's tool
 Name: GoTV
 
@@ -1536,6 +1534,38 @@ Description: Converted from IPA
 Author: Unknown
 Name: Foobar2000_1.0.33
 
+Package: com.tomkids.googlemap
+Version: 4.3.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/com.tomkids.App.Googlemap_4.3.0_iphoneos-arm.deb
+Size: 9435778
+MD5sum: fb44bacce001e0ff42f83ced0a1b2443
+SHA1: cab8b9edd6e4ea45c929d98bcadd966f36b061fc
+SHA256: e690e0fa66cff0ee6431982e6874cd8881233e8b0386d92cdf5c1cf89d5652ae
+Section: Applications
+Description: App Google Map
+ .
+ Converted by Tomkids
+Author: Converted ipa to deb by Tomkids's tool
+Name: Google Map
+
+Package: com.tomkids.instagram
+Version: 6.5.1
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/com.tomkids.App.Instagram_6.5.1_iphoneos-arm.deb
+Size: 10382168
+MD5sum: bea74b23791dc91e118746016ff4a466
+SHA1: d81f2557eb21395378695f07598bb6d220aebb8a
+SHA256: 2577388ee11e5fca0b2ee1d234a9fc727c956034a88def2d6ced411173fff928
+Section: Applications
+Description: App Instagram_6.5.1
+ .
+ Converted by Tomkids
+Author: Converted ipa to deb by Tomkids's tool
+Name: Instagram
+
 Package: com.tomkids.pacman
 Version: 1.0.5
 Architecture: iphoneos-arm
@@ -1554,7 +1584,7 @@ Package: com.tomkids.protubehd
 Version: 1.2
 Architecture: iphoneos-arm
 Maintainer: Unknown
-Filename: debs/com.tomkids.protubehd_1.2_iphoneos-arm.deb
+Filename: debs/Tomkids.App.Protubehd_1.2_iphoneos-arm.deb
 Size: 611906
 MD5sum: ea33bf6c141b95389c759c6992c03193
 SHA1: c53b305ff7a3d01af604dbe7b01a1a4dc9830044
@@ -1562,6 +1592,22 @@ SHA256: ff099e5446b4494a3f8dae4be06b613281d6511fafaaa418f7f97bf59637c2e6
 Section: Applications
 Description: Đóng gói từ IPA
 Name: ProtubeHD
+
+Package: com.tomkids.telegram
+Version: 2.0.4
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/com.tomkids.App.Telegram_2.0.4_iphoneos-arm.deb
+Size: 5798646
+MD5sum: f1e50977db43d0b337f607b83a5e81a2
+SHA1: 3a2044d91685e9506b8fbd8d299cabffda5de703
+SHA256: 024e854e5dff751e53a72732b069b93b590b8c2825e45aa09c816d8bfea473c7
+Section: Applications
+Description: App Telegram
+ .
+ Converted by Tomkids
+Author: Converted ipa to deb by Tomkids's tool
+Name: Telegram
 
 Package: com.tomkids.youtubefix
 Version: 1.3.6
@@ -1791,7 +1837,7 @@ Version: 1.3
 Architecture: iphoneos-arm
 Maintainer: Tomkids
 Depends: mobilesubstrate, com.arichardson.weepreferenceloader, firmware (>= 5.0), mobilesubstrate (>= 0.9.2586), firmware (>= 2.0), firmware (<= 7.9), preferenceloader
-Filename: debs/FixThoiTietChoIOS6_1.3.deb
+Filename: debs/Tomkids.Tweak.FixThoiTietChoIOS6_1.3.deb
 Size: 177784
 MD5sum: 42e623df487545a52b3b5d57eda56412
 SHA1: 0658e394f93c7a7cf873a28870d5d55a2afe5b33
@@ -2667,7 +2713,7 @@ Package: tomkids.soundwave
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Build tweak by Tomkids
-Filename: debs/soundwave.deb
+Filename: debs/tomkids.app.soundwave.deb
 Size: 1113068
 MD5sum: a08ae3092a49d6487851039d6239d08d
 SHA1: 1f75e08e6508d4d41c63b6225d5abc1eef8b31cf
