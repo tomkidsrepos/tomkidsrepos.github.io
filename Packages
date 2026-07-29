@@ -229,6 +229,22 @@ Description: https://iptv-org.github.io/iptv/languages/vie.m3u
 Author: Converted ipa to deb by Tomkids's tool
 Name: GoTV
 
+Package: Tomkids.GoTV
+Version: 1.2
+Architecture: iphoneos-arm
+Maintainer: Converted ipa to deb by Tomkids's tool
+Filename: debs/Tomkids.App.GoTV_1.2_iphoneos-arm.deb
+Size: 20211986
+MD5sum: 3b077db921e8f102a83ad1ce7d214428
+SHA1: bb4c8a4c670876116ec004b325b6b4a9825b6854
+SHA256: 4d35971c865d2b46744876c6df2b9a61d4c3ced950b8efe4bf28dffa094e5965
+Section: Applications
+Description: Hay them cac nguon sau de xem tivi:
+ https://iptv-org.github.io/iptv/languages/vie.m3u
+ https://rg.com.vn/coban
+Author: Converted ipa to deb by Tomkids's tool
+Name: GoTV
+
 Package: Tomkids.Messenger
 Version: 2.7.2
 Architecture: iphoneos-arm
