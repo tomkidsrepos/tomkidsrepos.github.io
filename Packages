@@ -1651,6 +1651,38 @@ Author: Pierre-Marc Bonneau <pierremarc_999@hotmail.com>
 Icon: file:///Applications/iOS6Bootstrap.app/AppIcon57x57.png
 Name: iOS 6 Bootstrap
 
+Package: com.podpod123.fbcrashfix
+Version: 1.0-4+debug
+Architecture: iphoneos-arm
+Maintainer: Pod
+Installed-Size: 108
+Depends: mobilesubstrate (>= 0.9.5000)
+Filename: debs/com.podpod123.fbcrashfix_1.0-4+debug_iphoneos-arm.deb
+Size: 10402
+MD5sum: c56a3ac63f9448263c0d9212ebd69fae
+SHA1: 5ccb4247a1eae6bdf4d1855d9fb7e718ef7648d5
+SHA256: d4ec5a1746e0fcb55db5d3111788e69be31081729f3c5553403023094a37310f
+Section: Tweaks
+Description: A tweak that prevents the Facebook app from crashing
+Author: Pod
+Name: FBCrashFix
+
+Package: com.podpod123.fbintegrationfix
+Version: 1.0-8+debug
+Architecture: iphoneos-arm
+Maintainer: Pod
+Installed-Size: 108
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 6.0), firmware (<= 10.3.4)
+Filename: debs/com.podpod123.fbintegrationfix_1.0-8+debug_iphoneos-arm.deb
+Size: 11520
+MD5sum: a9c1a65b12d3aa4f84635b2688f95f2b
+SHA1: eb06ccf7e46f0e37776437fd37c4b96716ca2e45
+SHA256: 68d502f9ff74973aa346161f3909f00050b1af781d7429b2753cec53545c1486
+Section: Tweaks
+Description: A fix for iOS's Facebook system integration
+Author: Pod
+Name: FBIntegrationFix
+
 Package: com.ps.ytlegacy
 Version: 1.6.5
 Architecture: iphoneos-arm
@@ -3030,6 +3062,22 @@ Section: Applications
 Description: Converted from IPA
 Author: Unknown
 Name: Youtube17.28.2YoutubeX1.7.19
+
+Package: tomkids.app.facebookfix
+Version: 11.6
+Architecture: iphoneos-arm
+Maintainer: Tomkids
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 6.0), firmware (<= 10.3.4)
+Filename: debs/tomkids.app.facebookfixios6.deb
+Size: 40228204
+MD5sum: b671ca5fc0d785311793d497e3c0ffea
+SHA1: 38420889f299b19c87e4e63a57466c13e1ad30b0
+SHA256: 846345765cceefe0bb3d43b4504d5c86d587e71053f34e2e685733f1fe67ccff
+Section: Application
+Description: Cai Fackebook da gop cac tweaks fix cho ios 6
+ Cai Fackebook da gop cac tweaks fix cho ios 6
+Author: Tomkids
+Name: Facebook Fix For IOS6
 
 Package: tomkids.contra
 Version: 1.2.3
