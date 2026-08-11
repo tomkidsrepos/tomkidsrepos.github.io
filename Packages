@@ -889,6 +889,60 @@ Dev: blackcrafter
 Name: SlideMyName
 Sponsor: thebigboss.org <http://thebigboss.org>
 
+Package: com.chillingo.cuttherope
+Version: 2.3.2
+Architecture: iphoneos-arm
+Maintainer: dopaemon <polarisdp@gmail.com>
+Depends: firmware (>= 4.3), uikittools, appsync
+Filename: debs/com.chillingo.cuttherope-2.3.2-iOS-4.3.deb
+Size: 28653188
+MD5sum: 474b016c53457a550f91ea0e5ea35bcb
+SHA1: a3e96bae16eaaf35fd12bbaaaa92dd689ac0cb3f
+SHA256: d3c746ff03f6fab9c7cc201cc43aaf29bb7b2262a78b7ca529681dc9fff9796e
+Section: AppStore Apps
+Homepage: https://github.com/CydiaBlock/AppStore
+Description: The decrypted ipa file: 21%20Cut%20the%20Rope%202.3.2%20(186342633).ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: dopaemon <polarisdp@gmail.com>
+Depiction: https://github.com/CydiaBlock/AppStore
+Name: Cut the Rope v2.3.2 (iOS 4.3)
+Sponsor: dopaemon <polarisdp@gmail.com>
+
+Package: com.chillingo.cuttherope
+Version: 2.5
+Architecture: iphoneos-arm
+Maintainer: dopaemon <polarisdp@gmail.com>
+Depends: firmware (>= 5.0), uikittools, appsync
+Filename: debs/com.chillingo.cuttherope-2.5-iOS-5.0.deb
+Size: 42212512
+MD5sum: 77b5fdeccc1d42c6b919b3347eb7eea4
+SHA1: ca7f8c35253c736eb55bb541b39d51238091949e
+SHA256: 706dc9f260659b61c159155225bed78320793bdc11de0fbb61241839a00d59e9
+Section: AppStore Apps
+Homepage: https://github.com/CydiaBlock/AppStore
+Description: The decrypted ipa file: 26%20Cut%20the%20Rope%202.5%20(811729051).ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: dopaemon <polarisdp@gmail.com>
+Depiction: https://github.com/CydiaBlock/AppStore
+Name: Cut the Rope v2.5 (iOS 5.0)
+Sponsor: dopaemon <polarisdp@gmail.com>
+
+Package: com.chillingo.cuttherope
+Version: 2.6
+Architecture: iphoneos-arm
+Maintainer: dopaemon <polarisdp@gmail.com>
+Depends: firmware (>= 6.0), uikittools, appsync
+Filename: debs/com.chillingo.cuttherope-2.6-iOS-6.0.deb
+Size: 43284172
+MD5sum: 039a473760a6a23eb08aefd18f68ed77
+SHA1: 736002aed434cae0326cdc8f65387c00c48f44d9
+SHA256: a019e14729d2a842b3be8ee7960554caedb9a15cc6b8cf6ed2a74a56250f1d52
+Section: AppStore Apps
+Homepage: https://github.com/CydiaBlock/AppStore
+Description: The decrypted ipa file: 28%20Cut%20the%20Rope%202.6%20(838565593).ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: dopaemon <polarisdp@gmail.com>
+Depiction: https://github.com/CydiaBlock/AppStore
+Name: Cut the Rope v2.6 (iOS 6.0)
+Sponsor: dopaemon <polarisdp@gmail.com>
+
 Package: com.chpwn.weeloader
 Version: 1.4-4
 Architecture: iphoneos-arm
@@ -963,6 +1017,60 @@ Author: dba Technologies, LLC <support@dba-technologies.com>
 Depiction: http://modmyi.com/info/forecast.d.php
 Name: Forecast
 
+Package: com.gameloft.ASPHALT4
+Version: 1.3.8
+Architecture: iphoneos-arm
+Maintainer: dopaemon <polarisdp@gmail.com>
+Depends: firmware (>= 2.1), uikittools, appsync
+Filename: debs/com.gameloft.ASPHALT4-1.3.8-iOS-2.1.deb
+Size: 91251554
+MD5sum: 0f5e3a1b3cf6bd71c009601f830dbeb4
+SHA1: 012e2dba9894aa153a77a5a6a1d709edd570f261
+SHA256: 16b9a1e1db5b5190eb6372e59a10c95d0529570c53d16262661ec1c51f802181
+Section: AppStore Apps
+Homepage: https://github.com/CydiaBlock/AppStore
+Description: The decrypted ipa file: ASPHALT4.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: dopaemon <polarisdp@gmail.com>
+Depiction: https://github.com/CydiaBlock/AppStore
+Name: ASPHALT4 v1.3.8 (iOS 2.1)
+Sponsor: dopaemon <polarisdp@gmail.com>
+
+Package: com.gameloft.BIA
+Version: 1.3.5
+Architecture: iphoneos-arm
+Maintainer: dopaemon <polarisdp@gmail.com>
+Depends: firmware (>= 3.1.2), uikittools, appsync
+Filename: debs/com.gameloft.BIA-1.3.5-iOS-3.1.2.deb
+Size: 91113258
+MD5sum: cfc87b0a173c4039ea5d1023955ed020
+SHA1: 623ef467c90f149f8a7dc2f32a367a78eb2735eb
+SHA256: d3fc58e0e180b6f11f6756970c36053381c3afc7dce57675c38f253c186734e9
+Section: AppStore Apps
+Homepage: https://github.com/CydiaBlock/AppStore
+Description: The decrypted ipa file: Brothers%20In%20Arms%20-%20Hour%20of%20Heroes%201.3.5.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: dopaemon <polarisdp@gmail.com>
+Depiction: https://github.com/CydiaBlock/AppStore
+Name: BIA v1.3.5 (iOS 3.1.2)
+Sponsor: dopaemon <polarisdp@gmail.com>
+
+Package: com.gameloft.OneVsHundred
+Version: 1.1.4
+Architecture: iphoneos-arm
+Maintainer: dopaemon <polarisdp@gmail.com>
+Depends: firmware (>= 2.2.1), uikittools, appsync
+Filename: debs/com.gameloft.OneVsHundred-1.1.4-iOS-2.2.1.deb
+Size: 102797208
+MD5sum: c0f36f450c4eaa06e0673c57ebc6ca27
+SHA1: c193fbd0c13b8a0956546e91fc835f6b6fb79938
+SHA256: bd1c50b0d302c6c53ca9b1a07729a961d275acf0bd800f50babb3be0150801f6
+Section: AppStore Apps
+Homepage: https://github.com/CydiaBlock/AppStore
+Description: The decrypted ipa file: 1%20vs%20100™_v.1.1.4.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: dopaemon <polarisdp@gmail.com>
+Depiction: https://github.com/CydiaBlock/AppStore
+Name: 1 vs 100 v1.1.4 (iOS 2.2.1)
+Sponsor: dopaemon <polarisdp@gmail.com>
+
 Package: com.hackyouriphone.classiclockscreen
 Version: 3.3.1k
 Architecture: iphoneos-arm
@@ -1034,6 +1142,24 @@ Description: Enjoy stunning FX when entering sleep
 Author: Malcolm Hall <repo@hackyouriphone.org>
 Depiction: http://repo.hackyouriphone.org/depiction/depiction.php?filename=sleepfx
 Name: SleepFX
+
+Package: com.hzapptech.tetris-lite
+Version: 121
+Architecture: iphoneos-arm
+Maintainer: dopaemon <polarisdp@gmail.com>
+Depends: firmware (>= 5.0), uikittools, appsync
+Filename: debs/com.hzapptech.tetris-lite-121-iOS-5.0.deb
+Size: 18886518
+MD5sum: 517d88e604609ab10ae6f0e726df8bc7
+SHA1: 04a32e70c0e267954e9e7c7a2f77c591fa9e6ec5
+SHA256: 491d6da34d3a83cc93f346a9e7652557f6f7e8d5fc6ed83e41830489c6ad3c2d
+Section: AppStore Apps
+Homepage: https://github.com/CydiaBlock/AppStore
+Description: The decrypted ipa file: Bricks_4.2.1_AppOnly.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: dopaemon <polarisdp@gmail.com>
+Depiction: https://github.com/CydiaBlock/AppStore
+Name: MyTetris-Lite v121 (iOS 5.0)
+Sponsor: dopaemon <polarisdp@gmail.com>
 
 Package: com.ihacksrepo.reposetupfiles
 Version: 2.0
@@ -1441,6 +1567,42 @@ Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=serioussbs
 Dev: maxrudberg
 Name: Serious SBSettings HD
 
+Package: com.ninjakiwi.bloonstd5
+Version: 13454
+Architecture: iphoneos-arm
+Maintainer: dopaemon <polarisdp@gmail.com>
+Depends: firmware (>= 4.3), uikittools, appsync
+Filename: debs/com.ninjakiwi.bloonstd5-13454-iOS-4.3 (1).deb
+Size: 93077588
+MD5sum: 7172c13412fa10a55329fe8fb8ac65d2
+SHA1: b30d32a2bd5152b9ef3f1123279d3c6b051a4f99
+SHA256: d66278ef8f4c5abddf724fa24e797c1730a6bc1a89f27897e15da2c791b4d28e
+Section: AppStore Apps
+Homepage: https://github.com/CydiaBlock/AppStore
+Description: The decrypted ipa file: Bloons%20TD%205-v2.16--iOS4.3-(Clutch-1.4.6).ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: dopaemon <polarisdp@gmail.com>
+Depiction: https://github.com/CydiaBlock/AppStore
+Name: Bloons TD 5 v13454 (iOS 4.3)
+Sponsor: dopaemon <polarisdp@gmail.com>
+
+Package: com.ninjakiwi.bloonstd5
+Version: 13454
+Architecture: iphoneos-arm
+Maintainer: dopaemon <polarisdp@gmail.com>
+Depends: firmware (>= 4.3), uikittools, appsync
+Filename: debs/com.ninjakiwi.bloonstd5-13454-iOS-4.3.deb
+Size: 93077588
+MD5sum: 7172c13412fa10a55329fe8fb8ac65d2
+SHA1: b30d32a2bd5152b9ef3f1123279d3c6b051a4f99
+SHA256: d66278ef8f4c5abddf724fa24e797c1730a6bc1a89f27897e15da2c791b4d28e
+Section: AppStore Apps
+Homepage: https://github.com/CydiaBlock/AppStore
+Description: The decrypted ipa file: Bloons%20TD%205-v2.16--iOS4.3-(Clutch-1.4.6).ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: dopaemon <polarisdp@gmail.com>
+Depiction: https://github.com/CydiaBlock/AppStore
+Name: Bloons TD 5 v13454 (iOS 4.3)
+Sponsor: dopaemon <polarisdp@gmail.com>
+
 Package: com.officialscheduler.mterminal
 Version: 1.4-5
 Architecture: iphoneos-arm
@@ -1481,6 +1643,24 @@ Author: againstnighto <againstnight0@aim.com>
 Depiction: http://modmyi.com/info/quicklock2.d.php
 Name: QuickLock 2
 Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
+
+Package: com.outfit7.talkinggina
+Version: 2.0
+Architecture: iphoneos-arm
+Maintainer: dopaemon <polarisdp@gmail.com>
+Depends: firmware (>= 4.1), uikittools, appsync
+Filename: debs/com.outfit7.talkinggina-2.0-iOS-4.1.deb
+Size: 41826700
+MD5sum: bb7f621a1b011becf1e29cae225111a5
+SHA1: e7d486e5e5da5230eaec399ad4f6464202f1a9f3
+SHA256: 8e16697e7e85306f063bc170b3de157acc890a90ed0aff2d1977a3c55490e36e
+Section: AppStore Apps
+Homepage: https://github.com/CydiaBlock/AppStore
+Description: The decrypted ipa file: 402688503%2B2.0%2BTalking+Gina+the+Giraffe+New%2BAP.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: dopaemon <polarisdp@gmail.com>
+Depiction: https://github.com/CydiaBlock/AppStore
+Name: Talking Gina v2.0 (iOS 4.1)
+Sponsor: dopaemon <polarisdp@gmail.com>
 
 Package: com.patrickgriffin.disableyoutubeupdates
 Version: 0.0.1
