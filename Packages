@@ -1017,6 +1017,24 @@ Author: dba Technologies, LLC <support@dba-technologies.com>
 Depiction: http://modmyi.com/info/forecast.d.php
 Name: Forecast
 
+Package: com.ea.simcitydeluxe.inc
+Version: 1.0.1
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 3.0), uikittools, appsync
+Filename: debs/com.ea.simcitydeluxe.inc-1.0.1-iOS-3.0.deb
+Size: 79724104
+MD5sum: 48e2a2ce72ea6781a37418b4865ec771
+SHA1: b696256dd2a3a7af86d09bc2b190097779de4fc9
+SHA256: b5abd1653f7bb4a20fb264deccfeac35795744df47452b83dc3b76c192a346c0
+Section: AppStore Apps
+Homepage: https://github.com/tomkidss/cydia
+Description: The decrypted ipa file: SimCity%E2%84%A2%20Deluxe%20v1.0.1.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://github.com/tomkidss/cydia
+Name: SimCity DLX v1.0.1 (iOS 3.0)
+Sponsor: Admin <admin@localhost>
+
 Package: com.gameloft.ASPHALT4
 Version: 1.3.8
 Architecture: iphoneos-arm
