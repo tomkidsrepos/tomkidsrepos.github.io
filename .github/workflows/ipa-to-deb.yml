@@ -21,7 +21,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install package tools
-        run: sudo apt-get update && sudo apt-get install --yes aria2 dpkg-dev unzip python3
+        run: |
+          sudo apt-get update && sudo apt-get install --yes aria2 dpkg-dev unzip python3 pipx
+          pipx install gdown
 
       - name: Download and convert IPA files
         run: |
@@ -40,11 +42,27 @@ jobs:
               *) echo "Invalid URL: $url" >&2; exit 1 ;;
             esac
             
-            name="$(basename "${url%%\?*}")"
-            [[ "$name" == *.ipa ]] || { echo "URL is not an IPA: $url" >&2; exit 1; }
-            
-            # Tải file IPA
-            aria2c -s16 -x16 --allow-overwrite=true --dir=work/ipa --out="$name" "$url"
+            if [[ "$url" == *"drive.google.com"* ]]; then
+              echo "Phát hiện link Google Drive, đang xử lý..."
+              # Xử lý download bằng gdown
+              # Cố gắng lấy ID từ link có dạng .../d/ID/... hoặc ...?id=ID
+              file_id=$(echo "$url" | sed -E 's|.*/d/([a-zA-Z0-9_-]+).*|\1|')
+              if [[ "$file_id" == "$url" ]]; then
+                file_id=$(echo "$url" | sed -E 's|.*id=([a-zA-Z0-9_-]+).*|\1|')
+              fi
+              
+              if [[ "$file_id" != "$url" && -n "$file_id" ]]; then
+                echo "Google Drive File ID: $file_id"
+                gdown "https://drive.google.com/uc?id=$file_id" -O "work/ipa/gdrive_app_${file_id}.ipa"
+              else
+                echo "Không thể lấy ID từ link Google Drive: $url" >&2; exit 1
+              fi
+            else
+              # Xử lý link trực tiếp (.ipa) như bình thường
+              name="$(basename "${url%%\?*}")"
+              [[ "$name" == *.ipa ]] || { echo "URL is not an IPA: $url" >&2; exit 1; }
+              aria2c -s16 -x16 --allow-overwrite=true --dir=work/ipa --out="$name" "$url"
+            fi
           done <<< "$IPA_URLS"
           
           # Chuyển đổi IPA sang DEB và lưu thẳng vào thư mục debs
