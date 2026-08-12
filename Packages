@@ -2325,6 +2325,24 @@ Description: Background Playback for YouTube 1.0.0+
 Author: Tuanem
 Name: YTBackground
 
+Package: com.uc.iphone.browser.international
+Version: 10.6.1.760
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 6.0), uikittools, appsync
+Filename: debs/com.uc.iphone.browser.international-10.6.1.760-iOS-6.0.deb
+Size: 39422962
+MD5sum: 17920718904c2c72f6b23874d0326ee6
+SHA1: 8a35833cd4c2ba878735b28dfb8668841fa80ffa
+SHA256: 0edc6f3977ce8cc34da5ed52983d11ff4421731cef0af98a8ec2664bfc5a0a8a
+Section: AppStore Apps
+Homepage: https://github.com/tomkidss/cydia
+Description: The decrypted ipa file: gdrive_app_1YZy90I2Jpmg6u0buXlPfn2B78izzferA.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://github.com/tomkidss/cydia
+Name: UC Browser v10.6.1.760 (iOS 6.0)
+Sponsor: Admin <admin@localhost>
+
 Package: com.victorlobe.googlefix
 Version: 1.0.2
 Architecture: iphoneos-arm
