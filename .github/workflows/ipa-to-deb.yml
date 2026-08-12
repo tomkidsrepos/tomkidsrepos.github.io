@@ -7,6 +7,19 @@ on:
         description: "Direct IPA URLs, one per line"
         required: true
         type: string
+      category:
+        description: "Release category"
+        required: true
+        type: choice
+        default: "application"
+        options:
+          - application
+          - game
+          - utilities
+          - system
+          - theme
+          - font
+          - ringtone
 
 permissions:
   contents: write
@@ -65,12 +78,13 @@ jobs:
             fi
           done <<< "$IPA_URLS"
           
-          # Chuyển đổi IPA sang DEB và lưu thẳng vào thư mục debs
-          ./ipa2deb work/ipa debs "Admin <admin@localhost>" "https://github.com/${{ github.repository }}"
+          # Chuyển đổi IPA sang DEB và lưu thẳng vào thư mục theo category
+          mkdir -p "debs/${{ inputs.category }}"
+          ./ipa2deb work/ipa "debs/${{ inputs.category }}" "Admin <admin@localhost>" "https://github.com/${{ github.repository }}"
           
           # Kiểm tra xem có file deb nào được tạo ra không
           shopt -s nullglob
-          deb_files=(debs/*.deb)
+          deb_files=("debs/${{ inputs.category }}"/*.deb)
           if [ ${#deb_files[@]} -eq 0 ]; then
             echo "No DEB was generated" >&2
             exit 1
@@ -87,7 +101,7 @@ jobs:
           git config --local user.name "github-actions[bot]"
           
           # Add các file deb mới và file Packages
-          git add debs/*.deb Packages Packages.bz2
+          git add debs/ Packages Packages.bz2
           
           # Commit nếu có thay đổi
           if ! git diff --staged --quiet; then

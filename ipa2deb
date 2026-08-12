@@ -23,7 +23,8 @@ convert()
     tmp=$(mktemp -d /var/tmp/ipa2deb.XXX)
 
     unzip -q "$1" -d "$tmp"/extracted  &> /dev/null
-    if [[ $? != 0 ]] ; then
+    exit_code=$?
+    if [[ $exit_code -gt 1 ]] ; then
         echo "Not converting specified ipa file: "$1" as it could not be extracted, it may be corrupted\n" >> "$2"/ipa2deb-extraction-failure-log.txt
         return
     fi
