@@ -889,6 +889,24 @@ Dev: blackcrafter
 Name: SlideMyName
 Sponsor: thebigboss.org <http://thebigboss.org>
 
+Package: com.burbn.instagram
+Version: 361522
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 5.0), uikittools, appsync
+Filename: debs/com.burbn.instagram-361522-iOS-5.0.deb
+Size: 11864200
+MD5sum: 64581aa00a85acc04e1b5467de4f2692
+SHA1: 1ea8bda0e465560c74925833523de97640fb539e
+SHA256: 9bec7891f3c18032ca67da4c49e82faa1b0c6375f64aa037282e67868f779ac8
+Section: AppStore Apps
+Homepage: https://github.com/tomkidss/cydia
+Description: The decrypted ipa file: gdrive_app_1nWkpE0KMsjIkG5hKT_gv6H-7UZU3ezbA.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://github.com/tomkidss/cydia
+Name: Instagram v361522 (iOS 5.0)
+Sponsor: Admin <admin@localhost>
+
 Package: com.chillingo.cuttherope
 Version: 2.3.2
 Architecture: iphoneos-arm
@@ -1033,6 +1051,24 @@ Description: The decrypted ipa file: SimCity%E2%84%A2%20Deluxe%20v1.0.1.ipa conv
 Author: Admin <admin@localhost>
 Depiction: https://github.com/tomkidss/cydia
 Name: SimCity DLX v1.0.1 (iOS 3.0)
+Sponsor: Admin <admin@localhost>
+
+Package: com.ea.sims3wa.inc
+Version: 1.1.22
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 4.0), uikittools, appsync
+Filename: debs/com.ea.sims3wa.inc-1.1.22-iOS-4.0.deb
+Size: 101512084
+MD5sum: 1e285e20bb161c9a1c1230bed3cb169e
+SHA1: 16918d0580de814de3806055a48acdfbf8c1a1a0
+SHA256: 67d09dc82df4b834be379723f180de70dd19ba6ea8c57dc33163ada8ccf8f399
+Section: AppStore Apps
+Homepage: https://github.com/tomkidss/cydia
+Description: The decrypted ipa file: The_Sims_3_World_Adventures__Electronic_Arts___v1.1.22_os40_-kOtyara.rc318.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://github.com/tomkidss/cydia
+Name: TheSims3WA v1.1.22 (iOS 4.0)
 Sponsor: Admin <admin@localhost>
 
 Package: com.gameloft.ASPHALT4
@@ -1295,11 +1331,11 @@ Version: 1.7.1
 Architecture: iphoneos-arm
 Maintainer: poetic_folly <poetic_folly@modmyi.com>
 Depends: firmware (>= 5.0), mobilesubstrate, com.chpwn.weeloader, preferenceloader
-Filename: debs/com.jamied360.ncsettings_1.7.1_iphoneos-arm.deb
-Size: 469838
-MD5sum: 6f472f4cf6b12e1b19ef28ac0fd47d97
-SHA1: 566fe499d697a809bf3b05572ca0d72c7461a500
-SHA256: dd8f4d64ca86378fe8b98346216983d274b611aa81b3ce572677595f4147fd18
+Filename: debs/tomkids.ncsettings_1.7.1_iphoneos-arm.deb
+Size: 469848
+MD5sum: e165cb7653f3923836b609ef54f15330
+SHA1: e06127303117b9beabf6fe69304e20a56f3f534e
+SHA256: ff99ee1c9dc9f2df97b4b3fc3b095b8f7eff401916830129866b9ad564edbcc4
 Section: Addons (NotificationCenter)
 Priority: extra
 Homepage: http://modmyi.com/info/ncsettings.php
@@ -1314,11 +1350,11 @@ Version: 1.7.1
 Architecture: iphoneos-arm
 Maintainer: poetic_folly <poetic_folly@modmyi.com>
 Depends: firmware (>= 5.0), mobilesubstrate, com.chpwn.weeloader, preferenceloader
-Filename: debs/tomkids.ncsettings_1.7.1_iphoneos-arm.deb
-Size: 469848
-MD5sum: e165cb7653f3923836b609ef54f15330
-SHA1: e06127303117b9beabf6fe69304e20a56f3f534e
-SHA256: ff99ee1c9dc9f2df97b4b3fc3b095b8f7eff401916830129866b9ad564edbcc4
+Filename: debs/com.jamied360.ncsettings_1.7.1_iphoneos-arm.deb
+Size: 469838
+MD5sum: 6f472f4cf6b12e1b19ef28ac0fd47d97
+SHA1: 566fe499d697a809bf3b05572ca0d72c7461a500
+SHA256: dd8f4d64ca86378fe8b98346216983d274b611aa81b3ce572677595f4147fd18
 Section: Addons (NotificationCenter)
 Priority: extra
 Homepage: http://modmyi.com/info/ncsettings.php
@@ -1365,7 +1401,7 @@ Maintainer: Linus Yang
 Installed-Size: 344
 Depends: mobilesubstrate
 Conflicts: me.alfhaily.adblockforyoutube
-Filename: debs/tomkids.ytbnoad_0.1_iphoneos-arm.deb
+Filename: debs/com.linusyang.ytbnoad_0.1_iphoneos-arm.deb
 Size: 50654
 MD5sum: 39e43deaa545fc126991b2fe2343d4c4
 SHA1: 848ecf5a0343fe1ac5e4b1cda292d2485938f2a5
@@ -1382,7 +1418,7 @@ Maintainer: Linus Yang
 Installed-Size: 344
 Depends: mobilesubstrate
 Conflicts: me.alfhaily.adblockforyoutube
-Filename: debs/com.linusyang.ytbnoad_0.1_iphoneos-arm.deb
+Filename: debs/tomkids.ytbnoad_0.1_iphoneos-arm.deb
 Size: 50654
 MD5sum: 39e43deaa545fc126991b2fe2343d4c4
 SHA1: 848ecf5a0343fe1ac5e4b1cda292d2485938f2a5
@@ -2182,6 +2218,22 @@ Version: 1.0-1+debug
 Architecture: iphoneos-arm
 Maintainer: tuanem
 Installed-Size: 1444
+Filename: debs/tomkids.shshchecker_1.0_iphoneos-arm.deb
+Size: 340310
+MD5sum: d893f5ffde5f8a14cbd3537d868f0e3b
+SHA1: e373d21046327e5ab5e7e07cad4fc05e246fc1a8
+SHA256: 6bbe1037e19f0ad951e7241617e549ffe4dc8bbb439d6c902d85c70d3e629d8a
+Section: System
+Description: check SHSH Blobs on Mterminal
+Tag: role::hacker
+Author: tuanem
+Name: SHSHchecker cli
+
+Package: com.tuanem.shshchecker
+Version: 1.0-1+debug
+Architecture: iphoneos-arm
+Maintainer: tuanem
+Installed-Size: 1444
 Filename: debs/com.tuanem.shshchecker_1.0-1+debug_iphoneos-arm.deb
 Size: 420726
 MD5sum: 407a423a7e2b003c3cb8426aec6bcd73
@@ -2209,29 +2261,13 @@ Tag: role::hacker
 Author: tuanem
 Name: SHSHchecker cli
 
-Package: com.tuanem.shshchecker
-Version: 1.0-1+debug
-Architecture: iphoneos-arm
-Maintainer: tuanem
-Installed-Size: 1444
-Filename: debs/tomkids.shshchecker_1.0_iphoneos-arm.deb
-Size: 340310
-MD5sum: d893f5ffde5f8a14cbd3537d868f0e3b
-SHA1: e373d21046327e5ab5e7e07cad4fc05e246fc1a8
-SHA256: 6bbe1037e19f0ad951e7241617e549ffe4dc8bbb439d6c902d85c70d3e629d8a
-Section: System
-Description: check SHSH Blobs on Mterminal
-Tag: role::hacker
-Author: tuanem
-Name: SHSHchecker cli
-
 Package: com.tuanem.ytbackground
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Tuanem
 Installed-Size: 40
 Depends: mobilesubstrate
-Filename: debs/tomkids.ytbackground_1.0_iphoneos-arm.deb
+Filename: debs/com.tuanem.ytbackground_1.0_iphoneos-arm.deb
 Size: 4990
 MD5sum: 93e7ac8e7d8393f318977bfe87f1f8ac
 SHA1: 86be0940de4628a8de2cf0686ca9c872806b748d
@@ -2247,7 +2283,7 @@ Architecture: iphoneos-arm
 Maintainer: Tuanem
 Installed-Size: 40
 Depends: mobilesubstrate
-Filename: debs/com.tuanem.ytbackground_1.0_iphoneos-arm.deb
+Filename: debs/tomkids.ytbackground_1.0_iphoneos-arm.deb
 Size: 4990
 MD5sum: 93e7ac8e7d8393f318977bfe87f1f8ac
 SHA1: 86be0940de4628a8de2cf0686ca9c872806b748d
@@ -2288,6 +2324,24 @@ Section: Tweaks
 Description: Background Playback for YouTube 1.0.0+
 Author: Tuanem
 Name: YTBackground
+
+Package: com.uc.iphone.browser.international
+Version: 10.6.1.760
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 6.0), uikittools, appsync
+Filename: debs/com.uc.iphone.browser.international-10.6.1.760-iOS-6.0.deb
+Size: 39422962
+MD5sum: 17920718904c2c72f6b23874d0326ee6
+SHA1: 8a35833cd4c2ba878735b28dfb8668841fa80ffa
+SHA256: 0edc6f3977ce8cc34da5ed52983d11ff4421731cef0af98a8ec2664bfc5a0a8a
+Section: AppStore Apps
+Homepage: https://github.com/tomkidss/cydia
+Description: The decrypted ipa file: gdrive_app_1YZy90I2Jpmg6u0buXlPfn2B78izzferA.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://github.com/tomkidss/cydia
+Name: UC Browser v10.6.1.760 (iOS 6.0)
+Sponsor: Admin <admin@localhost>
 
 Package: com.victorlobe.googlefix
 Version: 1.0.2
@@ -2890,11 +2944,11 @@ Architecture: iphoneos-arm
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Installed-Size: 526
 Depends: mobilesubstrate
-Filename: debs/tomkids.preferenceloader_2.2.6_iphoneos-arm.deb
-Size: 67668
-MD5sum: b0bbc6561c4d9620bd48a8f4248b51f4
-SHA1: d31082a25a57c5ff42c0eb21ac550ba93b2bb885
-SHA256: ab814ae140ed52a5fd3c67d8d9a84523567b6bc6845fe20f1daa541047f2ee21
+Filename: debs/preferenceloader_2.2.6_iphoneos-arm.deb
+Size: 67660
+MD5sum: b2aa028cfe849a263228f6cbf98b7ea2
+SHA1: f6bf02b2ed59e7b00e812169abc5acda23ce8def
+SHA256: 0edff1ad7ab1543276b8c2ffcd1ccd01d427487184c2a9261a03dc6567534fa7
 Section: System
 Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=preferenceloader2Data
 Description: load preferences in style
@@ -2910,11 +2964,11 @@ Architecture: iphoneos-arm
 Maintainer: BigBoss <bigboss@thebigboss.org>
 Installed-Size: 526
 Depends: mobilesubstrate
-Filename: debs/preferenceloader_2.2.6_iphoneos-arm.deb
-Size: 67660
-MD5sum: b2aa028cfe849a263228f6cbf98b7ea2
-SHA1: f6bf02b2ed59e7b00e812169abc5acda23ce8def
-SHA256: 0edff1ad7ab1543276b8c2ffcd1ccd01d427487184c2a9261a03dc6567534fa7
+Filename: debs/tomkids.preferenceloader_2.2.6_iphoneos-arm.deb
+Size: 67668
+MD5sum: b0bbc6561c4d9620bd48a8f4248b51f4
+SHA1: d31082a25a57c5ff42c0eb21ac550ba93b2bb885
+SHA256: ab814ae140ed52a5fd3c67d8d9a84523567b6bc6845fe20f1daa541047f2ee21
 Section: System
 Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=preferenceloader2Data
 Description: load preferences in style
@@ -3818,12 +3872,12 @@ Version: 5.0.3
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <support@gsm.vn>
 Depends: gsmicon, mobilesubstrate, preferenceloader
-Conflicts: jp.novi.fakeclockup, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
-Filename: debs/tomkids.speedintensifier_5.0.3_iphoneos-arm.deb
-Size: 8598
-MD5sum: f59bb3febe49689bba796d44f9da25ac
-SHA1: c0c8b044ba894dc496a81e4838079f462b61f8f9
-SHA256: 035eac1464b959fcbac50bb2ad20ba46fab8a49baae15e5befbbd9561c65c829
+Conflicts: jp.novi.FakeClockUp, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
+Filename: debs/SpeedIntensifier_5.0.3.deb
+Size: 8610
+MD5sum: 19ff53d3012170575be66d45738c49c6
+SHA1: 90358d95b1f6776fd897f360f6ac2e99bdeb074c
+SHA256: fda4579169c9509b268ec891a7c79237311db8f1ffed5b8fda8b24007a6ad008
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: This tweak will speed up the animation transitions to make your device Look faster.
@@ -3838,12 +3892,12 @@ Version: 5.0.3
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <support@gsm.vn>
 Depends: gsmicon, mobilesubstrate, preferenceloader
-Conflicts: jp.novi.FakeClockUp, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
-Filename: debs/SpeedIntensifier_5.0.3.deb
-Size: 8610
-MD5sum: 19ff53d3012170575be66d45738c49c6
-SHA1: 90358d95b1f6776fd897f360f6ac2e99bdeb074c
-SHA256: fda4579169c9509b268ec891a7c79237311db8f1ffed5b8fda8b24007a6ad008
+Conflicts: jp.novi.fakeclockup, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
+Filename: debs/tomkids.speedintensifier_5.0.3_iphoneos-arm.deb
+Size: 8598
+MD5sum: f59bb3febe49689bba796d44f9da25ac
+SHA1: c0c8b044ba894dc496a81e4838079f462b61f8f9
+SHA256: 035eac1464b959fcbac50bb2ad20ba46fab8a49baae15e5befbbd9561c65c829
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: This tweak will speed up the animation transitions to make your device Look faster.
