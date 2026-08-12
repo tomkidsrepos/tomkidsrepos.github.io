@@ -889,6 +889,24 @@ Dev: blackcrafter
 Name: SlideMyName
 Sponsor: thebigboss.org <http://thebigboss.org>
 
+Package: com.burbn.instagram
+Version: 361522
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 5.0), uikittools, appsync
+Filename: debs/com.burbn.instagram-361522-iOS-5.0.deb
+Size: 11864200
+MD5sum: 64581aa00a85acc04e1b5467de4f2692
+SHA1: 1ea8bda0e465560c74925833523de97640fb539e
+SHA256: 9bec7891f3c18032ca67da4c49e82faa1b0c6375f64aa037282e67868f779ac8
+Section: AppStore Apps
+Homepage: https://github.com/tomkidss/cydia
+Description: The decrypted ipa file: gdrive_app_1nWkpE0KMsjIkG5hKT_gv6H-7UZU3ezbA.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://github.com/tomkidss/cydia
+Name: Instagram v361522 (iOS 5.0)
+Sponsor: Admin <admin@localhost>
+
 Package: com.chillingo.cuttherope
 Version: 2.3.2
 Architecture: iphoneos-arm
