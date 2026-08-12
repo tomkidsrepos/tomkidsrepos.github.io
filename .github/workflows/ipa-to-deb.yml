@@ -1,0 +1,80 @@
+name: IPA to DEB
+
+on:
+  workflow_dispatch:
+    inputs:
+      ipa_urls:
+        description: "Direct IPA URLs, one per line"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      IPA_URLS: ${{ inputs.ipa_urls }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install package tools
+        run: sudo apt-get update && sudo apt-get install --yes aria2 dpkg-dev unzip python3
+
+      - name: Download and convert IPA files
+        run: |
+          set -euo pipefail
+          mkdir -p work/ipa debs
+          chmod +x ./ipa2deb
+          
+          while IFS= read -r url; do
+            # Bỏ khoảng trắng dư thừa
+            url="${url#"${url%%[![:space:]]*}"}"
+            url="${url%"${url##*[![:space:]]}"}"
+            [ -z "$url" ] && continue
+            
+            case "$url" in
+              https://*|http://*) ;;
+              *) echo "Invalid URL: $url" >&2; exit 1 ;;
+            esac
+            
+            name="$(basename "${url%%\?*}")"
+            [[ "$name" == *.ipa ]] || { echo "URL is not an IPA: $url" >&2; exit 1; }
+            
+            # Tải file IPA
+            aria2c -s16 -x16 --allow-overwrite=true --dir=work/ipa --out="$name" "$url"
+          done <<< "$IPA_URLS"
+          
+          # Chuyển đổi IPA sang DEB và lưu thẳng vào thư mục debs
+          ./ipa2deb work/ipa debs "Admin <admin@localhost>" "https://github.com/${{ github.repository }}"
+          
+          # Kiểm tra xem có file deb nào được tạo ra không
+          shopt -s nullglob
+          deb_files=(debs/*.deb)
+          if [ ${#deb_files[@]} -eq 0 ]; then
+            echo "No DEB was generated" >&2
+            exit 1
+          fi
+
+      - name: Generate Packages and Packages.bz2
+        run: |
+          dpkg-scanpackages -m debs /dev/null > Packages
+          bzip2 -c Packages > Packages.bz2
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Add các file deb mới và file Packages
+          git add debs/*.deb Packages Packages.bz2
+          
+          # Commit nếu có thay đổi
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto-convert IPA to DEB and update Packages"
+            git push
+          else
+            echo "No changes to commit"
+          fi
