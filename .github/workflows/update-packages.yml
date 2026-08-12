@@ -1,0 +1,41 @@
+name: Update Packages
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'debs/**'
+  workflow_dispatch: # Cho phép chạy thủ công trên GitHub
+
+jobs:
+  update-repo:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Cấp quyền ghi để bot có thể push code
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dpkg-dev
+        run: sudo apt-get install -y dpkg-dev bzip2
+
+      - name: Generate Packages and Packages.bz2
+        run: |
+          dpkg-scanpackages -m debs /dev/null > Packages
+          bzip2 -c Packages > Packages.bz2
+
+      - name: Commit and Push changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add Packages Packages.bz2
+          
+          # Chỉ commit và push nếu có sự thay đổi
+          if ! git diff --staged --quiet; then
+            git commit -m "Auto-update Packages list [skip ci]"
+            git push
+          else
+            echo "No changes to commit"
+          fi
