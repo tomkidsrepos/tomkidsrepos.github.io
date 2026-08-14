@@ -3154,6 +3154,226 @@ Description: Cai Fackebook da gop cac tweaks fix cho ios 6
 Author: Tomkids
 Name: Facebook Fix For IOS6
 
+Package: tomkids.book.Shin01
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/books/tomkids.book.Shin01_1.0_iphoneos-arm.deb
+Size: 31959604
+MD5sum: 7341a3fc7cd1b071358bc8cb85d12582
+SHA1: ca389758d9b41590f8a2b0497d128046a2969dd8
+SHA256: 55db5a0d366a1b50899e97ade0413861c503cd573d5c9f96998b7d7ee292b5f0
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Name: Shin cậu bé bút chì - T01
+
+Package: tomkids.book.Shin02
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/books/tomkids.book.Shin02_1.0_iphoneos-arm.deb
+Size: 33951138
+MD5sum: 1b1b0e64e3a8fa02fa2f9e8b1a087201
+SHA1: eec84e26a14a531a0b5ca8595c1a5d47fc1d4d34
+SHA256: 4884f646f8375f9870a4905465b796a6460ce86e83b911321b2f87a1aa28ce7a
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Name: Shin cậu bé bút chì - T02
+
+Package: tomkids.book.Teppei01
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/books/tomkids.book.Teppei01_1.0_iphoneos-arm.deb
+Size: 30472976
+MD5sum: 5fdce8a3fd47a3bdce2f529533997d52
+SHA1: 0647b207085322efac2dccb5d7bfc01f5ce32383
+SHA256: 8020c73270fb6afcc39121e5421515bd0fbd21dc5a07dc305eb3976c1e8221ad
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Name: Téppi- T01
+
+Package: tomkids.book.Teppei02
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/books/tomkids.book.Teppei02_1.0_iphoneos-arm.deb
+Size: 29085976
+MD5sum: 3948ed3cef48a9387ab5b8c2e9c9f521
+SHA1: d82af765edebe265a170a503389c0ec9feac32cf
+SHA256: dca420f3e1dda04a5c4144662c723fc7dd1233a7a635364a185d96f930a4769d
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Name: Téppi- T02
+
+Package: tomkids.book.chuthoong01
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/books/tomkids.book.chuthoong01_1.0_iphoneos-arm.deb
+Size: 9686682
+MD5sum: 5839b11e1797b7437e101fa675e49ca0
+SHA1: b5e3adea0cf062c0189d47e62ab85508788f9705
+SHA256: 54cd42788cc70d2362c3ab0509c8dfc9b30645693769882aefafda234f62af1a
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Name: Chú Thoong - Tập 01
+
+Package: tomkids.book.chuthoong02
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/books/tomkids.book.chuthoong02_1.0_iphoneos-arm.deb
+Size: 9294374
+MD5sum: e6941e7f7c64b88a83651fe30ad4743c
+SHA1: f180f37caa1140f0fbe78d99419137def26a068d
+SHA256: 6ac140404a67fab2b79a85aedb5e0b2a385ea01ba2e5b9b3796154cd25ffcafd
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Name: Chú Thoong - Tập 02
+
+Package: tomkids.book.conan01
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/books/tomkids.book.conan01_1.0_iphoneos-arm.deb
+Size: 91323168
+MD5sum: 01828a2bb47f68b5e49c6f01d709f80d
+SHA1: b89e3d46ec5815322babd43432b540e403703dff
+SHA256: 26e80114caa9bf0e129dad459366b439533589b4fda0bb0431920184287ef435
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Name: Thám tử Conan - Tập 01
+
+Package: tomkids.book.conan02
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/books/tomkids.book.conan02_1.0_iphoneos-arm.deb
+Size: 78004882
+MD5sum: 11f6257b44ea28276ebe075d07c2c0f1
+SHA1: c27715aa808f6693a4fdba6cba1e9136322b2089
+SHA256: 047117c5cfa45bf88cf26415ab37ac338a4bec40528fee69c528333beebc5a6c
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Name: Thám tử Conan - Tập 02
+
+Package: tomkids.book.dragonball01
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/books/tomkids.book.dragonball01_1.0_iphoneos-arm.deb
+Size: 79143282
+MD5sum: 049019b9a96130a6366ece4f3d097b59
+SHA1: 206a6136c9816d88d1c0bb866fdd178874b2a215
+SHA256: 15a7f06ae30520abe9095f2bf6f6e51125d10b353e2b565e510afb07f923c099
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Name: DragonBall - Tập 01
+
+Package: tomkids.book.dragonball02
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/books/tomkids.book.dragonball02_1.0_iphoneos-arm.deb
+Size: 85356082
+MD5sum: d7191ce1b00115b1318049177221cfbc
+SHA1: 525dfc64e6a42c106e925d2d270aec7c7cf56b6c
+SHA256: 186b581d3e0f2a1a7e6d3c0f55640ef733cc0517f8551afd6c3172cd9c0695cb
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Name: DragonBall - Tập 02
+
+Package: tomkids.book.hesman01
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: debs/books/tomkids.book.hesman01_1.0_iphoneos-arm.deb
+Size: 20332690
+MD5sum: a735062fd946da2bde3e1647d8d38d14
+SHA1: 9b2e015b829ef6d1695d1c0e2ae59b13738b1b8d
+SHA256: adf93dd48f7eaa8307b2a62ba93d68f1fa8d4b2d03ccbad8877e0e5cf0005e58
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Name: Dũng sỹ Hesman - Tập 01
+
 Package: tomkids.contra
 Version: 1.2.3
 Architecture: iphoneos-arm
