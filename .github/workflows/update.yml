@@ -36,7 +36,7 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         # Thêm các file vừa sinh ra hoặc thay đổi
-        git add Packages Packages.bz2 Release debs/ -A
+        git add -A
         
         # Chỉ commit nếu có sự thay đổi (tránh lỗi khi không có Tweak nào mới)
         if ! git diff-index --quiet HEAD; then
