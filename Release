@@ -1,10 +1,17 @@
-Origin: Tomkids's Repo
+Origin: Tomkids Repo
 Label: Tomkids Repo
 Suite: stable
-Version: 2.0
+Version: 1.0
 Codename: ios
 Architectures: iphoneos-arm
 Components: main
-Description: Kho ứng dụng & tweak iOS cổ của @Tomkids
-Icon: file://CydiaIcon.png
-Infor: https://github.com/tomkidss/cydia/blob/main/index.html
+Description: Classic Jailbreak Repository
+MD5Sum:
+ 75e4f48bca0ca4886b08391cc39f55f2 784 Packages
+ a266cfa0e078d8faa4621c767f6249d5 607 Packages.bz2
+SHA1:
+ e3471e138a5fe975d76db63c65adbbd99760c32d 784 Packages
+ baed9c7b89f75af28561af3c3171563dec4632fc 607 Packages.bz2
+SHA256:
+ e01ae02bc148bdeb8fae63f85f22bd8b188ee9cfd3bbd29870312a132c7ebc28 784 Packages
+ 16317ea6c6cb5234de79a42906dc9191b9360562f62de1297cdaffcdfed2a84e 607 Packages.bz2
