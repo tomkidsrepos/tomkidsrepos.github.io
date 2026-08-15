@@ -25,16 +25,17 @@ jobs:
         run: |
           for REPO in $SUB_REPOS; do
             echo "Processing sub-repo: $REPO"
-            wget -t 3 -O "Packages_$REPO" "$DOMAIN/$REPO/Packages" || true
+            wget -q -t 3 -O "Packages_$REPO" "$DOMAIN/$REPO/Packages" || true
             
-            if [ -f "Packages_$REPO" ]; then
+            # Chỉ xử lý nếu file tải về có dung lượng > 0 (bỏ qua 404)
+            if [ -s "Packages_$REPO" ]; then
+              # Chuyển đổi './file.deb' thành 'TênRepo/file.deb'
               sed -i "s|^Filename: \./|Filename: $REPO/|g" "Packages_$REPO"
-              sed -i "s|^Filename: \(?!$REPO/\)|Filename: $REPO/|g" "Packages_$REPO"
               
               cat "Packages_$REPO" >> Packages
               echo "" >> Packages
-              rm -f "Packages_$REPO"
             fi
+            rm -f "Packages_$REPO"
           done
 
       - name: Compress Packages
