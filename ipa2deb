@@ -67,7 +67,7 @@ convert()
     mkdir -p "$tmp"/"$app_id"-"$app_ver"-iOS-"$app_min_os_ver_required"/DEBIAN 
     mv "$tmp"/extracted/Payload/"$app_dirname" "$tmp"/"$app_id"-"$app_ver"-iOS-"$app_min_os_ver_required"/Applications/"$app_dirname"
     rm -rf "$tmp"/extracted
-    echo -e "Package: "$app_id"\nName: "$app_name" v"$app_ver" (iOS "$app_min_os_ver_required")\nDepends: firmware (>= "$app_min_os_ver_required"), uikittools, appsync\nVersion: "$app_ver"\nArchitecture: iphoneos-arm\nDescription: The decrypted ipa file: "$1" converted to .deb automatically by https://alex-free.github.io/ipa2deb .\nHomepage: "$4"\nDepiction: "$4"\nMaintainer: "$3"\nAuthor: "$3"\nSponsor: "$3"\nSection: AppStore Apps\nIcon: https://tomkidsrepo.cloud/CydiaIcon.png" > "$tmp"/"$app_id"-"$app_ver"-iOS-"$app_min_os_ver_required"/DEBIAN/control
+    echo -e "Package: "$app_id"\nName: "$app_name" v"$app_ver" (iOS "$app_min_os_ver_required")\nDepends: firmware (>= "$app_min_os_ver_required"), uikittools, appsync\nVersion: "$app_ver"\nArchitecture: iphoneos-arm\nDescription: The decrypted ipa file: "$1" converted to .deb automatically by https://alex-free.github.io/ipa2deb .\nHomepage: "$4"\nDepiction: "$4"\nMaintainer: "$3"\nAuthor: "$3"\nSponsor: "$3"\nSection: AppStore Apps\nIcon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2" > "$tmp"/"$app_id"-"$app_ver"-iOS-"$app_min_os_ver_required"/DEBIAN/control
 	echo -e "#!/bin/bash\nsu - mobile -c uicache" > "$tmp"/"$app_id"-"$app_ver"-iOS-"$app_min_os_ver_required"/DEBIAN/postinst
     chmod 775 "$tmp"/"$app_id"-"$app_ver"-iOS-"$app_min_os_ver_required"/DEBIAN/postinst
 	echo -e "#!/bin/bash\nsu - mobile -c uicache" > "$tmp"/"$app_id"-"$app_ver"-iOS-"$app_min_os_ver_required"/DEBIAN/postrm
