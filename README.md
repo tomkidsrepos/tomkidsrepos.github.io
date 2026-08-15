@@ -1,1 +1,312 @@
-# cydia
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tomkids Repo</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+background:linear-gradient(180deg,#050816,#0f172a);
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+color:white;
+
+}
+
+.container{
+
+width:95%;
+max-width:1100px;
+margin:auto;
+
+}
+
+header{
+
+padding:70px 20px;
+text-align:center;
+
+}
+
+.logo{
+
+width:170px;
+border-radius:32px;
+box-shadow:0 20px 60px rgba(37,99,235,.45);
+
+}
+
+h1{
+
+font-size:56px;
+margin-top:30px;
+
+}
+
+.subtitle{
+
+font-size:20px;
+margin-top:15px;
+color:#cbd5e1;
+
+}
+
+.source{
+
+margin-top:35px;
+display:inline-block;
+padding:18px 30px;
+background:#111827;
+border:1px solid #2563eb;
+border-radius:16px;
+font-family:monospace;
+font-size:18px;
+color:#60a5fa;
+
+}
+
+.buttons{
+
+margin-top:40px;
+
+}
+
+.btn{
+
+display:inline-block;
+padding:16px 28px;
+margin:10px;
+border-radius:14px;
+text-decoration:none;
+font-weight:bold;
+transition:.25s;
+
+}
+
+.primary{
+
+background:#2563eb;
+color:white;
+
+}
+
+.secondary{
+
+background:#1f2937;
+color:white;
+
+}
+
+.btn:hover{
+
+transform:translateY(-3px);
+
+}
+
+.cards{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+gap:25px;
+
+margin-top:70px;
+
+}
+
+.card{
+
+background:#111827;
+padding:30px;
+border-radius:22px;
+text-align:center;
+box-shadow:0 0 25px rgba(0,0,0,.35);
+
+}
+
+.card h2{
+
+font-size:40px;
+color:#60a5fa;
+
+}
+
+.card p{
+
+margin-top:10px;
+color:#cbd5e1;
+
+}
+
+.info{
+
+margin-top:70px;
+
+background:#111827;
+
+padding:40px;
+
+border-radius:25px;
+
+line-height:1.8;
+
+}
+
+.info h2{
+
+margin-bottom:20px;
+
+}
+
+.footer{
+
+margin:80px 0;
+
+text-align:center;
+
+color:#94a3b8;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<img src="logo.png" class="logo">
+
+<h1>Tomkids Repo</h1>
+
+<div class="subtitle">
+
+Classic Jailbreak Repository
+
+<br>
+
+for iOS 5 • iOS 6 • iOS 7 • iOS 8 • iOS 9 • iOS 10
+
+</div>
+
+<div class="source">
+
+<a href="https://tomkidsrepo.cloud/" style="color: inherit; text-decoration: none;">https://tomkidsrepo.cloud/</a>
+
+</div>
+
+<div class="buttons">
+
+<a class="btn primary"
+href="cydia://url/https://cydia.saurik.com/api/share#?source=https://tomkidsrepo.cloud/">
+
+Thêm vào Cydia
+
+</a>
+
+<a class="btn secondary"
+href="sileo://source/https://tomkidsrepo.cloud/">
+
+Thêm vào Sileo
+
+</a>
+
+<a class="btn secondary"
+href="zbra://sources/add/https://tomkidsrepo.cloud/">
+
+Thêm vào Zebra
+
+</a>
+
+</div>
+
+</header>
+
+<section class="cards">
+
+<div class="card">
+
+<h2>100+</h2>
+
+<p>Packages</p>
+
+</div>
+
+<div class="card">
+
+<h2>iOS 6</h2>
+
+<p>Primary Target</p>
+
+</div>
+
+<div class="card">
+
+<h2>ARM</h2>
+
+<p>iphoneos-arm</p>
+
+</div>
+
+</section>
+
+<section class="info">
+
+<h2>About</h2>
+
+<p>
+
+Tomkids Repo is a repository dedicated to preserving classic jailbreak tweaks,
+
+utilities, applications and system packages for legacy iOS devices.
+
+</p>
+
+<br>
+
+<p>
+
+The packages are collected from various sources and built from IPA files.
+
+
+</p>
+
+<br>
+
+<p>
+
+Repository URL:
+
+<br>
+
+<b>
+
+https://tomkidsrepo.cloud/
+
+</b>
+
+</p>
+
+</section>
+
+<div class="footer">
+
+© 2026 Tomkids Repo
+
+</div>
+
+</div>
+
+</body>
+
+</html>
