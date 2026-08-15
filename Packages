@@ -12,6 +12,7 @@ Description: Chu Thoong - T 15
  .
  Converted by Tomkids
 Author: Converted Book by Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Chu Thoong - T 15
 
 Package: Tom.Sach.Doraemon1
@@ -28,6 +29,7 @@ Description: Mô tả sách...
  .
  Converted by Tomkids
 Author: Converted Book by Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: DORAEMON - DU HANH BIEN PHUONG NAM
 
 Package: Tomkids.2010FIFAWORLDCUP
@@ -44,6 +46,7 @@ Description: Mô tả ngắn gọn về app/tweak
  .
  Repackaged via Tomkids' Cydia Repo Manager
 Author: FIFA WORLD CUP
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: 2010 FIFA WORLD CUP SOUTH AFRICA™
 
 Package: Tomkids.AirHockey
@@ -60,6 +63,7 @@ Description: Mô tả ngắn gọn về app/tweak
  .
  Repackaged via Tomkids' Cydia Repo Manager
 Author: Air Hockey
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Air Hockey
 
 Package: Tomkids.AvatarOfWar
@@ -75,6 +79,7 @@ Section: Applications
 Description: Game Avatar Of War 1.0 for low IOS
  Let's go
 Author: AvatarOfWar_1.0
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AvatarOfWar_1.0
 
 Package: Tomkids.Bricks4.2.1
@@ -89,6 +94,7 @@ SHA256: d98b3f32f95cabee13ec6dc37824dfb0bff12374e7de13feed4a64156cdfb364
 Section: Applications
 Description: Bricks_4.2.1 for IOS 32bit
 Author: Bricks_4.2.1
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Bricks_4.2.1
 
 Package: Tomkids.Caro1.0
@@ -103,6 +109,7 @@ SHA256: 7d6fcf7d93fc4be45b511b5ff22aa12b9f989b64f54861f625bbb209020c2188
 Section: Applications
 Description: Cài đặt app chơi cờ Caro
 Author: Caro_1.0
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Caro1.0
 
 Package: Tomkids.Chrome
@@ -119,6 +126,7 @@ Description: Google Chrome for low ios
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Chrome
 
 Package: Tomkids.DaoVang
@@ -136,6 +144,7 @@ Description: Game Đào vàng dành cho IOS thấp
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Đào vàng
 
 Package: Tomkids.DoVuiNgayTet
@@ -152,6 +161,7 @@ Description: App vui
  .
  Converted by Tomkids
 Author: Converted by Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Do vui ngay tet
 
 Package: Tomkids.FLACPlayer
@@ -168,6 +178,7 @@ Description: Music App for low ios
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: FLAC Player
 
 Package: Tomkids.Fifa10
@@ -184,6 +195,7 @@ Description: Mô tả ngắn gọn về app/tweak
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: FIFA 1O
 
 Package: Tomkids.GoTV
@@ -201,7 +213,7 @@ Description: Hay them cac nguon sau de xem tivi:
  https://iptv-org.github.io/iptv/languages/vie.m3u
  https://rg.com.vn/coban
 Author: Converted ipa to deb by Tomkids's tool
-Icon: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: GoTV
 
 Package: Tomkids.Messenger
@@ -218,6 +230,7 @@ Description: App for low ios
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Messenger
 
 Package: Tomkids.NhacChuong.BonChuLam
@@ -232,6 +245,7 @@ SHA256: 73cc4609c7ce4a36a46221628fb738eaf932236b47bd22b5ffca24f5587a2165
 Section: Ringtones
 Description: Nhạc chuông cho iOS
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Bốn Chữ Lắm
 
 Package: Tomkids.NhacChuong.Bonghoachangtontai
@@ -246,6 +260,7 @@ SHA256: 00f5d2e0bd92f422246524aa3da6fccb6263a32bfa54ff013fc4654ff5e8f617
 Section: Ringtones
 Description: Nhạc chuông cho iOS
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Bông hoa chẳng tồn tại
 
 Package: Tomkids.NhacChuong.CungVeTayBac
@@ -260,6 +275,7 @@ SHA256: dae6c7f34711f1be887aafe49a9f869a1abbb5bf8788ad1136a0a629d2090f0b
 Section: Ringtones
 Description: Nhạc chuông cho iOS
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Cùng về Tây Bắc
 
 Package: Tomkids.NhacChuong.GaiNghe
@@ -274,6 +290,7 @@ SHA256: e3f6c856ac0f107e7f13a374f5fae7eee0a2e7c4cbace3b5bbd202e692b18bf0
 Section: Ringtones
 Description: Nhạc chuông cho iOS
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Gái Nghệ
 
 Package: Tomkids.NhacChuong.GioLonDangThoi
@@ -288,6 +305,7 @@ SHA256: 5cd8ee72ac3f7be310bc99ec2f9d6dcdf27012c24d49e42aab2a37ab2e9e2ada
 Section: Ringtones
 Description: Nhạc chuông cho iOS
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Gió Lớn Đang Thổi Tuyết Lớn Đang Rơi
 
 Package: Tomkids.NhacChuong.KeSayTinh2
@@ -302,6 +320,7 @@ SHA256: ddf01235dbff526574cfcd13508b8698e542933234f746aa3f02cf98a7f58f24
 Section: Ringtones
 Description: Nhạc chuông cho iOS
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Kẻ Say Tình 2 Remix – Quốc Thiên
 
 Package: Tomkids.NhacChuong.ThamVienNgoai
@@ -316,6 +335,7 @@ SHA256: ab4bcaca72d8472d4d52c54fe850180b541f8e504ff23f163d2df6eec1f7a364
 Section: Ringtones
 Description: Nhạc chuông cho iOS
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Thẩm Viên Ngoại
 
 Package: Tomkids.NhacChuong.XoXoMB
@@ -330,6 +350,7 @@ SHA256: 41362d399349bbb8890bdf74005ecdae9412726cb8625a3cf872a76d865313b1
 Section: Ringtones
 Description: Nhạc chuông cho iOS
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Xổ xố Miền Bắc
 
 Package: Tomkids.Nhacchuong.ChapNiemTrongEm
@@ -344,6 +365,7 @@ SHA256: 3230de6e9a9d8f6685bd154f77b3636bcf1541e8d834ef0fd5ffa46cacbc467b
 Section: Ringtones
 Description: Nhạc chuông cho iOS
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Chấp niệm trong em
 
 Package: Tomkids.OperaMini
@@ -360,6 +382,7 @@ Description: Opera mini for low ios
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Opera Mini
 
 Package: Tomkids.PvZ
@@ -376,6 +399,7 @@ Description: Game for low ios
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: PvZ
 
 Package: Tomkids.Snake
@@ -392,6 +416,7 @@ Description: Mô tả ngắn gọn về app/tweak
  .
  Repackaged via Tomkids' Cydia Repo Manager
 Author: Converted by Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Snake
 
 Package: Tomkids.TruyenVN
@@ -408,6 +433,7 @@ Description: Mô tả ngắn gọn về app/tweak
  .
  Converted by Tomkids
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Truyện Việt Nam
 
 Package: Tomkids.ZingMp3
@@ -424,6 +450,7 @@ Description: Zing Mp3 for low ios
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Zing Mp3
 
 Package: Tomkids.bowman
@@ -440,6 +467,7 @@ Description: Game for low ios
  .
  Repackaged via Tomkids' Cydia Repo Manager
 Author: Bowman
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Bowman
 
 Package: Tomkids.dacnhantam
@@ -456,6 +484,7 @@ Description: Game for low ios
  .
  Repackaged via Tomkids' Cydia Repo Manager
 Author: Dale Carnegie
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Dac Nhan Tam
 
 Package: Tomkids.iGangster
@@ -472,6 +501,7 @@ Description: Mô tả ngắn gọn về app/tweak
  .
  Repackaged via Tomkids' Cydia Repo Manager
 Author: iGangster
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: iGangster
 
 Package: ai.akemi.appsyncunified
@@ -493,6 +523,7 @@ Homepage: https://cydia.akemi.ai/
 Description: Enables the ability to install unsigned/fakesigned iOS applications.
 Author: Karen/あけみ, Linus Yang <karen@akemi.ai>
 Depiction: https://cydia.akemi.ai/?page/ai.akemi.appsyncunified
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AppSync Unified
 
 Package: applist
@@ -512,6 +543,7 @@ Description: Allow extensions to read the list of installed apps
 Author: Ryan Petrich <rpetrich@gmail.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 Dev: rpetrich
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AppList
 Website: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=AppListDp
 
@@ -531,6 +563,7 @@ Section: Development
 Priority: standard
 Homepage: http://apr.apache.org/
 Description: just the /usr/lib folder from APR
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: APR (/usr/lib)
 
 Package: apt
@@ -549,6 +582,7 @@ SHA256: e17e8b33dc22f15400f77d6cef4d3f6dd72835068fd5abec309fa18a8b0bbd5c
 Section: Packaging
 Priority: required
 Description: any advanced packaging tool from Debian
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: APT 0.6 Transitional
 
 Package: apt7
@@ -567,6 +601,7 @@ SHA256: 835060dcd849c3c9a87c791981c5f7e2c02d041f3884c667ef5ea4dd8f5da630
 Section: Packaging
 Priority: standard
 Description: the advanced packaging tool from Debian
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: APT 0.7 Strict
 
 Package: apt7-key
@@ -585,6 +620,7 @@ SHA256: c464f4fee8e1fc38759396f3aac050ca0e936d28a953ae2d61e52b56f9b2fac5
 Section: Packaging
 Priority: standard
 Description: repository encryption key management tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: APT 0.7 (apt-key)
 
 Package: apt7-lib
@@ -607,6 +643,7 @@ SHA256: 2c2785ff613f07aa503c06baebb843deaa530efcf52aabfe1db03fb8a4402cfe
 Section: Packaging
 Priority: required
 Description: the advanced packaging library from Debian
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: APT 0.7 Strict (lib)
 
 Package: bag.skyglow.bluetweety
@@ -624,7 +661,7 @@ Section: Tweaks
 Description: Fix the iOS integration with Twitter across the system, as well as the Twitter app.
 Author: Requis, bag.xml
 Depiction: http://cydia.skyglow.es/depictions/bag.skyglow.bluetweety/depictions/index.html
-Icon: file:///Library/Application%20Support/bag.skyglow.bluetweety/BlueTweety-Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: BlueTweety
 
 Package: bag.skyglow.bluetweety
@@ -641,7 +678,7 @@ Section: Tweaks
 Description: Fix the iOS integration with Twitter across the system, as well as the Twitter app.
 Author: Requis, bag.xml
 Depiction: http://cydia.skyglow.es/depictions/bag.skyglow.bluetweety/depictions/index.html
-Icon: file:///Library/Application%20Support/bag.skyglow.bluetweety/BlueTweety-Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: BlueTweety
 
 Package: bag.xml.tuberepair
@@ -659,7 +696,7 @@ Section: Tweaks
 Description: TubeRepair is a tweak that redirects YouTube API traffic from the classic YouTube app, and the App Store YouTube app to a designated custom server. You could also just say that it fixes both applications. For assistance refer to the guide (https://tuberepair.bag-xml.com/guide/)
 Author: bag.xml, Requis
 Depiction: http://cydia.skyglow.es/depictions/com.skyglow.tuberepair/depictions/index.html
-Icon: file:///Library/Application%20Support/bag.xml.tuberepair/TubeRepair-Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: TubeRepair [BETA]
 
 Package: ca-certificates
@@ -680,6 +717,7 @@ Priority: optional
 Multi-Arch: foreign
 Description: CA certs for curl, wget, git.
 Tag: purpose::console, role::hacker
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: CA Certs
 
 Package: ca-certificates
@@ -700,6 +738,7 @@ Priority: optional
 Multi-Arch: foreign
 Description: CA certs for curl, wget, git.
 Tag: purpose::console, role::hacker
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: CA Certs
 
 Package: ca-certificates
@@ -744,7 +783,7 @@ Description: Browse, search and install vintage iOS apps (iOS 5-10 era) from the
 Tag: compatible_min::ios5.0
 Author: Adrien Ruest-Lorquet
 Depiction: https://adrienrl1.github.io/cydia/depiction.html
-Icon: https://adrienrl1.github.io/cydia/PackageIcon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AppDrop
 
 Package: com.aoi.storefix
@@ -764,6 +803,7 @@ Tag: purpose::extension
 Author: aoi_satou
 Depiction: http://aoiblog.jp/appstorefix_history.html
 Dev: aoi_satou
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AppStoreFix
 
 Package: com.aoi.storefix6
@@ -783,6 +823,7 @@ Tag: purpose::extension
 Author: satou@aoiblog.jp
 Depiction: http://aoiblog.jp/repo/index_ios6.html
 Dev: aoi_satou
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AppStoreFix(ios6)
 
 Package: com.arichardson.weepreferenceloader
@@ -801,6 +842,7 @@ Homepage: http://modmyi.com/info/weepreferenceloader.php
 Description: A framework to easily add preferences to the Notifications settings.
 Author: Andrew Richardson <andrewr114@gmail.com>
 Depiction: http://modmyi.com/info/weepreferenceloader.d.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: WeePreferenceLoader
 Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
 
@@ -820,6 +862,7 @@ Homepage: http://modmyi.com/info/weepreferenceloader.php
 Description: A framework to easily add preferences to the Notifications settings.
 Author: Andrew Richardson <andrewr114@gmail.com>
 Depiction: http://modmyi.com/info/weepreferenceloader.d.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: WeePreferenceLoader
 Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
 
@@ -841,6 +884,7 @@ Tag: purpose::console, role::enduser, compatible::ios7, compatible::ios8
 Author: Merlin <lonelystars@gmail.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=ipainstallerconsoleDp
 Dev: lonelystars
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: IPA Installer Console
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -864,7 +908,7 @@ Tag: purpose::extension, ios7support1::1, ios8support::1
 Author: Merlin <lonelystars@gmail.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=lunarcalendarweeappDp
 Dev: lonelystars
-Icon: file:///Library/PreferenceBundles/LunarCalendar.bundle/LunarCalendar@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Lunar Calendar for Notification Center
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -886,6 +930,7 @@ Tag: purpose::extension, role::enduser
 Author: c0d3 <blackcrafter@me.com
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=slidemynameDp
 Dev: blackcrafter
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: SlideMyName
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -904,6 +949,7 @@ Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: gdrive_app_1nWkpE0KMsjIkG5hKT_gv6H-7UZU3ezbA.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
 Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Instagram v361522 (iOS 5.0)
 Sponsor: Admin <admin@localhost>
 
@@ -922,6 +968,7 @@ Homepage: https://github.com/CydiaBlock/AppStore
 Description: The decrypted ipa file: 21%20Cut%20the%20Rope%202.3.2%20(186342633).ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: dopaemon <polarisdp@gmail.com>
 Depiction: https://github.com/CydiaBlock/AppStore
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Cut the Rope v2.3.2 (iOS 4.3)
 Sponsor: dopaemon <polarisdp@gmail.com>
 
@@ -940,6 +987,7 @@ Homepage: https://github.com/CydiaBlock/AppStore
 Description: The decrypted ipa file: 26%20Cut%20the%20Rope%202.5%20(811729051).ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: dopaemon <polarisdp@gmail.com>
 Depiction: https://github.com/CydiaBlock/AppStore
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Cut the Rope v2.5 (iOS 5.0)
 Sponsor: dopaemon <polarisdp@gmail.com>
 
@@ -958,6 +1006,7 @@ Homepage: https://github.com/CydiaBlock/AppStore
 Description: The decrypted ipa file: 28%20Cut%20the%20Rope%202.6%20(838565593).ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: dopaemon <polarisdp@gmail.com>
 Depiction: https://github.com/CydiaBlock/AppStore
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Cut the Rope v2.6 (iOS 6.0)
 Sponsor: dopaemon <polarisdp@gmail.com>
 
@@ -980,6 +1029,7 @@ Tag: role::developer, purpose::extension, ios7support::1, ios8support::1
 Author: joedj <weeloader@joedj.net>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=weeloaderDp
 Dev: joejordan
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: WeeLoader
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -998,6 +1048,7 @@ Description: "Untethers" an existing CoolBooter install
  CoolBooter Untetherer is an extension for CoolBooter that allows the user to boot into their second OS automatically.
  To disable the untether, hold volume down during boot.
 Author: CoolBooter <coolbooterios@gmail.com>
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: CoolBooter Untetherer
 
 Package: com.coolbooter.coolbooter
@@ -1013,6 +1064,7 @@ SHA256: 1a65c19bdae1627de6fd5ec281ca72bbe13de47dc9f66a3d89018af3abc24786
 Section: System
 Description: CoolBooter is an all-in-one dual booting utility for jailbroken 32 bit iOS devices.
 Author: CoolBooter <coolbooterios@gmail.com>
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: CoolBooter
 
 Package: com.dba-tech.forecast
@@ -1033,6 +1085,7 @@ Description: Replaces the standard lock clock with the native iOS5 weather widge
 Tag: cydia::commercial
 Author: dba Technologies, LLC <support@dba-technologies.com>
 Depiction: http://modmyi.com/info/forecast.d.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Forecast
 
 Package: com.ea.simcitydeluxe.inc
@@ -1050,6 +1103,7 @@ Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: SimCity%E2%84%A2%20Deluxe%20v1.0.1.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
 Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: SimCity DLX v1.0.1 (iOS 3.0)
 Sponsor: Admin <admin@localhost>
 
@@ -1068,6 +1122,7 @@ Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: The_Sims_3_World_Adventures__Electronic_Arts___v1.1.22_os40_-kOtyara.rc318.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
 Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: TheSims3WA v1.1.22 (iOS 4.0)
 Sponsor: Admin <admin@localhost>
 
@@ -1086,6 +1141,7 @@ Homepage: https://github.com/CydiaBlock/AppStore
 Description: The decrypted ipa file: ASPHALT4.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: dopaemon <polarisdp@gmail.com>
 Depiction: https://github.com/CydiaBlock/AppStore
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: ASPHALT4 v1.3.8 (iOS 2.1)
 Sponsor: dopaemon <polarisdp@gmail.com>
 
@@ -1104,6 +1160,7 @@ Homepage: https://github.com/CydiaBlock/AppStore
 Description: The decrypted ipa file: Brothers%20In%20Arms%20-%20Hour%20of%20Heroes%201.3.5.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: dopaemon <polarisdp@gmail.com>
 Depiction: https://github.com/CydiaBlock/AppStore
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: BIA v1.3.5 (iOS 3.1.2)
 Sponsor: dopaemon <polarisdp@gmail.com>
 
@@ -1122,6 +1179,7 @@ Homepage: https://github.com/CydiaBlock/AppStore
 Description: The decrypted ipa file: 1%20vs%20100™_v.1.1.4.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: dopaemon <polarisdp@gmail.com>
 Depiction: https://github.com/CydiaBlock/AppStore
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: 1 vs 100 v1.1.4 (iOS 2.2.1)
 Sponsor: dopaemon <polarisdp@gmail.com>
 
@@ -1140,6 +1198,7 @@ Homepage: http://repo.hackyouriphone.org/depiction/depiction.php?filename=classi
 Description: Hate the iOS 7 Lock Screen?
 Author: CoolStar, Jeremy Goulet, Phillip Tennen <repo@hackyouriphone.org>
 Depiction: http://repo.hackyouriphone.org/depiction/depiction.php?filename=classiclockscreen
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: ClassicLockScreen
 
 Package: com.hackyouriphone.cracktool2
@@ -1157,6 +1216,7 @@ Homepage: http://repo.hackyouriphone.org/depiction/depiction.php?filename=crackt
 Description: Crack Tweaks on one click
 Author: julioverne <repo@hackyouriphone.org>
 Depiction: http://repo.hackyouriphone.org/depiction/depiction.php?filename=cracktool2
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: CrackTool2
 
 Package: com.hackyouriphone.fontss
@@ -1177,6 +1237,7 @@ Homepage: http://repo.hackyouriphone.org/depiction/depiction.php?filename=fontss
 Description: Fonts for SnowBoard
 Author: Spark <repo@hackyouriphone.org>
 Depiction: http://repo.hackyouriphone.org/depiction/depiction.php?filename=fontss
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: SnowBoard Fonts Extension
 Sileodepiction: https://depiction.hackyouriphone.org/sileoDepiction.php?filename=fontss
 
@@ -1195,6 +1256,7 @@ Homepage: http://repo.hackyouriphone.org/depiction/depiction.php?filename=sleepf
 Description: Enjoy stunning FX when entering sleep
 Author: Malcolm Hall <repo@hackyouriphone.org>
 Depiction: http://repo.hackyouriphone.org/depiction/depiction.php?filename=sleepfx
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: SleepFX
 
 Package: com.hzapptech.tetris-lite
@@ -1212,6 +1274,7 @@ Homepage: https://github.com/CydiaBlock/AppStore
 Description: The decrypted ipa file: Bricks_4.2.1_AppOnly.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: dopaemon <polarisdp@gmail.com>
 Depiction: https://github.com/CydiaBlock/AppStore
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: MyTetris-Lite v121 (iOS 5.0)
 Sponsor: dopaemon <polarisdp@gmail.com>
 
@@ -1232,6 +1295,7 @@ Homepage: http://ihacksrepo.com
 Description: This file is to setup the repo completely with all missing section icons, repo icons and more
 Author: Matthew
 Depiction: http://ihacksrepo.com/depiction.php?package=reposetupfiles
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Repo Setup Files
 Required: Yes
 Sponsor: iHacksRepo <http://ihacksrepo.com>
@@ -1256,7 +1320,7 @@ Tag: purpose::extension
 Author: Kingsoft Security <app@ijinshan.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=batterydoctorprouniversalDp
 Dev: kingsoftsecurity
-Icon: file:///Applications/kBatteryDoctor.app/icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: BatteryDoctorPro
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -1274,6 +1338,7 @@ Section: System
 Description: BytaFont lets you apply fonts to your iDevice in few taps.
 Author: iPhoneRuler.net <info@iphoneruler.net>
 Depiction: http://www.iphoneruler.net/depiction/BytaFont/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: BytaFont
 Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
 
@@ -1291,6 +1356,7 @@ Homepage: http://isoftcom.com/
 Description: Run Windows 3.11 and Windows 95 on your iPhone. It's slow, but worked.
 Author: isoftcom.com <isoftteamsupport@gmail.com>
 Dev: isoftru
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Bochs (Win95 for iPhone)
 
 Package: com.isoftru.bochs
@@ -1307,6 +1373,7 @@ Homepage: http://isoftcom.com/
 Description: Run Windows 3.11 and Windows 95 on your iPhone. It's slow, but worked.
 Author: isoftcom.com <isoftteamsupport@gmail.com>
 Dev: isoftru
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Bochs (Win95 for iPhone)
 
 Package: com.ixmoe.1pwn.veteris
@@ -1323,7 +1390,7 @@ Section: Utilities
 Homepage: http://1pwn.ixmoe.com/
 Description: A Client for the Veteris Server.
 Author: Electimon <electimon@gmail.com>
-Icon: file:///Applications/Veteris.app/AppIcon57x57@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Veteris
 
 Package: com.jamied360.ncsettings
@@ -1342,6 +1409,7 @@ Homepage: http://modmyi.com/info/ncsettings.php
 Description: NCSettings is a sleek Notification Center toggle widget
 Author: JamieD360 <jamied360support@live.co.uk>
 Depiction: http://modmyi.com/info/ncsettings.d.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: NCSettings
 Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
 
@@ -1361,6 +1429,7 @@ Homepage: http://modmyi.com/info/ncsettings.php
 Description: NCSettings is a sleek Notification Center toggle widget
 Author: JamieD360 <jamied360support@live.co.uk>
 Depiction: http://modmyi.com/info/ncsettings.d.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: NCSettings
 Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
 
@@ -1377,6 +1446,7 @@ SHA256: d4a5bd485ec8cec21be0d9e9301a2952a5798d1f62a96b50f6ef7e99e82dbd97
 Section: Terminal Support
 Description: Clutch is a high-speed iOS decryption tool. It is used for decrypting apps currently installed and usable on the device.
 Author: KJCracks <unknown@unknown.com>
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Clutch 2.0.4
 
 Package: com.kjcracks.clutch
@@ -1392,6 +1462,7 @@ SHA256: d4a5bd485ec8cec21be0d9e9301a2952a5798d1f62a96b50f6ef7e99e82dbd97
 Section: Terminal Support
 Description: Clutch is a high-speed iOS decryption tool. It is used for decrypting apps currently installed and usable on the device.
 Author: KJCracks <unknown@unknown.com>
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Clutch 2.0.4
 
 Package: com.linusyang.ytbnoad
@@ -1409,6 +1480,7 @@ SHA256: 58801323e9993fa855e063a887ed63f4b84ca966a6ca83459b3d5ca4e342843f
 Section: Tweaks
 Description: remove ads in Youtube app
 Author: Linus Yang
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: YoutubeNoAd
 
 Package: com.linusyang.ytbnoad
@@ -1426,6 +1498,7 @@ SHA256: 58801323e9993fa855e063a887ed63f4b84ca966a6ca83459b3d5ca4e342843f
 Section: Tweaks
 Description: remove ads in Youtube app
 Author: Linus Yang
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: YoutubeNoAd
 
 Package: com.long.ledaudio
@@ -1440,7 +1513,7 @@ SHA256: ec537d0170d1c04ccbfd177dd6cabb1b5f2a4060a8238d42e6e9e19bca42bd4d
 Section: Applications
 Description: LED audio visualizer app for iOS
 Author: Tomkids
-Icon: http://tomkidss.github.io/cydia/icons/ledaudio.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: LED Audio
 
 Package: com.lukezgd.kDFUBundles
@@ -1456,6 +1529,7 @@ SHA256: dd55fa1d75cebac3c6423a1ee5405ca680580c6b569f4667869d04fe6951b141
 Section: System
 Description: More device support for kDFUApp
 Author: LukeZGD
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: kDFUApp Bundles
 
 Package: com.manh.edgeflow
@@ -1476,6 +1550,7 @@ Description: iPhone X style Control Center and gestures for iOS 10
 Tag: purpose::extension, role::enduser
 Author: ManhSDZ
 Depiction: https://manhsdz.github.io/repo/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: EdgeFlow
 
 Package: com.manh.edgeflow32bit
@@ -1496,6 +1571,7 @@ Description: iPhone X style Control Center and gestures for 32-bit iOS devices
 Tag: purpose::extension, role::enduser
 Author: ManhSDZ
 Depiction: https://manhsdz.github.io/repo/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: EdgeFlow 32bit
 
 Package: com.manh.lockweather
@@ -1516,6 +1592,7 @@ Description: Weather panel for Lock Screen and Notification Center
 Tag: purpose::extension, role::enduser
 Author: ManhSDZ
 Depiction: https://manhsdz.github.io/repo/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: MWeather
 
 Package: com.manh.lockweather32bit
@@ -1538,6 +1615,7 @@ Description: Weather panel for Lock Screen and Notification Center - 32bit build
 Tag: purpose::extension, role::enduser
 Author: ManhSDZ
 Depiction: https://manhsdz.github.io/repo/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: MWeather 32bit
 
 Package: com.manh.mtune
@@ -1558,6 +1636,7 @@ Description: Clean cache, logs, temp files, block OTA updates, and respring tool
 Tag: purpose::extension, role::enduser
 Author: ManhSDZ
 Depiction: https://manhsdz.github.io/repo/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Mtune
 
 Package: com.manh.mtune32bit
@@ -1578,6 +1657,7 @@ Description: Clean cache, logs, temp files, block OTA updates, and respring tool
 Tag: purpose::extension, role::enduser
 Author: ManhSDZ
 Depiction: https://manhsdz.github.io/repo/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Mtune 32bit
 
 Package: com.mathieubolard.killbackground
@@ -1599,7 +1679,7 @@ Tag: purpose::extension
 Author: Mathieu Bolard (mattlawer) <mattlawer08@gmail.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=killbackgroundData
 Dev: mattlawer
-Icon: file:///Library/PreferenceBundles/KillBackgroundPreferences.bundle/Icon@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: KillBackground
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -1619,6 +1699,7 @@ Description: Retina / HD SBSettings theme for SBSettings
 Author: Max Rudberg <max@maxthemes.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=serioussbsettingshdData
 Dev: maxrudberg
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Serious SBSettings HD
 
 Package: com.ninjakiwi.bloonstd5
@@ -1636,6 +1717,7 @@ Homepage: https://github.com/CydiaBlock/AppStore
 Description: The decrypted ipa file: Bloons%20TD%205-v2.16--iOS4.3-(Clutch-1.4.6).ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: dopaemon <polarisdp@gmail.com>
 Depiction: https://github.com/CydiaBlock/AppStore
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Bloons TD 5 v13454 (iOS 4.3)
 Sponsor: dopaemon <polarisdp@gmail.com>
 
@@ -1654,6 +1736,7 @@ Homepage: https://github.com/CydiaBlock/AppStore
 Description: The decrypted ipa file: Bloons%20TD%205-v2.16--iOS4.3-(Clutch-1.4.6).ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: dopaemon <polarisdp@gmail.com>
 Depiction: https://github.com/CydiaBlock/AppStore
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Bloons TD 5 v13454 (iOS 4.3)
 Sponsor: dopaemon <polarisdp@gmail.com>
 
@@ -1675,7 +1758,7 @@ Tag: purpose::uikit, compatible::ios7, compatible::ios8, compatible::ios9
 Author: lordscotland <admin@officialscheduler.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=mterminalDp
 Dev: officialscheduler
-Icon: file:///Applications/MTerminal.app/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: MTerminal
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -1695,6 +1778,7 @@ Homepage: http://modmyi.com/info/quicklock2.php
 Description: (iOS 4) This tweak is a very simple tweak that when you tap it will lock your screen.
 Author: againstnighto <againstnight0@aim.com>
 Depiction: http://modmyi.com/info/quicklock2.d.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: QuickLock 2
 Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
 
@@ -1713,6 +1797,7 @@ Homepage: https://github.com/CydiaBlock/AppStore
 Description: The decrypted ipa file: 402688503%2B2.0%2BTalking+Gina+the+Giraffe+New%2BAP.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: dopaemon <polarisdp@gmail.com>
 Depiction: https://github.com/CydiaBlock/AppStore
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Talking Gina v2.0 (iOS 4.1)
 Sponsor: dopaemon <polarisdp@gmail.com>
 
@@ -1730,6 +1815,7 @@ SHA256: e97e0e59b431ef961aacbb2c9afd5880d0eb5bf8b84490caa8df00bace953164
 Section: Tweaks
 Description: Disables YouTube update prompts
 Author: Patrick_Griffin
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: DisableYouTubeUpdates
 
 Package: com.phucnguyenvlog.tiktok
@@ -1743,6 +1829,7 @@ SHA1: da64e8a607499ecdc015b3d662dc537916ac00c9
 SHA256: b16137d3173d086c6bddb9cfa65d364e6de4f071bab5aa79edad093384094f23
 Section: Applications
 Description: Đóng gói từ IPA bởi PhucNguyenVlog
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Tiktok
 
 Package: com.pmbonneau.iOS5Bootstrap
@@ -1759,7 +1846,7 @@ Section: Applications
 Homepage: http://www.pmbonneau.com
 Description: A kloader bootstrap application with an iOS 5 icon. It executes a bash script "iOS5Bootstrap.sh" located in the /usr/bin folder. This script can be edited.
 Author: Pierre-Marc Bonneau <pierremarc_999@hotmail.com>
-Icon: file:///Applications/iOS5Bootstrap.app/AppIcon60x60.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: iOS 5 Bootstrap
 
 Package: com.pmbonneau.iOS6Bootstrap
@@ -1776,7 +1863,7 @@ Section: Applications
 Homepage: http://www.pmbonneau.com
 Description: A kloader bootstrap application with an iOS 6 icon. It executes a bash script "iOS6Bootstrap.sh" located in the /usr/bin folder. This script can be edited.
 Author: Pierre-Marc Bonneau <pierremarc_999@hotmail.com>
-Icon: file:///Applications/iOS6Bootstrap.app/AppIcon57x57.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: iOS 6 Bootstrap
 
 Package: com.podpod123.fbcrashfix
@@ -1793,6 +1880,7 @@ SHA256: d4ec5a1746e0fcb55db5d3111788e69be31081729f3c5553403023094a37310f
 Section: Tweaks
 Description: A tweak that prevents the Facebook app from crashing
 Author: Pod
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: FBCrashFix
 
 Package: com.podpod123.fbintegrationfix
@@ -1809,6 +1897,7 @@ SHA256: 68d502f9ff74973aa346161f3909f00050b1af781d7429b2753cec53545c1486
 Section: Tweaks
 Description: A fix for iOS's Facebook system integration
 Author: Pod
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: FBIntegrationFix
 
 Package: com.popcap.PvZ
@@ -1826,6 +1915,7 @@ Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: Plant%20vs%20Zombies%20V1.0.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
 Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: PvZ v524 (iOS 2.2.1)
 Sponsor: Admin <admin@localhost>
 
@@ -1844,6 +1934,7 @@ Section: Tweaks
 Description: Attempts to make old YouTube versions work again.
 Author: PoomSmart
 Depiction: https://poomsmart.github.io/repo/depictions/ytlegacy.html
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: YouTube Legacy
 Sileodepiction: https://poomsmart.github.io/repo/sileodepictions/ytlegacy.json
 
@@ -1860,7 +1951,7 @@ SHA256: a6a10da95e641ceffc21505bf4fcdaf94408b63ad2938934cbca7437ba890e5b
 Section: Tweaks
 Description: Avoid re-jailbreaking when your iDevice have not battery.
 Author: Pulandres
-Icon: https://repo.pulandres.me/CydiaIcon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: SafeShutdown Cracked
 
 Package: com.ravirajm.torch
@@ -1879,6 +1970,7 @@ Homepage: http://modmyi.com/info/torch.php
 Description: Toggle LED Flash from the LockScreen.
 Author: rvirajm <rvirajm@gmail.com>
 Depiction: http://modmyi.com/info/torch.d.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Torch
 Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
 
@@ -1899,6 +1991,7 @@ Homepage: http://modmyi.com/info/rockextensions.php
 Description: Enables 3rd Party System Add-Ons for Rock Your Phone apps.  Rock Extensions is a Mobile Substrate port with enhanced error handling and automatic bug submission
 Depiction: http://modmyi.com/info/rockextensions.d.php
 Languages: English
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Rock Extensions
 Numscreenshots: 0
 Price: 0
@@ -1926,6 +2019,7 @@ Priority: optional
 Description: safe mode safety extension (safe)
 Author: Jay Freeman (saurik) <saurik@saurik.com>
 Depiction: http://cydia.saurik.com/info/com.saurik.substrate.safemode/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Substrate Safe Mode
 
 Package: com.skyglow.weatherx
@@ -1943,6 +2037,7 @@ Section: Tweaks
 Description: Fix iOS's weather app from iPhoneOS 2 to iOS 7, the weather widget in the notification center, and the temperature in the iPad clock app!
 Author: Requis
 Depiction: http://cydia.skyglow.es/depictions/com.skyglow.weatherx/depictions/index.html
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: WeatherX
 
 Package: com.skyglow.weatherx
@@ -1960,6 +2055,7 @@ Section: Tweaks
 Description: Fix iOS's Weather & Stocks apps from iPhoneOS 2 to iOS 7, the widgets in the notification center, and the temperature in the iPad clock app!
 Author: Requis, Electimon
 Depiction: http://cydia.skyglow.es/depictions/com.skyglow.weatherx/depictions/index.html
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Weather & Stocks
 
 Package: com.skyglow.weatherx
@@ -1977,6 +2073,7 @@ Section: Tweaks
 Description: Fix iOS's Weather & Stocks apps from iPhoneOS 2 to iOS 7, the widgets in the notification center, and the temperature in the iPad clock app!
 Author: Requis, Electimon
 Depiction: http://cydia.skyglow.es/depictions/com.skyglow.weatherx/depictions/index.html
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Weather & Stocks
 
 Package: com.thireus.apt-ca-certificates-config
@@ -2000,6 +2097,7 @@ Description: Acquire::https::CaInfo "/etc/ssl/certs/ca-certificates.crt";
  Without this specific configuration Cydia cannot use truted HTTPS sources such as https://repo.thireus.com (keep in mind that you need to add the CA manually or via deb packages).
  !!! AFTER THE INSTALL, PLEASE RESTART CYDIA !!!
 Author: Thireus <repo@thireus.com>
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: APT7-SSL ca-certificates.config
 
 Package: com.tomkids.filza
@@ -2016,6 +2114,7 @@ Description: App Filza 4.0.2
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Filza 4.0.2
 
 Package: com.tomkids.flappybird
@@ -2030,6 +2129,7 @@ SHA256: 131df9258bef90ef0495fd1ed7098caa35d1ae14ad508a28fc521491b66e958c
 Section: Applications
 Description: Converted from IPA
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: FlappyBird1.2
 
 Package: com.tomkids.foobar2000
@@ -2044,6 +2144,7 @@ SHA256: a1d1fd80f2db5325e5a9571487edcd8c08bc03b128e2d1f11c4003a4093ef1e7
 Section: Applications
 Description: Converted from IPA
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Foobar2000_1.0.33
 
 Package: com.tomkids.googlemap
@@ -2060,6 +2161,7 @@ Description: App Google Map
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Google Map
 
 Package: com.tomkids.h3lix
@@ -2076,6 +2178,7 @@ Description: H3lix-RC8 jailkbreak ios10
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: H3lix-RC8
 
 Package: com.tomkids.instagram
@@ -2092,6 +2195,7 @@ Description: App Instagram_6.5.1
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Instagram
 
 Package: com.tomkids.pacman
@@ -2106,6 +2210,7 @@ SHA256: 52535035f8fef9364c27067f0d1399ffb53e4894029c5ede7a1469d2e9ae0064
 Section: Applications
 Description: Converted from IPA
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Pac-Man
 
 Package: com.tomkids.protubehd
@@ -2119,6 +2224,7 @@ SHA1: c53b305ff7a3d01af604dbe7b01a1a4dc9830044
 SHA256: ff099e5446b4494a3f8dae4be06b613281d6511fafaaa418f7f97bf59637c2e6
 Section: Applications
 Description: Đóng gói từ IPA
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: ProtubeHD
 
 Package: com.tomkids.telegram
@@ -2135,6 +2241,7 @@ Description: App Telegram
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Telegram
 
 Package: com.tomkids.youtubefix
@@ -2150,6 +2257,7 @@ SHA256: e81f9f6f6446930ffd83e484a9f928fe730b40d849ca420784200649bd5cdc61
 Section: Applications
 Description: Cai app Youtube 1.3.0 (cho Ios 5.1 -  10) va Fix chay nen cho Ios 6  - 10
 Author: Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Youtube 1.3 & Tubereplacer 1.0.6 Fix
 
 Package: com.tqm-mos.batterydragon
@@ -2165,6 +2273,7 @@ Section: Battery
 Description: Biểu tượng Sạc Pin thay trực tiếp hệ thống.
 Author: @tqmmos
 Depiction: https://tqm-mos.com/Classic/Info/com.tqm-mos.batterydragon
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Battery Dragon
 
 Package: com.tqm-mos.callrecorder
@@ -2181,6 +2290,7 @@ Section: Tweaks
 Description: Ứng dụng ghi âm cuộc gọi đầu tiên trên iPhone!
 Author: Elias Limneos
 Depiction: https://tqm-mos.com/Classic/Info/com.tqm-mos.callrecorder
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Audio Recorder
 
 Package: com.tqm-mos.fontbauserif
@@ -2196,6 +2306,7 @@ Section: Fonts
 Description: Phông chữ thay trực tiếp hệ thống.
 Author: @tqmmos
 Depiction: https://tqm-mos.com/Classic/Info/com.tqm-mos.fontbauserif
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: BAUSERIF (iOS6)
 
 Package: com.tqm-mos.fontchococooky
@@ -2211,6 +2322,7 @@ Section: Fonts
 Description: Phông chữ thay trực tiếp hệ thống.
 Author: @tqmmos
 Depiction: https://tqm-mos.com/Classic/Info/com.tqm-mos.fontchococooky
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Chococooky (iOS6)
 
 Package: com.tuanem.shshchecker
@@ -2227,6 +2339,7 @@ Section: System
 Description: check SHSH Blobs on Mterminal
 Tag: role::hacker
 Author: tuanem
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: SHSHchecker cli
 
 Package: com.tuanem.shshchecker
@@ -2243,6 +2356,7 @@ Section: System
 Description: check SHSH Blobs on Mterminal
 Tag: role::hacker
 Author: tuanem
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: SHSHchecker cli
 
 Package: com.tuanem.shshchecker
@@ -2259,6 +2373,7 @@ Section: System
 Description: check SHSH Blobs on Mterminal
 Tag: role::hacker
 Author: tuanem
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: SHSHchecker cli
 
 Package: com.tuanem.ytbackground
@@ -2275,6 +2390,7 @@ SHA256: 8ea4e3c8163d7ee030158d6fadd25cdd91cf19c081349c3f0ba913a3ba427ff3
 Section: Tweaks
 Description: Background Playback for YouTube 1.0.0+
 Author: Tuanem
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: YTBackground
 
 Package: com.tuanem.ytbackground
@@ -2291,6 +2407,7 @@ SHA256: 8ea4e3c8163d7ee030158d6fadd25cdd91cf19c081349c3f0ba913a3ba427ff3
 Section: Tweaks
 Description: Background Playback for YouTube 1.0.0+
 Author: Tuanem
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: YTBackground
 
 Package: com.tuanem.ytbackground
@@ -2307,6 +2424,7 @@ SHA256: 9fec3d8ea6385507582c1defffa6bd5a398076512934f83370e391d4711cb958
 Section: Tweaks
 Description: Background Playback for YouTube 1.0.0+
 Author: Tuanem
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: YTBackground
 
 Package: com.tuanem.ytbackground
@@ -2323,6 +2441,7 @@ SHA256: 9fec3d8ea6385507582c1defffa6bd5a398076512934f83370e391d4711cb958
 Section: Tweaks
 Description: Background Playback for YouTube 1.0.0+
 Author: Tuanem
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: YTBackground
 
 Package: com.uc.iphone.browser.international
@@ -2340,6 +2459,7 @@ Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: gdrive_app_1YZy90I2Jpmg6u0buXlPfn2B78izzferA.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
 Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: UC Browser v10.6.1.760 (iOS 6.0)
 Sponsor: Admin <admin@localhost>
 
@@ -2358,6 +2478,7 @@ Section: Tweaks
 Description: Fixes Google on iOS 6
 Author: Victor
 Depiction: http://repo.victorlobe.me/depictions/depiction.html?id=com.victorlobe.googlefix
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: GoogleFix
 
 Package: com.void.themeready
@@ -2375,6 +2496,7 @@ Homepage: http://modmyi.com/info/themeready.php
 Description: ThemeReady gives you access to quick tools from your Settings menu.
 Author: Milika <codylindsaygordon@gmail.com>
 Depiction: http://modmyi.com/info/themeready.d.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: ThemeReady
 Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
 
@@ -2393,6 +2515,7 @@ Priority: extra
 Description: Repackage any of your tweaks locally, without the need to download it from Cydia again. This is super usefull when there is an update of your until now perfectly working tweak in Cydia and you want to make a backup of the version installed. Normally you wouldn't be able to backup anything because it is possible to fetch only the most current version of your tweak and so you would be lost. Not anymore :)))
 Author: T.Herak <50dc856b@opayq.com>
 Depiction: https://wiety.github.io/cydia/depictions/?p=com.vsz.redeb
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: redeb
 
 Package: com.weather.tweak
@@ -2408,6 +2531,7 @@ SHA256: 9c934768c4fb39b2b0fea5124eab025fd916bee15a6662c5e8abbbc9348cad5d
 Section: Hệ thống
 Description: Cai dat hien thi thoi tiet tren man hinh khoa va Notification cho IOS 6. Lu y can cai weepreferenceloader truoc
 Author: Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Fix thời tiết màn hình khóa IOS 6_V3
 
 Package: com.yourcompany.speedintensifier
@@ -2423,6 +2547,7 @@ SHA256: 772e8dac3251d0e94c6ac4564c1a9ad31cd20b233a40c72d04633bc2885bce95
 Section: Tweaks
 Description: This tweak will speed up the animation transitions to make your device Look faster.
 Author: Philip Wong
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Speed Intensifier
 
 Package: curl
@@ -2441,6 +2566,7 @@ Section: Networking
 Priority: standard
 Homepage: http://curl.haxx.se/
 Description: flexible multi-protocol file transfers
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: cURL
 
 Package: cydia
@@ -2464,7 +2590,7 @@ Description: graphical iPhone front-end for APT
 Tag: purpose::uikit, cydia::essential, role::enduser
 Author: Jay Freeman (saurik) <saurik@saurik.com>
 Depiction: http://cydia.saurik.com/info/cydia/
-Icon: file:///Applications/Cydia.app/Icon-60.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Cydia Installer
 
 Package: cydia-lproj
@@ -2487,6 +2613,7 @@ Description: languages and translations for Cydia
 Tag: purpose::uikit, cydia::essential, role::enduser
 Author: Jay Freeman (saurik) <saurik@saurik.com>
 Depiction: http://cydia.saurik.com/info/cydia-lproj/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Cydia Translations
 
 Package: debianutils
@@ -2504,6 +2631,7 @@ SHA256: fa723bf9e135eccc487481f836a3a3770d41f76a53f8657dc48183e31ae05d55
 Section: Utilities
 Priority: required
 Description: pretty much just run-parts. yep? run-parts
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Debian Utilities
 
 Package: dev.preloading.tubereplacer
@@ -2523,7 +2651,7 @@ Homepage: https://cydia.preloading.dev/depictions/tubereplacer/1.0/
 Description: An fix for YouTube with sign-in.
 Author: Preloading <me@preloading.dev>
 Depiction: https://cydia.preloading.dev/depictions/tubereplacer/1.0/
-Icon: file:///Library/PreferenceBundles/TubeReplacerPrefs.bundle/icon@full.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: TubeReplacer
 
 Package: dev.preloading.tubereplacer
@@ -2543,7 +2671,7 @@ Homepage: https://cydia.preloading.dev/depictions/tubereplacer/1.0/
 Description: A fix for YouTube with sign-in.
 Author: Preloading <me@preloading.dev>
 Depiction: https://cydia.preloading.dev/depictions/tubereplacer/1.0/
-Icon: file:///Library/PreferenceBundles/TubeReplacerPrefs.bundle/icon@full.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: TubeReplacer
 
 Package: dpkg
@@ -2562,6 +2690,7 @@ Section: Packaging
 Priority: required
 Homepage: http://wiki.debian.org/Teams/Dpkg
 Description: package maintainance tools from Debian
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Debian Packager
 
 Package: gsc.hd-video-capture
@@ -2596,6 +2725,7 @@ Homepage: http://cydia.vn/
 Description: Icon cho Cydia.vn source!
 Author: Cydia.vn <repo@cydia.vn>
 Depiction: http://cydia.gsm.vn/t96/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Cydia.vn Icon
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -2617,6 +2747,7 @@ Description: Don't install if you don't know what that is
  Do not install this package if you don't know what this is.
  Installing this on a production device is not recommended.
 Author: winocm, xerub
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: kloader
 
 Package: kloader
@@ -2637,6 +2768,7 @@ Description: NEW IMPROVED KLOADER
  arm64 support for iOS 7.0-8.4.1 (requires tfp0 kernel patch and patched LLB/iBoot/iBSS/iBEC)
  will automatically wake up device after 2 seconds (no button press required, should work 99.9% of the time)
 Author: winocm, xerub, axi0mX
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: kloader
 
 Package: ldid
@@ -2655,6 +2787,7 @@ Description: pseudo-codesign Mach-O files
 Tag: purpose::console, role::developer
 Author: Jay Freeman (saurik) <saurik@saurik.com>
 Depiction: http://cydia.saurik.com/info/ldid/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Link Identity Editor
 
 Package: libactivator
@@ -2677,7 +2810,7 @@ Description: Centralized gestures, button and shortcut management for iOS
 Author: Ryan Petrich <rpetrich+activator@gmail.com>
 Depiction: https://rpetri.ch/cydia/activator/beta/
 Dev: rpetrich
-Icon: file:///Applications/Activator.app/Icon-Small-modern@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Activator
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -2700,6 +2833,7 @@ Priority: optional
 Description: powerful code insertion platform
 Author: Jay Freeman (saurik) <saurik@saurik.com>
 Depiction: http://cydia.saurik.com/info/mobilesubstrate/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Cydia Substrate
 
 Package: mobilesubstrate
@@ -2721,6 +2855,7 @@ Priority: optional
 Description: powerful code insertion platform
 Author: Jay Freeman (saurik) <saurik@saurik.com>
 Depiction: http://cydia.saurik.com/info/mobilesubstrate/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Cydia Substrate
 
 Package: moe.yzu.veterishelper
@@ -2737,6 +2872,7 @@ SHA256: 0917482c5b32ffbd6e62954525fcaf0c90047df31c092f7e5cc0e49c1a0bd7b8
 Section: Tweaks
 Description: An awesome MobileSubstrate tweak!
 Author: Stella Diaz (electimon
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Veteris Helper
 
 Package: neofetch
@@ -2752,6 +2888,7 @@ SHA256: 77a3518c53177917c094c601221967512c7a2edd3a304b47aa8c23ad22c175af
 Section: Terminal Support
 Description: A command-line system information tool written in bash 3.2+ from https://github.com/dylanaraps/neofetch, packaged for iOS
 Author: dylanaraps
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: neofetch
 
 Package: net.angelxwind.appsyncunified
@@ -2773,6 +2910,7 @@ Homepage: https://cydia.akemi.ai/
 Description: Enables the ability to install unsigned/fakesigned iOS applications.
 Author: Karen/あけみ, Linus Yang <karen@akemi.ai>
 Depiction: https://cydia.akemi.ai/?page/net.angelxwind.appsyncunified
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AppSync Unified
 
 Package: net.angelxwind.appsyncunified
@@ -2794,6 +2932,7 @@ Homepage: https://cydia.akemi.ai/
 Description: Enables the ability to install unsigned/fakesigned iOS applications.
 Author: Linus Yang, Karen/あけみ <karen@akemi.ai>
 Depiction: https://cydia.akemi.ai/?page/net.angelxwind.appsyncunified
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AppSync Unified
 
 Package: openssh
@@ -2812,6 +2951,7 @@ Section: Networking
 Priority: important
 Description: secure remote access between machines
 Depiction: http://cydia.saurik.com/info/openssh/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: OpenSSH
 
 Package: openssl
@@ -2828,6 +2968,7 @@ SHA256: a307790dbc44b3a47494313c3dce226340ebf5c69688479967bbe2c0cb015e7d
 Section: Security
 Priority: standard
 Description: SSL library and cryptographic tools
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: OpenSSL
 
 Package: openssl
@@ -2844,6 +2985,7 @@ SHA256: 986d4e822672d4900d7df8663991900bae56ca3065be167d878624e3869df86b
 Section: Security
 Priority: standard
 Description: SSL library and cryptographic tools
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: OpenSSL
 
 Package: org.altervista.exilecom.icleaner
@@ -2864,7 +3006,7 @@ Tag: purpose::uikit
 Author: Ivano Bilenchi <support@ib-soft.net>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=icleanerDp
 Dev: exilecom
-Icon: file:///Applications/iCleaner.app/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: iCleaner
 
 Package: org.jyvee8games.itunesfix
@@ -2881,7 +3023,7 @@ SHA256: ed878b9e364e8d62977b98fd928d5b9c3d6b3940b929cc5af5c547a15447a80d
 Section: Tweaks
 Description: A fix for the iOS 7 AppStore! credits to bag.xml and requis for the oringinal iTunesStoreX tweak
 Author: Jyvee <jyveeanimate@jyveegames.org>
-Icon: file:///Library/Application%20Support/org.jyvee8games.itunesfix/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: iTunesStoreX7 (BETA)
 
 Package: org.thebigboss.tvlockerpro
@@ -2902,7 +3044,7 @@ Tag: cydia::commercial, purpose::extension, role::enduser
 Author: Bensge <bensge@me.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=tvlockerproDp
 Dev: bensge
-Icon: file:///Library/PreferenceLoader/Preferences/TVLockerPro/icon@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: TVLocker Pro
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -2921,6 +3063,7 @@ Priority: optional
 Description: easy way to get into kDFU mode
 Author: tihmstar
 Dev: tihmstar
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: kDFUApp
 
 Package: p7zip
@@ -2936,6 +3079,7 @@ SHA256: 62e6fa68cb3a019d30e71ff5f41cf02e060c76f30ca23bc61f1d0f3ab4b94516
 Section: Archiving
 Priority: optional
 Description: claims to be a good compressor
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: 7-zip (POSIX)
 
 Package: preferenceloader
@@ -2956,6 +3100,7 @@ Tag: role::hacker, purpose::library
 Author: Sam Bingner <maintainer@sbdhi.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=preferenceloader2Data
 Dev: dustinhowett
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: PreferenceLoader
 
 Package: preferenceloader
@@ -2976,6 +3121,7 @@ Tag: role::hacker, purpose::library
 Author: Sam Bingner <maintainer@sbdhi.com>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=preferenceloader2Data
 Dev: dustinhowett
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: PreferenceLoader
 
 Package: repo.biteyourapple.net.paragon
@@ -2995,6 +3141,7 @@ Homepage: http://www.biteyourapple.net
 Description: Paragon is the most realistic Windows Phone 8 theme for your iPhone!
 Author: BYA Repository
 Depiction: http://repo.biteyourapple.net/depiction/dep.php?name=paragon
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Paragon
 Sponsor: biteyourapple <http://www.biteyourapple.net>
 
@@ -3017,6 +3164,7 @@ Description: Move common toggles directly into springboard where they're always 
 Author: BigBoss <bigboss@thebigboss.org>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=SBSettingsDpData
 Dev: bigboss
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: SBSettings
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -3040,6 +3188,7 @@ Tag: role::developer purpose::library
 Author: BigBoss <bigboss@thebigboss.org>
 Depiction: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=sbsettingstoggles
 Dev: bigboss
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: sbsettingstoggles
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -3061,6 +3210,7 @@ Homepage: http://modmyi.com/info/winterboardsettings.php
 Description: Moves WinterBoard theme preferences into the Settings application.
 Author: David Ashman (Stimpy5050) <dashman@gmail.com>
 Depiction: http://modmyi.com/info/winterboardsettings.d.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Theme Settings
 Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
 
@@ -3076,7 +3226,7 @@ SHA256: df6347326aee80b555a8ec32a6959d987dda8ec7ca1b5fac2177d58f25fe6df6
 Section: Applications
 Description: Chat GPT app for Low iOS
 Author: Tomkids
-Icon: http://tomkidss.github.io/cydia/icons/chatgpt.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: ChatGPT
 
 Package: tomkids.OldTikTokCN
@@ -3091,7 +3241,7 @@ SHA256: 1bcf422fcf23a87d5e21c2ef628aaaf5f0793d35396289a67000288c70a7f1c9
 Section: Applications
 Description: TikTok CN app for Low iOS
 Author: Tomkids
-Icon: https://tomkidss.github.io/cydia/icons/oldtiktokcn.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: OldTikTokCN
 
 Package: tomkids.StickMan
@@ -3108,6 +3258,7 @@ Description: Game StickMan Movies_1.0
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: StickMan Movies_1.0
 
 Package: tomkids.Youtube1.0
@@ -3122,6 +3273,7 @@ SHA256: 717178bb41bc8d16205d49e3cada6509edfad52e143169af0c3b798ed121b15b
 Section: Applications
 Description: Converted from IPA
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Youtube1.0
 
 Package: tomkids.Youtube17.28.2YoutubeX1.7.19
@@ -3136,6 +3288,7 @@ SHA256: 1fb2ac6e7328e75046e0a9c0df0ca733b5ede02ea5ef8ebb2d01298045ecdd9c
 Section: Applications
 Description: Converted from IPA
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Youtube17.28.2YoutubeX1.7.19
 
 Package: tomkids.app.facebookfix
@@ -3152,6 +3305,7 @@ Section: Application
 Description: Cai Fackebook da gop cac tweaks fix cho ios 6
  Cai Fackebook da gop cac tweaks fix cho ios 6
 Author: Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Facebook Fix For IOS6
 
 Package: tomkids.book.Steve Jobs
@@ -3172,6 +3326,7 @@ Description: Huong dan:
  .
  Converted by Tomkids
 Author: Converted by Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Steve Jobs - Sức mạnh của sự khác biệt
 
 Package: tomkids.book.caubesieunangluc01
@@ -3192,6 +3347,7 @@ Description: Huong dan:
  .
  Converted by Tomkids
 Author: Converted by Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Cậu bé siêu năng lực - Tập 01
 
 Package: tomkids.chuthoong01
@@ -3212,6 +3368,7 @@ Description: Huong dan:
  .
  Converted by Tomkids
 Author: Converted by Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Chú Thoong
 
 Package: tomkids.contra
@@ -3226,6 +3383,7 @@ SHA256: a7c9816d14ffb62d6e2ecc3f68af19b6b8c2b513605695b5100bd6904efcb2a4
 Section: Applications
 Description: Converted from IPA
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Contra 1.2.3
 
 Package: tomkids.facebook
@@ -3240,7 +3398,7 @@ SHA256: 510901a5230abb96254a341938185b9f61af9d2716a2c30d629e4d4ba9a91989
 Section: Applications
 Description: FaceBook app for Low iOS
 Author: Tomkids
-Icon: http://tomkidss.github.io/cydia/icons/facebook.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: FaceBook
 
 Package: tomkids.gamethung
@@ -3257,6 +3415,7 @@ Description: Game Thung cho ios thap from Hung Ga
  .
  Converted by Tomkids
 Author: Converted ipa to deb by Tomkids's tool
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Games Thùng-HNC
 
 Package: tomkids.nhaccuatui
@@ -3272,7 +3431,7 @@ SHA256: 7be5071663b794a648a3777e1035ab28771da2e6823fc9a0a2789792c635f61d
 Section: Applications
 Description: Nhạc của tui cho IOS thấp
 Author: Tomkids
-Icon: https://tomkidss.github.io/cydia/icons/nhaccuatui.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: NhacCuaTui
 
 Package: tomkids.nhaccuatui.lite
@@ -3287,7 +3446,7 @@ SHA256: 46240cacd1b91ca7dc51a41f65f55d6ac2ca74b7fa1fb01f1d579ef52b09ab89
 Section: Applications
 Description: Nhạc của tui cho IOS thấp
 Author: Tomkids
-Icon: https://tomkidss.github.io/cydia/icons/nhaccuatuilite.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: NhacCuaTui Lite
 
 Package: tomkids.phoenix6
@@ -3302,6 +3461,7 @@ SHA256: 4b6feacc3fe71867ccab85388c536f0eb15ce1340813af7f3937c277d4b944af
 Section: Applications
 Description: Converted from IPA
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Phoenix6
 
 Package: tomkids.soundwave
@@ -3316,6 +3476,7 @@ SHA256: 222ac094feff2640f7f5ee83b09e1ef9d1d82945405226b47ac9efe42553777e
 Section: Applications
 Description: Converted from IPA
 Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Sound Cloud
 
 Package: tomkids.soundwave
@@ -3330,7 +3491,6 @@ SHA256: 42e6f9cfb467a0ff0b8dec49d2aab69eb5741cb42c7dbaf6ad3efc7ad51763b6
 Section: Applications
 Description: soundwave 1.0.0 for Low iOS
 Author: Build app to tweak by Tomkids
-Icon: http://tomkidss.github.io/cydia/icons/SoundWave.png
 
 Package: tomkids.tiktokfix
 Version: 2.0-2
@@ -3344,7 +3504,7 @@ SHA256: 7fa89c6e998113b1e0b18e6552c0393752243b97979fc3551f5503592ba08401
 Section: Applications
 Description: TikTok app fix for Low iOS
 Author: Fix by TuanEm
-Icon: http://tomkidss.github.io/cydia/icons/tiktokios6.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: TikTok Fix
 
 Package: tomkids.youtube2.0.0
@@ -3360,7 +3520,6 @@ Section: Applications
 Description: Youtube 2.0.0 for Low iOS
  Luu y: Muon chay duoc Ytb nay thi can cai them tweak tubereplacer_1.0.4.3 nua nhe
 Author: Build app to tweak by Tomkids
-Icon: http://tomkidss.github.io/cydia/icons/youtube.png
 
 Package: uk.invoxiplaygames.checkmatestore
 Version: 1.2
@@ -3377,6 +3536,7 @@ Section: Tweaks
 Description: Disable capability limits in the App Store.
 Author: InvoxiPlayGames <webmaster@invoxiplaygames.uk>
 Depiction: http://cydia.invoxiplaygames.uk/dp/checkmatestore.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Checkmate, Store!
 
 Package: unrar
@@ -3441,6 +3601,7 @@ Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: gdrive_app_1uhYv8a84yciRaqXLlMlOKUgUns-j0Pn8.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
 Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: BáoMới v240117.2200.01 (iOS 6.0)
 Sponsor: Admin <admin@localhost>
 
@@ -3458,6 +3619,7 @@ SHA256: 857c6906b499bf00405ac691185b0976e605894c79c14cacfa5a7e19f5c9f0f2
 Section: Tweaks
 Description: Show a customizable hello alert inside Settings on iOS 5 to 8.
 Author: TomKids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Đình Lê Say Bye
 
 Package: vn.gsm.apploader
@@ -3477,7 +3639,7 @@ Homepage: http://cydia.vn/
 Description: AppLoader for AppStoreVn
 Author: Cydia.vn <repo@cydia.vn>
 Depiction: http://cydia.gsm.vn/t3469/
-Icon: file:///Applications/AppLoader.app/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AppStoreVn - AppLoader for iOS 4.3+
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3500,6 +3662,7 @@ Homepage: http://cydia.vn/
 Description: AppSync allows you to sync and install cracked iOS applications.
 Author: Dissident <repo@cydia.vn>
 Depiction: http://cydia.gsm.vn/t2086/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AppSync for iOS 5.0+
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3520,6 +3683,7 @@ Homepage: http://cydia.vn/>
 Description: Amazing Water Effects On SpringBoard
 Author: Elias Limneos <repo@cydia.vn>
 Depiction: http://cydia.gsm.vn/t3471/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AquaBoard - Liquid SpringBoard
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3540,7 +3704,7 @@ Homepage: http://cydia.vn/
 Description: A fantastic re-imagined multitasking bar!
 Author: A3tweaks
 Depiction: http://cydia.gsm.vn/t4264/
-Icon: file:///Library/PreferenceLoader/Preferences/AuxoIcon@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Auxo (Original)
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3559,7 +3723,7 @@ Homepage: http://cydia.vn/
 Description: Backup deb's file script
 Author: Redenfire <repo@cydia.vn>
 Depiction: http://cydia.vn/depic/t1191/
-Icon: file:///Applications/BTD.app/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: BackToDeb
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3579,7 +3743,7 @@ Homepage: http://cydia.vn/
 Description: 3D and other effects on icon pages!
 Author: Aaron Ash (Charybdis) <repo@cydia.vn>
 Depiction: http://cydia.vn/depic/t1/
-Icon: file:///Applications/BarrelSettings.app/Barrel_AppIcon57x57.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Barrel
 
 Package: vn.gsm.callbar
@@ -3600,7 +3764,7 @@ Homepage: http://cydia.vn/
 Description: Don't let incoming calls interrupt you!
 Author: E. Limneos & J. Tucker
 Depiction: http://cydia.gsm.vn/t3727/
-Icon: file:///Applications/CallBar.app/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: CallBar
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3618,6 +3782,7 @@ Homepage: http://cydia.vn/
 Description: Crack Tweaks on one click
 Author: julioverne
 Depiction: http://cydia.vn/depic/t5151/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: CrackTool
 
 Package: vn.gsm.cylinder
@@ -3637,7 +3802,7 @@ Homepage: http://cydia.vn/
 Description: Make your icons dance
 Author: Reed Weichler (rweichler) <repo@cydia.vn>
 Depiction: http://cydia.gsm.vn/t4783/
-Icon: file:///Library/PreferenceBundles/CylinderSettings.bundle/Icon@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Cylinder
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3657,7 +3822,7 @@ Homepage: http://cydia.vn/
 Description: beautiful animated flip clock widget for the notification center.
 Author: VladMax Soft
 Depiction: http://cydia.gsm.vn/t4132/
-Icon: file:///Library/PreferenceBundles/FlipClockWidgetPrefs.bundle/fcprefs2@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Flip Clock for Notification Center
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3678,6 +3843,7 @@ Homepage: http://cydia.vn/
 Description: This is a compatibility version of Forecast for iOS6.
 Author: Stimpy5050 <dashman@gmail.com>
 Depiction: http://cydia.gsm.vn/t2680/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Forecast for iOS6
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3696,6 +3862,7 @@ Homepage: http://cydia.vn/
 Description: Force applications to show in fullscreen mode
 Author: Ryan Petrich <repo@cydia.vn>
 Depiction: http://cydia.vn/depic/t3946/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: FullForce for Phone
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3715,7 +3882,7 @@ Homepage: http://iphone.gsm.vn/
 Description: Giả lập iPod chơi nhạc trên iPhone / iPod Touch!
 Author: Pelaez <me@epelaez.net>
 Depiction: http://cydia.gsm.vn/t603/
-Icon: file:///Applications/iClassic.app/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: iClassic
 Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
 
@@ -3736,7 +3903,7 @@ Homepage: http://cydia.vn/
 Description: The ultimate iPhone, iPod and iPad system cleaner & optimizer
 Author: Exile.90
 Depiction: http://cydia.vn/depic/t4096/
-Icon: file:///Applications/iCleaner.app/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: iCleaner Pro
 
 Package: vn.gsm.ifile
@@ -3755,6 +3922,7 @@ Homepage: http://cydia.vn/
 Description: A File Manager and Viewer. iFile is a file manager runnning under user root. It allows fast navigation through the iPhone file system.
 Author: Carsten Heinelt <repo@cydia.vn>
 Depiction: http://cydia.vn/depic/t48/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: iFile
 
 Package: vn.gsm.intelliscreenx
@@ -3774,6 +3942,7 @@ Homepage: http://cydia.vn/
 Description: Facebook, Twitter, RSS, Enhanced Mail, ++ in your iOS 7 Notification Center and on your Lock Screen!
 Author: intelliborn
 Depiction: http://cydia.vn/depic/t5312/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: IntelliScreenX
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3793,6 +3962,7 @@ Homepage: http://cydia.vn/
 Description: iOS'86 consists of months of work and over 1,200 graphic
 Author: Cody-lg
 Depiction: http://cydia.gsm.vn/t4316/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: iOS'86
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3810,6 +3980,7 @@ SHA256: 254c0e1b7191a39ed9e412bc40406ff9587e15f5f0657450ee8953057fcfb7e2
 Section: !GSMVN-Themes
 Description: iPod clickwheel skin for iClassic player
 Author: Christian Baroni <Cstsxyfry212@aol.com>
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: iPod Classic Theme for iClasic
 
 Package: vn.gsm.jukebox
@@ -3827,7 +3998,7 @@ Homepage: http://cydia.vn/
 Description: Control your music from the NC.
 Author: aricha
 Depiction: http://cydia.gsm.vn/t2863/
-Icon: file:///Library/WeeLoader/Plugins/Jukebox.bundle/MusicAppIcon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Jukebox
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3847,6 +4018,7 @@ Homepage: http://cydia.vn/
 Description: Gói ngôn ngữ tiếng Việt cho Activator 1.8.3.
 Author: Cydia.vn <repo@cydia.vn>
 Depiction: http://cydia.gsm.vn/t2365/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Activator Việt
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3865,7 +4037,7 @@ Homepage: http://cydia.vn/
 Description: complete feature-filled YouTube app
 Author: Jonas Gessner
 Depiction: http://cydia.vn/depic/t2248/
-Icon: file:///Applications/ProTube.app/icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: ProTube
 
 Package: vn.gsm.removebackgroundapp
@@ -3885,7 +4057,7 @@ Homepage: http://cydia.vn/
 Description: Remove all apps from the task switcher.
 Author: rono23 <repo@cydia.vn>
 Depiction: http://cydia.gsm.vn/t982/
-Icon: file:///Applications/RemoveBG.app/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Remove Background
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3903,7 +4075,7 @@ Section: !CydiaVn-Tools
 Description: Slide switcher cards to kill apps
 Author: Suu
 Depiction: http://cydia.vn/depic/t5606/
-Icon: file:///Library/PreferenceBundles/Slide2Kill8ProSettings.bundle/Slide2Kill8ProSettings@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Slide2Kill8 Pro
 
 Package: vn.gsm.slide2kill9
@@ -3921,7 +4093,7 @@ Homepage: http://cydia.vn/
 Description: Slide switcher card to kill apps
 Author: Suu
 Depiction: http://cydia.vn/depic/t5989/
-Icon: file:///Library/PreferenceBundles/Slide2Kill9Settings.bundle/Slide2Kill9Settings@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Slide2Kill 9
 
 Package: vn.gsm.slide2killpro
@@ -3941,7 +4113,7 @@ Homepage: http://cydia.vn/
 Description: Slide the icon in switcher to kill app(s)
 Author: Suu
 Depiction: http://cydia.gsm.vn/t4345/
-Icon: file:///Library/PreferenceBundles/Slide2KillSettings.bundle/Slide2KillSettings@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Slide2Kill Pro
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -3961,7 +4133,7 @@ Homepage: http://cydia.vn/
 Description: This tweak will speed up the animation transitions to make your device Look faster.
 Author: Philip Wong <support@gsm.vn>
 Depiction: http://cydia.gsm.vn/t375/
-Icon: file://Library/PreferenceLoader/Preferences/SpeedIntensifier@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Speed Intensifier 5
 Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
 
@@ -3981,7 +4153,7 @@ Homepage: http://cydia.vn/
 Description: This tweak will speed up the animation transitions to make your device Look faster.
 Author: Philip Wong <support@gsm.vn>
 Depiction: http://cydia.gsm.vn/t375/
-Icon: file://Library/PreferenceLoader/Preferences/SpeedIntensifier@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Speed Intensifier 5
 Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
 
@@ -4001,6 +4173,7 @@ Homepage: http://cydia.vn/
 Description: Addon to Overclock/Underclock
 Author: Philip Wong <support@gsm.vn>
 Depiction: http://cydia.gsm.vn/t1316/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Speed Intensifier Addon
 Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
 
@@ -4021,7 +4194,7 @@ Homepage: http://cydia.vn/
 Description: SpringBoard, the way you want it. All over again.
 Author: FilippoBiga
 Depiction: http://cydia.gsm.vn/t2197/
-Icon: file:///Applications/springtomizeapp.app/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Springtomize 2 - iOS 5 & 6
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -4044,7 +4217,7 @@ Tag: role::developer
 Author: FilippoBiga <filippobiga.dev@gmail.com>
 Depiction: http://cydia.gsm.vn/t2197/
 Dev: filippobiga
-Icon: file:///Applications/springtomizeapp.app/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Springtomize2-Icons
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -4065,7 +4238,7 @@ Homepage: http://moreinfo.thebigboss.org/moreinfo/depiction.php?file=springtomiz
 Description: Localizations for Springtomize2
 Author: FilippoBiga <filippobiga.dev@gmail.com>
 Depiction: http://cydia.gsm.vn/t2197/
-Icon: file:///Applications/springtomizeapp.app/Icon.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Springtomize2-Localizations
 Sponsor: thebigboss.org <http://thebigboss.org>
 
@@ -4085,6 +4258,7 @@ Homepage: <http://cydia.vn/>
 Description: Lock animation like an old tv!
 Author: Bensge <repo@cydia.vn>
 Depiction: http://cydia.gsm.vn/t3319/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: TVLocker Pro
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -4103,7 +4277,7 @@ Homepage: http://cydia.vn/
 Description: Picture-in-picture for video; multitask while playing movies
 Author: Ryan Petrich
 Depiction: http://cydia.vn/depic/t4582/
-Icon: file:///System/Library/PreferenceLoader/Preferences/VideoPane/VideoPane@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: VideoPane
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -4125,7 +4299,7 @@ Homepage: http://cydia.vn/
 Description: Awesome, useful swipe multitasking!
 Author: chpwn
 Depiction: http://cydia.gsm.vn/t2238/
-Icon: file:///Library/PreferenceLoader/Preferences/Zephyr@2x.png
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Zephyr
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
@@ -4143,6 +4317,7 @@ SHA256: 5b3341d00b3d2eb496e2192b904003226d026069546d12aede57c4805b4ddbf7
 Section: Tweak
 Description: AppSync patches the installd file on your device iOS 3.1 - 3.1.4
 Author: Reilly <appsync@hackulo.us>
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AppSync for OS 3.1
 
 Package: vn.iossp.appsync40plus
@@ -4163,6 +4338,7 @@ Homepage: https://cydia.angelxwind.net/
 Description: AppSync Unified allows you to sync and install unsigned iOS applications. Only for iOS 4.
 Author: Karen/あけみ, Dissident <angelXwind@angelxwind.net>
 Depiction: https://cydia.angelxwind.net/?page/net.angelxwind.appsync40plus
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: AppSync for iOS 4.0
 
 Package: vn.iossp.googlefix
@@ -4178,6 +4354,7 @@ SHA256: 6a8737ae26c9a297879fe5863cb7cc2d29dbc4c4490f1e53e911573f4e9aaee2
 Section: Tweak
 Description: Fixes Google search on iOS 6
 Author: Victor
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: GoogleFix
 
 Package: vn.tomkids.repoicon
@@ -4193,6 +4370,7 @@ Section: Tweaks
 Priority: optional
 Description: Copy Tomkids repo icon to Cydia Sections folder.
 Author: Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Tomkids Repo Icon
 
 Package: vn.tomkids.tweaks.ncmusicpanel
@@ -4209,6 +4387,7 @@ SHA256: 03789f50af4998f55e593621f1e11f2d298a0b54821fd2fc102a87febf070050
 Section: Tweaks
 Description: SpringBoard Notification Center style music panel for iOS 5-6 with artwork, controls and preferences.
 Author: TomKids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Tomkids NC Music
 
 Package: vn.tomkids.tweaks.popuphellosetting
@@ -4225,6 +4404,7 @@ SHA256: d7540b0eb3ebf2d687fcb4291e7cd17af285e6818a7a11f8a31bbda1d53626d5
 Section: Tweaks
 Description: Show a customizable popup inside Settings on iOS 5 to 8.
 Author: TomKids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: PopUp Hello Setting
 
 Package: vn.tomkids.tweaks.sayhi
@@ -4241,6 +4421,7 @@ SHA256: 35409072703c6322b43edb2346e4b403b1c7c6b25de54101542b186e0292670c
 Section: Tweaks
 Description: Show a customizable hello alert inside Settings on iOS 5 to 8.
 Author: TomKids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: TomKids Say Hi
 
 Package: winterboard
@@ -4264,6 +4445,7 @@ Homepage: http://www.saurik.com/id/9
 Description: theme manager, used by most themes
 Author: Jay Freeman (saurik) <saurik@saurik.com>
 Depiction: http://cydia.saurik.com/info/winterboard/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: WinterBoard
 
 Package: zip
@@ -4297,6 +4479,7 @@ Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: 9mm%20by%20Gameloft%20%281.0.3%29.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
 Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: 9mm v1.0.3 (iOS 5.1)
 Sponsor: Admin <admin@localhost>
 
@@ -4315,6 +4498,7 @@ Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: gdrive_app_1UDKWP7DIRRvlxG7NNrGh2LDEK50a8mpw.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
 Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: Twitter v5.0.3 (iOS 5.0)
 Sponsor: Admin <admin@localhost>
 
@@ -4333,6 +4517,7 @@ Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: gdrive_app_1PHVn9zEvCpuPhjhgM6XrzbpMrdRq0kgK.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
 Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: iClock v1.0.3 (iOS 4.0)
 Sponsor: Admin <admin@localhost>
 
@@ -4372,6 +4557,25 @@ Author: Admin <admin@localhost>
 Depiction: https://tomkidsrepo.cloud
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png
 Name: PvZ v524 (iOS 2.2.1)
+Sponsor: Admin <admin@localhost>
+
+Package: com.gameloft.NYNights
+Version: 1.1.5
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 2.2.1), uikittools, appsync
+Filename: work/deb/com.gameloft.NYNights-1.1.5-iOS-2.2.1.deb
+Size: 47012290
+MD5sum: b2d9be360bd1176eeb48f7f32382ed5e
+SHA1: 29f0f3e6f270ca14e63ce480822ce6bd0adf4cb7
+SHA256: 92b26c0620929a9585d9150aeb031c263994c9efb4be31899cc8e589dd3a1f07
+Section: AppStore Apps
+Homepage: https://tomkidsrepo.cloud
+Description: The decrypted ipa file: New%20York%20Nights%201.1.5.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
+Name: NY Nights v1.1.5 (iOS 2.2.1)
 Sponsor: Admin <admin@localhost>
 
 
