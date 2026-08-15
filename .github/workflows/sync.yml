@@ -40,6 +40,10 @@ jobs:
             rm -f "Packages_$REPO"
           done
 
+      - name: Scrub Github URLs from metadata
+        run: |
+          sed -i -e '/^Filename:/! s|https://github.com/tomkids[a-zA-Z0-9_\.\/-]*|https://tomkidsrepo.cloud|gi' Packages
+
       - name: Compress Packages
         run: bzip2 -fks Packages
 
