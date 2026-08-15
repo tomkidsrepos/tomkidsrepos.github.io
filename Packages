@@ -201,7 +201,7 @@ Description: Hay them cac nguon sau de xem tivi:
  https://iptv-org.github.io/iptv/languages/vie.m3u
  https://rg.com.vn/coban
 Author: Converted ipa to deb by Tomkids's tool
-Icon: https://github.com/tomkidss/cydia/blob/main/CydiaIcon.png
+Icon: https://tomkidsrepo.cloud
 Name: GoTV
 
 Package: Tomkids.Messenger
@@ -900,10 +900,10 @@ MD5sum: 64581aa00a85acc04e1b5467de4f2692
 SHA1: 1ea8bda0e465560c74925833523de97640fb539e
 SHA256: 9bec7891f3c18032ca67da4c49e82faa1b0c6375f64aa037282e67868f779ac8
 Section: AppStore Apps
-Homepage: https://github.com/tomkidss/cydia
+Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: gdrive_app_1nWkpE0KMsjIkG5hKT_gv6H-7UZU3ezbA.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
-Depiction: https://github.com/tomkidss/cydia
+Depiction: https://tomkidsrepo.cloud
 Name: Instagram v361522 (iOS 5.0)
 Sponsor: Admin <admin@localhost>
 
@@ -1046,10 +1046,10 @@ MD5sum: 48e2a2ce72ea6781a37418b4865ec771
 SHA1: b696256dd2a3a7af86d09bc2b190097779de4fc9
 SHA256: b5abd1653f7bb4a20fb264deccfeac35795744df47452b83dc3b76c192a346c0
 Section: AppStore Apps
-Homepage: https://github.com/tomkidss/cydia
+Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: SimCity%E2%84%A2%20Deluxe%20v1.0.1.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
-Depiction: https://github.com/tomkidss/cydia
+Depiction: https://tomkidsrepo.cloud
 Name: SimCity DLX v1.0.1 (iOS 3.0)
 Sponsor: Admin <admin@localhost>
 
@@ -1064,10 +1064,10 @@ MD5sum: 1e285e20bb161c9a1c1230bed3cb169e
 SHA1: 16918d0580de814de3806055a48acdfbf8c1a1a0
 SHA256: 67d09dc82df4b834be379723f180de70dd19ba6ea8c57dc33163ada8ccf8f399
 Section: AppStore Apps
-Homepage: https://github.com/tomkidss/cydia
+Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: The_Sims_3_World_Adventures__Electronic_Arts___v1.1.22_os40_-kOtyara.rc318.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
-Depiction: https://github.com/tomkidss/cydia
+Depiction: https://tomkidsrepo.cloud
 Name: TheSims3WA v1.1.22 (iOS 4.0)
 Sponsor: Admin <admin@localhost>
 
@@ -1822,10 +1822,10 @@ MD5sum: edae07e4725768143350cb31d671dbb9
 SHA1: 07b13c8fc4a8f7752b7f092fb06b6d28b35b75dd
 SHA256: 0b1a9b5479b67a56f67d15b53ce4e173b5d2da4f20984cd81c4e09863cad4e99
 Section: AppStore Apps
-Homepage: https://github.com/tomkidss/cydia
+Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: Plant%20vs%20Zombies%20V1.0.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
-Depiction: https://github.com/tomkidss/cydia
+Depiction: https://tomkidsrepo.cloud
 Name: PvZ v524 (iOS 2.2.1)
 Sponsor: Admin <admin@localhost>
 
@@ -2336,10 +2336,10 @@ MD5sum: 17920718904c2c72f6b23874d0326ee6
 SHA1: 8a35833cd4c2ba878735b28dfb8668841fa80ffa
 SHA256: 0edc6f3977ce8cc34da5ed52983d11ff4421731cef0af98a8ec2664bfc5a0a8a
 Section: AppStore Apps
-Homepage: https://github.com/tomkidss/cydia
+Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: gdrive_app_1YZy90I2Jpmg6u0buXlPfn2B78izzferA.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
-Depiction: https://github.com/tomkidss/cydia
+Depiction: https://tomkidsrepo.cloud
 Name: UC Browser v10.6.1.760 (iOS 6.0)
 Sponsor: Admin <admin@localhost>
 
@@ -3437,10 +3437,10 @@ MD5sum: 3b778c39db05f6d3578b5522bd94c428
 SHA1: e7983e67e623c204a5a09198353874dec2dfa875
 SHA256: 3bd99bfc64dbef8c571b4bc2166dd4903fd47b4fa120085c44427e4edb8cfeba
 Section: AppStore Apps
-Homepage: https://github.com/tomkidss/cydia
+Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: gdrive_app_1uhYv8a84yciRaqXLlMlOKUgUns-j0Pn8.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
-Depiction: https://github.com/tomkidss/cydia
+Depiction: https://tomkidsrepo.cloud
 Name: BáoMới v240117.2200.01 (iOS 6.0)
 Sponsor: Admin <admin@localhost>
 
@@ -4293,10 +4293,10 @@ MD5sum: b39016b9d6b926b4c6b95c5831d19f90
 SHA1: 090c55e080e46ad98a370e347f65ebefc394c136
 SHA256: 48b0b1b1b65b0e69a85fbaf47380938e66d80f9031e0c8707bb1cfc96cbc5abf
 Section: AppStore Apps
-Homepage: https://github.com/tomkidsrepos/AppStores
+Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: 9mm%20by%20Gameloft%20%281.0.3%29.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
-Depiction: https://github.com/tomkidsrepos/AppStores
+Depiction: https://tomkidsrepo.cloud
 Name: 9mm v1.0.3 (iOS 5.1)
 Sponsor: Admin <admin@localhost>
 
@@ -4311,10 +4311,10 @@ MD5sum: d2013a2da41046bf1b135b73517c040e
 SHA1: 1cd9f412ce33206acd441f471a80afe427572bbb
 SHA256: a19af645d7390016e10fb5b7c156080170d9c3af6249ec87747c3ef12061320a
 Section: AppStore Apps
-Homepage: https://github.com/tomkidsrepos/AppStores
+Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: gdrive_app_1UDKWP7DIRRvlxG7NNrGh2LDEK50a8mpw.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
-Depiction: https://github.com/tomkidsrepos/AppStores
+Depiction: https://tomkidsrepo.cloud
 Name: Twitter v5.0.3 (iOS 5.0)
 Sponsor: Admin <admin@localhost>
 
@@ -4329,11 +4329,49 @@ MD5sum: 8b2bc043a6882658078141e5f0bc6d39
 SHA1: 6bfcbcf9663a3a67e036d59d2981de09a311718d
 SHA256: dd1d5f50e42a2ec64f868cfa563e87544c1fd587056a1a8e12fefdc7e462c32d
 Section: AppStore Apps
-Homepage: https://github.com/tomkidsrepos/AppStores
+Homepage: https://tomkidsrepo.cloud
 Description: The decrypted ipa file: gdrive_app_1PHVn9zEvCpuPhjhgM6XrzbpMrdRq0kgK.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
 Author: Admin <admin@localhost>
-Depiction: https://github.com/tomkidsrepos/AppStores
+Depiction: https://tomkidsrepo.cloud
 Name: iClock v1.0.3 (iOS 4.0)
+Sponsor: Admin <admin@localhost>
+
+Package: com.clickgamer.envndict
+Version: 3.9
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 4.3), uikittools, appsync
+Filename: work/deb/com.clickgamer.envndict-3.9-iOS-4.3.deb
+Size: 8551164
+MD5sum: 9e2a51c160cc2dab9364217e257316e6
+SHA1: b26d2a41aa14553d60dd94c58d1cf8a7022f9997
+SHA256: fb8d0ef4e59621fba98afa30412fb65d461686e7797a04550ade4494492eebaf
+Section: AppStore Apps
+Homepage: https://tomkidsrepo.cloud
+Description: The decrypted ipa file: gdrive_app_1hbogzi5Gas9w2b10FT6xgNLp-S7z9oW9.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
+Name: EN-VN Dict v3.9 (iOS 4.3)
+Sponsor: Admin <admin@localhost>
+
+Package: com.popcap.PvZ
+Version: 524
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 2.2.1), uikittools, appsync
+Filename: work/deb/com.popcap.PvZ-524-iOS-2.2.1.deb
+Size: 35085192
+MD5sum: 26c12582f0bad5a9b28a48c7c2655286
+SHA1: 58c7f18a521d80d10526b5acfb52555a7478f1c1
+SHA256: ccd778cf1f0afb56435155c823a6e414fde4ed52f3642e4a812ec0b54b855804
+Section: AppStore Apps
+Homepage: https://tomkidsrepo.cloud
+Description: The decrypted ipa file: Plant%20vs%20Zombies%20V1.0.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png
+Name: PvZ v524 (iOS 2.2.1)
 Sponsor: Admin <admin@localhost>
 
 
