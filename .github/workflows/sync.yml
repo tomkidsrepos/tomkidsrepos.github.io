@@ -1,0 +1,47 @@
+name: Cluster Sync Repo
+on:
+  schedule:
+    - cron: '0 */6 * * *'
+  workflow_dispatch:
+
+env:
+  DOMAIN: https://tomkidsrepo.cloud
+  SUB_REPOS: "package_repo_A1"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Prepare Clean Packages
+        run: |
+          rm -f Packages Packages.bz2
+          touch Packages
+
+      - name: Download & Merge Packages from Sub-repos
+        run: |
+          for REPO in $SUB_REPOS; do
+            echo "Processing sub-repo: $REPO"
+            wget -t 3 -O "Packages_$REPO" "$DOMAIN/$REPO/Packages" || true
+            
+            if [ -f "Packages_$REPO" ]; then
+              sed -i "s|^Filename: \./|Filename: $REPO/|g" "Packages_$REPO"
+              sed -i "s|^Filename: \(?!$REPO/\)|Filename: $REPO/|g" "Packages_$REPO"
+              
+              cat "Packages_$REPO" >> Packages
+              echo "" >> Packages
+              rm -f "Packages_$REPO"
+            fi
+          done
+
+      - name: Compress Packages
+        run: bzip2 -fks Packages
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Cluster Repo Updated"
+          file_pattern: "Packages Packages.bz2"
