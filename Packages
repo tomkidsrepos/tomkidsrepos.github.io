@@ -4597,4 +4597,23 @@ Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: Prince Retro v1.0.2 (iOS 3.1.3)
 Sponsor: Admin <admin@localhost>
 
+Package: com.posimotion.YoYo
+Version: 1.1
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 2.2.1), uikittools, appsync
+Filename: work/deb/com.posimotion.YoYo-1.1-iOS-2.2.1.deb
+Size: 6989228
+MD5sum: afc9d1f8884d640731110320f3065a31
+SHA1: 90b3cf7813781ec67c883a1b144ebca863dfba20
+SHA256: 1c9740903d5261db96890a3145e35ae6b815e771f1bfb2e6a93e89cd8e59756c
+Section: AppStore Apps
+Homepage: https://tomkidsrepo.cloud
+Description: The decrypted ipa file: gdrive_app_1-Ojg_YPEP4CE0ZsI0vvtJnhWRycrSAYy.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Yo-Yo! v1.1 (iOS 2.2.1)
+Sponsor: Admin <admin@localhost>
+
 
