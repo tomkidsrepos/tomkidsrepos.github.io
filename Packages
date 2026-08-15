@@ -4616,4 +4616,23 @@ Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: Yo-Yo! v1.1 (iOS 2.2.1)
 Sponsor: Admin <admin@localhost>
 
+Package: com.ibudesigns.ComicReaderMobi
+Version: 1.1
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 2.2.1), uikittools, appsync
+Filename: work/deb/com.ibudesigns.ComicReaderMobi-1.1-iOS-2.2.1.deb
+Size: 467936
+MD5sum: 98cacc1b126f19450a18af4ba9b2e987
+SHA1: f90601f527027c0e3b52376baa1727488b89ead8
+SHA256: 35fd81a97dabcd71dee2b30c11b13743ce8df4794c8a622c3bfed8ff322c868f
+Section: AppStore Apps
+Homepage: https://tomkidsrepo.cloud
+Description: The decrypted ipa file: gdrive_app_1xIz713BiU2XZUoVTtUiUl6GK-oNWan1O.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Comics v1.1 (iOS 2.2.1)
+Sponsor: Admin <admin@localhost>
+
 
