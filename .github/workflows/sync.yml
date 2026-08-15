@@ -1,12 +1,12 @@
 name: Cluster Sync Repo
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 * * * *'
   workflow_dispatch:
 
 env:
   DOMAIN: https://tomkidsrepo.cloud
-  SUB_REPOS: "package_repo_A1"
+  SUB_REPOS: "package_repo_A1 AppStores"
 
 jobs:
   build:
