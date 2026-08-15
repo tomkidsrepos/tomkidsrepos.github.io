@@ -4318,4 +4318,22 @@ Depiction: https://github.com/tomkidsrepos/AppStores
 Name: Twitter v5.0.3 (iOS 5.0)
 Sponsor: Admin <admin@localhost>
 
+Package: com.lymobilesoft.clock
+Version: 1.0.3
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 4.0), uikittools, appsync
+Filename: work/deb/com.lymobilesoft.clock-1.0.3-iOS-4.0.deb
+Size: 6646718
+MD5sum: 8b2bc043a6882658078141e5f0bc6d39
+SHA1: 6bfcbcf9663a3a67e036d59d2981de09a311718d
+SHA256: dd1d5f50e42a2ec64f868cfa563e87544c1fd587056a1a8e12fefdc7e462c32d
+Section: AppStore Apps
+Homepage: https://github.com/tomkidsrepos/AppStores
+Description: The decrypted ipa file: gdrive_app_1PHVn9zEvCpuPhjhgM6XrzbpMrdRq0kgK.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://github.com/tomkidsrepos/AppStores
+Name: iClock v1.0.3 (iOS 4.0)
+Sponsor: Admin <admin@localhost>
+
 
