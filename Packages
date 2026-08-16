@@ -4464,6 +4464,25 @@ Priority: important
 Description: standard Windows compression tool
 
 
+Package: net.nekokawa.antennacustomizer
+Version: 0.5.2-9+debug
+Architecture: iphoneos-arm
+Maintainer: nekokawa
+Installed-Size: 440
+Depends: mobilesubstrate (>= 0.9.5000), net.nekokawa.foundation, firmware (>= 3.0), preferenceloader
+Conflicts: com.mirrordev.fakecarrier, com.phoenix.bars, com.nspwn.fakeoperator
+Filename: package_repo_A2/net.nekokawa.antennacustomizer_0.5.2-9+debug_iphoneos-arm.deb
+Size: 34550
+MD5sum: f5acf3440ebfef6d7af0b7680d622fab
+SHA1: 251a237d8dfbe6c15c2ee61cece5e22f84c7d675
+SHA256: aa75dad61c98d532a182274cb84435584e63904cc3e6450fc539cd3a99e41a32
+Section: Tweaks
+Description: Fully Customizable Antenna Bar Tweak for iPhone OS 3 ~ 10!
+Author: nekokawa
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: AntennaCustomizer
+
+
 Package: com.gameloft.9mm
 Version: 1.0.3
 Architecture: iphoneos-arm
