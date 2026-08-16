@@ -4464,6 +4464,47 @@ Priority: important
 Description: standard Windows compression tool
 
 
+Package: com.rpetrich.browserchooser
+Version: 1.0-1
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Installed-Size: 24
+Depends: firmware (>= 5.0), mobilesubstrate, applist (>= 1.4.3), preferenceloader (>= 2.0)
+Filename: package_repo_A2/browserchooser_1.0.deb
+Size: 9252
+MD5sum: ea74d6ba1cd7b11b2f324454072e1eda
+SHA1: a4afa19fca06d6a7a1c5fa20906cf41c7e538e1c
+SHA256: 4c2290bed62d385f4b06fb6bc1498dabd06b0bdda85cc70c994e402c7abb854b
+Section: System
+Priority: optional
+Homepage: http://cydia.vn/
+Description: switch default browser to Chrome, Opera, Dolphin & more..
+Author: Ryan Petrich
+Depiction: http://cydia.gsm.vn/t3016/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: BrowserChooser
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: com.saurik.impactor
+Version: 0.9.17+53.g3daccc9
+Architecture: iphoneos-arm
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Depends: firmware (>= 7.1), firmware (<= 9.0.2)
+Breaks: com.saurik.patych (<< 1.0.1)
+Filename: package_repo_A2/Impactor_0.9.17+53.g3daccc9.deb
+Size: 287862
+MD5sum: 7b002b32c58224a7d2847b46e7104d40
+SHA1: a31274a34849eaea6524b8baad5e1375a45a16f0
+SHA256: a9d49b198a8f7b63ffaaa81ce16bbd6ad51f301d80598e3ad94f8543dbebcc40
+Section: Utilities
+Priority: optional
+Description: on-device device management utility
+Tag: purpose::uikit, role::enduser
+Author: Jay Freeman (saurik) <saurik@saurik.com>
+Depiction: http://cydia.saurik.com/info/com.saurik.impactor/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Cydia Impactor
+
 Package: net.nekokawa.antennacustomizer
 Version: 0.5.2-9+debug
 Architecture: iphoneos-arm
@@ -4498,6 +4539,229 @@ Tag: role::developer
 Author: nekokawa
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: NekokawaFoundation
+
+Package: vn.gsm.acutil
+Version: 0.1.16-1
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Installed-Size: 52
+Depends: gsmicon, shell-cmds, vn.gsm.sam (>= 0.1.15)
+Conflicts: com.bingner.samprefs (<< 0.1.7-1), com.bingner.pushutil, vn.gsm.samprefs (<< 0.1.7-1), vn.gsm.pushutil
+Replaces: com.bingner.samprefs (<< 0.1.7-1), com.bingner.pushutil, vn.gsm.samprefs (<< 0.1.7-1), vn.gsm.pushutil
+Filename: package_repo_A2/acutil_0.1.16-1.deb
+Size: 18544
+MD5sum: 00f8d3982feca77d0f6bb49221d3984b
+SHA1: da0e47b8c017ce4151433a5c38cdc48d19cf2805
+SHA256: 902f41acac7f97dad96c6333ddb652adfbc7efe4c15f8adcf22ae265463b8e6c
+Section: Utilities
+Description: ACUtil is a utility to backup and restore activation records
+Author: sbingner <repo@cydia.vn>
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: ACUtil
+
+Package: vn.gsm.anyring-vi
+Version: 5.40
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Installed-Size: 10
+Depends: gsmicon, vn.gsm.anyring
+Filename: package_repo_A2/anyring_5.40_vi.deb
+Size: 6912
+MD5sum: cdce50ff02c95f607eb8b79d0a4727d9
+SHA1: 315b5066b96d08947ce96697f94393cff3e66b89
+SHA256: f14249bd27030baf7d65c7445b17e97bc23b552e699580db9557b39b72e28948
+Section: !GSMVN-VietHoa
+Homepage: http://cydia.vn/
+Description: Viet Langpack for Anyring
+Author: AnyRing
+Depiction: http://cydia.gsm.vn/t2345/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: AnyRing Viet
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.applockerviet
+Version: 2.2.5
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 12
+Depends: vn.gsm.applocker | com.nnfyrbsnss.applocker
+Filename: package_repo_A2/applockerviet_2.2.5a.deb
+Size: 3820
+MD5sum: 613d7ca5c4e35ea69051953389ab315e
+SHA1: c1ab446c8469455933decd6f721d4ff2723bf0cc
+SHA256: 5c2d84cd888b482f9129b149e095a6d0fa2ee01e02f92ee4cb16a640fda1047c
+Section: !GSMVN-VietHoa
+Homepage: http://cydia.vn/
+Description: Gói ngôn ngữ tiếng Việt cho Applocker.
+Author: Nguyen.aiti <nguyen.aiti@gmail.com>
+Depiction: http://cydia.gsm.vn/t3858/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Applocker Việt
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.faac
+Version: 1.26-3
+Architecture: iphoneos-arm
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Installed-Size: 1172
+Depends: gsmicon
+Conflicts: faac
+Replaces: faac
+Filename: package_repo_A2/faac1.26-3_FAAC.deb
+Size: 431768
+MD5sum: e866fc17232d07ccf2506f03a0efcd6c
+SHA1: 91f43579f6f0de14017148f5ad576403d8003c66
+SHA256: d687131152b2dab198ac9955ad76921337379b02d71dffb0cfff069dfe839daf
+Section: Multimedia
+Priority: optional
+Description: open source library for MPEG-4 AAC
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: FAAC
+
+Package: vn.gsm.ffmpeg
+Version: r16669,2009/18/01
+Architecture: iphoneos-arm
+Maintainer: poetic_folly <poetic_folly@modmyi.com>
+Depends: gsmicon
+Conflicts: com.fizk.ffmpeg
+Replaces: com.fizk.ffmpeg
+Filename: package_repo_A2/ffmpegr16669.deb
+Size: 5950158
+MD5sum: d696cb9d2e317acefdac2da47f0e4d8d
+SHA1: e9b79674f1194878ff867b8729e46583b2a9a49f
+SHA256: 8ebd546b9dff02664a56c65d6f9c5e2bcda8dda4e8748e96a8693981c0552e18
+Section: Multimedia
+Homepage: http://modmyi.com/info/ffmpeg.php
+Description: A port of the popular FFmpeg program (http://ffmpeg.org/). FFmpeg is a complete solution to record, convert and stream audio and video.
+Author: Yonas Yanfa <yonas.y@gmail.com>
+Depiction: http://modmyi.com/info/ffmpeg.d.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: FFmpeg
+Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
+
+Package: vn.gsm.gameplayer
+Version: 1.3.2
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 1900
+Conflicts: com.duowan.gameplayer
+Filename: package_repo_A2/gameplayer_1.3.2.deb
+Size: 1252450
+MD5sum: f8fb18c3b1957ebec09921572c4c033d
+SHA1: 477b97056e36641838db0d0d8bce4f7d70eedd5b
+SHA256: 42cd81baf437be35d9540a05f660a6ba1cc2718266f9be60bf297c8bbd1c90d6
+Section: !GSMVN-Hacks
+Priority: optional
+Homepage: http://cydia.vn/
+Description: GamePlayer là một công cụ hack game mạnh mẽ, nó có thể hack hầu hết các game Offline và một số game online.
+Author: Maocai Luo <repo@cydia.vn>
+Depiction: http://cydia.gsm.vn/t3170/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: GamePlayer
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.gremlin
+Version: 2.0i-2
+Architecture: iphoneos-arm
+Maintainer: CocoaNuts <apt@cocoanuts.co>
+Installed-Size: 92
+Pre-Depends: firmware (>= 4.2)
+Depends: mobilesubstrate
+Conflicts: gremlin, co.cocoanuts.gremlin2
+Replaces: co.cocoanuts.gremlin2
+Provides: co.cocoanuts.gremlin2
+Filename: package_repo_A2/gremlin_2.0i-2.deb
+Size: 32102
+MD5sum: e677abc47f1ddd724f3818d9dec66632
+SHA1: 7f4302bea6b97fae6cf9b7cd09a70988b0f576e7
+SHA256: eaa3020d2d64d2e11d69f016b4cfb0da0d6b8cb5674397b3c35bd6b4a48df146
+Section: Multimedia
+Priority: optional
+Description: Import Media into Standard Apps
+    This is package is only for use by YourTube and Celeste.
+    Please contact CocoaNuts for further info.
+Author: CocoaNuts <support@cocoanuts.co>
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Gremlin
+
+Package: vn.gsm.iblacklist-vi
+Version: 6.1
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Depends: gsmicon, vn.gsm.iblacklist | iblacklist
+Filename: package_repo_A2/iblacklist_6.1_vi.deb
+Size: 12348
+MD5sum: a1f7d56a7dc40cf15685f06666e64c2a
+SHA1: 8b7a514cc4192f8ea43e5ebe42f658bc52d738df
+SHA256: 09e235587c1a078c9161bbcb2d738be0a614c8b6ad3cfcf6be51421ee03106bf
+Section: !GSMVN-VietHoa
+Homepage: http://cydia.vn/
+Description: Gói ngôn ngữ tiếng Việt cho iBlackList
+Author: Cydia.vn <repo@cydia.vn>
+Depiction: http://cydia.gsm.vn/t2346/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: iBlacklist Viet
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.iprotect-vi
+Version: 2.7
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Installed-Size: 14
+Depends: gsmicon, vn.gsm.iprotect
+Filename: package_repo_A2/iprotect_2.7-vi.deb
+Size: 2286
+MD5sum: 901a1449e9db0917b57d70ff6371f6ef
+SHA1: 71d40c9cf2d0d1fea51b22747d18541f141805fc
+SHA256: 3add8491e934a121c8968531a986e680c5dfe5637abfcbb71c3ecbbb6fcef367
+Section: !GSMVN-VietHoa
+Homepage: http://cydia.vn/
+Description: Gói ngôn ngữ Tiếng Việt cho iProtect.
+Author: Aqua Sta
+Depiction: http://cydia.gsm.vn/t392/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: iProtect Viet
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.kuaidial-vi
+Version: 0.3.0a4-44
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 2800
+Depends: gsmicon, mobilesubstrate, preferenceloader, firmware (>= 4.0)
+Conflicts: vn.gsm.kuaidial, kuaidial-beta
+Filename: package_repo_A2/kuaidial-beta_0.3.0a4-44_vi.deb
+Size: 655482
+MD5sum: 9f34ee52600a5aef577a1d02cc201894
+SHA1: 28a4770f09b27962a7c5f0fdf4c85bfc8a24eceb
+SHA256: 86cda866b5022aae5bb2c53ecd5bb93bda9c157a15aedcceafc4c9d198923d65
+Section: !GSMVN-VietHoa
+Description: KuaiDial là một tiện ích cho MobilePhone.app và MobileSMS.app
+Author: SpikeLin <linspike@gmail.com>
+Depiction: http://cydia.gsm.vn/t2349/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: KuaiDial Việt Hóa
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.libactivator-vi
+Version: 1.8.3
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Installed-Size: 45
+Depends: gsmicon, libactivator (>= 1.8.3)
+Filename: package_repo_A2/activatorviet_1.8.3.deb
+Size: 9288
+MD5sum: 754b78d9bcbcd4d23b128823d8f3841d
+SHA1: 0ceb6daeff7a598e0b4f569a772fb2893ac541fa
+SHA256: 8207ef44625d2e9c7f064b49f3f3ea2b921eea44856ca78cf987738fcba088ed
+Section: !GSMVN-VietHoa
+Homepage: http://cydia.vn/
+Description: Gói ngôn ngữ tiếng Việt cho Activator 1.8.3.
+Author: Cydia.vn <repo@cydia.vn>
+Depiction: http://cydia.gsm.vn/t2365/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Activator Việt
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
 
 Package: com.gameloft.9mm
