@@ -8,7 +8,7 @@ on:
 
 env:
   DOMAIN: https://tomkidsrepo.cloud
-  SUB_REPOS: "package_repo_A1 package_repo_A2 AppStores"
+  SUB_REPOS: "package_repo_A1 package_repo_A2 AppStores package_repo_A3 package_repo_A4"
 
 jobs:
   build:
