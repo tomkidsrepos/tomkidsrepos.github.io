@@ -4482,6 +4482,23 @@ Author: nekokawa
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: AntennaCustomizer
 
+Package: net.nekokawa.foundation
+Version: 0.0.1-7+debug
+Architecture: iphoneos-arm
+Maintainer: nekokawa
+Installed-Size: 188
+Filename: package_repo_A2/net.nekokawa.foundation_0.0.1-7+debug_iphoneos-arm.deb
+Size: 12850
+MD5sum: b3c26a1876a4633bd6f92e6312ccbad8
+SHA1: 6d9f7275f6023ccade5df4ff2a163241e7191424
+SHA256: 87e7fa65667cdb20ea70510f4918cdf011d8b728a4d0d64a6c9028070d69d4e0
+Section: System
+Description: iOS Framework to Smooth for Tweak development
+Tag: role::developer
+Author: nekokawa
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: NekokawaFoundation
+
 
 Package: com.gameloft.9mm
 Version: 1.0.3
