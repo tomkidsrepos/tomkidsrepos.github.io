@@ -4691,3 +4691,21 @@ Name: ArtPenguin v1.2.0 (iOS 4.0)
 Sponsor: Admin <admin@localhost>
 
 
+Package: vn.tomkids.tweaks.popuphellosetting
+Version: 2.0.1-1+debug
+Architecture: iphoneos-arm
+Maintainer: TomKids
+Installed-Size: 256
+Depends: mobilesubstrate, preferenceloader
+Filename: package_repo_A4/vn.tomkids.tweaks.popuphellosetting_2.0.2-1+debug_iphoneos-arm.deb
+Size: 8748
+MD5sum: 213348fd957730b472e7048862cac3f5
+SHA1: 774f1c7e61c6035741c4eb20a028bd8d5370790a
+SHA256: d7540b0eb3ebf2d687fcb4291e7cd17af285e6818a7a11f8a31bbda1d53626d5
+Section: Tweaks
+Description: Show a customizable popup inside Settings on iOS 5 to 8.
+Author: TomKids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: PopUp Hello Setting
+
+
