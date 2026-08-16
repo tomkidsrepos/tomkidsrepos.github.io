@@ -1,0 +1,85 @@
+HƯỚNG DẪN TẠO VÀ LIÊN KẾT REPO CON MỚI VÀO HỆ THỐNG CYDIA
+
+Mỗi khi bạn tạo một kho lưu trữ con mới (ví dụ: package_repo_A3, package_repo_A4...) để chứa các file .deb, bạn cần thực hiện đầy đủ 4 bước sau để hệ thống tự động nhận diện và cập nhật nó lên Cydia.
+
+---
+
+BƯỚC 1: KHAI BÁO TÊN REPO MỚI VỚI KHO CHÍNH (tomkidsrepos.github.io)
+1. Mở file `.github/workflows/sync.yml` trong repo chính `tomkidsrepos.github.io`.
+2. Tìm đến dòng có chữ `SUB_REPOS:`.
+3. Thêm tên repo mới của bạn vào giữa cặp ngoặc kép, cách các repo khác bằng một khoảng trắng (dấu cách).
+   Ví dụ: SUB_REPOS: "package_repo_A1 package_repo_A2 package_repo_A3 AppStores"
+4. Lưu lại, Commit và Push lên mạng.
+
+---
+
+BƯỚC 2: CẤP QUYỀN GHI MÃ TỰ ĐỘNG CHO REPO MỚI
+Trên trang web Github của repo con mới vừa tạo:
+1. Vào tab **Settings** (Cài đặt).
+2. Chọn mục **Actions** ở cột menu bên trái -> Chọn **General**.
+3. Cuộn xuống dưới cùng tìm đến mục **Workflow permissions**.
+4. Tích chọn vào ô **Read and write permissions**.
+5. Bấm nút **Save** màu xanh để lưu lại.
+
+---
+
+BƯỚC 3: DÁN MÃ TOKEN CHO REPO MỚI
+Để repo con có thể "báo cáo" với kho chính mỗi khi có file mới, nó cần có mã Token của bạn.
+Cũng trên trang web Github của repo con mới:
+1. Vào tab **Settings** -> **Secrets and variables** (ở cột bên trái) -> Chọn **Actions**.
+2. Bấm nút **New repository secret** màu xanh.
+3. Ô Name (tên), gõ chính xác: PAT_TOKEN
+4. Ô Secret (giá trị), dán mã Token Github của bạn vào: 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
+5. Bấm **Add secret**.
+
+---
+
+BƯỚC 4: COPY FILE CẤU HÌNH TỰ ĐỘNG (BUILD.YML)
+Bạn cần copy "động cơ" tự động từ repo cũ sang repo mới. Thao tác trên web Github của repo con mới như sau:
+1. Ở trang chủ code của repo mới, bấm nút **Add file** -> Chọn **Create new file**.
+2. Ở ô đặt tên file (Name your file...), gõ chính xác đường dẫn này: 
+   .github/workflows/build.yml
+3. Copy toàn bộ đoạn mã bên dưới và dán vào khung soạn thảo văn bản lớn:
+
+name: Build Repo Package
+on:
+  schedule:
+    - cron: '0 * * * *'
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Generate Packages
+        run: |
+          rm -f Packages Packages.bz2
+          dpkg-scanpackages -m . /dev/null > Packages
+          bzip2 -fks Packages
+          
+      - name: Commit and Push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-generate Packages"
+          file_pattern: "Packages Packages.bz2"
+
+      - name: Trigger Main Repo Sync
+        if: success()
+        run: |
+          curl -X POST https://api.github.com/repos/tomkidsrepos/tomkidsrepos.github.io/dispatches \
+          -H 'Accept: application/vnd.github.v3+json' \
+          -H 'Authorization: token ${{ secrets.PAT_TOKEN }}' \
+          -d '{"event_type": "trigger-sync"}'
+
+4. Bấm nút **Commit changes...** màu xanh ở góc phải trên cùng.
+5. Bấm tiếp **Commit changes** ở bảng hiện ra để lưu lại.
+
+Xong! Kể từ giờ, mỗi khi bạn ném file .deb vào repo mới này, hệ thống sẽ tự động quét, thêm icon và đưa lên Cydia chưa tới 1 phút.
