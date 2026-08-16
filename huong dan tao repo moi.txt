@@ -29,7 +29,7 @@ Cũng trên trang web Github của repo con mới:
 1. Vào tab **Settings** -> **Secrets and variables** (ở cột bên trái) -> Chọn **Actions**.
 2. Bấm nút **New repository secret** màu xanh.
 3. Ô Name (tên), gõ chính xác: PAT_TOKEN
-4. Ô Secret (giá trị), dán mã Token Github của bạn vào: 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
+4. Ô Secret (giá trị), dán mã Token Github của bạn vào
 5. Bấm **Add secret**.
 
 ---
