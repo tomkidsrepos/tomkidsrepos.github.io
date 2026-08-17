@@ -8,7 +8,7 @@ on:
 
 env:
   DOMAIN: https://tomkidsrepo.cloud
-  SUB_REPOS: "package_repo_A1 package_repo_A2 AppStores"
+  SUB_REPOS: "package_repo_A1 package_repo_A2 package_repo_A3 package_repo_A4 AppStores -CydiaVn-VietHoa -CydiaVn-Tools -CydiaVn-Themes -CydiaVn-Utilities -CydiaVn-System -CydiaVn-Multimedia -CydiaVn-Hacks -CydiaVn-Games -CydiaVn-Fonts -CydiaVn-Cydget -CydiaVn-Apps"
 
 jobs:
   build:
