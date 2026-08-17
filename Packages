@@ -4464,6 +4464,47 @@ Priority: important
 Description: standard Windows compression tool
 
 
+Package: com.rpetrich.browserchooser
+Version: 1.0-1
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Installed-Size: 24
+Depends: firmware (>= 5.0), mobilesubstrate, applist (>= 1.4.3), preferenceloader (>= 2.0)
+Filename: package_repo_A2/browserchooser_1.0.deb
+Size: 9252
+MD5sum: ea74d6ba1cd7b11b2f324454072e1eda
+SHA1: a4afa19fca06d6a7a1c5fa20906cf41c7e538e1c
+SHA256: 4c2290bed62d385f4b06fb6bc1498dabd06b0bdda85cc70c994e402c7abb854b
+Section: System
+Priority: optional
+Homepage: http://cydia.vn/
+Description: switch default browser to Chrome, Opera, Dolphin & more..
+Author: Ryan Petrich
+Depiction: http://cydia.gsm.vn/t3016/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: BrowserChooser
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: com.saurik.impactor
+Version: 0.9.17+53.g3daccc9
+Architecture: iphoneos-arm
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Depends: firmware (>= 7.1), firmware (<= 9.0.2)
+Breaks: com.saurik.patych (<< 1.0.1)
+Filename: package_repo_A2/Impactor_0.9.17+53.g3daccc9.deb
+Size: 287862
+MD5sum: 7b002b32c58224a7d2847b46e7104d40
+SHA1: a31274a34849eaea6524b8baad5e1375a45a16f0
+SHA256: a9d49b198a8f7b63ffaaa81ce16bbd6ad51f301d80598e3ad94f8543dbebcc40
+Section: Utilities
+Priority: optional
+Description: on-device device management utility
+Tag: purpose::uikit, role::enduser
+Author: Jay Freeman (saurik) <saurik@saurik.com>
+Depiction: http://cydia.saurik.com/info/com.saurik.impactor/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Cydia Impactor
+
 Package: net.nekokawa.antennacustomizer
 Version: 0.5.2-9+debug
 Architecture: iphoneos-arm
@@ -4498,6 +4539,955 @@ Tag: role::developer
 Author: nekokawa
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: NekokawaFoundation
+
+Package: vn.gsm.2x2foldericons
+Version: 1.0-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 41
+Depends: firmware (>= 4.0), mobilesubstrate, preferenceloader
+Filename: package_repo_A2/2x2foldericons_1.0-1.deb
+Size: 21810
+MD5sum: 22cfb3aa342660b577bd641c01646be3
+SHA1: d2ce31b0417027f01fc7d78246731d7660d58ddf
+SHA256: 94b064885e96e954f8f014f1cd913be74703e4865aea9209675741bc0549d7d3
+Section: !GSMVN-Tweaks
+Homepage: http://cydia.vn/
+Description: 2x2 Folder Icons for ayecon benchmark iOS theme.
+Author: Surenix <repo@cydia.vn>
+Depiction: http://cydia.gsm.vn/t4011/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 2x2 Folder Icons
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.3dboard
+Version: 1.1.0-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 49
+Depends: gsmicon, firmware (>= 4.0), mobilesubstrate (>= 0.9.2587-1), preferenceloader(>= 2.0)
+Filename: package_repo_A2/3dboard_1.1.0-1.deb
+Size: 16706
+MD5sum: 659a9d311431d721b7a736a0debcb80f
+SHA1: 0a1813fc7c4877d9345edb1f7d0601fb5769eb27
+SHA256: ec784828fbcf956431384debaedeaf585d3a57fa4ada37fc53691a88fe3eb9a4
+Section: !GSMVN-Tools
+Homepage: http://iphone.gsm.vn
+Description: glasses-free 3D effect for home screen
+Author: Apocolipse <apocolipse@gmail.com>
+Depiction: http://cydia.gsm.vn/t365/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 3DBoard
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.3gunrestrictor5
+Version: 5.8.4-2
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 4411
+Pre-Depends: firmware (>= 4.0)
+Depends: mobilesubstrate (>= 0.9.5000), applist (>= 1.5.9)
+Conflicts: com.crashx.unrestrictor3g, vn.gsm.unrestrictor3g
+Filename: package_repo_A2/3gunrestrictor5_5.8.4-2.deb
+Size: 2917946
+MD5sum: f317ae3934c9cc8e095090f6028a8190
+SHA1: 49c3f572d3dfe54190ac3520886f148451ff876b
+SHA256: 63ddb4a6fe337efcbf2272b2b90465ca5e6278966f0d189d3880f9413e7e1342
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: Allow 3G/LTE use of FaceTime, YouTube & more.
+ Allows you to trick applications into thinking they are on WiFi even though they are on 3G/LTE, which removes restrictions like not being able to use FaceTime on 3G or watch high quality YouTube videos.
+Author: Kim Streich
+Depiction: http://cydia.vn/depic/t2289/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 3G Unrestrictor 5 (iOS 8 & 7)
+
+Package: vn.gsm.3gunrestrictor5
+Version: 5.9.0-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 4411
+Pre-Depends: firmware (>= 4.0)
+Depends: mobilesubstrate (>= 0.9.5000), applist (>= 1.5.10)
+Conflicts: com.crashx.unrestrictor3g, vn.gsm.unrestrictor3g
+Filename: package_repo_A2/3gunrestrictor5_5.9.0-1.deb
+Size: 2925944
+MD5sum: f66b4312ba2b80132be1656fe042514b
+SHA1: 6e9bd5124633a2d6f7a0c69037bf671413424b7c
+SHA256: a697f6795eb83715521fbc2a1dc305b946931fa0945346375bf8d7ce2db49c19
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: Allow 3G/LTE use of FaceTime, YouTube & more.
+ Allows you to trick applications into thinking they are on WiFi even though they are on 3G/LTE, which removes restrictions like not being able to use FaceTime on 3G or watch high quality YouTube videos.
+Author: Kim Streich
+Depiction: http://cydia.vn/depic/t2289/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 3G Unrestrictor 5 (iOS 9/8/7)
+
+Package: vn.gsm.51107bbup
+Version: 1.0.
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <support@gsm.vn>
+Depends: gsmicon, mobileterminal
+Filename: package_repo_A2/05.11.07bbupdate.deb
+Size: 3795362
+MD5sum: b62226abeb47400698127d6bf67ae71d
+SHA1: 93fe78ee4256402489d488dac15aa8b996696960
+SHA256: 532bf3dc53052bfca364678505e7c4c883ade462086de8fd1ec9960962a299f1
+Section: !GSMVN-Tools
+Description: Không dành cho người dùng phổ thông, tuyệt đối tránh xa!
+Author: Thieu.Bocap <support@gsm.vn>
+Depiction: http://iphone.gsm.vn/moreinfo/bb051107.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 05.11.07 BBUpdate
+
+Package: vn.gsm.5omething
+Version: 1.4.4
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: winterboard
+Filename: package_repo_A2/5omething_1.4.4.deb
+Size: 4585568
+MD5sum: 728a7c3b74cd2d4b8baad0499ae8312e
+SHA1: 12bf3c0c6afe145a75ca2928a03b2f9c8fe66220
+SHA256: 09bae7ea1c9b7a2cad1c5e64d11f8c21a1392dffc5149bf7df3f048f5ee795d6
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: 1st release More icons will come in the next update.
+Author: Joy Chen
+Depiction: http://cydia.vn/depic/t5333/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 5omething
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.5rowcustomizablekeyboard
+Version: 1.1-4
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 217
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 5.0), preferenceloader (>= 2.2.2)
+Filename: package_repo_A2/5rowcustomizablekeyboard_1.1-4.deb
+Size: 70078
+MD5sum: 693e86d6e599596b7aa3ba031732c79c
+SHA1: ec57f0edb77c6ee403dd0e2f29f18f53406ea62e
+SHA256: 0129434a2dcfcadcafd5cd5b5b1a58853088f0218fe3ecc06126e4c9589613a5
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: custom keyboard; iPhone/iPod
+Author: Ganbold
+Depiction: http://cydia.vn/depic/t2557/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 5 Row Customizable Keyboard for iPhone
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.5rowcustomizablekeyboard
+Version: 1.1-5
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 217
+Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 5.0), preferenceloader (>= 2.2.2)
+Filename: package_repo_A2/5rowcustomizablekeyboard_1.1-5.deb
+Size: 69962
+MD5sum: 9358c3a82c74377754e23e22e2ab2172
+SHA1: f6438176f94bc003da6e77666c4027e8af2c2b07
+SHA256: 7236bbc7147e534e5b3706580545d5b257bd92f437146b43a796089cb0e60d4c
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: custom keyboard; iPhone/iPod
+Author: Ganbold
+Depiction: http://cydia.vn/depic/t2557/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 5 Row Customizable Keyboard for iPhone
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.5rowcustomizablekeyboardipad
+Version: 1.1-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 233
+Depends: gsmicon, mobilesubstrate (>= 0.9.5000), firmware (>= 5.0), preferenceloader (>= 2.2.2)
+Filename: package_repo_A2/5rowcustomizablekeyboardipad_1.1-1.deb
+Size: 47134
+MD5sum: 81dcd50c26af30291908de5caffbbdbe
+SHA1: 8eb52ba30bf24b3c0e906e266043d13ae2369ac9
+SHA256: 78db696f91e8ce1218c1f545e707d21feab3eba9cc826828e03ff604e4e2f2ae
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: custom keyboard; iPad iOS 5 - 7
+Author: Ganbold
+Depiction: http://cydia.gsm.vn/t2699/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 5 Row Customizable Keyboard for iPhone
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.5rowkeyboardios4
+Version: 1.4.1-1
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <support@gsm.vn>
+Installed-Size: 3221
+Depends: gsmicon, firmware (>= 4.0), winterboard, firmware (<< 4.3) | com.hiraku.keyboardfixer
+Conflicts: vn.gsm.5rowkeyboardios4nowb
+Replaces: vn.gsm.5rowkeyboardios4nowb
+Filename: package_repo_A2/5rowkeyboardios4_1.4.1-1.deb
+Size: 1416800
+MD5sum: 912ac7d965bca708a0adf93a35dde1b5
+SHA1: 2cc05742796572c647f0c9c7e152074dd136145c
+SHA256: ff537dccfa52c1e212c67bb0ef940196c9805ba2fd1e2ee0941d5f74da0d7666
+Section: !GSMVN-Tools
+Homepage: http://iphone.gsm.vn/
+Description: Bàn phím 5 dòng QWERTY cho iOS4 (Winterboard)
+Author: Hiraku <support@gsm.vn>
+Depiction: http://cydia.gsm.vn/t750/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 5-Row Keyboard iOS4
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.5rowkeyboardios4nwb
+Version: 1.4.1-1
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <support@gsm.vn>
+Installed-Size: 3221
+Depends: gsmicon, firmware (>= 4.0), firmware (<< 4.3) | com.hiraku.keyboardfixer
+Conflicts: vn.gsm.5rowkeyboardios4
+Replaces: vn.gsm.5rowkeyboardios4
+Filename: package_repo_A2/5rowkeyboardios4nowb_1.4.1-1.deb
+Size: 1415718
+MD5sum: 590f839ea9f0d04d0ad12f6fb3b38dff
+SHA1: 0893460c40885ccaa4bfa0669fe1670fd8f6ad9c
+SHA256: 0efb3f8b32ce6e7e144eb9e4f431b279f3ed16d4a1de5b1575dcf72ff76190bb
+Section: !GSMVN-Tools
+Homepage: http://iphone.gsm.vn/
+Description: Bàn phím 5 dòng QWERTY cho iOS4 (No Winterboard)
+Author: Thieu.Bocap <support@gsm.vn>
+Depiction: http://cydia.gsm.vn/t1319/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 5-Row Keyboard iOS4 (No WB)
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.5rowkeyboardipad
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap	<support@gsm.vn>
+Installed-Size: 2721
+Depends: firmware (>= 4.2), winterboard, gsmicon
+Filename: package_repo_A2/5rowkeyboardipad_1.0.deb
+Size: 1174218
+MD5sum: 6009197092235a49977f70cea31635ee
+SHA1: 938de8960943f42514ebd66e8a9c185efb73a2c6
+SHA256: fc3e6fd4e0d0cb9802f7b485b5d1dd8a92cc6f3113f38fc130a5850379d3dbff
+Section: !GSMVN-Tools
+Homepage: http://iphone.gsm.vn/
+Description: 5-Row English QWERTY layout for iPad
+Author: Hiraku <hiraku@iphone4.tw>
+Depiction: http://cydia.gsm.vn/t377/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: 5-Row Keyboard for iPad
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.abar
+Version: 1.0-4
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 66
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000)
+Filename: package_repo_A2/abar_1.0-4.deb
+Size: 7734
+MD5sum: 98ec290163f42bc42f47214edfc5809a
+SHA1: 85616ae77c3aec54c164c93ddb1685c43dbf7cbd
+SHA256: b1bef434ca9803b3b694056ac03088f135254c337783fd7b97320c82dfac05d0
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: nav & toolbar colorized like app icon
+Author: Marvin Schwalzik
+Depiction: http://cydia.vn/depic/t5221/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: aBar
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.abstergo
+Version: 1.1.2
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 487
+Depends: gsmicon, firmware (>= 6.0), mobilesubstrate, jp.ashikase.symbolicate, preferenceloader
+Filename: package_repo_A2/abstergo_1.1.2.deb
+Size: 215758
+MD5sum: de0c7dd10700e475aaea1ff20630b1e0
+SHA1: 0aae666befeb83900928725ec963bb8a948beb58
+SHA256: ab0f8e6e903f249f51c1a71ff7873af55b6c8943dac1d6f57fdd538e6318329a
+Section: !GSMVN-Tools
+Homepage: http://cydia.vn/
+Description: Manage your notifications better.
+Author: A. Richardson & J. Tucker
+Depiction: http://cydia.gsm.vn/t4199/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Abstergo
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.acamar
+Version: 1.7-15
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 402
+Depends: firmware (>= 8.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2)
+Filename: package_repo_A2/acamar_1.7-15.deb
+Size: 139238
+MD5sum: 5c0f8201652e8ce72ecd876f58ae4f9c
+SHA1: 1a54d95300fdc6ac54471d4c49d69489b2cf5598
+SHA256: b9b901e18812d4fc62c69a082515e001e5f1879a5f8915696aeef8632c626073
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: Apple Watch UI SpringBoard replacement
+Author: Acamar (Walker Chen)
+Depiction: http://cydia.vn/depic/t5725/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: AcamarUI
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.acapella
+Version: 1.1-4
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 1221
+Depends: firmware (>= 7.0), firmware (<< 8.2), mobilesubstrate (>= 0.9.5000), preferenceloader, jp.ashikase.libpackageinfo, com.patsluth.libsw, applist, com.bushe.lockscreengesturecleanup
+Conflicts: com.patsluth.swgesturemusiccontrols, org.thebigboss.gesturemusiccontrols
+Filename: package_repo_A2/acapella_1.1-4.deb
+Size: 528092
+MD5sum: c50715bb120c7c4bb0f61c315d7d87b5
+SHA1: f0b4e44f3e4ffcbb1b59d84833e811b03a657ffe
+SHA256: e07172e61be1fe289504e21903038424e9c57f6eb05c21decb35148e930e955a
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: Elegant, gesture based Music controls
+Author: Pat Sluth
+Depiction: http://cydia.vn/depic/t5618/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Acapella
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.acapella2
+Version: 1.1-10
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: firmware (>= 8.4), mobilesubstrate (>= 0.9.5000), preferenceloader, com.patsluth.libsw (>= 1.0-17)
+Conflicts: com.patsluth.swgesturemusiccontrols, org.thebigboss.gesturemusiccontrols, com.patsluth.swacapella
+Filename: package_repo_A2/acapella2_1.1-10.deb
+Size: 1232894
+MD5sum: 20a83f1ea53680f3a703d9fed9e81dfd
+SHA1: e299a27c5671b3e057791ff002ef4643fdf524d6
+SHA256: 356b0ab10850d4efea4d343fc299249e05ba890616e11db2935c8a7c05dcc69f
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: Elegant, gesture based Music controls
+Author: Pat Sluth
+Depiction: http://cydia.vn/depic/t5859/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Acapella II (iOS 8.4+)
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.acapella2
+Version: 1.1-8
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: firmware (>= 8.4), mobilesubstrate (>= 0.9.5000), preferenceloader, com.patsluth.libsw (>= 1.0-15)
+Conflicts: com.patsluth.swgesturemusiccontrols, org.thebigboss.gesturemusiccontrols, com.patsluth.swacapella
+Filename: package_repo_A2/acapella2_1.1-8.deb
+Size: 1230632
+MD5sum: a1d70d1c10b7ca1eed59677ff87adfbc
+SHA1: f357c8138ed07dd4ed4acc08f1f0da4cf4f9bc6b
+SHA256: 93d22dcc2ca8127c2d20f39bbe95e1847bcd93ff540a4ef05011f4a3b918c21e
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: Elegant, gesture based Music controls
+Author: Pat Sluth
+Depiction: http://cydia.vn/depic/t5859/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Acapella II (iOS 8.4+)
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.accentify
+Version: 0.0.1r8-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 106
+Depends: gsmicon, firmware (>= 6.0), mobilesubstrate, preferenceloader, applist, libactivator
+Filename: package_repo_A2/accentify_0.0.1r8-1.deb
+Size: 44144
+MD5sum: b0b1c2a135cbdd7bd4705773b4dbab5c
+SHA1: 791be2a6862af80b4ebc66c7201fadead5c1f213
+SHA256: ceadb40116992bf07f5fe2ea6dceb32cc104f5ea2466e54b7543e5774944995c
+Section: !GSMVN-Tools
+Homepage: http://cydia.vn/
+Description: choose from colorful iOS UI themes
+Author: rms
+Depiction: http://cydia.gsm.vn/t4218/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Accentify
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.actionboard
+Version: 1.2.0-1
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Pre-Depends: firmware (>= 5.0)
+Depends: gsmicon, mobilesubstrate, preferenceloader
+Filename: package_repo_A2/actionboard_1.2.0-1.deb
+Size: 1341984
+MD5sum: 3ed572eead594f3dd670c720866221e6
+SHA1: 66ece456a0f874ce99a3d84849964cc866647fa3
+SHA256: 4c213723e2c4459bed3a91aea9a2bee5d33dca797ab2724d614f80e965e6e291
+Section: !GSMVN-Tools
+Priority: extra
+Homepage: http://cydia.vn/
+Description: Add useful system functions to the AppSwitcher!
+Author: SBCoders
+Depiction: http://cydia.gsm.vn/t2150/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: ActionBoard
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.actionmenu-pluspack
+Version: 1.3.0
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 1056
+Depends: gsmicon, actionmenu (>= 1.2.13), mobilesubstrate
+Filename: package_repo_A2/actionmenu-pluspack_1.3.0.deb
+Size: 190932
+MD5sum: f845e0e9f582fcb73b46a4acf83e8659
+SHA1: a8103c9ad6f6228bb7f1fb33bb6673dbc09a3f8e
+SHA256: 3b0a7eeb729abeb5308af49a538177884ea58cc6951d68d47a0268846681f894
+Section: !CydiaVn-Tools
+Priority: optional
+Homepage: http://cydia.vn/
+Description: Additional actions for Action Menu!
+Author: Ryan Petrich <repo@cydia.vn>
+Depiction: http://cydia.vn/depic/t409/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Action Menu Plus Pack
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.actionslider
+Version: 2.0.1-1
+Architecture: iphoneos-arm
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Installed-Size: 844
+Depends: gsmicon, firmware (>= 5.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), applist, firmware (>= 7.0) | org.thebigboss.customwidgeticons, com.autopear.asthemes
+Filename: package_repo_A2/actionslider_2.0.1-1.deb
+Size: 224470
+MD5sum: 4dcc1aa82844f7de3a8a62f54f0dec8d
+SHA1: 8e76ecb7af80385e8e9a903e7670dc880a9a6dd9
+SHA256: 597fc9e50a9dc10b8e7f94cca0f087ceb93e3e83f5898e481318c33f8ec25e55
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: close app, kill background, open switcher and more from NotificationCenter!
+Author: Merlin
+Depiction: http://cydia.gsm.vn/t2470/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: ActionSlider
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.actisearch
+Version: 2.0
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: gsmicon, mobilesubstrate
+Filename: package_repo_A2/actisearch_v2.0.deb
+Size: 304194
+MD5sum: 3fa83b77c99a77346e216f62ec933005
+SHA1: e94024007c635c0e69a31fa397f065be0fc5a6c1
+SHA256: ad1e4906862352d931a8185c22faca81f1ebe5e583106789c6c9be50cf8be709
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: Centralized Searches using Activator.
+Author: iMast777
+Depiction: http://cydia.vn/depic/t3730/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: ActiSearch
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.activatormediasearch
+Version: 1.1.0-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 725
+Depends: firmware (>= 5.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), libactivator
+Filename: package_repo_A2/activatormediasearch_1.1.0-1.deb
+Size: 340698
+MD5sum: effc24a6a42893ed3f3e45e158f030dc
+SHA1: c617e2aca9648675f7cebd19bbfd716df5da0bb9
+SHA256: ac6b38a12c51876affb3fa83bc94038e64581d3b2627b6655870d83b99806fc4
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: info from Web for current playing media
+Author: rob311
+Depiction: http://cydia.vn/depic/t5135/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: MoreInfo
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.activatormediasearch
+Version: 1.2.0-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: firmware (>= 5.0), mobilesubstrate (>= 0.9.5000), preferenceloader (>= 2.2.2), libactivator
+Filename: package_repo_A2/activatormediasearch_1.2.0-1.deb
+Size: 351232
+MD5sum: 4fa3fe1c0ab15ceb00726ac56535eb66
+SHA1: 07212e51e5c83206082a1bf2832b3274f689a205
+SHA256: ce1c00eac9fb4d2d8058ab01daee3414fd67da9ca94fdd1021d959a7fa7384e1
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: info from Web for current playing media
+Author: rob311
+Depiction: http://cydia.vn/depic/t5135/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: MoreInfo
+
+Package: vn.gsm.activeboard
+Version: 1.1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 324
+Depends: firmware (>= 7.0), mobilesubstrate, preferenceloader
+Filename: package_repo_A2/activeboard_1.1.deb
+Size: 64182
+MD5sum: fa6a0e19cc2667527589698a613e29a6
+SHA1: 119afbeb932de07c057bebd33475ee761d2445e5
+SHA256: 07c4c1cab9760ca223903f2d421371e43892a90161ffa1a8327aeb70a7d5016d
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: Stylize alert system on home screen
+Author: FilippoBiga & Surenix
+Depiction: http://cydia.vn/depic/t5091/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: ActiveBoard
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.activedock
+Version: 1.1-2
+Architecture: iphoneos-arm
+Maintainer: BigBoss <bigboss@thebigboss.org>
+Installed-Size: 242
+Depends: gsmicon, firmware (>= 6.0), mobilesubstrate, preferenceloader
+Filename: package_repo_A2/activedock_1.1-2.deb
+Size: 203266
+MD5sum: 9487fb26fbb2acb93512de04578c7fa7
+SHA1: 346dbbf0143b0f64d2121f4c74e8982b271f0103
+SHA256: 69ae142c73f59dae0c2c51506dfae697a826755cb8927152c96779f1dd936f09
+Section: !GSMVN-Tools
+Homepage: http://cydia.vn/
+Description: Extraordinary native dock system
+Author: FilippoBiga & Surenix
+Depiction: http://cydia.gsm.vn/t4007/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: ActiveDock
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.acute
+Version: 2.1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 18024
+Depends: firmware (>= 7.0), mobilesubstrate, libactivator, libstatusbar, cc.tweak.libobjcipc, dpkg, preferenceloader
+Filename: package_repo_A2/acute_2.1.deb
+Size: 11230738
+MD5sum: 5488d8166f01dde4415352b4186e1595
+SHA1: 047c2d8c0b987b730281950c2613df2531c04c4a
+SHA256: dd666b5016c9841e07ec39757daf9e0905884d95a524b12039e7249c4927d777
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: A reimagined way to control your device
+Author: Sassoty & Phillip Tennen
+Depiction: http://cydia.vn/depic/t5157/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Acute
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.acutil
+Version: 0.1.16-1
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Installed-Size: 52
+Depends: gsmicon, shell-cmds, vn.gsm.sam (>= 0.1.15)
+Conflicts: com.bingner.samprefs (<< 0.1.7-1), com.bingner.pushutil, vn.gsm.samprefs (<< 0.1.7-1), vn.gsm.pushutil
+Replaces: com.bingner.samprefs (<< 0.1.7-1), com.bingner.pushutil, vn.gsm.samprefs (<< 0.1.7-1), vn.gsm.pushutil
+Filename: package_repo_A2/acutil_0.1.16-1.deb
+Size: 18544
+MD5sum: 00f8d3982feca77d0f6bb49221d3984b
+SHA1: da0e47b8c017ce4151433a5c38cdc48d19cf2805
+SHA256: 902f41acac7f97dad96c6333ddb652adfbc7efe4c15f8adcf22ae265463b8e6c
+Section: Utilities
+Description: ACUtil is a utility to backup and restore activation records
+Author: sbingner <repo@cydia.vn>
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: ACUtil
+
+Package: vn.gsm.acutus
+Version: 1.1-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 282
+Depends: firmware (>= 5.0), mobilesubstrate, preferenceloader
+Conflicts: gsc.ipad
+Filename: package_repo_A2/acutus_1.1-1.deb
+Size: 65114
+MD5sum: b0e9c5985f89aea77b5eebf52c281792
+SHA1: 9def6efde55f13f39f89ca4c8d87f8dc3bf965a9
+SHA256: 3499a44e5bb82904b2405d2d981260afa6658df80238a307ed43a65e3990b499
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: lockscreen quick access to favourite things
+Author: Orangebananaspy
+Depiction: http://cydia.vn/depic/t5081/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Acutus
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.adaptivekeyboard
+Version: 1.1.0-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: firmware (>= 7.0), applist, mobilesubstrate (>= 0.9.5000)
+Filename: package_repo_A2/adaptivekeyboard_1.1.0-1.deb
+Size: 12916
+MD5sum: b183a1944df1000a8dafa8167935dc58
+SHA1: b467af878d5e27c9cf567fd97058df5ba756f19b
+SHA256: 6bcbf9934d2740581f9581dc8d187edb1d2466889f9cb18d63dd172d2da6c409
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: Every application gets its own individual keyboard color!
+Author: rud0lf77
+Depiction: http://cydia.gsm.vn/t4903/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: AdaptiveKeyboard
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.adblock
+Version: 3.1
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <support@gsm.vn>
+Depends: mobilesubstrate (>= 0.9.2660-1)
+Filename: package_repo_A2/adblock.3.1.deb
+Size: 361524
+MD5sum: fc80900eb4ce65a9cc39cc2172689e22
+SHA1: 4362e7e859467d7b0cc8bdabe9a622c0d54d4d99
+SHA256: 3532fb623d597d9291caa97a41df96c38c118f9abf728e79b2dc16c0d1faad02
+Section: !GSMVN-Apps
+Priority: optional
+Homepage: http://iphone.gsm.vn/
+Description: AdBlock chặn quảng cáo trong Safari
+Author: Cocoamug Software <contact@cocoamug.com>
+Depiction: http://cydia.gsm.vn/t393/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: AdBlock
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.addialcctoggle
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 277
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), kr.slak.cctoggles
+Filename: package_repo_A2/addialcctoggle_1.0.deb
+Size: 32600
+MD5sum: eb7d557399aef22e3d36a14808b5d31e
+SHA1: 4ddf8c8e7e728f73ea560082ecee1e11bc8069d5
+SHA256: 4bcc29959d64d8b3fe5ca6a995e46a35a0fffed83d7eb92936a1038013a1adef
+Section: !CydiaVn-Tools
+Priority: optional
+Homepage: http://cydia.vn/
+Description: quick dial/add number from Control Center
+Author: ravirajm
+Depiction: http://cydia.vn/depic/t5125/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Addial CCToggles
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.addialforios7
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 136
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), de.j-gessner.ccloader
+Filename: package_repo_A2/addialforios7_1.0.deb
+Size: 29072
+MD5sum: 8d64c476507deb6c2a8b90ebf6728a4b
+SHA1: 15abd47c3f2e44500ed4742453b8b4d56d101927
+SHA256: 1c0e7af358cd76298e999a932abd357e983203af6d3b35330143630f3db2962b
+Section: !CydiaVn-Tools
+Priority: optional
+Homepage: http://cydia.vn/
+Description: quick dial/add number from Control Center
+Author: ravirajm
+Depiction: http://cydia.vn/depic/t5105/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Addial for iOS 7
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.addialforvelox
+Version: 1.0.1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: firmware (>= 6.0), vn.gsm.velox
+Filename: package_repo_A2/addialforvelox_1.0.1.deb
+Size: 17214
+MD5sum: db48ef21e14cc0742e3daf36cff7758b
+SHA1: f3b32f238f189eb7c633ae1a1c2e2cbf11c704cf
+SHA256: 8d6bdbc230556e78c71411bef722f430a55057693ba7704d09549c1596eb31be
+Section: !GSMVN-Tools
+Homepage: http://cydia.vn/
+Description: Awesome Phone functions for Velox
+Author: rvirajm
+Depiction: http://cydia.gsm.vn/t4255/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Addial for Velox
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.adiutor
+Version: 1.2
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: firmware (>= 7.0), mobilesubstrate (>= 0.9.5000), preferenceloader
+Conflicts: org.thebigboss.aduitor, vn.gsm.aduitor
+Replaces: org.thebigboss.aduitor, vn.gsm.aduitor
+Filename: package_repo_A2/adiutor_1.2.deb
+Size: 601792
+MD5sum: ef202bb22ddca26cee369ec3f01f9de8
+SHA1: ffa96ffa8d03a96f6f5c4468d18afd457b444fd4
+SHA256: 73a5042edbf690bd1c7f38e4640489c3b41d7b99ddb8d5d43bae3bd1f53d4af3
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: A much less intrusive Siri
+Author: GreenyDev
+Depiction: http://cydia.vn/depic/t5832/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Adiutor
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.adkeys
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 335
+Depends: firmware (>= 8.0), mobilesubstrate (>= 0.9.5000), preferenceloader
+Filename: package_repo_A2/adkeys_1.0.deb
+Size: 82928
+MD5sum: 44041fb5a728bcd638ab0ba9ea723750
+SHA1: 04132bce58a856a913fe3776b7d265d6fbda5105
+SHA256: 90abfa2bb4ffdebc96c92ce6d530457906519bdf6ba4f108489e06a2dd3a02ed
+Section: !CydiaVn-Tools
+Homepage: http://cydia.vn/
+Description: Adaptable keyboard style at your fingertips
+Author: sabharz
+Depiction: http://cydia.vn/depic/t5833/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: ADKeys
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.anyring-vi
+Version: 5.40
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Installed-Size: 10
+Depends: gsmicon, vn.gsm.anyring
+Filename: package_repo_A2/anyring_5.40_vi.deb
+Size: 6912
+MD5sum: cdce50ff02c95f607eb8b79d0a4727d9
+SHA1: 315b5066b96d08947ce96697f94393cff3e66b89
+SHA256: f14249bd27030baf7d65c7445b17e97bc23b552e699580db9557b39b72e28948
+Section: !GSMVN-VietHoa
+Homepage: http://cydia.vn/
+Description: Viet Langpack for Anyring
+Author: AnyRing
+Depiction: http://cydia.gsm.vn/t2345/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: AnyRing Viet
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.applockerviet
+Version: 2.2.5
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 12
+Depends: vn.gsm.applocker | com.nnfyrbsnss.applocker
+Filename: package_repo_A2/applockerviet_2.2.5a.deb
+Size: 3820
+MD5sum: 613d7ca5c4e35ea69051953389ab315e
+SHA1: c1ab446c8469455933decd6f721d4ff2723bf0cc
+SHA256: 5c2d84cd888b482f9129b149e095a6d0fa2ee01e02f92ee4cb16a640fda1047c
+Section: !GSMVN-VietHoa
+Homepage: http://cydia.vn/
+Description: Gói ngôn ngữ tiếng Việt cho Applocker.
+Author: Nguyen.aiti <nguyen.aiti@gmail.com>
+Depiction: http://cydia.gsm.vn/t3858/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Applocker Việt
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.faac
+Version: 1.26-3
+Architecture: iphoneos-arm
+Maintainer: Jay Freeman (saurik) <saurik@saurik.com>
+Installed-Size: 1172
+Depends: gsmicon
+Conflicts: faac
+Replaces: faac
+Filename: package_repo_A2/faac1.26-3_FAAC.deb
+Size: 431768
+MD5sum: e866fc17232d07ccf2506f03a0efcd6c
+SHA1: 91f43579f6f0de14017148f5ad576403d8003c66
+SHA256: d687131152b2dab198ac9955ad76921337379b02d71dffb0cfff069dfe839daf
+Section: Multimedia
+Priority: optional
+Description: open source library for MPEG-4 AAC
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: FAAC
+
+Package: vn.gsm.ffmpeg
+Version: r16669,2009/18/01
+Architecture: iphoneos-arm
+Maintainer: poetic_folly <poetic_folly@modmyi.com>
+Depends: gsmicon
+Conflicts: com.fizk.ffmpeg
+Replaces: com.fizk.ffmpeg
+Filename: package_repo_A2/ffmpegr16669.deb
+Size: 5950158
+MD5sum: d696cb9d2e317acefdac2da47f0e4d8d
+SHA1: e9b79674f1194878ff867b8729e46583b2a9a49f
+SHA256: 8ebd546b9dff02664a56c65d6f9c5e2bcda8dda4e8748e96a8693981c0552e18
+Section: Multimedia
+Homepage: http://modmyi.com/info/ffmpeg.php
+Description: A port of the popular FFmpeg program (http://ffmpeg.org/). FFmpeg is a complete solution to record, convert and stream audio and video.
+Author: Yonas Yanfa <yonas.y@gmail.com>
+Depiction: http://modmyi.com/info/ffmpeg.d.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: FFmpeg
+Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
+
+Package: vn.gsm.gameplayer
+Version: 1.3.2
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 1900
+Conflicts: com.duowan.gameplayer
+Filename: package_repo_A2/gameplayer_1.3.2.deb
+Size: 1252450
+MD5sum: f8fb18c3b1957ebec09921572c4c033d
+SHA1: 477b97056e36641838db0d0d8bce4f7d70eedd5b
+SHA256: 42cd81baf437be35d9540a05f660a6ba1cc2718266f9be60bf297c8bbd1c90d6
+Section: !GSMVN-Hacks
+Priority: optional
+Homepage: http://cydia.vn/
+Description: GamePlayer là một công cụ hack game mạnh mẽ, nó có thể hack hầu hết các game Offline và một số game online.
+Author: Maocai Luo <repo@cydia.vn>
+Depiction: http://cydia.gsm.vn/t3170/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: GamePlayer
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.gremlin
+Version: 2.0i-2
+Architecture: iphoneos-arm
+Maintainer: CocoaNuts <apt@cocoanuts.co>
+Installed-Size: 92
+Pre-Depends: firmware (>= 4.2)
+Depends: mobilesubstrate
+Conflicts: gremlin, co.cocoanuts.gremlin2
+Replaces: co.cocoanuts.gremlin2
+Provides: co.cocoanuts.gremlin2
+Filename: package_repo_A2/gremlin_2.0i-2.deb
+Size: 32102
+MD5sum: e677abc47f1ddd724f3818d9dec66632
+SHA1: 7f4302bea6b97fae6cf9b7cd09a70988b0f576e7
+SHA256: eaa3020d2d64d2e11d69f016b4cfb0da0d6b8cb5674397b3c35bd6b4a48df146
+Section: Multimedia
+Priority: optional
+Description: Import Media into Standard Apps
+    This is package is only for use by YourTube and Celeste.
+    Please contact CocoaNuts for further info.
+Author: CocoaNuts <support@cocoanuts.co>
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Gremlin
+
+Package: vn.gsm.iblacklist-vi
+Version: 6.1
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Depends: gsmicon, vn.gsm.iblacklist | iblacklist
+Filename: package_repo_A2/iblacklist_6.1_vi.deb
+Size: 12348
+MD5sum: a1f7d56a7dc40cf15685f06666e64c2a
+SHA1: 8b7a514cc4192f8ea43e5ebe42f658bc52d738df
+SHA256: 09e235587c1a078c9161bbcb2d738be0a614c8b6ad3cfcf6be51421ee03106bf
+Section: !GSMVN-VietHoa
+Homepage: http://cydia.vn/
+Description: Gói ngôn ngữ tiếng Việt cho iBlackList
+Author: Cydia.vn <repo@cydia.vn>
+Depiction: http://cydia.gsm.vn/t2346/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: iBlacklist Viet
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.iprotect-vi
+Version: 2.7
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Installed-Size: 14
+Depends: gsmicon, vn.gsm.iprotect
+Filename: package_repo_A2/iprotect_2.7-vi.deb
+Size: 2286
+MD5sum: 901a1449e9db0917b57d70ff6371f6ef
+SHA1: 71d40c9cf2d0d1fea51b22747d18541f141805fc
+SHA256: 3add8491e934a121c8968531a986e680c5dfe5637abfcbb71c3ecbbb6fcef367
+Section: !GSMVN-VietHoa
+Homepage: http://cydia.vn/
+Description: Gói ngôn ngữ Tiếng Việt cho iProtect.
+Author: Aqua Sta
+Depiction: http://cydia.gsm.vn/t392/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: iProtect Viet
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.kuaidial-vi
+Version: 0.3.0a4-44
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 2800
+Depends: gsmicon, mobilesubstrate, preferenceloader, firmware (>= 4.0)
+Conflicts: vn.gsm.kuaidial, kuaidial-beta
+Filename: package_repo_A2/kuaidial-beta_0.3.0a4-44_vi.deb
+Size: 655482
+MD5sum: 9f34ee52600a5aef577a1d02cc201894
+SHA1: 28a4770f09b27962a7c5f0fdf4c85bfc8a24eceb
+SHA256: 86cda866b5022aae5bb2c53ecd5bb93bda9c157a15aedcceafc4c9d198923d65
+Section: !GSMVN-VietHoa
+Description: KuaiDial là một tiện ích cho MobilePhone.app và MobileSMS.app
+Author: SpikeLin <linspike@gmail.com>
+Depiction: http://cydia.gsm.vn/t2349/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: KuaiDial Việt Hóa
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.libactivator-vi
+Version: 1.8.3
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Installed-Size: 45
+Depends: gsmicon, libactivator (>= 1.8.3)
+Filename: package_repo_A2/activatorviet_1.8.3.deb
+Size: 9288
+MD5sum: 754b78d9bcbcd4d23b128823d8f3841d
+SHA1: 0ceb6daeff7a598e0b4f569a772fb2893ac541fa
+SHA256: 8207ef44625d2e9c7f064b49f3f3ea2b921eea44856ca78cf987738fcba088ed
+Section: !GSMVN-VietHoa
+Homepage: http://cydia.vn/
+Description: Gói ngôn ngữ tiếng Việt cho Activator 1.8.3.
+Author: Cydia.vn <repo@cydia.vn>
+Depiction: http://cydia.gsm.vn/t2365/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Activator Việt
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
 
 Package: com.gameloft.9mm
@@ -4689,5 +5679,101 @@ Depiction: https://tomkidsrepo.cloud
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: ArtPenguin v1.2.0 (iOS 4.0)
 Sponsor: Admin <admin@localhost>
+
+Package: com.eleganthippo.springcleaning
+Version: 1.1.2
+Architecture: iphoneos-arm
+Maintainer: Admin <admin@localhost>
+Depends: firmware (>= 4.3), uikittools, appsync
+Filename: https://github.com/tomkidsrepos/AppStores/releases/download/utilities/com.eleganthippo.springcleaning-1.1.2-iOS-4.3.deb
+Size: 757104
+MD5sum: 5ba80f7db228bb471fc74aedb6df7c93
+SHA1: 5f6d2f8f752cac53187de38d4e1c890379958b9a
+SHA256: cf16e2958dd9a37bb0c071daa11d31b08a5dbea8743adb89f0c696c988d0b55c
+Section: AppStore Apps
+Homepage: https://tomkidsrepo.cloud
+Description: The decrypted ipa file: gdrive_app_1hFwoQB_IAnZRMzGf4A5HnMRruX0W_kdA.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
+Author: Admin <admin@localhost>
+Depiction: https://tomkidsrepo.cloud
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Spring Clean v1.1.2 (iOS 4.3)
+Sponsor: Admin <admin@localhost>
+
+
+Package: tomkids.book.sieunhanvn01
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: package_repo_A3/tomkids.book.sieunhanvn01_1.0_iphoneos-arm.deb
+Size: 13612552
+MD5sum: d2e8d9d3858f8496fe525b988f5478ef
+SHA1: 95740d7173f43a39c104244cfe357fd509dbde65
+SHA256: ec23cc57f105e73a13cb64b1c9471e5db05b5a380ace3e2c916d6ea466d6a7b3
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Siêu nhân Việt Nam - Tập 01
+
+Package: tomkids.book.tieusustevejobs
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: package_repo_A3/tomkids.book.tieusustevejobs_1.0_iphoneos-arm.deb
+Size: 13253146
+MD5sum: 593d740d17360514fcad0b3c4dae831a
+SHA1: e4255e5bf892bfacf9adabe3fd2bac0647cedcf3
+SHA256: 5574201733e78de3068e981e7c6bbbc2310857250e0ea831aa02eb7f6a5b5463
+Section: Books
+Description: Huong dan:
+ Huong dan:
+ - Dien thoai can cai iBooks va iFiles
+ - Cai xong sach se duoc chep vao thu muc /private/var/mobile/Media/Books
+ - Dung iFiles truy cap thu muc tren roi chon file truyen, chon mo bang iBooks
+ .
+ Converted by Tomkids
+Author: Converted by Tomkids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Tiểu sử Steve Job
+
+
+Package: tomkids.ringtone.bentrentanglau
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Unknown
+Filename: package_repo_A4/tomkids.ringtone.bentrentanglau_iphoneos-arm.deb
+Size: 3052116
+MD5sum: ffeb6771ee71b0b712115e3c243639e2
+SHA1: ecf8f388125197c933f50f7e7a3cc8c11c040133
+SHA256: fc16cea0e7ec55f43d19957f3357c759a48274fb1ca7c48f2c04451433ccabfb
+Section: Ringtones
+Description: Nhạc chuông cho iOS
+ Nhạc chuông cho iOS
+Author: Unknown
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Bên trên tầng lầu
+
+Package: vn.tomkids.tweaks.popuphellosetting
+Version: 2.0.1-1+debug
+Architecture: iphoneos-arm
+Maintainer: TomKids
+Installed-Size: 256
+Depends: mobilesubstrate, preferenceloader
+Filename: package_repo_A4/vn.tomkids.tweaks.popuphellosetting_2.0.2-1+debug_iphoneos-arm.deb
+Size: 8748
+MD5sum: 213348fd957730b472e7048862cac3f5
+SHA1: 774f1c7e61c6035741c4eb20a028bd8d5370790a
+SHA256: d7540b0eb3ebf2d687fcb4291e7cd17af285e6818a7a11f8a31bbda1d53626d5
+Section: Tweaks
+Description: Show a customizable popup inside Settings on iOS 5 to 8.
+Author: TomKids
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: PopUp Hello Setting
 
 
