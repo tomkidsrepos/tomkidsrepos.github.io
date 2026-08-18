@@ -5607,6 +5607,26 @@ Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: Applocker Việt
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
+Package: vn.gsm.cydiaios7
+Version: 1.0-1
+Architecture: iphoneos-arm
+Maintainer: !CydiaVn-Tools
+Installed-Size: 45
+Depends: gsmicon, mobilesubstrate (>= 0.9.5000)
+Filename: -CydiaVn-VietHoa/cydiavn7_1.0-1.deb
+Size: 94684
+MD5sum: 7c998ba4d75ce81ab1616b6409c44087
+SHA1: c3dc4790d4309c513d3eb9fca3bad6816e365292
+SHA256: 692677059868f24fad838ac2d14bd0e23d5092b5b1b8397baa64d22dc9a706fe
+Section: !GSMVN-VietHoa
+Homepage: http://cydia.vn/
+Description: Cydia icon phong cách iOS 7.
+Author: Cydia.vn <repo@cydia.vn>
+Depiction: http://cydia.gsm.vn/t2365/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: CydiaVn iOS 7
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
 Package: vn.gsm.iblacklist-vi
 Version: 6.1
 Architecture: iphoneos-arm
@@ -8789,6 +8809,28 @@ Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: AppSync for OS 3.2
 
 Package: vn.gsm.appsync40plus
+Version: 1.1-5
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <support@gsm.vn>
+Pre-Depends: firmware (>= 4.0)
+Replaces: us.hackulo.appsync40plus, com.xsellize.appsync40plus, vn.gsm.appsync40, vn.gsm.appsync41, vn.gsm.appsync42
+Provides: vn.gsm.appsync, vn.gsm.appsync40, vn.gsm.appsync41, vn.gsm.appsync42
+Filename: -CydiaVn-Tools/appsync40plus_1.1-5.deb
+Size: 9236
+MD5sum: ecd3afa12dc015ac9f4ec5a1680b66d6
+SHA1: a70665bde7f9df63ba3a33ca83d86a436c3d64fc
+SHA256: 866f9ce22398b399bbbee7d80aedaa1a81d751252fd633c2bfe70352eeb20e85
+Section: !GSMVN-Tools
+Priority: standard
+Homepage: http://iphone.gsm.vn/
+Description: AppSync allows you to sync and install cracked iOS applications.
+Author: Dissident <support@gsm.vn>
+Dipiction: http://cydia.gsm.vn/t903/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: AppSync for 4.0+
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.appsync40plus
 Version: 1.1-6
 Architecture: iphoneos-arm
 Maintainer: Cydia.vn <repo@cydia.vn>
@@ -8808,6 +8850,28 @@ Depiction: http://cydia.gsm.vn/t903/
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: AppSync for iOS 4.0+
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.appsync50plus
+Version: 2.2
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <support@gsm.vn>
+Depends: gsmicon, firmware (>= 5.0), mobilesubstrate
+Conflicts: vn.gsm.appsync40plus, us.hackulo.appsync50plus, us.hackulo.appsync50, com.xsellize.appsync50plus, com.xsellize.appsync50, com.heaveniphone.appsync50plus, com.heaveniphone.appsync50, appsync
+Replaces: vn.gsm.appsync40plus, us.hackulo.appsync50plus, us.hackulo.appsync50, com.xsellize.appsync50plus, com.xsellize.appsync50, com.heaveniphone.appsync50plus, com.heaveniphone.appsync50, appsync
+Filename: -CydiaVn-Tools/appsync50plus_2.2.deb
+Size: 4540
+MD5sum: 08168d07c61bac91e4fdc2513e3b9e29
+SHA1: a83c3199d9788a2e8c8ec69166c88ad33b80935f
+SHA256: 0c6122b901a978e13702448545a135b3c0326ba23633caa827cb0f66ad81309a
+Section: !GSMVN-Tools
+Priority: standard
+Homepage: http://cydia.vn/
+Description: AppSync allows you to sync and install cracked iOS applications.
+Author: Dissident <repo@cydia.vn>
+Depiction: http://cydia.gsm.vn/t2086/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: AppSync for iOS 5.0+
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
 
 Package: vn.gsm.appsync50plus
 Version: 2.2b
@@ -10363,6 +10427,27 @@ Author: A3Tweaks
 Depiction: http://cydia.vn/depic/t5793/
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: Auxo Legacy Edition
+
+Package: vn.gsm.auxo.org
+Version: 1.4-2
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 2127
+Depends: gsmicon, firmware (>= 5.1), mobilesubstrate, preferenceloader, applist
+Conflicts: vn.gsm.auxo
+Filename: -CydiaVn-Tools/vn.gsm.auxo.org_1.4-2_iphoneos-arm.deb
+Size: 880
+MD5sum: 81cd20e8cbe4a38fa8666bfe3b4a3fcc
+SHA1: 2c7ede6773e76dd8cb00ec1c8129748e81d3044b
+SHA256: 6d57b1c49c710a45a19fabe0e7bedee71a60c79307cfc96251131ca2560b8fc3
+Section: !GSMVN-Tools
+Homepage: http://cydia.vn/
+Description: A fantastic re-imagined multitasking bar!
+Author: A3tweaks
+Depiction: http://cydia.gsm.vn/t4264/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Auxo (Original)
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
 Package: vn.gsm.auxo.org
 Version: 1.4-2
@@ -13451,6 +13536,22 @@ Author: Pikachu
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: Carrier VN
 
+Package: vn.gsm.carriervn
+Version: 3.1.2
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
+Filename: -CydiaVn-Tools/carriervn3.1.2_Carrier VN.deb
+Size: 58400
+MD5sum: aec20325bc0ef228dd9d7fc7ff2ff7f8
+SHA1: 1c0ec455025458c4a1f007b9c406dc06b3490a51
+SHA256: 9ce1716eb2e026bf56bd0d59df5084d2ea13ef1ad788524314e4b9e2ac0d1dcc
+Section: !GSMVN-Tools
+Homepage: http://iphone.gsm.vn/moreinfo/info.html
+Description: Logo mạng cho 5 mạng phổ biến tại VN. Tự động thiết lập cấu hình mạng, MMS và thay đổi logo theo SIM (Mobi, Vina, Viettel, Vietnamobile, Beeline) Reboot iPhone sau khi install
+Author: Pikachu
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Carrier VN
+
 Package: vn.gsm.cask
 Version: 0.1
 Architecture: iphoneos-arm
@@ -14938,6 +15039,26 @@ Depiction: http://cydia.vn/depic/t4607/
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: Colorize
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.colorkeyboard
+Version: 1.1.9-2
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <repo@cydia.vn>
+Installed-Size: 6429
+Depends: gsmicon, mobilesubstrate, firmware (>= 4.0), preferenceloader, shell-cmds
+Filename: -CydiaVn-Tools/Colorkeyboard_1.1.9-2.deb
+Size: 5476858
+MD5sum: 4a5b666c9e1b66880c8c44d77314089b
+SHA1: 192eb7073422e784c83c4eb5eab82ef02fdc2a0e
+SHA256: 837313b9da793f39c211446e5d62bdda6935fc6468af1277edb5399c175dbaa1
+Section: !GSMVN-Tools
+Homepage: http://cydia.vn/
+Description: Colorized keyboard on your iPhone
+Author: Yoo Seung Kim <repo@cydia.vn>
+Depiction: http://cydia.gsm.vn/t1289/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Color Keyboard
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
 
 Package: vn.gsm.colorkeyboard
 Version: 1.3.0-1
@@ -18990,6 +19111,26 @@ Architecture: iphoneos-arm
 Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2919
 Depends: gsmicon, firmware (>= 5.0), mobilesubstrate, com.chpwn.weeloader, preferenceloader
+Filename: -CydiaVn-Tools/vn.gsm.flipclockwidget_1.3.3-3_iphoneos-arm.deb
+Size: 2743738
+MD5sum: ae1472e6232fe2c3c13e9694564b3ffd
+SHA1: 29af9c5305a3e2c79c81880099420065413e2cd2
+SHA256: 2fa3fd3a25f7b04fd9a91b55ad35b0eeda3fdbf253c9683332614f66d67200f7
+Section: !GSMVN-Tools
+Homepage: http://cydia.vn/
+Description: beautiful animated flip clock widget for the notification center.
+Author: VladMax Soft
+Depiction: http://cydia.gsm.vn/t4132/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Flip Clock for Notification Center
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.flipclockwidget
+Version: 1.3.3-3
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 2919
+Depends: gsmicon, firmware (>= 5.0), mobilesubstrate, com.chpwn.weeloader, preferenceloader
 Filename: -CydiaVn-Tools/flipclockwidget_1.3.3-3.deb
 Size: 2771400
 MD5sum: efc0573c0fefe794a3841fc25b23758d
@@ -20863,6 +21004,25 @@ Depiction: http://cydia.vn/depic/t5818/
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: HiddenConvos Pro
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.hiddensmslite40
+Version: v1.502-2
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <support@gsm.vn>
+Depends: mobilesubstrate, libstatusbar, gsmicon
+Filename: -CydiaVn-Tools/hiddensms_4.0-1.502-2.deb
+Size: 744200
+MD5sum: 8f30fd2c2ba4010af7a8ea3991631a4d
+SHA1: 22947966043f1b2e6d5345db763a0bd32289dddb
+SHA256: 5ad33f985ae66faf23428429987a67272fe51ac161de1f0e4fd17198fb91f21f
+Section: !GSMVN-Tools
+Homepage: http://iphone.gsm.vn/
+Description: Protect your SMS. Version for iOS 4.0 only.
+Author: Kandox s.r.o.
+Depiction: http://cydia.gsm.vn/t744/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: HiddenSMS Lite 4.0
+Sponsor: iPhone GSM.VN <http://gsm.vn/f389/>
 
 Package: vn.gsm.hideemall
 Version: 1.0.3
@@ -24211,6 +24371,25 @@ Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: Jukebox
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
+Package: vn.gsm.jukebox
+Version: 1.6.3
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: gsmicon, firmware (>= 5.0), com.arichardson.weepreferenceloader, com.chpwn.weeloader
+Filename: -CydiaVn-Tools/vn.gsm.jukebox_1.6.3_iphoneos-arm.deb
+Size: 401310
+MD5sum: 945220b9acf6e0cecc92e237d0d83ded
+SHA1: 638863c5fd7d26bde484955cb5743b0419a467e3
+SHA256: c350a7ac5418da22b4531419f236b043fed903e55d888e631493267e231ecdb6
+Section: !GSMVN-Tools
+Homepage: http://cydia.vn/
+Description: Control your music from the NC.
+Author: aricha
+Depiction: http://cydia.gsm.vn/t2863/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Jukebox
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
 Package: vn.gsm.justice
 Version: 1.2-1
 Architecture: iphoneos-arm
@@ -24869,6 +25048,22 @@ Depiction: http://iphone.gsm.vn/moreinfo/pushfix.php
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: Push Fix
 
+Package: vn.gsm.pushfix
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
+Filename: -CydiaVn-Tools/Push Fix.deb
+Size: 6856
+MD5sum: e145c06784daf311376f227ffd4415db
+SHA1: 32650ddd6ab4fe80ce6674b6bfae11b605c2a487
+SHA256: 19daedb09e034061fbd07d6917c7737f5de89ecfa0373c8f97e7f92302ae1381
+Section: !GSMVN-Tools
+Description: Fix Push Notification
+Author: Darks
+Depiction: http://iphone.gsm.vn/moreinfo/pushfix.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Push Fix
+
 Package: vn.gsm.repeatmemoryfreef
 Version: 2.6.6f
 Architecture: iphoneos-arm
@@ -24908,6 +25103,24 @@ Depiction: http://iphone.gsm.vn/moreinfo/sbrotator.php
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: SBRotator
 
+Package: vn.gsm.simanager
+Version: 1.6
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <support@gsm.vn>
+Depends: gsmicon
+Filename: -CydiaVn-Tools/simanager_1.6.deb
+Size: 309680
+MD5sum: 2172b54473085a85e37c10b84cdbefe5
+SHA1: 0be49e9244378a275bf47f374c23e1ddaa7828b6
+SHA256: bedd7148ec9efa33cb03e3a660b77fd70ad0ab41f519c7727328cf0d670c4009
+Section: !GSMVN-Tools
+Homepage: http://www.occasionics.com/wordpress/?p=673
+Description: Transfer contact from/to SIM
+Author: Giovanni Chiappini <alice_anto@yahoo.it>
+Depiction: http://iphone.gsm.vn/moreinfo/simanager.php
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: SIManager Beta
+
 Package: vn.gsm.snowcoverpro
 Version: 1.0
 Architecture: iphoneos-arm
@@ -24924,6 +25137,26 @@ Author: EyeDevs <EyeDevs@gmail.com>
 Depiction: http://iphone.gsm.vn/moreinfo/snowcoverpro.php
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: SnowCover Pro
+
+Package: vn.gsm.speedintensifier
+Version: 5.0.3
+Architecture: iphoneos-arm
+Maintainer: Thieu.Bocap <support@gsm.vn>
+Depends: gsmicon, mobilesubstrate, preferenceloader
+Conflicts: jp.novi.fakeclockup, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
+Filename: -CydiaVn-Tools/vn.gsm.speedintensifier_5.0.3_iphoneos-arm.deb
+Size: 8596
+MD5sum: c493153740460eb5435f5bb24a56fd26
+SHA1: fafe885f57922a1bb67727e734814139c3fc3b96
+SHA256: e2f953b07c9fc390c6385a33450a79ee7cf36f611d674c5328c4869a09efb272
+Section: !GSMVN-Tools
+Homepage: http://cydia.vn/
+Description: This tweak will speed up the animation transitions to make your device Look faster.
+Author: Philip Wong <support@gsm.vn>
+Depiction: http://cydia.gsm.vn/t375/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Speed Intensifier 5
+Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
 
 Package: vn.gsm.speedintensifier
 Version: 5.0.3
@@ -24984,6 +25217,27 @@ Depiction: http://cydia.gsm.vn/t1411/
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: Speed Intensifier for iOS3
 Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
+
+Package: vn.gsm.springtomize2
+Version: 1.4.3-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 561
+Depends: gsmicon, firmware (>= 5.0), mobilesubstrate, preferenceloader, vn.gsm.springtomize2-icons, vn.gsm.springtomize2-localizations
+Conflicts: com.filippobiga.springtomize, vn.gsm.springtomize
+Filename: -CydiaVn-Tools/vn.gsm.springtomize2_1.4.3-1_iphoneos-arm.deb
+Size: 207340
+MD5sum: 14595377d9704961cb8f6bce1a918a28
+SHA1: 5b8d2d017043a62debffdf8bfe34f218197f9942
+SHA256: 99685bdfa9c1c0ed4e6eea125f159fecc7cc8df70cd9cad828701eaa2e89c055
+Section: !GSMVN-Tools
+Homepage: http://cydia.vn/
+Description: SpringBoard, the way you want it. All over again.
+Author: FilippoBiga
+Depiction: http://cydia.gsm.vn/t2197/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Springtomize 2 - iOS 5 & 6
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
 Package: vn.gsm.switch.dimmer
 Version: 1.0-2
@@ -25100,6 +25354,28 @@ Description: vnKeyboard 2.0 - Bộ gõ tiếng Việt dành cho iPhone OS3.x!
 Author: BugunSoft <support@bugunsoft.com>
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: VietTyping
+
+Package: vn.gsm.zephyr
+Version: 1.6.4-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Installed-Size: 112
+Pre-Depends: firmware (>= 5.0)
+Depends: gsmicon, mobilesubstrate, preferenceloader, applist, com.rpetrich.layersnapshotter
+Conflicts: com.dapetcu21.multicleaner (<= 2.9.4), com.xsellize.multicleaner, vn.gsm.multicleaner (<= 2.9.4), com.xsellize.zephyr
+Filename: -CydiaVn-Tools/vn.gsm.zephyr_1.6.4-1_iphoneos-arm.deb
+Size: 44426
+MD5sum: 7d7dd58eef05e45483d9715cdb7eedbd
+SHA1: 1d4b8363a7b250202d00e62023844efe09d5d0ce
+SHA256: ea4270e6b0713c007a9a43db0e54de5c08dcd82f384c4a5a2bcd5820c17ca5d2
+Section: !GSMVN-Tools
+Homepage: http://cydia.vn/
+Description: Awesome, useful swipe multitasking!
+Author: chpwn
+Depiction: http://cydia.gsm.vn/t2238/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Zephyr
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
 
 Package: com.saurik.impactor
