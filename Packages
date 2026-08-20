@@ -26821,6 +26821,235 @@ Name: RixLoveFool Font
 Sponsor: Cydia.vn Blog's <http://cydia.vn/>
 
 
+Package: vn.gsm.analogclock
+Version: 1.0.2
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: gsmicon, cydget
+Filename: -CydiaVn-Cydget/analogclock_1.0.2.deb
+Size: 205206
+MD5sum: 95bda14d5727bb3b2388bd81553d6924
+SHA1: fc6c7b9570c31353488d7e47b9f1365b382de748
+SHA256: a80a99e7f38edc9a53aa55412d969b17aca0ca1898db3c29d1611de10bbec747
+Section: !CydiaVn-Cydget
+Homepage: http://cydia.vn/
+Description: (iOS7) Analog Clock Theme for Cydget on iPhone 5/5S/5C
+Author: unknown
+Depiction: http://cydia.gsm.vn/t4736/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Analog Clock Cydget
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.asymmetrichd
+Version: 1.0.3
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: gsmicon, cydget
+Filename: -CydiaVn-Cydget/asymmetrichd_1.0.3.deb
+Size: 518340
+MD5sum: 5793bccc6db163f82ce69c208a9245dc
+SHA1: 0e8f20c6e384ce63ab7c224a13c0a752bd8d08c0
+SHA256: eb3a64298e8ab68c748c84465c370923676bda4a28a42bd9a11138bfd01aee97
+Section: !CydiaVn-Cydget
+Homepage: http://cydia.vn/
+Description: (iOS7) Asymmetric HD LS Theme for Cydget on iPhone 5/5S/5C
+Author: unknown
+Depiction: http://cydia.gsm.vn/t4735/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Asymmetric HD Cydget
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.aurum
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: cydget
+Filename: -CydiaVn-Cydget/aurum_1.0.deb
+Size: 275170
+MD5sum: 8ac70dde2d29469675f961c88d998593
+SHA1: ea7870f1467e0e05fdccd0b303b1809ebe444aec
+SHA256: 2a1e52fe37da1b87c631bdbf8f497d715deb7e1ba31fc3fdc64a10a3b04ddfb5
+Section: !CydiaVn-Cydget
+Homepage: http://cydia.vn/
+Description: Compatible with iPhone 5 5s aurum, meaning gold in latin, is all about getting than clean minimalistic feel to your lock screen.
+Author: Cyril Zakka
+Depiction: http://cydia.gsm.vn/t4953/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Aurum
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.blackandwhite
+Version: 1.0.1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: gsmicon, cydget
+Filename: -CydiaVn-Cydget/blackandwhite_1.0.1.deb
+Size: 523580
+MD5sum: 5d73f28f8cf595bf522251a476db7962
+SHA1: b0ce926724df80ea77a8cf69f38019bae20c4950
+SHA256: a9be6140a3a4e43e169ecfa032eb3adad9601f9f19f95ab05d975d24c72949a3
+Section: !CydiaVn-Cydget
+Homepage: http://cydia.vn/
+Description: (iOS7) Black and White LS Theme for Cydget on iPhone 5/5S/5C
+Author: ImLemonPartying
+Depiction: http://cydia.gsm.vn/t4734/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Black and White Cydget
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.chronomatrix
+Version: 1.1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: cydget
+Filename: -CydiaVn-Cydget/chronomatrix_1.1.deb
+Size: 49392
+MD5sum: 23f9ea60cbe3242254be45723e701d30
+SHA1: bd2f11b9b6424629729af1092dd27f0eac912f8d
+SHA256: cf3e24da410608ceef4c19ab56f0cb077656a09547345486efd97e7fe73a7ce4
+Section: !CydiaVn-Cydget
+Homepage: http://cydia.vn/
+Description: (iOS7) ChronoMatrix LS Theme for Cydget on iPhone 5/5S/5C
+Author: ImLemonPartying
+Depiction: http://cydia.gsm.vn/t4758/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: ChronoMatrix Cydget
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.chronos
+Version: 1.0.3
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: gsmicon, cydget
+Filename: -CydiaVn-Cydget/chronos_1.0.3.deb
+Size: 945156
+MD5sum: a6fc4810c79b6a179d2e71bcceb70ae9
+SHA1: b61800bf63b15462e95685c7027a483379fe3a5d
+SHA256: 480f85d3c3f5d8c6a5c17124dbd3fef76b36bb1522a298c73eed73ab299c4301
+Section: !CydiaVn-Themes
+Homepage: http://cydia.vn/
+Description: (iOS7) LS Theme for Cydget on iPhone 5/5S/5C
+Author: unknown
+Depiction: http://cydia.gsm.vn/t4728/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Chronos
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.climaconlt
+Version: 1.0.1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: gsmicon, cydget
+Filename: -CydiaVn-Cydget/climaconlt_1.0.1.deb
+Size: 1261188
+MD5sum: 8dd3356169f9dc9dd89c3033771b6bda
+SHA1: 9d1bbfb10f054bbad0888ec890db111a6725af4f
+SHA256: 7ba7a7f2852b9ca2c839f96c6ef19d281dee70d85a5d3f7290037a513a1063ea
+Section: !CydiaVn-Cydget
+Homepage: http://cydia.vn/
+Description: (iOS7) ClimaconLT LS Theme for Cydget on iPhone 5/5S/5C
+Author: ImLemonPartying
+Depiction: http://cydia.gsm.vn/t4733/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: ClimaconLT Cydget
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.flawlesshd
+Version: 1.0-1a
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: winterboard, com.eldwin.iwidgets, com.idd.iconomatic
+Filename: -CydiaVn-Cydget/flawlesshd_1.0-1a.deb
+Size: 8800248
+MD5sum: 6e57ae7c9a45a8d35269d2cde06fb7a7
+SHA1: ce907d4a051d0eae7ea07207f70f3ee74ab178e4
+SHA256: 789044ee3a8f026a3c8bf681577a2d3b6f7b7bbd9a1b71daa850d4795729c4c9
+Section: !CydiaVn-Cydget
+Homepage: http://cydia.vn/
+Description: Simply Flawless, The most beautiful theme.
+Author: Mcvirk
+Depiction: http://cydia.gsm.vn/t4802/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Flawless HD
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.highfrost
+Version: 1.1.3-1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: gsmicon, cydget
+Filename: -CydiaVn-Cydget/highfrost_1.1.3-1.deb
+Size: 985206
+MD5sum: 4d4687add9182eabc491d584da17fb9b
+SHA1: aa1d346bffe164b5211a7ce5e71555e7b7873feb
+SHA256: 64a231594bd2dc27b11c6819f1ace76916761d3f7ae316b877b3073451052727
+Section: !CydiaVn-Cydget
+Homepage: http://cydia.vn/
+Description: (iOS7) HighFrost LS Theme for Cydget on iPhone 5/5S/5C
+Author: ImLemonPartying
+Depiction: http://cydia.gsm.vn/t4732/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: HighFrost Cydget
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.pebblypack
+Version: 1.2.1
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: gsmicon, cydget
+Filename: -CydiaVn-Cydget/PebblyPack_1.0.1.deb
+Size: 9661594
+MD5sum: 572392135ae9b1a20ba7086696bbe8ac
+SHA1: 7c7822357d5f489efc1a9c84ad6c6084d07eaba5
+SHA256: 98d504ad18130e7259d4ba953a6227fb01075b1d4bbb7a5c5e7b9e4ee68e09b6
+Section: !CydiaVn-Cydget
+Homepage: http://cydia.vn/
+Description: (iOS7) PebblyPack LS Theme for Cydget on iPhone 5/5S/5C
+Author: unknown
+Depiction: http://cydia.gsm.vn/t4741/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: PebblyPack Cydget
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.risingbars
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: gsmicon, cydget
+Filename: -CydiaVn-Cydget/RisingBars_1.0.deb
+Size: 507486
+MD5sum: 6c16d11dbdf216ae169f0d01298e1134
+SHA1: 32819b4cef53cb7b56cadd45532bfdba2d956c68
+SHA256: 1198b5178aea9778f9485b615a0db7cdf59f07dd25330939ba8b77542b0885a1
+Section: !CydiaVn-Cydget
+Homepage: http://cydia.vn/
+Description: (iOS7) RisingBars LS Theme for Cydget on iPhone 5/5S/5C
+Author: unknown
+Depiction: http://cydia.gsm.vn/t4742/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: RisingBars Cydget
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+Package: vn.gsm.simplicity
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Cydia.vn <repo@cydia.vn>
+Depends: gsmicon, cydget
+Filename: -CydiaVn-Cydget/Simplicity_1.0.deb
+Size: 1265638
+MD5sum: 4b572165dfeebc92251ce546a18f7407
+SHA1: 7ccc41d084149532b820f85bfed2f8fc8f83b566
+SHA256: fab977220b8fe40faad1cec3043200145a962f2ec7ec2d81bfc0108540bfedb9
+Section: !CydiaVn-Cydget
+Homepage: http://cydia.vn/
+Description: (iOS7) Simplicity LS Theme for Cydget on iPhone 5/5S/5C
+Author: ImLemonPartying
+Depiction: http://cydia.gsm.vn/t4730/
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: Simplicity Cydget
+Sponsor: Cydia.vn Blog's <http://cydia.vn/>
+
+
 Package: com.aerialx.ishshit
 Version: 1.1.5
 Architecture: iphoneos-arm
