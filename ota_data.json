@@ -11,6 +11,12 @@
             "version": "84.0",
             "icon": "CydiaIcon.png",
             "plist": "ota_apps/template.plist"
+        },
+        {
+            "name": "Payload/Facebook.app/zh-Hant.lproj/Localizable.strings",
+            "version": "11.0",
+            "icon": "ota_apps/icons/com.facebook.Facebook.png",
+            "plist": "ota_apps/com.facebook.Facebook.plist"
         }
     ],
     "Trò Chơi": [
