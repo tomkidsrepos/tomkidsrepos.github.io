@@ -40,7 +40,6 @@
             "icon": "ota_apps/icons/com.apple.iBooks.png",
             "plist": "ota_apps/com.apple.iBooks.plist"
         }
-        
     ],
     "Giải Trí": [
         {
@@ -68,6 +67,12 @@
             "version": "29.1547.11",
             "icon": "ota_apps/icons/com.google.chrome.ios.png",
             "plist": "ota_apps/com.google.chrome.ios.plist"
+        },
+        {
+            "name": "MyTetris-Lite",
+            "version": "4.2.1",
+            "icon": "ota_apps/icons/com.hzapptech.tetris-lite.png",
+            "plist": "ota_apps/com.hzapptech.tetris-lite.plist"
         }
     ]
 }
