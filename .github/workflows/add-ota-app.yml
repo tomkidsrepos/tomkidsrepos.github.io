@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       ipa_url:
-        description: "Direct URL to the .ipa file"
+        description: "Direct URL or Google Drive Link to the .ipa file"
         required: true
         type: string
       category:
@@ -30,29 +30,44 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get update && sudo apt-get install --yes aria2 python3
+          sudo apt-get update && sudo apt-get install --yes aria2 python3 pipx
+          pipx install gdown
 
       - name: Download IPA
         run: |
           mkdir -p work_ota
-          # Disable torrent/metalink to ensure direct HTTP download works
-          aria2c -s16 -x16 --allow-overwrite=true --follow-torrent=false --follow-metalink=false --dir=work_ota --out=app.ipa "${{ inputs.ipa_url }}"
+          url="${{ inputs.ipa_url }}"
+          
+          if [[ "$url" == *"drive.google.com"* ]]; then
+            file_id=$(echo "$url" | sed -E 's|.*/d/([a-zA-Z0-9_-]+).*|\1|')
+            if [[ "$file_id" == "$url" ]]; then file_id=$(echo "$url" | sed -E 's|.*id=([a-zA-Z0-9_-]+).*|\1|'); fi
+            if [[ "$file_id" != "$url" && -n "$file_id" ]]; then
+              gdown "https://drive.google.com/uc?id=$file_id" -O "work_ota/app.ipa"
+            else
+              echo "Invalid Google Drive link"
+              exit 1
+            fi
+          else
+            aria2c -s16 -x16 --allow-overwrite=true --follow-torrent=false --follow-metalink=false --dir=work_ota --out=app.ipa "$url"
+          fi
+          
+          # Check if the downloaded file is actually a valid ZIP (IPA)
+          if ! unzip -t work_ota/app.ipa >/dev/null 2>&1; then
+            echo "::error::File tải về không phải là file IPA hợp lệ! (Lỗi: File is not a zip file). Hãy kiểm tra lại link!"
+            exit 1
+          fi
 
       - name: Upload IPA to GitHub Releases
         id: upload_release
         run: |
-          # Create OTA-Storage release if it doesn't exist
           gh release view "OTA-Storage" >/dev/null 2>&1 || gh release create "OTA-Storage" --title "OTA Storage" --notes "Direct links for OTA IPAs"
           
-          # Generate a safe filename based on timestamp to avoid collisions
           TS=$(date +%s)
           SAFE_NAME="app_$TS.ipa"
           mv work_ota/app.ipa work_ota/$SAFE_NAME
           
-          # Upload the file
           gh release upload "OTA-Storage" work_ota/$SAFE_NAME --clobber
           
-          # Construct the direct URL
           REPO_URL="https://github.com/${{ github.repository }}/releases/download/OTA-Storage/$SAFE_NAME"
           echo "DOWNLOAD_URL=$REPO_URL" >> $GITHUB_ENV
 
