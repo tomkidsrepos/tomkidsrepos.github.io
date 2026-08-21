@@ -33,7 +33,7 @@
             "plist": "ota_apps/com.punchboxstudios.hundouluojinhuageming.plist"
         },
         {
-            "name": "Container/tmp/",
+            "name": "PvZ",
             "version": "1.0",
             "icon": "ota_apps/icons/com.popcap.PvZ.png",
             "plist": "ota_apps/com.popcap.PvZ.plist"
@@ -49,7 +49,7 @@
     ],
     "Giải Trí": [
         {
-            "name": "Payload/YouTube.app/zh_TW.lproj/UILib.strings",
+            "name": "YouTube",
             "version": "1.3.0",
             "icon": "ota_apps/icons/com.google.ios.youtube.png",
             "plist": "ota_apps/com.google.ios.youtube.plist"
