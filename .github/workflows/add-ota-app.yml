@@ -15,6 +15,8 @@ on:
           - Trò Chơi
           - Công Cụ
           - Giải Trí
+          - Hệ thống
+          - App
           - Khác
         default: "Trò Chơi"
 
