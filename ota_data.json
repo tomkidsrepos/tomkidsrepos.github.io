@@ -25,6 +25,12 @@
             "version": "1.1.1",
             "icon": "ota_apps/icons/com.popcap.bejeweled2.png",
             "plist": "ota_apps/com.popcap.bejeweled2.plist"
+        },
+        {
+            "name": "Payload/hundouluojinhuageming.app/zh-Hant.lproj/Localizable.strings",
+            "version": "1.2.3",
+            "icon": "ota_apps/icons/com.punchboxstudios.hundouluojinhuageming.png",
+            "plist": "ota_apps/com.punchboxstudios.hundouluojinhuageming.plist"
         }
     ],
     "Công Cụ": [
