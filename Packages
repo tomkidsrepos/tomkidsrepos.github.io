@@ -5535,45 +5535,6 @@ Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: PopUp Hello Setting
 
 
-Package: de.schnuppig.simdungeon
-Version: 1.01
-Architecture: iphoneos-arm
-Maintainer: Tomkids
-Depends: firmware (>= 2.2), uikittools, appsync
-Filename: https://github.com/tomkidsrepos/AppStores/releases/download/game/de.schnuppig.simdungeon-1.01-iOS-2.2.deb
-Size: 6976264
-MD5sum: ab1a046eff895a18387c024c32d1802a
-SHA1: b3895d5322dd9040e6b02dbd01ca551c968637ea
-SHA256: a92ff032a955130819c9bcbb6053bb7442652aa315f840bf887d0cab74e1b77b
-Section: AppStore Apps
-Homepage: https://tomkidsrepo.cloud
-Description: The decrypted ipa file: gdrive_app_1cjso_q2E9cHzHJ0reWsGBWyv-vq--xdr.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
-Author: Tomkids
-Depiction: https://tomkidsrepo.cloud
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: SimDungeon v1.01 (iOS 2.2)
-Sponsor: Tomkids
-
-Package: com.popcap.bejeweled2
-Version: 8
-Architecture: iphoneos-arm
-Maintainer: Tomkids
-Depends: firmware (>= 2.2), uikittools, appsync
-Filename: https://github.com/tomkidsrepos/AppStores/releases/download/game/com.popcap.bejeweled2-8-iOS-2.2.deb
-Size: 6664070
-MD5sum: 72bfa7ad864a51452f563c821b3bc423
-SHA1: b954372c07604ce57f3d66a22d5f085d3d40e562
-SHA256: efc6a8535fcb45eccf499b9a57fd7ecaa950d091248933bb940b7669efb1dd8f
-Section: AppStore Apps
-Homepage: https://tomkidsrepo.cloud
-Description: The decrypted ipa file: gdrive_app_1eIXd9e3HbD-1GvpD2Yn6GVkZorBVZsDZ.ipa converted to .deb automatically by https://alex-free.github.io/ipa2deb .
-Author: Tomkids
-Depiction: https://tomkidsrepo.cloud
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: Bejeweled 2 v8 (iOS 2.2)
-Sponsor: Tomkids
-
-
 Package: vn.gsm.anyring-vi
 Version: 5.40
 Architecture: iphoneos-arm
