@@ -51,6 +51,12 @@
             "version": "3.1.3",
             "icon": "ota_apps/icons/com.apple.iBooks.png",
             "plist": "ota_apps/com.apple.iBooks.plist"
+        },
+        {
+            "name": "Payload/TikTok.app/TikTok_armv7_patched",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.atnik.tiktok.png",
+            "plist": "ota_apps/com.atnik.tiktok.plist"
         }
     ],
     "Giải Trí": [
