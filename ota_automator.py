@@ -1,4 +1,4 @@
-﻿import sys
+import sys
 import zipfile
 import plistlib
 import json
@@ -110,7 +110,7 @@ def create_ota_plist(name, version, bundle_id, ipa_url, icon_url):
 
 def update_ota_json(category, app_data):
     json_path = 'ota_data.json'
-    with open(json_path, 'r', encoding='utf-8') as f:
+    with open(json_path, 'r', encoding='utf-8-sig') as f:
         data = json.load(f)
         
     if category not in data:
