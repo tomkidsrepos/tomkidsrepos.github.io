@@ -60,5 +60,13 @@
             "icon": "ota_apps/icons/com.nhaccuatui.mobile.version2.png",
             "plist": "ota_apps/com.nhaccuatui.mobile.version2.plist"
         }
+    ],
+    "Hệ thống": [
+        {
+            "name": "iTunesArtwork",
+            "version": "7.0.3.40701",
+            "icon": "ota_apps/icons/com.opera.OperaMini.png",
+            "plist": "ota_apps/com.opera.OperaMini.plist"
+        }
     ]
 }
