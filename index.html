@@ -15,9 +15,12 @@ box-sizing:border-box;
 
 body{
 
-background:linear-gradient(180deg,#050816,#0f172a);
+background: #050816;
+background: -webkit-linear-gradient(top, #050816, #0f172a);
+background: linear-gradient(180deg,#050816,#0f172a);
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
 color:white;
+min-height: 100%;
 
 }
 
@@ -185,9 +188,16 @@ color:#94a3b8;
     cursor: pointer;
     border-radius: 12px;
     margin-bottom: 10px;
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
     align-items: center;
+    -webkit-transition: 0.2s;
     transition: 0.2s;
 }
 .accordion-header:hover { background: #374151; }
@@ -201,7 +211,11 @@ color:#94a3b8;
     display: none;
 }
 .app-item {
+    display: -webkit-box;
+    display: -webkit-flex;
     display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
     align-items: center;
     padding: 15px;
     border-bottom: 1px solid #1f2937;
@@ -213,14 +227,25 @@ color:#94a3b8;
     width: 60px; height: 60px;
     border-radius: 14px;
     margin-right: 15px;
+    -webkit-border-radius: 14px;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
 }
-.app-info { flex: 1; }
-.app-title { font-size: 18px; font-weight: bold; margin-bottom: 5px; }
-.app-version { font-size: 14px; color: #94a3b8; }
+.app-info {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+.app-title { font-size: 16px; font-weight: bold; margin-bottom: 5px; }
+.app-version { font-size: 13px; color: #94a3b8; }
 .btn-install {
     background: #2563eb; color: white;
-    padding: 8px 16px; border-radius: 20px;
+    padding: 8px 16px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
     font-size: 14px; font-weight: bold; text-decoration: none;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
 }
 </style>
 
@@ -319,53 +344,73 @@ Thêm vào Zebra
 
 <script>
     function toggleAccordion(element) {
-        element.classList.toggle("active");
-        var content = element.nextElementSibling;
-        if (content.style.display === "block") {
-            content.style.display = "none";
+        // iOS 6 compatible: avoid classList
+        if (element.className.indexOf("active") === -1) {
+            element.className = element.className + " active";
         } else {
-            content.style.display = "block";
+            element.className = element.className.replace(" active", "");
+        }
+        var content = element.nextSibling;
+        // Skip text nodes
+        while (content && content.nodeType !== 1) { content = content.nextSibling; }
+        if (content) {
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
         }
     }
 
-    
-    var container = document.getElementById('ota-container');
-    
-    fetch('ota_data.json?t=' + new Date().getTime())
-        .then(response => response.json())
-        .then(otaData => {
-            var htmlContent = "";
-            for (var category in otaData) {
-                var apps = otaData[category];
-                if (apps.length > 0) {
-                    htmlContent += '<div class="accordion-group">' +
-                                   '<div class="accordion-header" onclick="toggleAccordion(this)">' +
-                                   '<span>' + category + '</span>' +
-                                   '<span>▾</span>' +
+    function buildOtaList(otaData) {
+        var container = document.getElementById('ota-container');
+        if (!container) return;
+        var htmlContent = "";
+        for (var category in otaData) {
+            var apps = otaData[category];
+            if (apps.length > 0) {
+                htmlContent += '<div class="accordion-group">' +
+                               '<div class="accordion-header" onclick="toggleAccordion(this)">' +
+                               '<span>' + category + '</span>' +
+                               '<span>v</span>' +
+                               '</div>' +
+                               '<div class="accordion-content">';
+                for (var i = 0; i < apps.length; i++) {
+                    var app = apps[i];
+                    var installLink = 'itms-services://?action=download-manifest&url=https://tomkidsrepo.cloud/' + encodeURI(app.plist);
+                    htmlContent += '<div class="app-item">' +
+                                   '<img src="' + app.icon + '" class="app-icon">' +
+                                   '<div class="app-info">' +
+                                   '<div class="app-title">' + app.name + '</div>' +
+                                   '<div class="app-version">Phien ban ' + app.version + '</div>' +
                                    '</div>' +
-                                   '<div class="accordion-content">';
-                    for (var i = 0; i < apps.length; i++) {
-                        var app = apps[i];
-                        var installLink = 'itms-services://?action=download-manifest&url=https://tomkidsrepo.cloud/' + encodeURI(app.plist);
-                        htmlContent += '<div class="app-item">' +
-                                       '<img src="' + app.icon + '" class="app-icon">' +
-                                       '<div class="app-info">' +
-                                       '<div class="app-title">' + app.name + '</div>' +
-                                       '<div class="app-version">Phiên bản ' + app.version + '</div>' +
-                                       '</div>' +
-                                       '<a href="' + installLink + '" class="btn-install">Cài đặt</a>' +
-                                       '</div>';
-                    }
-                    htmlContent += '</div></div>';
+                                   '<a href="' + installLink + '" class="btn-install">Cai dat</a>' +
+                                   '</div>';
                 }
+                htmlContent += '</div></div>';
             }
-            container.innerHTML = htmlContent;
-        })
-        .catch(error => {
-            console.error("Error loading OTA data:", error);
-            container.innerHTML = "<p style='color:white;text-align:center;'>Không thể tải danh sách ứng dụng.</p>";
-        });
+        }
+        container.innerHTML = htmlContent;
+    }
 
+    // iOS 6 compatible: use XMLHttpRequest instead of fetch()
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', 'ota_data.json?t=' + new Date().getTime(), true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                try {
+                    var data = JSON.parse(xhr.responseText);
+                    buildOtaList(data);
+                } catch(e) {
+                    document.getElementById('ota-container').innerHTML = "<p style='color:white;text-align:center;'>Loi tai du lieu.</p>";
+                }
+            } else {
+                document.getElementById('ota-container').innerHTML = "<p style='color:white;text-align:center;'>Khong the tai danh sach ung dung.</p>";
+            }
+        }
+    };
+    xhr.send();
 </script>
 
 
