@@ -1,4 +1,4 @@
-﻿name: Add OTA App
+name: Add OTA App
 on:
   workflow_dispatch:
     inputs:
@@ -46,6 +46,14 @@ jobs:
         run: |
           mkdir -p work_ota
           url="${{ inputs.file_url }}"
+
+          # Auto-convert GitHub blob URL → raw download URL
+          # e.g. https://github.com/user/repo/blob/main/file.deb
+          #   => https://github.com/user/repo/raw/main/file.deb
+          if [[ "$url" == "https://github.com/"* && "$url" == *"/blob/"* ]]; then
+            url=$(echo "$url" | sed 's|/blob/|/raw/|')
+            echo "Converted to raw URL: $url"
+          fi
 
           if [[ "$url" == *"drive.google.com"* ]]; then
             file_id=$(echo "$url" | sed -E 's|.*/d/([a-zA-Z0-9_-]+).*|\1|')
