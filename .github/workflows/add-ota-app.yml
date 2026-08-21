@@ -27,6 +27,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync with latest remote
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
 
       - name: Install dependencies
         run: |
@@ -77,10 +85,6 @@ jobs:
       - name: Process IPA and Update Web Data
         run: |
           python3 ota_automator.py "work_ota/$(ls work_ota | grep \.ipa)" "${{ inputs.category }}" "$DOWNLOAD_URL"
-
-      - name: Pull latest changes before commit
-        run: |
-          git pull --rebase origin main
 
       - name: Commit and Push Changes
         uses: stefanzweifel/git-auto-commit-action@v5
