@@ -39,6 +39,12 @@
             "version": "3.1.3",
             "icon": "ota_apps/icons/com.apple.iBooks.png",
             "plist": "ota_apps/com.apple.iBooks.plist"
+        },
+        {
+            "name": "Payload/stable.app/zh_TW.lproj/locale.pak",
+            "version": "29.1547.11",
+            "icon": "ota_apps/icons/com.google.chrome.ios.png",
+            "plist": "ota_apps/com.google.chrome.ios.plist"
         }
     ],
     "Giải Trí": [
