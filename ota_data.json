@@ -21,7 +21,7 @@
             "plist": "ota_apps/template.plist"
         },
         {
-            "name": "iTunesArtwork",
+            "name": "Bejeweled 2",
             "version": "1.1.1",
             "icon": "ota_apps/icons/com.popcap.bejeweled2.png",
             "plist": "ota_apps/com.popcap.bejeweled2.plist"
