@@ -1,0 +1,70 @@
+﻿name: Add OTA App
+on:
+  workflow_dispatch:
+    inputs:
+      ipa_url:
+        description: "Direct URL to the .ipa file"
+        required: true
+        type: string
+      category:
+        description: "Select Category"
+        required: true
+        type: choice
+        options:
+          - Mạng Xã Hội
+          - Trò Chơi
+          - Công Cụ
+          - Giải Trí
+          - Khác
+        default: "Trò Chơi"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install --yes aria2 python3
+
+      - name: Download IPA
+        run: |
+          mkdir -p work_ota
+          # Disable torrent/metalink to ensure direct HTTP download works
+          aria2c -s16 -x16 --allow-overwrite=true --follow-torrent=false --follow-metalink=false --dir=work_ota --out=app.ipa "${{ inputs.ipa_url }}"
+
+      - name: Upload IPA to GitHub Releases
+        id: upload_release
+        run: |
+          # Create OTA-Storage release if it doesn't exist
+          gh release view "OTA-Storage" >/dev/null 2>&1 || gh release create "OTA-Storage" --title "OTA Storage" --notes "Direct links for OTA IPAs"
+          
+          # Generate a safe filename based on timestamp to avoid collisions
+          TS=$(date +%s)
+          SAFE_NAME="app_$TS.ipa"
+          mv work_ota/app.ipa work_ota/$SAFE_NAME
+          
+          # Upload the file
+          gh release upload "OTA-Storage" work_ota/$SAFE_NAME --clobber
+          
+          # Construct the direct URL
+          REPO_URL="https://github.com/${{ github.repository }}/releases/download/OTA-Storage/$SAFE_NAME"
+          echo "DOWNLOAD_URL=$REPO_URL" >> $GITHUB_ENV
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Process IPA and Update Web Data
+        run: |
+          python3 ota_automator.py "work_ota/$(ls work_ota | grep \.ipa)" "${{ inputs.category }}" "$DOWNLOAD_URL"
+
+      - name: Commit and Push Changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-added new OTA app"
+          file_pattern: "ota_data.json ota_apps/*"
