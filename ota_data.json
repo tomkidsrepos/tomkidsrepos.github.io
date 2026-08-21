@@ -53,7 +53,7 @@
             "plist": "ota_apps/com.apple.iBooks.plist"
         },
         {
-            "name": "Payload/TikTok.app/TikTok_armv7_patched",
+            "name": "TikTok",
             "version": "1.0",
             "icon": "ota_apps/icons/com.atnik.tiktok.png",
             "plist": "ota_apps/com.atnik.tiktok.plist"
