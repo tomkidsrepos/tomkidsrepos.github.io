@@ -331,7 +331,7 @@ Thêm vào Zebra
     
     var container = document.getElementById('ota-container');
     
-    fetch('ota_data.json')
+    fetch('ota_data.json?t=' + new Date().getTime())
         .then(response => response.json())
         .then(otaData => {
             var htmlContent = "";
