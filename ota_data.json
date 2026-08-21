@@ -1,13 +1,13 @@
 {
     "Mạng Xã Hội": [
         {
-            "name": "Facebook",
+            "name": "1",
             "version": "11.0",
             "icon": "CydiaIcon.png",
             "plist": "ota_apps/template.plist"
         },
         {
-            "name": "Messenger",
+            "name": "2",
             "version": "84.0",
             "icon": "CydiaIcon.png",
             "plist": "ota_apps/template.plist"
@@ -15,7 +15,7 @@
     ],
     "Trò Chơi": [
         {
-            "name": "Flappy Bird",
+            "name": "1",
             "version": "1.2",
             "icon": "CydiaIcon.png",
             "plist": "ota_apps/template.plist"
@@ -35,7 +35,7 @@
     ],
     "Công Cụ": [
         {
-            "name": "YouTube",
+            "name": "1",
             "version": "1.3.0",
             "icon": "CydiaIcon.png",
             "plist": "ota_apps/template.plist"
