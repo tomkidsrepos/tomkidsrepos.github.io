@@ -31,6 +31,12 @@
             "version": "1.0",
             "icon": "ota_apps/icons/com.popcap.PvZ.png",
             "plist": "ota_apps/com.popcap.PvZ.plist"
+        },
+         {
+            "name": "MyTetris-Lite",
+            "version": "4.2.1",
+            "icon": "ota_apps/icons/com.hzapptech.tetris-lite.png",
+            "plist": "ota_apps/com.hzapptech.tetris-lite.plist"
         }
     ],
     "Công Cụ": [
@@ -67,12 +73,6 @@
             "version": "29.1547.11",
             "icon": "ota_apps/icons/com.google.chrome.ios.png",
             "plist": "ota_apps/com.google.chrome.ios.plist"
-        },
-        {
-            "name": "MyTetris-Lite",
-            "version": "4.2.1",
-            "icon": "ota_apps/icons/com.hzapptech.tetris-lite.png",
-            "plist": "ota_apps/com.hzapptech.tetris-lite.plist"
         }
     ]
 }
