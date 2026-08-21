@@ -1,9 +1,9 @@
-name: Add OTA App
+﻿name: Add OTA App
 on:
   workflow_dispatch:
     inputs:
-      ipa_url:
-        description: "Direct URL or Google Drive Link to the .ipa file"
+      file_url:
+        description: "Direct URL to the .ipa or .deb file (Google Drive also supported)"
         required: true
         type: string
       category:
@@ -15,8 +15,6 @@ on:
           - Trò Chơi
           - Công Cụ
           - Giải Trí
-          - Hệ thống
-          - App
           - Khác
         default: "Trò Chơi"
 
@@ -43,48 +41,66 @@ jobs:
           sudo apt-get update && sudo apt-get install --yes aria2 python3 pipx
           pipx install gdown
 
-      - name: Download IPA
+      - name: Download file (IPA or DEB)
         run: |
           mkdir -p work_ota
-          url="${{ inputs.ipa_url }}"
-          
+          url="${{ inputs.file_url }}"
+
           if [[ "$url" == *"drive.google.com"* ]]; then
             file_id=$(echo "$url" | sed -E 's|.*/d/([a-zA-Z0-9_-]+).*|\1|')
             if [[ "$file_id" == "$url" ]]; then file_id=$(echo "$url" | sed -E 's|.*id=([a-zA-Z0-9_-]+).*|\1|'); fi
             if [[ "$file_id" != "$url" && -n "$file_id" ]]; then
-              gdown "https://drive.google.com/uc?id=$file_id" -O "work_ota/app.ipa"
+              gdown "https://drive.google.com/uc?id=$file_id" -O "work_ota/app_input"
             else
-              echo "Invalid Google Drive link"
+              echo "::error::Invalid Google Drive link!"
               exit 1
             fi
           else
-            aria2c -s16 -x16 --allow-overwrite=true --follow-torrent=false --follow-metalink=false --dir=work_ota --out=app.ipa "$url"
+            aria2c -s16 -x16 --allow-overwrite=true --follow-torrent=false --follow-metalink=false --dir=work_ota --out=app_input "$url"
           fi
+
+      - name: Detect file type and convert DEB → IPA if needed
+        run: |
+          INPUT="work_ota/app_input"
+          # Check magic bytes to detect file type
+          MAGIC=$(xxd -p -l 8 "$INPUT")
           
-          # Check if the downloaded file is actually a valid ZIP (IPA)
-          if ! unzip -t work_ota/app.ipa >/dev/null 2>&1; then
-            echo "::error::File tải về không phải là file IPA hợp lệ! (Lỗi: File is not a zip file). Hãy kiểm tra lại link!"
-            exit 1
+          if [[ "$MAGIC" == "213c617263683e0a"* ]]; then
+            echo "DEB file detected – converting to IPA..."
+            mv "$INPUT" work_ota/app.deb
+            
+            # Run DEB to IPA conversion
+            python3 ota_automator.py convert work_ota/app.deb
+            mv work_ota/converted.ipa work_ota/app.ipa
+            echo "Conversion complete!"
+          else
+            # Assume IPA (ZIP format)
+            echo "IPA file detected."
+            mv "$INPUT" work_ota/app.ipa
+            
+            # Validate as ZIP
+            if ! unzip -t work_ota/app.ipa >/dev/null 2>&1; then
+              echo "::error::File is not a valid IPA (not a ZIP). Please check the link!"
+              exit 1
+            fi
           fi
 
       - name: Upload IPA to GitHub Releases
-        id: upload_release
         run: |
           gh release view "OTA-Storage" >/dev/null 2>&1 || gh release create "OTA-Storage" --title "OTA Storage" --notes "Direct links for OTA IPAs"
-          
+
           TS=$(date +%s)
           SAFE_NAME="app_$TS.ipa"
           mv work_ota/app.ipa work_ota/$SAFE_NAME
-          
+
           gh release upload "OTA-Storage" work_ota/$SAFE_NAME --clobber
-          
+
           REPO_URL="https://github.com/${{ github.repository }}/releases/download/OTA-Storage/$SAFE_NAME"
           echo "DOWNLOAD_URL=$REPO_URL" >> $GITHUB_ENV
-
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Process IPA and Update Web Data
+      - name: Process metadata and update website
         run: |
           python3 ota_automator.py "work_ota/$(ls work_ota | grep \.ipa)" "${{ inputs.category }}" "$DOWNLOAD_URL"
 
