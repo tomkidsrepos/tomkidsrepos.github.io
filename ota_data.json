@@ -59,6 +59,18 @@
             "version": "5.3.1",
             "icon": "ota_apps/icons/com.nhaccuatui.mobile.version2.png",
             "plist": "ota_apps/com.nhaccuatui.mobile.version2.plist"
+        },
+        {
+            "name": "NhacCuaTui",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.nct.musiclite.png",
+            "plist": "ota_apps/com.nct.musiclite.plist"
+        },
+        {
+            "name": "YTNine",
+            "version": "1.1.1",
+            "icon": "ota_apps/icons/com.himais0giiiin.ytnine.png",
+            "plist": "ota_apps/com.himais0giiiin.ytnine.plist"
         }
     ],
     "Hệ thống": [
