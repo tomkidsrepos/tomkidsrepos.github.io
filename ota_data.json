@@ -71,6 +71,12 @@
             "version": "1.1.1",
             "icon": "ota_apps/icons/com.himais0giiiin.ytnine.png",
             "plist": "ota_apps/com.himais0giiiin.ytnine.plist"
+        },
+        {
+            "name": "oldpipe",
+            "version": "1.0",
+            "icon": "ota_apps/icons/rousseaddict.oldpipe.png",
+            "plist": "ota_apps/rousseaddict.oldpipe.plist"
         }
     ],
     "Hệ thống": [
@@ -86,6 +92,5 @@
             "icon": "ota_apps/icons/com.google.chrome.ios.png",
             "plist": "ota_apps/com.google.chrome.ios.plist"
         }
-        
     ]
 }
