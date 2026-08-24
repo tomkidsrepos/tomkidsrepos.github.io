@@ -113,6 +113,12 @@
             "version": "1.0.33",
             "icon": "ota_apps/icons/com.foobar2000.mobile.png",
             "plist": "ota_apps/com.foobar2000.mobile.plist"
+        },
+        {
+            "name": "SoundWave",
+            "version": "1.0",
+            "icon": "CydiaIcon.png",
+            "plist": "ota_apps/com.soundwave.app.plist"
         }
     ],
     "Hệ thống": [
