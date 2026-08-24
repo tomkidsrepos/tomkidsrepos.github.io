@@ -17,6 +17,12 @@
             "version": "1.0.4",
             "icon": "ota_apps/icons/com.jjr.douyin.LT76WJUBQ3.png",
             "plist": "ota_apps/com.jjr.douyin.LT76WJUBQ3.plist"
+        },
+        {
+            "name": "Messenger",
+            "version": "2.7.2",
+            "icon": "ota_apps/icons/com.facebook.Messenger.png",
+            "plist": "ota_apps/com.facebook.Messenger.plist"
         }
     ],
     "Trò Chơi": [
