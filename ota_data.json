@@ -101,6 +101,12 @@
             "version": "1.2.2",
             "icon": "ota_apps/icons/com.ls.GoTV.png",
             "plist": "ota_apps/com.ls.GoTV.plist"
+        },
+        {
+            "name": "FLAC Player+",
+            "version": "1.8",
+            "icon": "ota_apps/icons/com.ios.atk.flacplayer.png",
+            "plist": "ota_apps/com.ios.atk.flacplayer.plist"
         }
     ],
     "Hệ thống": [
