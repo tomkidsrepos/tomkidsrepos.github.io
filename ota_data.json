@@ -107,6 +107,12 @@
             "version": "1.8",
             "icon": "ota_apps/icons/com.ios.atk.flacplayer.png",
             "plist": "ota_apps/com.ios.atk.flacplayer.plist"
+        },
+        {
+            "name": "foobar2000",
+            "version": "1.0.33",
+            "icon": "ota_apps/icons/com.foobar2000.mobile.png",
+            "plist": "ota_apps/com.foobar2000.mobile.plist"
         }
     ],
     "Hệ thống": [
