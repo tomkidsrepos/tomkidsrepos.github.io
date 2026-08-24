@@ -119,6 +119,12 @@
             "version": "1.0",
             "icon": "CydiaIcon.png",
             "plist": "ota_apps/com.soundwave.app.plist"
+        },
+        {
+            "name": "Troubadour",
+            "version": "1.3",
+            "icon": "ota_apps/icons/ru.computershik.troubadour.png",
+            "plist": "ota_apps/ru.computershik.troubadour.plist"
         }
     ],
     "Hệ thống": [
