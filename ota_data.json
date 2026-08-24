@@ -11,6 +11,12 @@
             "version": "1.0",
             "icon": "ota_apps/icons/com.atnik.tiktok.png",
             "plist": "ota_apps/com.atnik.tiktok.plist"
+        },
+        {
+            "name": "OldTik",
+            "version": "1.0.4",
+            "icon": "ota_apps/icons/com.jjr.douyin.LT76WJUBQ3.png",
+            "plist": "ota_apps/com.jjr.douyin.LT76WJUBQ3.plist"
         }
     ],
     "Trò Chơi": [
