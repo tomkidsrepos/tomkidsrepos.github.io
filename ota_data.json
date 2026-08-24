@@ -83,6 +83,12 @@
             "version": "1.0",
             "icon": "ota_apps/icons/rousseaddict.oldpipe.png",
             "plist": "ota_apps/rousseaddict.oldpipe.plist"
+        },
+        {
+            "name": "GoTV",
+            "version": "1.2.2",
+            "icon": "ota_apps/icons/com.ls.GoTV.png",
+            "plist": "ota_apps/com.ls.GoTV.plist"
         }
     ],
     "Hệ thống": [
