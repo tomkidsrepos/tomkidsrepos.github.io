@@ -167,6 +167,12 @@
             "version": "5.10",
             "icon": "ota_apps/icons/com.caspernguyen.zingmp3.png",
             "plist": "ota_apps/com.caspernguyen.zingmp3.plist"
+        },
+        {
+            "name": "Zing Mp3",
+            "version": "3.2.1",
+            "icon": "ota_apps/icons/vn.com.vng.zingmp3.png",
+            "plist": "ota_apps/vn.com.vng.zingmp3.plist"
         }
     ],
     "Hệ thống": [
