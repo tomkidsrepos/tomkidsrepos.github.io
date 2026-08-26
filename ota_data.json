@@ -47,6 +47,12 @@
             "version": "0.9.7b7",
             "icon": "ota_apps/icons/com.hammerandchisel.discord.png",
             "plist": "ota_apps/com.hammerandchisel.discord.plist"
+        },
+        {
+            "name": "Twitter",
+            "version": "6.13.6",
+            "icon": "ota_apps/icons/com.atebits.Tweetie2.png",
+            "plist": "ota_apps/com.atebits.Tweetie2.plist"
         }
     ],
     "Trò Chơi": [
