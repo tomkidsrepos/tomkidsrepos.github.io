@@ -23,6 +23,12 @@
             "version": "2.7.2",
             "icon": "ota_apps/icons/com.facebook.Messenger.png",
             "plist": "ota_apps/com.facebook.Messenger.plist"
+        },
+        {
+            "name": "Instagram",
+            "version": "6.5.1",
+            "icon": "ota_apps/icons/com.burbn.instagram.png",
+            "plist": "ota_apps/com.burbn.instagram.plist"
         }
     ],
     "Trò Chơi": [
