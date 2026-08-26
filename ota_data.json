@@ -143,6 +143,12 @@
             "version": "1.3",
             "icon": "ota_apps/icons/ru.computershik.troubadour.png",
             "plist": "ota_apps/ru.computershik.troubadour.plist"
+        },
+        {
+            "name": "ZingMp3",
+            "version": "5.10",
+            "icon": "ota_apps/icons/com.caspernguyen.zingmp3.png",
+            "plist": "ota_apps/com.caspernguyen.zingmp3.plist"
         }
     ],
     "Hệ thống": [
