@@ -87,6 +87,12 @@
             "version": "3.1.3",
             "icon": "ota_apps/icons/com.apple.iBooks.png",
             "plist": "ota_apps/com.apple.iBooks.plist"
+        },
+        {
+            "name": "Send Anywhere",
+            "version": "4.7.16",
+            "icon": "ota_apps/icons/com.estmob.paprika.png",
+            "plist": "ota_apps/com.estmob.paprika.plist"
         }
     ],
     "Giải Trí": [
