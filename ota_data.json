@@ -29,6 +29,12 @@
             "version": "6.5.1",
             "icon": "ota_apps/icons/com.burbn.instagram.png",
             "plist": "ota_apps/com.burbn.instagram.plist"
+        },
+        {
+            "name": "BáoMới",
+            "version": "3.1.5",
+            "icon": "ota_apps/icons/vn.com.epi.BaoMoi.png",
+            "plist": "ota_apps/vn.com.epi.BaoMoi.plist"
         }
     ],
     "Trò Chơi": [
