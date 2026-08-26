@@ -169,6 +169,12 @@
             "version": "4.3.0",
             "icon": "ota_apps/icons/com.google.Maps.png",
             "plist": "ota_apps/com.google.Maps.plist"
+        },
+        {
+            "name": "UC Browser",
+            "version": "10.6.1",
+            "icon": "ota_apps/icons/com.uc.iphone.browser.international.png",
+            "plist": "ota_apps/com.uc.iphone.browser.international.plist"
         }
     ]
 }
