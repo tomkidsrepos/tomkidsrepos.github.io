@@ -41,6 +41,12 @@
             "version": "13.28",
             "icon": "ota_apps/icons/pinterest.png",
             "plist": "ota_apps/pinterest.plist"
+        },
+        {
+            "name": "Discord",
+            "version": "0.9.7b7",
+            "icon": "ota_apps/icons/com.hammerandchisel.discord.png",
+            "plist": "ota_apps/com.hammerandchisel.discord.plist"
         }
     ],
     "Trò Chơi": [
