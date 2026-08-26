@@ -145,6 +145,12 @@
             "version": "29.1547.11",
             "icon": "ota_apps/icons/com.google.chrome.ios.png",
             "plist": "ota_apps/com.google.chrome.ios.plist"
+        },
+        {
+            "name": "Google Maps",
+            "version": "4.3.0",
+            "icon": "ota_apps/icons/com.google.Maps.png",
+            "plist": "ota_apps/com.google.Maps.plist"
         }
     ]
 }
