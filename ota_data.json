@@ -93,6 +93,12 @@
             "version": "4.7.16",
             "icon": "ota_apps/icons/com.estmob.paprika.png",
             "plist": "ota_apps/com.estmob.paprika.plist"
+        },
+        {
+            "name": "Lịch Việt",
+            "version": "2.9",
+            "icon": "ota_apps/icons/com.vietlotus.lichvietfree.png",
+            "plist": "ota_apps/com.vietlotus.lichvietfree.plist"
         }
     ],
     "Giải Trí": [
