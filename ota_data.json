@@ -199,6 +199,12 @@
             "version": "10.6.1",
             "icon": "ota_apps/icons/com.uc.iphone.browser.international.png",
             "plist": "ota_apps/com.uc.iphone.browser.international.plist"
+        },
+        {
+            "name": "Google",
+            "version": "3.2.1",
+            "icon": "ota_apps/icons/com.google.GoogleMobile.png",
+            "plist": "ota_apps/com.google.GoogleMobile.plist"
         }
     ]
 }
