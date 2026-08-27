@@ -211,6 +211,12 @@
             "version": "3.2.1",
             "icon": "ota_apps/icons/com.google.GoogleMobile.png",
             "plist": "ota_apps/com.google.GoogleMobile.plist"
+        },
+        {
+            "name": "SafeShutdown",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.kurrt.safeshutdownapp.png",
+            "plist": "ota_apps/com.kurrt.safeshutdownapp.plist"
         }
     ]
 }
