@@ -215,10 +215,4 @@
         
     ]
 }
-  "Jaikbreak": [
-        {
-            "name": "OperaMini",
-            "version": "7.0.3.40701",
-            "icon": "ota_apps/icons/com.opera.OperaMini.png",
-            "plist": "ota_apps/com.opera.OperaMini.plist"
-        },
+
