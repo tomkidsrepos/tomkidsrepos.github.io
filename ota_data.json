@@ -212,5 +212,5 @@
             "icon": "ota_apps/icons/com.google.GoogleMobile.png",
             "plist": "ota_apps/com.google.GoogleMobile.plist"
         }
-        
     ]
+}
