@@ -247,6 +247,55 @@ color:#94a3b8;
     -webkit-flex-shrink: 0;
     flex-shrink: 0;
 }
+
+/* Responsive adjustments for iPhone 4S */
+@media (max-width: 480px) {
+    h1 { font-size: 32px; margin-top:15px; }
+    .subtitle { font-size: 14px; }
+    .source { padding: 12px 15px; font-size: 14px; margin-top:20px; }
+    .info {
+        padding: 15px;
+        margin-top: 25px;
+        border-radius: 15px;
+    }
+    .info h2 { font-size: 16px; margin-bottom: 10px; }
+    
+    .buttons .btn {
+        display: block;
+        margin: 10px auto;
+        max-width: 250px;
+        padding: 12px 20px;
+        font-size: 14px;
+    }
+    
+    /* Quick install steps adjustments */
+    .step-box {
+        padding: 12px !important;
+    }
+    .step-btn {
+        padding: 8px 12px !important;
+        font-size: 13px !important;
+        white-space: normal !important;
+        line-height: 1.3 !important;
+    }
+    
+    /* OTA Apps list */
+    .accordion-header {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+    .app-icon {
+        width: 45px;
+        height: 45px;
+        margin-right: 10px;
+    }
+    .app-title { font-size: 13px; }
+    .app-version { font-size: 11px; }
+    .btn-install {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
 </style>
 
 </head>
@@ -314,7 +363,7 @@ Thêm vào Zebra
     <p style="color:#fbbf24; margin-bottom:8px; font-weight:bold;">Chỉ dành cho iPhone 4S / iOS 6 đã Jailbreak</p>
     <p style="color:#cbd5e1; margin-bottom:24px; font-size:15px;">Chỉ cần 2 bước, Cydia sẽ tự động tải và cài tất cả các tweaks cần thiết!</p>
 
-    <div style="background:#0f172a; border-radius:14px; padding:18px; margin-bottom:16px; text-align:left; max-width:520px; margin-left:auto; margin-right:auto;">
+    <div class="step-box" style="background:#0f172a; border-radius:14px; padding:18px; margin-bottom:16px; text-align:left; max-width:520px; margin-left:auto; margin-right:auto;">
         <div style="display:table; width:100%;">
             <div style="display:table-cell; width:38px; vertical-align:middle;">
                 <div style="width:28px;height:28px;background:#2563eb;-webkit-border-radius:50%;border-radius:50%;text-align:center;line-height:28px;font-weight:bold;font-size:14px;color:white;">1</div>
@@ -322,14 +371,14 @@ Thêm vào Zebra
             <div style="display:table-cell; vertical-align:middle; padding-left:10px;">
                 <p style="color:#94a3b8; font-size:13px; margin:0 0 10px 0;">Thêm nguồn vào Cydia (nếu chưa có)</p>
                 <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://tomkidsrepo.cloud/"
-                   style="background:#2563eb;color:white;padding:10px 20px;-webkit-border-radius:10px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;">
+                   class="step-btn" style="background:#2563eb;color:white;padding:10px 20px;-webkit-border-radius:10px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;">
                     Them nguon vao Cydia
                 </a>
             </div>
         </div>
     </div>
 
-    <div style="background:#0f172a; border-radius:14px; padding:18px; text-align:left; max-width:520px; margin-left:auto; margin-right:auto;">
+    <div class="step-box" style="background:#0f172a; border-radius:14px; padding:18px; text-align:left; max-width:520px; margin-left:auto; margin-right:auto;">
         <div style="display:table; width:100%;">
             <div style="display:table-cell; width:38px; vertical-align:middle;">
                 <div style="width:28px;height:28px;background:#16a34a;-webkit-border-radius:50%;border-radius:50%;text-align:center;line-height:28px;font-weight:bold;font-size:14px;color:white;">2</div>
@@ -337,7 +386,7 @@ Thêm vào Zebra
             <div style="display:table-cell; vertical-align:middle; padding-left:10px;">
                 <p style="color:#94a3b8; font-size:13px; margin:0 0 10px 0;">Mở Cydia và cài toàn bộ các tweaks</p>
                 <a href="cydia://package/com.tomkids.metabundle"
-                   style="background:#16a34a;color:white;padding:10px 20px;-webkit-border-radius:10px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;">
+                   class="step-btn" style="background:#16a34a;color:white;padding:10px 20px;-webkit-border-radius:10px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;">
                     Cài Meta Bundle (Cydia)
                 </a>
             </div>
