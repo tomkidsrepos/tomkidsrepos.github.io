@@ -16,6 +16,7 @@ on:
           - Công Cụ
           - Giải Trí
           - Hệ thống
+          - Jailbreak
           - Khác
         default: "Trò Chơi"
 
