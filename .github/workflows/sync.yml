@@ -49,8 +49,13 @@ jobs:
       - name: Compress Packages
         run: bzip2 -fks Packages
 
+      - name: Generate Release File
+        run: |
+          sudo apt-get update && sudo apt-get install -y apt-utils
+          apt-ftparchive -c Release.conf release . > Release
+
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "Cluster Repo Updated"
-          file_pattern: "Packages Packages.bz2"
+          commit_message: "Cluster Repo Updated (Packages & Release)"
+          file_pattern: "Packages Packages.bz2 Release"

@@ -7,11 +7,11 @@ Architectures: iphoneos-arm
 Components: main
 Description: Classic Jailbreak Repository
 MD5Sum:
- 75e4f48bca0ca4886b08391cc39f55f2 784 Packages
- a266cfa0e078d8faa4621c767f6249d5 607 Packages.bz2
+ f0d9423856e780f86e94e3d799fff1fd 1114028 Packages
+ ed298908e8bc4dc7d6273c600e749855 230588 Packages.bz2
 SHA1:
- e3471e138a5fe975d76db63c65adbbd99760c32d 784 Packages
- baed9c7b89f75af28561af3c3171563dec4632fc 607 Packages.bz2
+ a7616fb593ca41b602391628e9cea29c1e79fc52 1114028 Packages
+ 62fad763de7db2470ddf6b785904a0cf117a8c35 230588 Packages.bz2
 SHA256:
- e01ae02bc148bdeb8fae63f85f22bd8b188ee9cfd3bbd29870312a132c7ebc28 784 Packages
- 16317ea6c6cb5234de79a42906dc9191b9360562f62de1297cdaffcdfed2a84e 607 Packages.bz2
+ 555e91852a7672ead8f277db9d73dcf466ca93110dcdfadb432c57235d60c5b8 1114028 Packages
+ e7acc2fa09a27a3166f9ba7f808a3e78ad9e5f30c88be51b1598fc98c435fe16 230588 Packages.bz2
