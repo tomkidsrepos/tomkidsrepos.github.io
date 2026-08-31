@@ -1,17 +1,17 @@
-Origin: Tomkids Repo
-Label: Tomkids Repo
-Suite: stable
-Version: 1.0
-Codename: ios
-Architectures: iphoneos-arm
-Components: main
-Description: Classic Jailbreak Repository
+Date: Mon, 31 Aug 2026 02:45:08 +0000
 MD5Sum:
- f0d9423856e780f86e94e3d799fff1fd 1114028 Packages
- ed298908e8bc4dc7d6273c600e749855 230588 Packages.bz2
+ 80b02bf478f2ddf6d96cb778c056b97f          1084865 Packages
+ ed298908e8bc4dc7d6273c600e749855           230588 Packages.bz2
+ 032b524e4ce73200e4b8e512a4391ba5               38 Release
 SHA1:
- a7616fb593ca41b602391628e9cea29c1e79fc52 1114028 Packages
- 62fad763de7db2470ddf6b785904a0cf117a8c35 230588 Packages.bz2
+ 7663fdcdb236ab9212998f301d6b82c85bc04b59          1084865 Packages
+ 62fad763de7db2470ddf6b785904a0cf117a8c35           230588 Packages.bz2
+ 35a8c9682eedc73bc99827f44ba1498637a845a8               38 Release
 SHA256:
- 555e91852a7672ead8f277db9d73dcf466ca93110dcdfadb432c57235d60c5b8 1114028 Packages
- e7acc2fa09a27a3166f9ba7f808a3e78ad9e5f30c88be51b1598fc98c435fe16 230588 Packages.bz2
+ 3317c87c92c93e0e32ea624af5eb88b8be047c8f5db0c017faa8d1951a0d7c04          1084865 Packages
+ e7acc2fa09a27a3166f9ba7f808a3e78ad9e5f30c88be51b1598fc98c435fe16           230588 Packages.bz2
+ acffd973be6f251a9dd6d1c83aaa27fe65ebfc2f9a1aff1d7a8bd8e9cbc47133               38 Release
+SHA512:
+ 5c040abab53cac5c9667033c2fec52957fa30f0d0f71d2efe2106d0e2e4130a49f2f3d5c6aa2045b86a7357e8443989644c5720d1147a0a2354cf629ec49c417          1084865 Packages
+ fe0721bd0920069d89e402f2fff4f815dacb5460265e00b9487bdacb0c6fcf0398020b546c61a1e4f0b4338aa555ae458e076ebabb60b080efc0f5336814344d           230588 Packages.bz2
+ 673d1977de814956e9b43d21aa7fb32b93e19f69b6f0cbb2d8569b736d89ceb96c6feab5540045900ad19a811a8ee03c60b7d042ad9226909e53e6cb96f39899               38 Release
