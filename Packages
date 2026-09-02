@@ -6178,11 +6178,11 @@ Version: 4.0-2
 Architecture: iphoneos-arm
 Essential: yes
 Maintainer: Cydia.vn <repo@cydia.vn>
-Filename: -CydiaVn-Tools/gsmicon_4.0-2_iphoneos-arm.deb
-Size: 30734
-MD5sum: cb686eddb025fe61c1eaaf2f0eb7192e
-SHA1: c21cf58ba4a04b033c912feae05056e943612b57
-SHA256: 28b49de51477aa1a9f1108a3b5a799f3baa86ab1e3fa129e46b8ea74a25996e9
+Filename: -CydiaVn-Tools/gsmicon_4.0-2.deb
+Size: 30822
+MD5sum: eac0c7f9ecb379d939e4dd7343d5f99b
+SHA1: 501e32ee74c2dba866cbc2ddc46570d9a7f4849f
+SHA256: f465a792e91cf6f75257f71594972d2f41133d635c46a41d9429b1571b839440
 Section: !CydiaVn-Tools
 Priority: required
 Homepage: http://cydia.vn/
@@ -6198,11 +6198,11 @@ Version: 4.0-2
 Architecture: iphoneos-arm
 Essential: yes
 Maintainer: Cydia.vn <repo@cydia.vn>
-Filename: -CydiaVn-Tools/gsmicon_4.0-2.deb
-Size: 30822
-MD5sum: eac0c7f9ecb379d939e4dd7343d5f99b
-SHA1: 501e32ee74c2dba866cbc2ddc46570d9a7f4849f
-SHA256: f465a792e91cf6f75257f71594972d2f41133d635c46a41d9429b1571b839440
+Filename: -CydiaVn-Tools/gsmicon_4.0-2_iphoneos-arm.deb
+Size: 30734
+MD5sum: cb686eddb025fe61c1eaaf2f0eb7192e
+SHA1: c21cf58ba4a04b033c912feae05056e943612b57
+SHA256: 28b49de51477aa1a9f1108a3b5a799f3baa86ab1e3fa129e46b8ea74a25996e9
 Section: !CydiaVn-Tools
 Priority: required
 Homepage: http://cydia.vn/
@@ -10548,11 +10548,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2127
 Depends: gsmicon, firmware (>= 5.1), mobilesubstrate, preferenceloader, applist
 Conflicts: vn.gsm.auxo
-Filename: -CydiaVn-Tools/vn.gsm.auxo.org_1.4-2_iphoneos-arm.deb
-Size: 880
-MD5sum: 81cd20e8cbe4a38fa8666bfe3b4a3fcc
-SHA1: 2c7ede6773e76dd8cb00ec1c8129748e81d3044b
-SHA256: 6d57b1c49c710a45a19fabe0e7bedee71a60c79307cfc96251131ca2560b8fc3
+Filename: -CydiaVn-Tools/auxo_1.4-2.deb
+Size: 1820470
+MD5sum: b0ccb5859f9754711f0225cc1b2eb649
+SHA1: 94317469c488f165d8adf262fc8664183c37e59b
+SHA256: 534994129d3161020642072213bd0bf7ea61e289232c56512d86843e2320f2c9
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: A fantastic re-imagined multitasking bar!
@@ -10569,11 +10569,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2127
 Depends: gsmicon, firmware (>= 5.1), mobilesubstrate, preferenceloader, applist
 Conflicts: vn.gsm.auxo
-Filename: -CydiaVn-Tools/auxo_1.4-2.deb
-Size: 1820470
-MD5sum: b0ccb5859f9754711f0225cc1b2eb649
-SHA1: 94317469c488f165d8adf262fc8664183c37e59b
-SHA256: 534994129d3161020642072213bd0bf7ea61e289232c56512d86843e2320f2c9
+Filename: -CydiaVn-Tools/vn.gsm.auxo.org_1.4-2_iphoneos-arm.deb
+Size: 880
+MD5sum: 81cd20e8cbe4a38fa8666bfe3b4a3fcc
+SHA1: 2c7ede6773e76dd8cb00ec1c8129748e81d3044b
+SHA256: 6d57b1c49c710a45a19fabe0e7bedee71a60c79307cfc96251131ca2560b8fc3
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: A fantastic re-imagined multitasking bar!
@@ -22087,11 +22087,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Pre-Depends: apt, findutils, shell-cmds
 Conflicts: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
 Replaces: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
-Filename: -CydiaVn-Tools/vn.gsm.icleanerpro_7.5.0k_iphoneos-arm.deb
-Size: 2843940
-MD5sum: fb506733b5669a9a4255becfbf2cda90
-SHA1: ed5791d5fdd628452d68b9a947066dfba7a0a872
-SHA256: b0f072d7c30c247a4ba67a887495944be82f61fdc87bf46047f5c4754f14b2ce
+Filename: -CydiaVn-Tools/icleanerpro_v7.5.0k.deb
+Size: 2854148
+MD5sum: 525f5b9d951eb4dfc12818ebc4ef68cb
+SHA1: 95dd3a2734290344cf4af6a0c4718483cc0acc0d
+SHA256: f46f6b5157708cb1a2fd0e7e073ab84113245e28b9fc3cdd209e845a56f52c78
 Section: !CydiaVn-Tools
 Homepage: http://cydia.vn/
 Description: The ultimate iPhone, iPod and iPad system cleaner & optimizer
@@ -22107,11 +22107,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Pre-Depends: apt, findutils, shell-cmds
 Conflicts: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
 Replaces: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
-Filename: -CydiaVn-Tools/icleanerpro_v7.5.0k.deb
-Size: 2854148
-MD5sum: 525f5b9d951eb4dfc12818ebc4ef68cb
-SHA1: 95dd3a2734290344cf4af6a0c4718483cc0acc0d
-SHA256: f46f6b5157708cb1a2fd0e7e073ab84113245e28b9fc3cdd209e845a56f52c78
+Filename: -CydiaVn-Tools/vn.gsm.icleanerpro_7.5.0k_iphoneos-arm.deb
+Size: 2843940
+MD5sum: fb506733b5669a9a4255becfbf2cda90
+SHA1: ed5791d5fdd628452d68b9a947066dfba7a0a872
+SHA256: b0f072d7c30c247a4ba67a887495944be82f61fdc87bf46047f5c4754f14b2ce
 Section: !CydiaVn-Tools
 Homepage: http://cydia.vn/
 Description: The ultimate iPhone, iPod and iPad system cleaner & optimizer
@@ -24470,11 +24470,11 @@ Version: 1.6.3
 Architecture: iphoneos-arm
 Maintainer: Cydia.vn <repo@cydia.vn>
 Depends: gsmicon, firmware (>= 5.0), com.arichardson.weepreferenceloader, com.chpwn.weeloader
-Filename: -CydiaVn-Tools/jukebox_1.6.3.deb
-Size: 411250
-MD5sum: 533cd9999079c5dd6bc72736f2170859
-SHA1: 2c2e1cb2e8b9ccda60680af34e9dfde3d93672b0
-SHA256: 4c88592a25a8c93afe314de9dd7712ca723af82b2dec7f6da4a8b7cf6344f5be
+Filename: -CydiaVn-Tools/vn.gsm.jukebox_1.6.3_iphoneos-arm.deb
+Size: 401310
+MD5sum: 945220b9acf6e0cecc92e237d0d83ded
+SHA1: 638863c5fd7d26bde484955cb5743b0419a467e3
+SHA256: c350a7ac5418da22b4531419f236b043fed903e55d888e631493267e231ecdb6
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: Control your music from the NC.
@@ -24489,11 +24489,11 @@ Version: 1.6.3
 Architecture: iphoneos-arm
 Maintainer: Cydia.vn <repo@cydia.vn>
 Depends: gsmicon, firmware (>= 5.0), com.arichardson.weepreferenceloader, com.chpwn.weeloader
-Filename: -CydiaVn-Tools/vn.gsm.jukebox_1.6.3_iphoneos-arm.deb
-Size: 401310
-MD5sum: 945220b9acf6e0cecc92e237d0d83ded
-SHA1: 638863c5fd7d26bde484955cb5743b0419a467e3
-SHA256: c350a7ac5418da22b4531419f236b043fed903e55d888e631493267e231ecdb6
+Filename: -CydiaVn-Tools/jukebox_1.6.3.deb
+Size: 411250
+MD5sum: 533cd9999079c5dd6bc72736f2170859
+SHA1: 2c2e1cb2e8b9ccda60680af34e9dfde3d93672b0
+SHA256: 4c88592a25a8c93afe314de9dd7712ca723af82b2dec7f6da4a8b7cf6344f5be
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: Control your music from the NC.
@@ -25149,7 +25149,7 @@ Package: vn.gsm.pushfix
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/pushfix_1.0.deb
+Filename: -CydiaVn-Tools/Push Fix.deb
 Size: 6856
 MD5sum: e145c06784daf311376f227ffd4415db
 SHA1: 32650ddd6ab4fe80ce6674b6bfae11b605c2a487
@@ -25165,7 +25165,7 @@ Package: vn.gsm.pushfix
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/Push Fix.deb
+Filename: -CydiaVn-Tools/pushfix_1.0.deb
 Size: 6856
 MD5sum: e145c06784daf311376f227ffd4415db
 SHA1: 32650ddd6ab4fe80ce6674b6bfae11b605c2a487
