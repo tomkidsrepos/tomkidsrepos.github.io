@@ -44,7 +44,7 @@
         },
         {
             "name": "Discord",
-            "version": "0.9.7b7",
+            "version": "0.9.7b10",
             "icon": "ota_apps/icons/com.hammerandchisel.discord.png",
             "plist": "ota_apps/com.hammerandchisel.discord.plist"
         },
