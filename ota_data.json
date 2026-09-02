@@ -53,6 +53,12 @@
             "version": "6.13.6",
             "icon": "ota_apps/icons/com.atebits.Tweetie2.png",
             "plist": "ota_apps/com.atebits.Tweetie2.plist"
+        },
+        {
+            "name": "Twelve",
+            "version": "0.91",
+            "icon": "ota_apps/icons/com.example.Tele6ram.png",
+            "plist": "ota_apps/com.example.Tele6ram.plist"
         }
     ],
     "Trò Chơi": [
