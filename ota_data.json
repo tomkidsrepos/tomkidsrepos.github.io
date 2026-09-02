@@ -179,6 +179,12 @@
             "version": "3.2.1",
             "icon": "ota_apps/icons/vn.com.vng.zingmp3.png",
             "plist": "ota_apps/vn.com.vng.zingmp3.plist"
+        },
+        {
+            "name": "tvold",
+            "version": "1.0",
+            "icon": "ota_apps/icons/rousseaddict.tvold.png",
+            "plist": "ota_apps/rousseaddict.tvold.plist"
         }
     ],
     "Hệ thống": [
