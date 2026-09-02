@@ -105,6 +105,12 @@
             "version": "2.9",
             "icon": "ota_apps/icons/com.vietlotus.lichvietfree.png",
             "plist": "ota_apps/com.vietlotus.lichvietfree.plist"
+        },
+        {
+            "name": "MangaDex",
+            "version": "1.0",
+            "icon": "ota_apps/icons/ru.computershik.mangadex.png",
+            "plist": "ota_apps/ru.computershik.mangadex.plist"
         }
     ],
     "Giải Trí": [
