@@ -91,6 +91,12 @@
             "version": "1.2",
             "icon": "ota_apps/icons/com.dotgears.flap.png",
             "plist": "ota_apps/com.dotgears.flap.plist"
+        },
+        {
+            "name": "jellyold",
+            "version": "1.0",
+            "icon": "ota_apps/icons/rousseaddict.jellyold.png",
+            "plist": "ota_apps/rousseaddict.jellyold.plist"
         }
     ],
     "Công Cụ": [
