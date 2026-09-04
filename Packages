@@ -1472,11 +1472,11 @@ Version: 1.7.1
 Architecture: iphoneos-arm
 Maintainer: poetic_folly <poetic_folly@modmyi.com>
 Depends: firmware (>= 5.0), mobilesubstrate, com.chpwn.weeloader, preferenceloader
-Filename: package_repo_A1/tomkids.ncsettings_1.7.1_iphoneos-arm.deb
-Size: 469848
-MD5sum: e165cb7653f3923836b609ef54f15330
-SHA1: e06127303117b9beabf6fe69304e20a56f3f534e
-SHA256: ff99ee1c9dc9f2df97b4b3fc3b095b8f7eff401916830129866b9ad564edbcc4
+Filename: package_repo_A1/com.jamied360.ncsettings_1.7.1_iphoneos-arm.deb
+Size: 469838
+MD5sum: 6f472f4cf6b12e1b19ef28ac0fd47d97
+SHA1: 566fe499d697a809bf3b05572ca0d72c7461a500
+SHA256: dd8f4d64ca86378fe8b98346216983d274b611aa81b3ce572677595f4147fd18
 Section: Addons (NotificationCenter)
 Priority: extra
 Homepage: http://modmyi.com/info/ncsettings.php
@@ -1492,11 +1492,11 @@ Version: 1.7.1
 Architecture: iphoneos-arm
 Maintainer: poetic_folly <poetic_folly@modmyi.com>
 Depends: firmware (>= 5.0), mobilesubstrate, com.chpwn.weeloader, preferenceloader
-Filename: package_repo_A1/com.jamied360.ncsettings_1.7.1_iphoneos-arm.deb
-Size: 469838
-MD5sum: 6f472f4cf6b12e1b19ef28ac0fd47d97
-SHA1: 566fe499d697a809bf3b05572ca0d72c7461a500
-SHA256: dd8f4d64ca86378fe8b98346216983d274b611aa81b3ce572677595f4147fd18
+Filename: package_repo_A1/tomkids.ncsettings_1.7.1_iphoneos-arm.deb
+Size: 469848
+MD5sum: e165cb7653f3923836b609ef54f15330
+SHA1: e06127303117b9beabf6fe69304e20a56f3f534e
+SHA256: ff99ee1c9dc9f2df97b4b3fc3b095b8f7eff401916830129866b9ad564edbcc4
 Section: Addons (NotificationCenter)
 Priority: extra
 Homepage: http://modmyi.com/info/ncsettings.php
@@ -1781,7 +1781,7 @@ Version: 13454
 Architecture: iphoneos-arm
 Maintainer: dopaemon <polarisdp@gmail.com>
 Depends: firmware (>= 4.3), uikittools, appsync
-Filename: package_repo_A1/com.ninjakiwi.bloonstd5-13454-iOS-4.3 (1).deb
+Filename: package_repo_A1/com.ninjakiwi.bloonstd5-13454-iOS-4.3.deb
 Size: 93077588
 MD5sum: 7172c13412fa10a55329fe8fb8ac65d2
 SHA1: b30d32a2bd5152b9ef3f1123279d3c6b051a4f99
@@ -1800,7 +1800,7 @@ Version: 13454
 Architecture: iphoneos-arm
 Maintainer: dopaemon <polarisdp@gmail.com>
 Depends: firmware (>= 4.3), uikittools, appsync
-Filename: package_repo_A1/com.ninjakiwi.bloonstd5-13454-iOS-4.3.deb
+Filename: package_repo_A1/com.ninjakiwi.bloonstd5-13454-iOS-4.3 (1).deb
 Size: 93077588
 MD5sum: 7172c13412fa10a55329fe8fb8ac65d2
 SHA1: b30d32a2bd5152b9ef3f1123279d3c6b051a4f99
@@ -2140,11 +2140,11 @@ Architecture: iphoneos-arm
 Maintainer: Requis
 Depends: mobilesubstrate (>= 0.9.2586), firmware (>= 2.0), firmware (<= 7.9), preferenceloader
 Conflicts: com.ixmoe.1pwn.weatherx, com.skyglow.stocksx
-Filename: package_repo_A1/com.skyglow.weatherx_3.5_iphoneos-arm.deb
-Size: 155742
-MD5sum: 689171cd5f391aed223f3c0ad7e4ce3b
-SHA1: cef43a162338ef6001d56d4a4085a97e234d0340
-SHA256: 2da0aab5c140809c5d461a13a2c69029a1e4f8db9c56695c222648c37e04d9ea
+Filename: package_repo_A1/WeatherX-Legacy.deb
+Size: 155622
+MD5sum: a6d5f494a673da237ffa95d289538447
+SHA1: 9fb97aee0ce011ea1b6bf8224e8da0ef5af2652b
+SHA256: b530eb8231e01a11562e16f23767c925f548e3261b224aaf3f7047afa514a6a0
 Section: Tweaks
 Description: Fix iOS's Weather & Stocks apps from iPhoneOS 2 to iOS 7, the widgets in the notification center, and the temperature in the iPad clock app!
 Author: Requis, Electimon
@@ -2158,11 +2158,11 @@ Architecture: iphoneos-arm
 Maintainer: Requis
 Depends: mobilesubstrate (>= 0.9.2586), firmware (>= 2.0), firmware (<= 7.9), preferenceloader
 Conflicts: com.ixmoe.1pwn.weatherx, com.skyglow.stocksx
-Filename: package_repo_A1/WeatherX-Legacy.deb
-Size: 155622
-MD5sum: a6d5f494a673da237ffa95d289538447
-SHA1: 9fb97aee0ce011ea1b6bf8224e8da0ef5af2652b
-SHA256: b530eb8231e01a11562e16f23767c925f548e3261b224aaf3f7047afa514a6a0
+Filename: package_repo_A1/com.skyglow.weatherx_3.5_iphoneos-arm.deb
+Size: 155742
+MD5sum: 689171cd5f391aed223f3c0ad7e4ce3b
+SHA1: cef43a162338ef6001d56d4a4085a97e234d0340
+SHA256: 2da0aab5c140809c5d461a13a2c69029a1e4f8db9c56695c222648c37e04d9ea
 Section: Tweaks
 Description: Fix iOS's Weather & Stocks apps from iPhoneOS 2 to iOS 7, the widgets in the notification center, and the temperature in the iPad clock app!
 Author: Requis, Electimon
@@ -2497,11 +2497,11 @@ Version: 1.0-1+debug
 Architecture: iphoneos-arm
 Maintainer: tuanem
 Installed-Size: 1444
-Filename: package_repo_A1/com.tuanem.shshchecker_1.0_iphoneos-arm.deb
-Size: 340310
-MD5sum: d893f5ffde5f8a14cbd3537d868f0e3b
-SHA1: e373d21046327e5ab5e7e07cad4fc05e246fc1a8
-SHA256: 6bbe1037e19f0ad951e7241617e549ffe4dc8bbb439d6c902d85c70d3e629d8a
+Filename: package_repo_A1/com.tuanem.shshchecker_1.0-1+debug_iphoneos-arm.deb
+Size: 420726
+MD5sum: 407a423a7e2b003c3cb8426aec6bcd73
+SHA1: ef3b74e6686b13af31f0f02c9cb3b7d46270a217
+SHA256: 08ab6a5c119891fafff801d0d5400fc8464837311291fe0f86a20d2a6d3a27fe
 Section: System
 Description: check SHSH Blobs on Mterminal
 Tag: role::hacker
@@ -2514,11 +2514,11 @@ Version: 1.0-1+debug
 Architecture: iphoneos-arm
 Maintainer: tuanem
 Installed-Size: 1444
-Filename: package_repo_A1/com.tuanem.shshchecker_1.0-1+debug_iphoneos-arm.deb
-Size: 420726
-MD5sum: 407a423a7e2b003c3cb8426aec6bcd73
-SHA1: ef3b74e6686b13af31f0f02c9cb3b7d46270a217
-SHA256: 08ab6a5c119891fafff801d0d5400fc8464837311291fe0f86a20d2a6d3a27fe
+Filename: package_repo_A1/com.tuanem.shshchecker_1.0_iphoneos-arm.deb
+Size: 340310
+MD5sum: d893f5ffde5f8a14cbd3537d868f0e3b
+SHA1: e373d21046327e5ab5e7e07cad4fc05e246fc1a8
+SHA256: 6bbe1037e19f0ad951e7241617e549ffe4dc8bbb439d6c902d85c70d3e629d8a
 Section: System
 Description: check SHSH Blobs on Mterminal
 Tag: role::hacker
@@ -3580,19 +3580,6 @@ Name: Phoenix6
 Package: tomkids.soundwave
 Version: 1.0
 Architecture: iphoneos-arm
-Maintainer: Build tweak by Tomkids
-Filename: package_repo_A1/tomkids.app.soundwave.deb
-Size: 1113068
-MD5sum: a08ae3092a49d6487851039d6239d08d
-SHA1: 1f75e08e6508d4d41c63b6225d5abc1eef8b31cf
-SHA256: 42e6f9cfb467a0ff0b8dec49d2aab69eb5741cb42c7dbaf6ad3efc7ad51763b6
-Section: Applications
-Description: soundwave 1.0.0 for Low iOS
-Author: Build app to tweak by Tomkids
-
-Package: tomkids.soundwave
-Version: 1.0
-Architecture: iphoneos-arm
 Maintainer: Unknown
 Filename: package_repo_A1/codevn-com.soundwave.app_1.0.0-102+debug_iphoneos-arm_Deb.deb
 Size: 819398
@@ -3604,6 +3591,19 @@ Description: Converted from IPA
 Author: Unknown
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: Sound Cloud
+
+Package: tomkids.soundwave
+Version: 1.0
+Architecture: iphoneos-arm
+Maintainer: Build tweak by Tomkids
+Filename: package_repo_A1/tomkids.app.soundwave.deb
+Size: 1113068
+MD5sum: a08ae3092a49d6487851039d6239d08d
+SHA1: 1f75e08e6508d4d41c63b6225d5abc1eef8b31cf
+SHA256: 42e6f9cfb467a0ff0b8dec49d2aab69eb5741cb42c7dbaf6ad3efc7ad51763b6
+Section: Applications
+Description: soundwave 1.0.0 for Low iOS
+Author: Build app to tweak by Tomkids
 
 Package: tomkids.tiktokfix
 Version: 2.0-2
@@ -6178,11 +6178,11 @@ Version: 4.0-2
 Architecture: iphoneos-arm
 Essential: yes
 Maintainer: Cydia.vn <repo@cydia.vn>
-Filename: -CydiaVn-Tools/gsmicon_4.0-2.deb
-Size: 30822
-MD5sum: eac0c7f9ecb379d939e4dd7343d5f99b
-SHA1: 501e32ee74c2dba866cbc2ddc46570d9a7f4849f
-SHA256: f465a792e91cf6f75257f71594972d2f41133d635c46a41d9429b1571b839440
+Filename: -CydiaVn-Tools/gsmicon_4.0-2_iphoneos-arm.deb
+Size: 30734
+MD5sum: cb686eddb025fe61c1eaaf2f0eb7192e
+SHA1: c21cf58ba4a04b033c912feae05056e943612b57
+SHA256: 28b49de51477aa1a9f1108a3b5a799f3baa86ab1e3fa129e46b8ea74a25996e9
 Section: !CydiaVn-Tools
 Priority: required
 Homepage: http://cydia.vn/
@@ -6198,11 +6198,11 @@ Version: 4.0-2
 Architecture: iphoneos-arm
 Essential: yes
 Maintainer: Cydia.vn <repo@cydia.vn>
-Filename: -CydiaVn-Tools/gsmicon_4.0-2_iphoneos-arm.deb
-Size: 30734
-MD5sum: cb686eddb025fe61c1eaaf2f0eb7192e
-SHA1: c21cf58ba4a04b033c912feae05056e943612b57
-SHA256: 28b49de51477aa1a9f1108a3b5a799f3baa86ab1e3fa129e46b8ea74a25996e9
+Filename: -CydiaVn-Tools/gsmicon_4.0-2.deb
+Size: 30822
+MD5sum: eac0c7f9ecb379d939e4dd7343d5f99b
+SHA1: 501e32ee74c2dba866cbc2ddc46570d9a7f4849f
+SHA256: f465a792e91cf6f75257f71594972d2f41133d635c46a41d9429b1571b839440
 Section: !CydiaVn-Tools
 Priority: required
 Homepage: http://cydia.vn/
@@ -10548,11 +10548,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2127
 Depends: gsmicon, firmware (>= 5.1), mobilesubstrate, preferenceloader, applist
 Conflicts: vn.gsm.auxo
-Filename: -CydiaVn-Tools/auxo_1.4-2.deb
-Size: 1820470
-MD5sum: b0ccb5859f9754711f0225cc1b2eb649
-SHA1: 94317469c488f165d8adf262fc8664183c37e59b
-SHA256: 534994129d3161020642072213bd0bf7ea61e289232c56512d86843e2320f2c9
+Filename: -CydiaVn-Tools/vn.gsm.auxo.org_1.4-2_iphoneos-arm.deb
+Size: 880
+MD5sum: 81cd20e8cbe4a38fa8666bfe3b4a3fcc
+SHA1: 2c7ede6773e76dd8cb00ec1c8129748e81d3044b
+SHA256: 6d57b1c49c710a45a19fabe0e7bedee71a60c79307cfc96251131ca2560b8fc3
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: A fantastic re-imagined multitasking bar!
@@ -10569,11 +10569,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2127
 Depends: gsmicon, firmware (>= 5.1), mobilesubstrate, preferenceloader, applist
 Conflicts: vn.gsm.auxo
-Filename: -CydiaVn-Tools/vn.gsm.auxo.org_1.4-2_iphoneos-arm.deb
-Size: 880
-MD5sum: 81cd20e8cbe4a38fa8666bfe3b4a3fcc
-SHA1: 2c7ede6773e76dd8cb00ec1c8129748e81d3044b
-SHA256: 6d57b1c49c710a45a19fabe0e7bedee71a60c79307cfc96251131ca2560b8fc3
+Filename: -CydiaVn-Tools/auxo_1.4-2.deb
+Size: 1820470
+MD5sum: b0ccb5859f9754711f0225cc1b2eb649
+SHA1: 94317469c488f165d8adf262fc8664183c37e59b
+SHA256: 534994129d3161020642072213bd0bf7ea61e289232c56512d86843e2320f2c9
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: A fantastic re-imagined multitasking bar!
@@ -22087,11 +22087,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Pre-Depends: apt, findutils, shell-cmds
 Conflicts: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
 Replaces: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
-Filename: -CydiaVn-Tools/icleanerpro_v7.5.0k.deb
-Size: 2854148
-MD5sum: 525f5b9d951eb4dfc12818ebc4ef68cb
-SHA1: 95dd3a2734290344cf4af6a0c4718483cc0acc0d
-SHA256: f46f6b5157708cb1a2fd0e7e073ab84113245e28b9fc3cdd209e845a56f52c78
+Filename: -CydiaVn-Tools/vn.gsm.icleanerpro_7.5.0k_iphoneos-arm.deb
+Size: 2843940
+MD5sum: fb506733b5669a9a4255becfbf2cda90
+SHA1: ed5791d5fdd628452d68b9a947066dfba7a0a872
+SHA256: b0f072d7c30c247a4ba67a887495944be82f61fdc87bf46047f5c4754f14b2ce
 Section: !CydiaVn-Tools
 Homepage: http://cydia.vn/
 Description: The ultimate iPhone, iPod and iPad system cleaner & optimizer
@@ -22107,11 +22107,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Pre-Depends: apt, findutils, shell-cmds
 Conflicts: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
 Replaces: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
-Filename: -CydiaVn-Tools/vn.gsm.icleanerpro_7.5.0k_iphoneos-arm.deb
-Size: 2843940
-MD5sum: fb506733b5669a9a4255becfbf2cda90
-SHA1: ed5791d5fdd628452d68b9a947066dfba7a0a872
-SHA256: b0f072d7c30c247a4ba67a887495944be82f61fdc87bf46047f5c4754f14b2ce
+Filename: -CydiaVn-Tools/icleanerpro_v7.5.0k.deb
+Size: 2854148
+MD5sum: 525f5b9d951eb4dfc12818ebc4ef68cb
+SHA1: 95dd3a2734290344cf4af6a0c4718483cc0acc0d
+SHA256: f46f6b5157708cb1a2fd0e7e073ab84113245e28b9fc3cdd209e845a56f52c78
 Section: !CydiaVn-Tools
 Homepage: http://cydia.vn/
 Description: The ultimate iPhone, iPod and iPad system cleaner & optimizer
@@ -24470,11 +24470,11 @@ Version: 1.6.3
 Architecture: iphoneos-arm
 Maintainer: Cydia.vn <repo@cydia.vn>
 Depends: gsmicon, firmware (>= 5.0), com.arichardson.weepreferenceloader, com.chpwn.weeloader
-Filename: -CydiaVn-Tools/vn.gsm.jukebox_1.6.3_iphoneos-arm.deb
-Size: 401310
-MD5sum: 945220b9acf6e0cecc92e237d0d83ded
-SHA1: 638863c5fd7d26bde484955cb5743b0419a467e3
-SHA256: c350a7ac5418da22b4531419f236b043fed903e55d888e631493267e231ecdb6
+Filename: -CydiaVn-Tools/jukebox_1.6.3.deb
+Size: 411250
+MD5sum: 533cd9999079c5dd6bc72736f2170859
+SHA1: 2c2e1cb2e8b9ccda60680af34e9dfde3d93672b0
+SHA256: 4c88592a25a8c93afe314de9dd7712ca723af82b2dec7f6da4a8b7cf6344f5be
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: Control your music from the NC.
@@ -24489,11 +24489,11 @@ Version: 1.6.3
 Architecture: iphoneos-arm
 Maintainer: Cydia.vn <repo@cydia.vn>
 Depends: gsmicon, firmware (>= 5.0), com.arichardson.weepreferenceloader, com.chpwn.weeloader
-Filename: -CydiaVn-Tools/jukebox_1.6.3.deb
-Size: 411250
-MD5sum: 533cd9999079c5dd6bc72736f2170859
-SHA1: 2c2e1cb2e8b9ccda60680af34e9dfde3d93672b0
-SHA256: 4c88592a25a8c93afe314de9dd7712ca723af82b2dec7f6da4a8b7cf6344f5be
+Filename: -CydiaVn-Tools/vn.gsm.jukebox_1.6.3_iphoneos-arm.deb
+Size: 401310
+MD5sum: 945220b9acf6e0cecc92e237d0d83ded
+SHA1: 638863c5fd7d26bde484955cb5743b0419a467e3
+SHA256: c350a7ac5418da22b4531419f236b043fed903e55d888e631493267e231ecdb6
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: Control your music from the NC.
@@ -25149,7 +25149,7 @@ Package: vn.gsm.pushfix
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/Push Fix.deb
+Filename: -CydiaVn-Tools/pushfix_1.0.deb
 Size: 6856
 MD5sum: e145c06784daf311376f227ffd4415db
 SHA1: 32650ddd6ab4fe80ce6674b6bfae11b605c2a487
@@ -25165,7 +25165,7 @@ Package: vn.gsm.pushfix
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/pushfix_1.0.deb
+Filename: -CydiaVn-Tools/Push Fix.deb
 Size: 6856
 MD5sum: e145c06784daf311376f227ffd4415db
 SHA1: 32650ddd6ab4fe80ce6674b6bfae11b605c2a487
