@@ -203,6 +203,12 @@
             "version": "1.0",
             "icon": "ota_apps/icons/rousseaddict.tvold.png",
             "plist": "ota_apps/rousseaddict.tvold.plist"
+        },
+        {
+            "name": "Opaline",
+            "version": "1.12.0",
+            "icon": "ota_apps/icons/com.verback.YTLite.png",
+            "plist": "ota_apps/com.verback.YTLite.plist"
         }
     ],
     "Hệ thống": [
