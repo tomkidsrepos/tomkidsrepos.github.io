@@ -242,5 +242,13 @@
             "icon": "ota_apps/icons/com.google.GoogleMobile.png",
             "plist": "ota_apps/com.google.GoogleMobile.plist"
         }
+    ],
+    "Jailbreak": [
+        {
+            "name": "h3lix",
+            "version": "1.0",
+            "icon": "ota_apps/icons/org.tihmstar.h3lix.png",
+            "plist": "ota_apps/org.tihmstar.h3lix.plist"
+        }
     ]
 }
