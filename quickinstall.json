@@ -2,7 +2,7 @@
   {
     "name": "Cài đặt AFC2",
     "description": "Apple File Conduit 2 - Truy cập toàn bộ hệ thống file iOS",
-    "package_id": "com.saurik.AppleFileConduit2d",
+    "package_id": "com.saurik.afc2d",
     "version": "1.2",
     "source_repo": "https://tomkidsrepo.cloud",
     "ios_range": "iOS 5-9",
@@ -22,8 +22,8 @@
   {
     "name": "Cài Meta Bundle (Cydia) cho iOS 6",
     "description": "Cydia tự động tính toán và tải các tweaks cần thiết",
-    "package_id": "vn.tomkids.metabundleios6",
-    "version": "1.0",
+    "package_id": "com.tomkids.metabundle",
+    "version": "1.1",
     "source_repo": "https://tomkidsrepo.cloud",
     "ios_range": "iOS 6",
     "color": "green",
