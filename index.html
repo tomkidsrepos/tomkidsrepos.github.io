@@ -364,19 +364,12 @@ Thêm vào Zebra
     <h2>CÀI ĐẶT NHANH DEB</h2>
     <p style="color:#94a3b8; font-size:13px; margin-bottom:22px;">Nhấn nút bên dưới để mở Cydia và cài đặt trực tiếp — không cần tìm kiếm</p>
 
-    <!-- Bước 1: Cố định - Thêm nguồn Cydia -->
-    <div class="step-box" style="background:#0f172a; border-radius:14px; padding:18px; margin-bottom:12px; text-align:left; max-width:520px; margin-left:auto; margin-right:auto;">
-        <div style="display:table; width:100%;">
-            <div style="display:table-cell; width:38px; vertical-align:middle;">
-                <div style="width:28px;height:28px;background:#2563eb;-webkit-border-radius:50%;border-radius:50%;text-align:center;line-height:28px;font-weight:bold;font-size:14px;color:white;">1</div>
-            </div>
-            <div style="display:table-cell; vertical-align:middle; padding-left:10px;">
-                <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://tomkidsrepo.cloud/"
-                   class="step-btn" style="background:#2563eb;color:white;padding:10px 20px;-webkit-border-radius:10px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;width:100%;text-align:center;box-sizing:border-box;">
-                    Thêm nguồn vào Cydia (nếu chưa có)
-                </a>
-            </div>
-        </div>
+    <!-- Thêm nguồn Cydia - không số thứ tự -->
+    <div style="max-width:520px; margin-left:auto; margin-right:auto; margin-bottom:12px;">
+        <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://tomkidsrepo.cloud/"
+           class="step-btn" style="background:#2563eb;color:white;padding:12px 20px;-webkit-border-radius:12px;border-radius:12px;text-decoration:none;font-weight:bold;font-size:14px;display:block;width:100%;text-align:center;box-sizing:border-box;">
+            Thêm nguồn vào Cydia (nếu chưa có)
+        </a>
     </div>
 
     <!-- Bước 2+: Các nút cài DEB — render động từ quickinstall.json -->
@@ -455,7 +448,6 @@ Thêm vào Zebra
         var html = '';
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
-            var stepNum = i + 2; // Bước 1 là "Thêm nguồn", nút DEB bắt đầu từ 2
             var bgColor = item.color === 'blue'   ? '#2563eb' :
                           item.color === 'orange' ? '#ea580c' : '#16a34a';
             var installUrl = 'cydia://package/' + item.package_id;
@@ -466,18 +458,11 @@ Thêm vào Zebra
                 badge = '&nbsp;<span style="background:#0f3460;color:#60a5fa;font-size:11px;padding:2px 7px;-webkit-border-radius:20px;border-radius:20px;white-space:nowrap;">' + item.ios_range + '</span>';
             }
 
-            html += '<div class="step-box" style="background:#0f172a;border-radius:14px;padding:18px;margin-bottom:12px;text-align:left;max-width:520px;margin-left:auto;margin-right:auto;">' +
-                        '<div style="display:table;width:100%;">' +
-                            '<div style="display:table-cell;width:38px;vertical-align:middle;">' +
-                                '<div style="width:28px;height:28px;background:' + bgColor + ';-webkit-border-radius:50%;border-radius:50%;text-align:center;line-height:28px;font-weight:bold;font-size:14px;color:white;">' + stepNum + '</div>' +
-                            '</div>' +
-                            '<div style="display:table-cell;vertical-align:middle;padding-left:10px;">' +
-                                '<a href="' + installUrl + '" class="step-btn" style="background:' + bgColor + ';color:white;padding:10px 20px;-webkit-border-radius:10px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;width:100%;text-align:center;box-sizing:border-box;">' +
-                                    item.name + badge +
-                                '</a>' +
-                                (item.description ? '<p style="font-size:11px;color:#64748b;margin-top:6px;text-align:center;">' + item.description + '</p>' : '') +
-                            '</div>' +
-                        '</div>' +
+            html += '<div style="max-width:520px;margin-left:auto;margin-right:auto;margin-bottom:12px;">' +
+                        '<a href="' + installUrl + '" class="step-btn" style="background:' + bgColor + ';color:white;padding:12px 20px;-webkit-border-radius:12px;border-radius:12px;text-decoration:none;font-weight:bold;font-size:14px;display:block;width:100%;text-align:center;box-sizing:border-box;">' +
+                            item.name + badge +
+                        '</a>' +
+                        (item.description ? '<p style="font-size:11px;color:#64748b;margin-top:6px;text-align:center;">' + item.description + '</p>' : '') +
                     '</div>';
         }
         container.innerHTML = html;
