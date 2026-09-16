@@ -360,10 +360,12 @@ Thêm vào Zebra
 </header>
 
 
-<section class="info" style="text-align:center;">
-    <h2>CÀI ĐẶT NHANH - META BUNDLE</h2>
-    
-    <div class="step-box" style="background:#0f172a; border-radius:14px; padding:18px; margin-bottom:16px; text-align:left; max-width:520px; margin-left:auto; margin-right:auto;">
+<section class="info" id="quick-install-section" style="text-align:center;">
+    <h2>CÀI ĐẶT NHANH DEB</h2>
+    <p style="color:#94a3b8; font-size:13px; margin-bottom:22px;">Nhấn nút bên dưới để mở Cydia và cài đặt trực tiếp — không cần tìm kiếm</p>
+
+    <!-- Bước 1: Cố định - Thêm nguồn Cydia -->
+    <div class="step-box" style="background:#0f172a; border-radius:14px; padding:18px; margin-bottom:12px; text-align:left; max-width:520px; margin-left:auto; margin-right:auto;">
         <div style="display:table; width:100%;">
             <div style="display:table-cell; width:38px; vertical-align:middle;">
                 <div style="width:28px;height:28px;background:#2563eb;-webkit-border-radius:50%;border-radius:50%;text-align:center;line-height:28px;font-weight:bold;font-size:14px;color:white;">1</div>
@@ -377,28 +379,12 @@ Thêm vào Zebra
         </div>
     </div>
 
-    <div class="step-box" style="background:#0f172a; border-radius:14px; padding:18px; text-align:left; max-width:520px; margin-left:auto; margin-right:auto;">
-        <div style="display:table; width:100%;">
-            <div style="display:table-cell; width:38px; vertical-align:middle;">
-                <div style="width:28px;height:28px;background:#16a34a;-webkit-border-radius:50%;border-radius:50%;text-align:center;line-height:28px;font-weight:bold;font-size:14px;color:white;">2</div>
-            </div>
-            <div style="display:table-cell; vertical-align:middle; padding-left:10px;">
-                <div style="margin-bottom:12px;">
-                    <a href="cydia://package/com.tomkids.metabundle"
-                       class="step-btn" style="background:#16a34a;color:white;padding:10px 20px;-webkit-border-radius:10px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;width:100%;text-align:center;box-sizing:border-box;">
-                        Cài Meta Bundle (Cydia) cho IOS 6
-                    </a>
-                </div>
-                <!-- <div>
-                    <a href="cydia://package/com.tomkids.metabundleios8"
-                       class="step-btn" style="background:#16a34a;color:white;padding:10px 20px;-webkit-border-radius:10px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;width:100%;text-align:center;box-sizing:border-box;">
-                        Cài Meta Bundle (Cydia) cho IOS 8
-                    </a>
-                </div> -->
-            </div>
-        </div>
+    <!-- Bước 2+: Các nút cài DEB — render động từ quickinstall.json -->
+    <div id="quickinstall-container">
+        <p style="color:#475569; font-size:13px; padding:20px;">Đang tải danh sách...</p>
     </div>
-    <p style="color:#64748b; font-size:12px; margin-top:16px;">* Cydia sẽ tự động tính toán và tải về các tweaks cần thiết.</p>
+
+    <p style="color:#64748b; font-size:12px; margin-top:16px;">* Máy cần đã jailbreak và đã thêm nguồn Tomkids vào Cydia.</p>
 </section>
 
 <section class="info ota-section">
@@ -457,6 +443,66 @@ Thêm vào Zebra
         }
         container.innerHTML = htmlContent;
     }
+
+    // ─── Quick Install DEB: render từ quickinstall.json ───────────────────────
+    function buildQuickInstallList(items) {
+        var container = document.getElementById('quickinstall-container');
+        if (!container) return;
+        if (!items || items.length === 0) {
+            container.innerHTML = '<p style="color:#475569;font-size:13px;padding:20px;">Chưa có package nào.</p>';
+            return;
+        }
+        var html = '';
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i];
+            var stepNum = i + 2; // Bước 1 là "Thêm nguồn", nút DEB bắt đầu từ 2
+            var bgColor = item.color === 'blue'   ? '#2563eb' :
+                          item.color === 'orange' ? '#ea580c' : '#16a34a';
+            var installUrl = 'cydia://package/' + item.package_id;
+
+            // Badge iOS range
+            var badge = '';
+            if (item.ios_range) {
+                badge = '&nbsp;<span style="background:#0f3460;color:#60a5fa;font-size:11px;padding:2px 7px;-webkit-border-radius:20px;border-radius:20px;white-space:nowrap;">' + item.ios_range + '</span>';
+            }
+
+            html += '<div class="step-box" style="background:#0f172a;border-radius:14px;padding:18px;margin-bottom:12px;text-align:left;max-width:520px;margin-left:auto;margin-right:auto;">' +
+                        '<div style="display:table;width:100%;">' +
+                            '<div style="display:table-cell;width:38px;vertical-align:middle;">' +
+                                '<div style="width:28px;height:28px;background:' + bgColor + ';-webkit-border-radius:50%;border-radius:50%;text-align:center;line-height:28px;font-weight:bold;font-size:14px;color:white;">' + stepNum + '</div>' +
+                            '</div>' +
+                            '<div style="display:table-cell;vertical-align:middle;padding-left:10px;">' +
+                                '<a href="' + installUrl + '" class="step-btn" style="background:' + bgColor + ';color:white;padding:10px 20px;-webkit-border-radius:10px;border-radius:10px;text-decoration:none;font-weight:bold;font-size:14px;display:inline-block;width:100%;text-align:center;box-sizing:border-box;">' +
+                                    item.name + badge +
+                                '</a>' +
+                                (item.description ? '<p style="font-size:11px;color:#64748b;margin-top:6px;text-align:center;">' + item.description + '</p>' : '') +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+        }
+        container.innerHTML = html;
+    }
+
+    var xhrQI = new XMLHttpRequest();
+    xhrQI.open('GET', 'quickinstall.json?t=' + new Date().getTime(), true);
+    xhrQI.onreadystatechange = function() {
+        if (xhrQI.readyState === 4) {
+            if (xhrQI.status === 200) {
+                try {
+                    var qiData = JSON.parse(xhrQI.responseText);
+                    buildQuickInstallList(qiData);
+                } catch(e) {
+                    var c = document.getElementById('quickinstall-container');
+                    if (c) c.innerHTML = '<p style="color:#ef4444;font-size:13px;padding:20px;">Lỗi tải dữ liệu.</p>';
+                }
+            } else {
+                var c = document.getElementById('quickinstall-container');
+                if (c) c.innerHTML = '<p style="color:#ef4444;font-size:13px;padding:20px;">Không thể tải danh sách.</p>';
+            }
+        }
+    };
+    xhrQI.send();
+    // ──────────────────────────────────────────────────────────────────────────
 
     // iOS 6 compatible: use XMLHttpRequest instead of fetch()
     var xhr = new XMLHttpRequest();

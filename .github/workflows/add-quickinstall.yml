@@ -1,0 +1,201 @@
+﻿name: Add Quick Install DEB
+
+on:
+  workflow_dispatch:
+    inputs:
+      deb_url:
+        description: "URL trực tiếp đến file .deb (GitHub blob/raw, Google Drive, hoặc link thường)"
+        required: true
+        type: string
+      button_label:
+        description: "Tên nút hiển thị trên trang chủ (để trống = tự lấy từ DEB Name/Package)"
+        required: false
+        type: string
+      description:
+        description: "Mô tả ngắn hiển thị bên dưới nút (tuỳ chọn)"
+        required: false
+        type: string
+      ios_range:
+        description: "iOS tương thích, ví dụ: iOS 6, iOS 7-10, iOS 5-9 (tuỳ chọn)"
+        required: false
+        type: string
+      color:
+        description: "Màu nút"
+        required: true
+        type: choice
+        options:
+          - green
+          - blue
+          - orange
+        default: green
+
+concurrency:
+  group: quickinstall-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  add-deb:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Sync with latest remote
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install --yes aria2 dpkg-dev pipx xxd
+          pipx install gdown
+
+      - name: Download DEB file
+        run: |
+          mkdir -p work_qi
+          url="${{ inputs.deb_url }}"
+
+          # Chuyển GitHub blob URL → raw URL
+          if [[ "$url" == "https://github.com/"* && "$url" == *"/blob/"* ]]; then
+            url=$(echo "$url" | sed 's|/blob/|/raw/|')
+            echo "Converted to raw URL: $url"
+          fi
+
+          # Hỗ trợ Google Drive
+          if [[ "$url" == *"drive.google.com"* ]]; then
+            file_id=$(echo "$url" | sed -E 's|.*/d/([a-zA-Z0-9_-]+).*|\1|')
+            if [[ "$file_id" == "$url" ]]; then
+              file_id=$(echo "$url" | sed -E 's|.*id=([a-zA-Z0-9_-]+).*|\1|')
+            fi
+            if [[ "$file_id" != "$url" && -n "$file_id" ]]; then
+              gdown "https://drive.google.com/uc?id=$file_id" -O "work_qi/pkg.deb"
+            else
+              echo "::error::Google Drive link không hợp lệ!"
+              exit 1
+            fi
+          else
+            aria2c -s16 -x16 --allow-overwrite=true --dir=work_qi --out=pkg.deb "$url"
+          fi
+
+          echo "Download hoàn tất. Kích thước: $(wc -c < work_qi/pkg.deb) bytes"
+
+      - name: Validate DEB file
+        run: |
+          MAGIC=$(xxd -p -l 8 "work_qi/pkg.deb" 2>/dev/null || echo "")
+          if [[ "$MAGIC" != "213c617263683e0a"* ]]; then
+            echo "::error::File không phải DEB hợp lệ! Magic bytes: $MAGIC"
+            echo "::error::Hãy kiểm tra lại URL — phải trỏ trực tiếp vào file .deb"
+            exit 1
+          fi
+          echo "✅ DEB file hợp lệ."
+
+      - name: Extract DEB metadata
+        run: |
+          PKG_ID=$(dpkg-deb -f work_qi/pkg.deb Package 2>/dev/null || echo "")
+          PKG_NAME=$(dpkg-deb -f work_qi/pkg.deb Name 2>/dev/null || echo "")
+          PKG_VER=$(dpkg-deb -f work_qi/pkg.deb Version 2>/dev/null || echo "")
+
+          if [ -z "$PKG_ID" ]; then
+            echo "::error::Không đọc được Package ID từ DEB!"
+            exit 1
+          fi
+
+          # Xác định tên nút: ưu tiên input → Name field → Package ID
+          BUTTON_LABEL="${{ inputs.button_label }}"
+          if [ -z "$BUTTON_LABEL" ]; then
+            if [ -n "$PKG_NAME" ]; then
+              BUTTON_LABEL="$PKG_NAME"
+            else
+              BUTTON_LABEL="$PKG_ID"
+            fi
+          fi
+
+          # Xác định source_repo từ URL
+          URL="${{ inputs.deb_url }}"
+          if [[ "$URL" == *"tomkidsrepo"* ]] || [[ "$URL" == *"package_repo_"* ]]; then
+            SOURCE_REPO="https://tomkidsrepo.cloud"
+          else
+            SOURCE_REPO=$(echo "$URL" | grep -oP 'https?://[^/]+' || echo "")
+            if [ -z "$SOURCE_REPO" ]; then
+              SOURCE_REPO="https://tomkidsrepo.cloud"
+            fi
+          fi
+
+          echo "PKG_ID=$PKG_ID"         >> $GITHUB_ENV
+          echo "PKG_VER=$PKG_VER"       >> $GITHUB_ENV
+          echo "BUTTON_LABEL=$BUTTON_LABEL" >> $GITHUB_ENV
+          echo "SOURCE_REPO=$SOURCE_REPO"   >> $GITHUB_ENV
+          echo "TODAY=$(date +%Y-%m-%d)"    >> $GITHUB_ENV
+
+          echo "📦 Package ID  : $PKG_ID"
+          echo "🏷️  Version     : $PKG_VER"
+          echo "🔘 Button label : $BUTTON_LABEL"
+          echo "🌐 Source repo  : $SOURCE_REPO"
+
+      - name: Update quickinstall.json
+        env:
+          INPUT_DESCRIPTION: ${{ inputs.description }}
+          INPUT_IOS_RANGE: ${{ inputs.ios_range }}
+          INPUT_COLOR: ${{ inputs.color }}
+        run: |
+          python3 << 'PYEOF'
+          import json, os, sys
+
+          # Đọc file hiện tại hoặc khởi tạo mảng rỗng
+          qi_file = "quickinstall.json"
+          data = []
+          if os.path.exists(qi_file):
+              with open(qi_file, encoding="utf-8") as f:
+                  data = json.load(f)
+
+          pkg_id = os.environ["PKG_ID"]
+
+          # Kiểm tra trùng Package ID
+          for entry in data:
+              if entry.get("package_id") == pkg_id:
+                  print(f"⚠️  DUPLICATE: {pkg_id} đã tồn tại trong quickinstall.json. Dừng lại.")
+                  sys.exit(1)
+
+          # Thêm entry mới vào cuối
+          new_entry = {
+              "name":        os.environ["BUTTON_LABEL"],
+              "description": os.environ.get("INPUT_DESCRIPTION", ""),
+              "package_id":  pkg_id,
+              "version":     os.environ.get("PKG_VER", ""),
+              "source_repo": os.environ["SOURCE_REPO"],
+              "ios_range":   os.environ.get("INPUT_IOS_RANGE", ""),
+              "color":       os.environ.get("INPUT_COLOR", "green"),
+              "added":       os.environ["TODAY"]
+          }
+          data.append(new_entry)
+
+          with open(qi_file, "w", encoding="utf-8") as f:
+              json.dump(data, f, ensure_ascii=False, indent=2)
+
+          print(f"✅ Đã thêm: [{pkg_id}] → \"{os.environ['BUTTON_LABEL']}\"")
+          print(f"📋 Tổng số entries: {len(data)}")
+          PYEOF
+
+      - name: Rename workflow run
+        run: |
+          gh api -X PATCH \
+            "/repos/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            -f name="Quick Install: ${{ env.BUTTON_LABEL }} (${{ env.PKG_ID }})" \
+            || echo "⚠️ Không thể đổi tên run (không ảnh hưởng kết quả)"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and push
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Add quick install: ${{ env.BUTTON_LABEL }} (${{ env.PKG_ID }})"
+          file_pattern: "quickinstall.json"
+          push_options: "--force-with-lease"
