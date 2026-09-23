@@ -1563,7 +1563,7 @@ Maintainer: Linus Yang
 Installed-Size: 344
 Depends: mobilesubstrate
 Conflicts: me.alfhaily.adblockforyoutube
-Filename: package_repo_A1/tomkids.ytbnoad_0.1_iphoneos-arm.deb
+Filename: package_repo_A1/com.linusyang.ytbnoad_0.1_iphoneos-arm.deb
 Size: 50654
 MD5sum: 39e43deaa545fc126991b2fe2343d4c4
 SHA1: 848ecf5a0343fe1ac5e4b1cda292d2485938f2a5
@@ -1581,7 +1581,7 @@ Maintainer: Linus Yang
 Installed-Size: 344
 Depends: mobilesubstrate
 Conflicts: me.alfhaily.adblockforyoutube
-Filename: package_repo_A1/com.linusyang.ytbnoad_0.1_iphoneos-arm.deb
+Filename: package_repo_A1/tomkids.ytbnoad_0.1_iphoneos-arm.deb
 Size: 50654
 MD5sum: 39e43deaa545fc126991b2fe2343d4c4
 SHA1: 848ecf5a0343fe1ac5e4b1cda292d2485938f2a5
@@ -1798,7 +1798,7 @@ Version: 13454
 Architecture: iphoneos-arm
 Maintainer: dopaemon <polarisdp@gmail.com>
 Depends: firmware (>= 4.3), uikittools, appsync
-Filename: package_repo_A1/com.ninjakiwi.bloonstd5-13454-iOS-4.3 (1).deb
+Filename: package_repo_A1/com.ninjakiwi.bloonstd5-13454-iOS-4.3.deb
 Size: 93077588
 MD5sum: 7172c13412fa10a55329fe8fb8ac65d2
 SHA1: b30d32a2bd5152b9ef3f1123279d3c6b051a4f99
@@ -1817,7 +1817,7 @@ Version: 13454
 Architecture: iphoneos-arm
 Maintainer: dopaemon <polarisdp@gmail.com>
 Depends: firmware (>= 4.3), uikittools, appsync
-Filename: package_repo_A1/com.ninjakiwi.bloonstd5-13454-iOS-4.3.deb
+Filename: package_repo_A1/com.ninjakiwi.bloonstd5-13454-iOS-4.3 (1).deb
 Size: 93077588
 MD5sum: 7172c13412fa10a55329fe8fb8ac65d2
 SHA1: b30d32a2bd5152b9ef3f1123279d3c6b051a4f99
@@ -2180,11 +2180,11 @@ Architecture: iphoneos-arm
 Maintainer: Requis
 Depends: mobilesubstrate (>= 0.9.2586), firmware (>= 2.0), firmware (<= 7.9), preferenceloader
 Conflicts: com.ixmoe.1pwn.weatherx, com.skyglow.stocksx
-Filename: package_repo_A1/com.skyglow.weatherx_3.5_iphoneos-arm.deb
-Size: 155742
-MD5sum: 689171cd5f391aed223f3c0ad7e4ce3b
-SHA1: cef43a162338ef6001d56d4a4085a97e234d0340
-SHA256: 2da0aab5c140809c5d461a13a2c69029a1e4f8db9c56695c222648c37e04d9ea
+Filename: package_repo_A1/WeatherX-Legacy.deb
+Size: 155622
+MD5sum: a6d5f494a673da237ffa95d289538447
+SHA1: 9fb97aee0ce011ea1b6bf8224e8da0ef5af2652b
+SHA256: b530eb8231e01a11562e16f23767c925f548e3261b224aaf3f7047afa514a6a0
 Section: Tweaks
 Description: Fix iOS's Weather & Stocks apps from iPhoneOS 2 to iOS 7, the widgets in the notification center, and the temperature in the iPad clock app!
 Author: Requis, Electimon
@@ -2198,11 +2198,11 @@ Architecture: iphoneos-arm
 Maintainer: Requis
 Depends: mobilesubstrate (>= 0.9.2586), firmware (>= 2.0), firmware (<= 7.9), preferenceloader
 Conflicts: com.ixmoe.1pwn.weatherx, com.skyglow.stocksx
-Filename: package_repo_A1/WeatherX-Legacy.deb
-Size: 155622
-MD5sum: a6d5f494a673da237ffa95d289538447
-SHA1: 9fb97aee0ce011ea1b6bf8224e8da0ef5af2652b
-SHA256: b530eb8231e01a11562e16f23767c925f548e3261b224aaf3f7047afa514a6a0
+Filename: package_repo_A1/com.skyglow.weatherx_3.5_iphoneos-arm.deb
+Size: 155742
+MD5sum: 689171cd5f391aed223f3c0ad7e4ce3b
+SHA1: cef43a162338ef6001d56d4a4085a97e234d0340
+SHA256: 2da0aab5c140809c5d461a13a2c69029a1e4f8db9c56695c222648c37e04d9ea
 Section: Tweaks
 Description: Fix iOS's Weather & Stocks apps from iPhoneOS 2 to iOS 7, the widgets in the notification center, and the temperature in the iPad clock app!
 Author: Requis, Electimon
@@ -2977,11 +2977,11 @@ Depends: com.saurik.substrate.safemode
 Conflicts: me.devbug.msreloadfix, com.r3pwn.startsubstrate, com.ragemasta.bootstrap
 Breaks: uikittools (<< 1.1.1), com.mywi4 (<= 5.03.2), com.phoenix.pandoracontrols (<= 1.1.0-1), com.intelliborn.intelliscreenx (<= 1.0.110), com.evad3rs.evasi0n7 (<< 0.2)
 Replaces: cycript (<= 0.9.594)
-Filename: package_repo_A1/tomkids.mobilesubstrate_0.9.6301_iphoneos-arm.deb
-Size: 382884
-MD5sum: 7a56f8602e63fc77449d0fdb6b6579c0
-SHA1: 76f49e0d3a601e1c23310412014669284db93359
-SHA256: e6adeb10715fa0bfa8130a24d06de55d0efaaf08afb45c8279b7e19e816d0f57
+Filename: package_repo_A1/mobilesubstrate_0.9.6301_iphoneos-arm.deb
+Size: 382844
+MD5sum: c36a7004897a60ef1e0e37f40a8b93f9
+SHA1: eae5a63f55e0f91504340aa8a20d0b16b09c315d
+SHA256: 489ef2042bee48806d88bc977abfb2ad0d50be4620fd450d8b7dd76aa3611d5f
 Section: System
 Priority: optional
 Description: powerful code insertion platform
@@ -2999,11 +2999,11 @@ Depends: com.saurik.substrate.safemode
 Conflicts: me.devbug.msreloadfix, com.r3pwn.startsubstrate, com.ragemasta.bootstrap
 Breaks: uikittools (<< 1.1.1), com.mywi4 (<= 5.03.2), com.phoenix.pandoracontrols (<= 1.1.0-1), com.intelliborn.intelliscreenx (<= 1.0.110), com.evad3rs.evasi0n7 (<< 0.2)
 Replaces: cycript (<= 0.9.594)
-Filename: package_repo_A1/mobilesubstrate_0.9.6301_iphoneos-arm.deb
-Size: 382844
-MD5sum: c36a7004897a60ef1e0e37f40a8b93f9
-SHA1: eae5a63f55e0f91504340aa8a20d0b16b09c315d
-SHA256: 489ef2042bee48806d88bc977abfb2ad0d50be4620fd450d8b7dd76aa3611d5f
+Filename: package_repo_A1/tomkids.mobilesubstrate_0.9.6301_iphoneos-arm.deb
+Size: 382884
+MD5sum: 7a56f8602e63fc77449d0fdb6b6579c0
+SHA1: 76f49e0d3a601e1c23310412014669284db93359
+SHA256: e6adeb10715fa0bfa8130a24d06de55d0efaaf08afb45c8279b7e19e816d0f57
 Section: System
 Priority: optional
 Description: powerful code insertion platform
@@ -10589,11 +10589,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2127
 Depends: gsmicon, firmware (>= 5.1), mobilesubstrate, preferenceloader, applist
 Conflicts: vn.gsm.auxo
-Filename: -CydiaVn-Tools/auxo_1.4-2.deb
-Size: 1820470
-MD5sum: b0ccb5859f9754711f0225cc1b2eb649
-SHA1: 94317469c488f165d8adf262fc8664183c37e59b
-SHA256: 534994129d3161020642072213bd0bf7ea61e289232c56512d86843e2320f2c9
+Filename: -CydiaVn-Tools/vn.gsm.auxo.org_1.4-2_iphoneos-arm.deb
+Size: 880
+MD5sum: 81cd20e8cbe4a38fa8666bfe3b4a3fcc
+SHA1: 2c7ede6773e76dd8cb00ec1c8129748e81d3044b
+SHA256: 6d57b1c49c710a45a19fabe0e7bedee71a60c79307cfc96251131ca2560b8fc3
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: A fantastic re-imagined multitasking bar!
@@ -10610,11 +10610,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2127
 Depends: gsmicon, firmware (>= 5.1), mobilesubstrate, preferenceloader, applist
 Conflicts: vn.gsm.auxo
-Filename: -CydiaVn-Tools/vn.gsm.auxo.org_1.4-2_iphoneos-arm.deb
-Size: 880
-MD5sum: 81cd20e8cbe4a38fa8666bfe3b4a3fcc
-SHA1: 2c7ede6773e76dd8cb00ec1c8129748e81d3044b
-SHA256: 6d57b1c49c710a45a19fabe0e7bedee71a60c79307cfc96251131ca2560b8fc3
+Filename: -CydiaVn-Tools/auxo_1.4-2.deb
+Size: 1820470
+MD5sum: b0ccb5859f9754711f0225cc1b2eb649
+SHA1: 94317469c488f165d8adf262fc8664183c37e59b
+SHA256: 534994129d3161020642072213bd0bf7ea61e289232c56512d86843e2320f2c9
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: A fantastic re-imagined multitasking bar!
@@ -13678,7 +13678,7 @@ Package: vn.gsm.carriervn
 Version: 3.1.2
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/carriervn_3.1.2.deb
+Filename: -CydiaVn-Tools/carriervn3.1.2_Carrier VN.deb
 Size: 58400
 MD5sum: aec20325bc0ef228dd9d7fc7ff2ff7f8
 SHA1: 1c0ec455025458c4a1f007b9c406dc06b3490a51
@@ -13694,7 +13694,7 @@ Package: vn.gsm.carriervn
 Version: 3.1.2
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/carriervn3.1.2_Carrier VN.deb
+Filename: -CydiaVn-Tools/carriervn_3.1.2.deb
 Size: 58400
 MD5sum: aec20325bc0ef228dd9d7fc7ff2ff7f8
 SHA1: 1c0ec455025458c4a1f007b9c406dc06b3490a51
@@ -19265,11 +19265,11 @@ Architecture: iphoneos-arm
 Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2919
 Depends: gsmicon, firmware (>= 5.0), mobilesubstrate, com.chpwn.weeloader, preferenceloader
-Filename: -CydiaVn-Tools/vn.gsm.flipclockwidget_1.3.3-3_iphoneos-arm.deb
-Size: 2743738
-MD5sum: ae1472e6232fe2c3c13e9694564b3ffd
-SHA1: 29af9c5305a3e2c79c81880099420065413e2cd2
-SHA256: 2fa3fd3a25f7b04fd9a91b55ad35b0eeda3fdbf253c9683332614f66d67200f7
+Filename: -CydiaVn-Tools/flipclockwidget_1.3.3-3.deb
+Size: 2771400
+MD5sum: efc0573c0fefe794a3841fc25b23758d
+SHA1: a97086257445d79a00f72041bca1eb391c5edfee
+SHA256: d6afe3350c040d645734ad79977b0c9ee2726bfb456184875012d805927e1f7f
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: beautiful animated flip clock widget for the notification center.
@@ -19285,11 +19285,11 @@ Architecture: iphoneos-arm
 Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2919
 Depends: gsmicon, firmware (>= 5.0), mobilesubstrate, com.chpwn.weeloader, preferenceloader
-Filename: -CydiaVn-Tools/flipclockwidget_1.3.3-3.deb
-Size: 2771400
-MD5sum: efc0573c0fefe794a3841fc25b23758d
-SHA1: a97086257445d79a00f72041bca1eb391c5edfee
-SHA256: d6afe3350c040d645734ad79977b0c9ee2726bfb456184875012d805927e1f7f
+Filename: -CydiaVn-Tools/vn.gsm.flipclockwidget_1.3.3-3_iphoneos-arm.deb
+Size: 2743738
+MD5sum: ae1472e6232fe2c3c13e9694564b3ffd
+SHA1: 29af9c5305a3e2c79c81880099420065413e2cd2
+SHA256: 2fa3fd3a25f7b04fd9a91b55ad35b0eeda3fdbf253c9683332614f66d67200f7
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: beautiful animated flip clock widget for the notification center.
@@ -22128,11 +22128,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Pre-Depends: apt, findutils, shell-cmds
 Conflicts: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
 Replaces: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
-Filename: -CydiaVn-Tools/icleanerpro_v7.5.0k.deb
-Size: 2854148
-MD5sum: 525f5b9d951eb4dfc12818ebc4ef68cb
-SHA1: 95dd3a2734290344cf4af6a0c4718483cc0acc0d
-SHA256: f46f6b5157708cb1a2fd0e7e073ab84113245e28b9fc3cdd209e845a56f52c78
+Filename: -CydiaVn-Tools/vn.gsm.icleanerpro_7.5.0k_iphoneos-arm.deb
+Size: 2843940
+MD5sum: fb506733b5669a9a4255becfbf2cda90
+SHA1: ed5791d5fdd628452d68b9a947066dfba7a0a872
+SHA256: b0f072d7c30c247a4ba67a887495944be82f61fdc87bf46047f5c4754f14b2ce
 Section: !CydiaVn-Tools
 Homepage: http://cydia.vn/
 Description: The ultimate iPhone, iPod and iPad system cleaner & optimizer
@@ -22148,11 +22148,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Pre-Depends: apt, findutils, shell-cmds
 Conflicts: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
 Replaces: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
-Filename: -CydiaVn-Tools/vn.gsm.icleanerpro_7.5.0k_iphoneos-arm.deb
-Size: 2843940
-MD5sum: fb506733b5669a9a4255becfbf2cda90
-SHA1: ed5791d5fdd628452d68b9a947066dfba7a0a872
-SHA256: b0f072d7c30c247a4ba67a887495944be82f61fdc87bf46047f5c4754f14b2ce
+Filename: -CydiaVn-Tools/icleanerpro_v7.5.0k.deb
+Size: 2854148
+MD5sum: 525f5b9d951eb4dfc12818ebc4ef68cb
+SHA1: 95dd3a2734290344cf4af6a0c4718483cc0acc0d
+SHA256: f46f6b5157708cb1a2fd0e7e073ab84113245e28b9fc3cdd209e845a56f52c78
 Section: !CydiaVn-Tools
 Homepage: http://cydia.vn/
 Description: The ultimate iPhone, iPod and iPad system cleaner & optimizer
@@ -25190,7 +25190,7 @@ Package: vn.gsm.pushfix
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/Push Fix.deb
+Filename: -CydiaVn-Tools/pushfix_1.0.deb
 Size: 6856
 MD5sum: e145c06784daf311376f227ffd4415db
 SHA1: 32650ddd6ab4fe80ce6674b6bfae11b605c2a487
@@ -25206,7 +25206,7 @@ Package: vn.gsm.pushfix
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/pushfix_1.0.deb
+Filename: -CydiaVn-Tools/Push Fix.deb
 Size: 6856
 MD5sum: e145c06784daf311376f227ffd4415db
 SHA1: 32650ddd6ab4fe80ce6674b6bfae11b605c2a487
@@ -25297,12 +25297,12 @@ Version: 5.0.3
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <support@gsm.vn>
 Depends: gsmicon, mobilesubstrate, preferenceloader
-Conflicts: jp.novi.fakeclockup, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
-Filename: -CydiaVn-Tools/vn.gsm.speedintensifier_5.0.3_iphoneos-arm.deb
-Size: 8596
-MD5sum: c493153740460eb5435f5bb24a56fd26
-SHA1: fafe885f57922a1bb67727e734814139c3fc3b96
-SHA256: e2f953b07c9fc390c6385a33450a79ee7cf36f611d674c5328c4869a09efb272
+Conflicts: jp.novi.FakeClockUp, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
+Filename: -CydiaVn-Tools/SpeedIntensifier_5.0.3.deb
+Size: 8610
+MD5sum: 19ff53d3012170575be66d45738c49c6
+SHA1: 90358d95b1f6776fd897f360f6ac2e99bdeb074c
+SHA256: fda4579169c9509b268ec891a7c79237311db8f1ffed5b8fda8b24007a6ad008
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: This tweak will speed up the animation transitions to make your device Look faster.
@@ -25317,12 +25317,12 @@ Version: 5.0.3
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <support@gsm.vn>
 Depends: gsmicon, mobilesubstrate, preferenceloader
-Conflicts: jp.novi.FakeClockUp, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
-Filename: -CydiaVn-Tools/SpeedIntensifier_5.0.3.deb
-Size: 8610
-MD5sum: 19ff53d3012170575be66d45738c49c6
-SHA1: 90358d95b1f6776fd897f360f6ac2e99bdeb074c
-SHA256: fda4579169c9509b268ec891a7c79237311db8f1ffed5b8fda8b24007a6ad008
+Conflicts: jp.novi.fakeclockup, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
+Filename: -CydiaVn-Tools/vn.gsm.speedintensifier_5.0.3_iphoneos-arm.deb
+Size: 8596
+MD5sum: c493153740460eb5435f5bb24a56fd26
+SHA1: fafe885f57922a1bb67727e734814139c3fc3b96
+SHA256: e2f953b07c9fc390c6385a33450a79ee7cf36f611d674c5328c4869a09efb272
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: This tweak will speed up the animation transitions to make your device Look faster.
