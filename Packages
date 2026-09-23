@@ -10569,11 +10569,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2127
 Depends: gsmicon, firmware (>= 5.1), mobilesubstrate, preferenceloader, applist
 Conflicts: vn.gsm.auxo
-Filename: -CydiaVn-Tools/auxo_1.4-2.deb
-Size: 1820470
-MD5sum: b0ccb5859f9754711f0225cc1b2eb649
-SHA1: 94317469c488f165d8adf262fc8664183c37e59b
-SHA256: 534994129d3161020642072213bd0bf7ea61e289232c56512d86843e2320f2c9
+Filename: -CydiaVn-Tools/vn.gsm.auxo.org_1.4-2_iphoneos-arm.deb
+Size: 880
+MD5sum: 81cd20e8cbe4a38fa8666bfe3b4a3fcc
+SHA1: 2c7ede6773e76dd8cb00ec1c8129748e81d3044b
+SHA256: 6d57b1c49c710a45a19fabe0e7bedee71a60c79307cfc96251131ca2560b8fc3
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: A fantastic re-imagined multitasking bar!
@@ -10590,11 +10590,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2127
 Depends: gsmicon, firmware (>= 5.1), mobilesubstrate, preferenceloader, applist
 Conflicts: vn.gsm.auxo
-Filename: -CydiaVn-Tools/vn.gsm.auxo.org_1.4-2_iphoneos-arm.deb
-Size: 880
-MD5sum: 81cd20e8cbe4a38fa8666bfe3b4a3fcc
-SHA1: 2c7ede6773e76dd8cb00ec1c8129748e81d3044b
-SHA256: 6d57b1c49c710a45a19fabe0e7bedee71a60c79307cfc96251131ca2560b8fc3
+Filename: -CydiaVn-Tools/auxo_1.4-2.deb
+Size: 1820470
+MD5sum: b0ccb5859f9754711f0225cc1b2eb649
+SHA1: 94317469c488f165d8adf262fc8664183c37e59b
+SHA256: 534994129d3161020642072213bd0bf7ea61e289232c56512d86843e2320f2c9
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: A fantastic re-imagined multitasking bar!
@@ -13658,7 +13658,7 @@ Package: vn.gsm.carriervn
 Version: 3.1.2
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/carriervn_3.1.2.deb
+Filename: -CydiaVn-Tools/carriervn3.1.2_Carrier VN.deb
 Size: 58400
 MD5sum: aec20325bc0ef228dd9d7fc7ff2ff7f8
 SHA1: 1c0ec455025458c4a1f007b9c406dc06b3490a51
@@ -13674,7 +13674,7 @@ Package: vn.gsm.carriervn
 Version: 3.1.2
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/carriervn3.1.2_Carrier VN.deb
+Filename: -CydiaVn-Tools/carriervn_3.1.2.deb
 Size: 58400
 MD5sum: aec20325bc0ef228dd9d7fc7ff2ff7f8
 SHA1: 1c0ec455025458c4a1f007b9c406dc06b3490a51
@@ -19245,11 +19245,11 @@ Architecture: iphoneos-arm
 Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2919
 Depends: gsmicon, firmware (>= 5.0), mobilesubstrate, com.chpwn.weeloader, preferenceloader
-Filename: -CydiaVn-Tools/vn.gsm.flipclockwidget_1.3.3-3_iphoneos-arm.deb
-Size: 2743738
-MD5sum: ae1472e6232fe2c3c13e9694564b3ffd
-SHA1: 29af9c5305a3e2c79c81880099420065413e2cd2
-SHA256: 2fa3fd3a25f7b04fd9a91b55ad35b0eeda3fdbf253c9683332614f66d67200f7
+Filename: -CydiaVn-Tools/flipclockwidget_1.3.3-3.deb
+Size: 2771400
+MD5sum: efc0573c0fefe794a3841fc25b23758d
+SHA1: a97086257445d79a00f72041bca1eb391c5edfee
+SHA256: d6afe3350c040d645734ad79977b0c9ee2726bfb456184875012d805927e1f7f
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: beautiful animated flip clock widget for the notification center.
@@ -19265,11 +19265,11 @@ Architecture: iphoneos-arm
 Maintainer: Cydia.vn <repo@cydia.vn>
 Installed-Size: 2919
 Depends: gsmicon, firmware (>= 5.0), mobilesubstrate, com.chpwn.weeloader, preferenceloader
-Filename: -CydiaVn-Tools/flipclockwidget_1.3.3-3.deb
-Size: 2771400
-MD5sum: efc0573c0fefe794a3841fc25b23758d
-SHA1: a97086257445d79a00f72041bca1eb391c5edfee
-SHA256: d6afe3350c040d645734ad79977b0c9ee2726bfb456184875012d805927e1f7f
+Filename: -CydiaVn-Tools/vn.gsm.flipclockwidget_1.3.3-3_iphoneos-arm.deb
+Size: 2743738
+MD5sum: ae1472e6232fe2c3c13e9694564b3ffd
+SHA1: 29af9c5305a3e2c79c81880099420065413e2cd2
+SHA256: 2fa3fd3a25f7b04fd9a91b55ad35b0eeda3fdbf253c9683332614f66d67200f7
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: beautiful animated flip clock widget for the notification center.
@@ -22108,11 +22108,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Pre-Depends: apt, findutils, shell-cmds
 Conflicts: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
 Replaces: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
-Filename: -CydiaVn-Tools/icleanerpro_v7.5.0k.deb
-Size: 2854148
-MD5sum: 525f5b9d951eb4dfc12818ebc4ef68cb
-SHA1: 95dd3a2734290344cf4af6a0c4718483cc0acc0d
-SHA256: f46f6b5157708cb1a2fd0e7e073ab84113245e28b9fc3cdd209e845a56f52c78
+Filename: -CydiaVn-Tools/vn.gsm.icleanerpro_7.5.0k_iphoneos-arm.deb
+Size: 2843940
+MD5sum: fb506733b5669a9a4255becfbf2cda90
+SHA1: ed5791d5fdd628452d68b9a947066dfba7a0a872
+SHA256: b0f072d7c30c247a4ba67a887495944be82f61fdc87bf46047f5c4754f14b2ce
 Section: !CydiaVn-Tools
 Homepage: http://cydia.vn/
 Description: The ultimate iPhone, iPod and iPad system cleaner & optimizer
@@ -22128,11 +22128,11 @@ Maintainer: Cydia.vn <repo@cydia.vn>
 Pre-Depends: apt, findutils, shell-cmds
 Conflicts: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
 Replaces: org.altervista.exilecom.icleaner, com.exile90.icleanerpro, vn.gsm.icleanerprobeta
-Filename: -CydiaVn-Tools/vn.gsm.icleanerpro_7.5.0k_iphoneos-arm.deb
-Size: 2843940
-MD5sum: fb506733b5669a9a4255becfbf2cda90
-SHA1: ed5791d5fdd628452d68b9a947066dfba7a0a872
-SHA256: b0f072d7c30c247a4ba67a887495944be82f61fdc87bf46047f5c4754f14b2ce
+Filename: -CydiaVn-Tools/icleanerpro_v7.5.0k.deb
+Size: 2854148
+MD5sum: 525f5b9d951eb4dfc12818ebc4ef68cb
+SHA1: 95dd3a2734290344cf4af6a0c4718483cc0acc0d
+SHA256: f46f6b5157708cb1a2fd0e7e073ab84113245e28b9fc3cdd209e845a56f52c78
 Section: !CydiaVn-Tools
 Homepage: http://cydia.vn/
 Description: The ultimate iPhone, iPod and iPad system cleaner & optimizer
@@ -25170,7 +25170,7 @@ Package: vn.gsm.pushfix
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/Push Fix.deb
+Filename: -CydiaVn-Tools/pushfix_1.0.deb
 Size: 6856
 MD5sum: e145c06784daf311376f227ffd4415db
 SHA1: 32650ddd6ab4fe80ce6674b6bfae11b605c2a487
@@ -25186,7 +25186,7 @@ Package: vn.gsm.pushfix
 Version: 1.0
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <icontactiphone@gmail.com>
-Filename: -CydiaVn-Tools/pushfix_1.0.deb
+Filename: -CydiaVn-Tools/Push Fix.deb
 Size: 6856
 MD5sum: e145c06784daf311376f227ffd4415db
 SHA1: 32650ddd6ab4fe80ce6674b6bfae11b605c2a487
@@ -25277,12 +25277,12 @@ Version: 5.0.3
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <support@gsm.vn>
 Depends: gsmicon, mobilesubstrate, preferenceloader
-Conflicts: jp.novi.fakeclockup, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
-Filename: -CydiaVn-Tools/vn.gsm.speedintensifier_5.0.3_iphoneos-arm.deb
-Size: 8596
-MD5sum: c493153740460eb5435f5bb24a56fd26
-SHA1: fafe885f57922a1bb67727e734814139c3fc3b96
-SHA256: e2f953b07c9fc390c6385a33450a79ee7cf36f611d674c5328c4869a09efb272
+Conflicts: jp.novi.FakeClockUp, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
+Filename: -CydiaVn-Tools/SpeedIntensifier_5.0.3.deb
+Size: 8610
+MD5sum: 19ff53d3012170575be66d45738c49c6
+SHA1: 90358d95b1f6776fd897f360f6ac2e99bdeb074c
+SHA256: fda4579169c9509b268ec891a7c79237311db8f1ffed5b8fda8b24007a6ad008
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: This tweak will speed up the animation transitions to make your device Look faster.
@@ -25297,12 +25297,12 @@ Version: 5.0.3
 Architecture: iphoneos-arm
 Maintainer: Thieu.Bocap <support@gsm.vn>
 Depends: gsmicon, mobilesubstrate, preferenceloader
-Conflicts: jp.novi.FakeClockUp, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
-Filename: -CydiaVn-Tools/SpeedIntensifier_5.0.3.deb
-Size: 8610
-MD5sum: 19ff53d3012170575be66d45738c49c6
-SHA1: 90358d95b1f6776fd897f360f6ac2e99bdeb074c
-SHA256: fda4579169c9509b268ec891a7c79237311db8f1ffed5b8fda8b24007a6ad008
+Conflicts: jp.novi.fakeclockup, com.hackyouriphone.fakeclockup, com.hackyouriphone.fakeclockupita, com.xsellize.fakeclockup, vn.gsm.fakeclockup
+Filename: -CydiaVn-Tools/vn.gsm.speedintensifier_5.0.3_iphoneos-arm.deb
+Size: 8596
+MD5sum: c493153740460eb5435f5bb24a56fd26
+SHA1: fafe885f57922a1bb67727e734814139c3fc3b96
+SHA256: e2f953b07c9fc390c6385a33450a79ee7cf36f611d674c5328c4869a09efb272
 Section: !GSMVN-Tools
 Homepage: http://cydia.vn/
 Description: This tweak will speed up the animation transitions to make your device Look faster.
