@@ -20,6 +20,26 @@
     "added": "2026-09-16"
   },
   {
+    "name": "Cài tweak TubeReplacer - Fix xem Youtube",
+    "description": "Sửa lỗi xem Youtube trên iOS cũ qua Cydia",
+    "package_id": "dev.preloading.tubereplacer",
+    "version": "2.0.0",
+    "source_repo": "https://tomkidsrepo.cloud",
+    "ios_range": "iOS 5-10",
+    "color": "green",
+    "added": "2026-09-29"
+  },
+  {
+    "name": "Cài tweak GSAPort - Fix đăng nhập iCloud",
+    "description": "Sửa lỗi đăng nhập iCloud / Apple ID trên iOS 6",
+    "package_id": "com.podpod123.gsaport",
+    "version": "1.0-12+debug",
+    "source_repo": "https://tomkidsrepo.cloud",
+    "ios_range": "iOS 6-8",
+    "color": "green",
+    "added": "2026-09-29"
+  },
+  {
     "name": "Cài Meta Bundle (Cydia) cho iOS 6",
     "description": "Cydia tự động tính toán và tải các tweaks cần thiết",
     "package_id": "com.tomkids.metabundle",
