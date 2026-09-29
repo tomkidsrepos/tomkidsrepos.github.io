@@ -462,7 +462,8 @@ Thêm vào Zebra
                         '<a href="' + installUrl + '" class="step-btn" style="background:' + bgColor + ';color:white;padding:12px 20px;-webkit-border-radius:12px;border-radius:12px;text-decoration:none;font-weight:bold;font-size:14px;display:block;width:100%;text-align:center;box-sizing:border-box;">' +
                             item.name + badge +
                         '</a>' +
-                        (item.description ? '<p style="font-size:11px;color:#64748b;margin-top:6px;text-align:center;">' + item.description + '</p>' : '') +
+                        (item.description ? '<p style="font-size:11px;color:#64748b;margin-top:6px;margin-bottom:0;text-align:center;">' + item.description + '</p>' : '') +
+                        (item.note ? '<p style="font-size:11px;color:#f59e0b;margin-top:4px;margin-bottom:0;text-align:center;font-style:italic;">&#9432; ' + item.note + '</p>' : '') +
                     '</div>';
         }
         container.innerHTML = html;

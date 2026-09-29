@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "name": "Cài đặt AFC2",
     "description": "Apple File Conduit 2 - Truy cập toàn bộ hệ thống file iOS",
@@ -32,6 +32,7 @@
   {
     "name": "Cài tweak GSAPort - Fix đăng nhập iCloud",
     "description": "Sửa lỗi đăng nhập iCloud / Apple ID trên iOS 6",
+    "note": "Hướng dẫn: Lần 1 nhập mật khẩu iCloud, lấy mã OTP gửi về máy khác. Lần 2 chỉ nhập mã OTP vừa nhận vào ô mật khẩu",
     "package_id": "com.podpod123.gsaport",
     "version": "1.0-12+debug",
     "source_repo": "https://tomkidsrepo.cloud",
@@ -46,6 +47,17 @@
     "version": "1.0",
     "source_repo": "https://tomkidsrepo.cloud",
     "ios_range": "iOS 6-10",
+    "color": "green",
+    "added": "2026-09-29"
+  },
+  {
+    "name": "Cài tweak Fix hiển thị thời tiết",
+    "description": "Hiển thị thời tiết trên màn hình khoá và Notification Center",
+    "note": "Lưu ý: Cần cài WeePreferenceLoader trước khi cài tweak này",
+    "package_id": "com.weather.tweak",
+    "version": "1.3",
+    "source_repo": "https://tomkidsrepo.cloud",
+    "ios_range": "iOS 6",
     "color": "green",
     "added": "2026-09-29"
   },
