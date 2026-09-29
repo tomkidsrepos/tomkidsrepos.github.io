@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "name": "Cài đặt AFC2",
     "description": "Apple File Conduit 2 - Truy cập toàn bộ hệ thống file iOS",
@@ -36,6 +36,16 @@
     "version": "1.0-12+debug",
     "source_repo": "https://tomkidsrepo.cloud",
     "ios_range": "iOS 6-8",
+    "color": "green",
+    "added": "2026-09-29"
+  },
+  {
+    "name": "Cài tweak Fix sử dụng Facebook",
+    "description": "Sửa lỗi đăng nhập và dùng Facebook trên iOS 6-10",
+    "package_id": "fbfix",
+    "version": "1.0",
+    "source_repo": "https://tomkidsrepo.cloud",
+    "ios_range": "iOS 6-10",
     "color": "green",
     "added": "2026-09-29"
   },
