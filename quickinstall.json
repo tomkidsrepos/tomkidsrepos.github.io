@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "name": "Cài đặt AFC2",
     "description": "Apple File Conduit 2 - Truy cập toàn bộ hệ thống file iOS",
@@ -60,6 +60,16 @@
     "ios_range": "iOS 6",
     "color": "green",
     "added": "2026-09-29"
+  },
+  {
+    "name": "Cài tweak Fix đăng nhập AppStore iOS 6",
+    "description": "Tổng hợp tweaks hỗ trợ đăng nhập iCloud và AppStore trên iOS 6",
+    "package_id": "tomkids.fixloginicloudios6",
+    "version": "1.0",
+    "source_repo": "https://tomkidsrepo.cloud",
+    "ios_range": "iOS 6-8",
+    "color": "green",
+    "added": "2026-09-30"
   },
   {
     "name": "Cài Meta Bundle (Cydia) cho iOS 6",
