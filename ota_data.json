@@ -22,7 +22,7 @@
             "name": "TikTak+",
             "version": "0.5.1",
             "icon": "ota_apps/icons/com.atnik.tiktok.png",
-            "install_url": "cydia://url/https://tomkidsrepo.cloud/package_repo_A1/com.samcejko.tikieplus_0.5.1_iphoneos-arm.deb"
+            "plist": "ota_apps/com.samcejko.tikieplus.plist"
         },
         {
             "name": "Messenger",
