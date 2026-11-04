@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -421,9 +421,14 @@ Thêm vào Zebra
                                '<div class="accordion-content">';
                 for (var i = 0; i < apps.length; i++) {
                     var app = apps[i];
-                    var installLink = 'itms-services://?action=download-manifest&url=https://tomkidsrepo.cloud/' + encodeURI(app.plist);
+                    var installLink = app.package_id
+                        ? 'cydia://package/' + app.package_id
+                        : 'itms-services://?action=download-manifest&url=https://tomkidsrepo.cloud/' + encodeURI(app.plist);
+                    var iconHtml = app.icon
+                        ? '<img src="' + app.icon + '" class="app-icon">'
+                        : '<div class="app-icon" style="background:#1e293b;-webkit-border-radius:12px;border-radius:12px;width:50px;height:50px;flex-shrink:0;"></div>';
                     htmlContent += '<div class="app-item">' +
-                                   '<img src="' + app.icon + '" class="app-icon">' +
+                                   iconHtml +
                                    '<div class="app-info">' +
                                    '<div class="app-title">' + app.name + '</div>' +
                                    '<div class="app-version">Phien ban ' + app.version + '</div>' +

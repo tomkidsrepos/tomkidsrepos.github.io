@@ -1,4 +1,4 @@
-{
+﻿{
     "Mạng Xã Hội": [
         {
             "name": "Facebook",
@@ -17,6 +17,11 @@
             "version": "1.0.4",
             "icon": "ota_apps/icons/com.jjr.douyin.LT76WJUBQ3.png",
             "plist": "ota_apps/com.jjr.douyin.LT76WJUBQ3.plist"
+        },
+        {
+            "name": "TikTak+",
+            "version": "0.5.1",
+            "package_id": "com.samcejko.tikieplus"
         },
         {
             "name": "Messenger",
