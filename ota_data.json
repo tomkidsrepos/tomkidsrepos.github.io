@@ -21,6 +21,7 @@
         {
             "name": "TikTak+",
             "version": "0.5.1",
+            "icon": "ota_apps/icons/com.atnik.tiktok.png",
             "package_id": "com.samcejko.tikieplus"
         },
         {
