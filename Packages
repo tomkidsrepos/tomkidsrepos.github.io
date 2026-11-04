@@ -2112,6 +2112,23 @@ Sponsor: ModMyi.com <http://modmyi.com/forums/index.php?styleid=31>
 Support: http://support.rockyourphone.com
 Versionssupported: 2.01,2.1,2.2,2.21
 
+Package: com.samcejko.tikieplus
+Version: 0.5.1
+Architecture: iphoneos-arm
+Maintainer: samcejko
+Installed-Size: 2120
+Depends: firmware (>= 6.0), firmware (<< 11.0)
+Filename: package_repo_A1/com.samcejko.tikieplus_0.5.1_iphoneos-arm.deb
+Size: 1212144
+MD5sum: b53295c8d12fea43ee56241ab9125752
+SHA1: 7790ec02520570d56107e2ab7d45eb8599d25540
+SHA256: 5e1d8431d67798b159393b8e3047d11db66cd5368360698493fb60a941686595
+Section: Multimedia
+Description: Direct TikTok viewer with Explore, public profiles, video and photo playback, comments, saved posts and verified local session import. No helper server required; some TikTok account/search endpoints may be unavailable.
+Author: samcejko
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: TikTak+
+
 Package: com.saurik.afc2d
 Version: 1.2
 Architecture: iphoneos-arm
