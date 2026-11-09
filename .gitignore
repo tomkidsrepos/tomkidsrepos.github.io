@@ -1,0 +1,13 @@
+# Bỏ qua các file cài đặt nặng trong thư mục đệm incoming
+incoming/*
+!incoming/.gitkeep
+
+# Không đẩy file IPA hoặc DEB trực tiếp vào source code GitHub
+*.ipa
+*.deb
+
+# Bỏ qua các thư mục tạm
+work_ota/
+scratch/
+__pycache__/
+*.pyc

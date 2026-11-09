@@ -393,6 +393,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         <div class="footer-tools">
             <div style="display:flex; gap:10px;">
                 <button type="button" class="btn-secondary" onclick="openIncomingFolder()">📂 Mở Thư Mục incoming/</button>
+                <button type="button" class="btn-secondary" onclick="cleanIncomingFolder()" style="color:#f87171;">🧹 Dọn Sạch File Tạm</button>
             </div>
             <button type="button" class="btn-secondary btn-green" id="btn-git-push" onclick="triggerGitPush()">📤 Git Commit & Push Lên Web</button>
         </div>
@@ -476,6 +477,17 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 
         function openIncomingFolder() {
             fetch('/api/open-incoming', { method: 'POST' });
+        }
+
+        function cleanIncomingFolder() {
+            if (confirm("Bạn có chắc chắn muốn xóa toàn bộ file tạm trong thư mục incoming/ để giải phóng bộ nhớ máy tính?")) {
+                fetch('/api/clean-incoming', { method: 'POST' })
+                    .then(function(res) { return res.json(); })
+                    .then(function(data) {
+                        alert(data.message || data.error);
+                        loadIncomingFilesList();
+                    });
+            }
         }
 
         function handleFormSubmit(e) {
@@ -649,25 +661,70 @@ def process_upload():
             target_file_path = os.path.join(INCOMING_DIR, incoming_name)
 
         elif source_type == 'link':
-            link = request.form.get('link')
-            # Nếu là link online, có thể dùng aria2 hoặc curl tải về incoming/
-            filename = os.path.basename(link.split('?')[0]) or "downloaded_app.ipa"
-            target_file_path = os.path.join(INCOMING_DIR, filename)
-            subprocess.run(["curl.exe", "-L", "-o", target_file_path, link], check=True)
+            link = request.form.get('link', '').strip()
+            if not link:
+                return jsonify({"success": False, "error": "Chưa nhập link!"})
+
+            target_file_path = os.path.join(INCOMING_DIR, "downloaded_package")
+
+            # Xử lý nếu là Google Drive link
+            if "drive.google.com" in link:
+                import re
+                file_id = None
+                m1 = re.search(r'/d/([a-zA-Z0-9_-]+)', link)
+                if m1:
+                    file_id = m1.group(1)
+                else:
+                    m2 = re.search(r'id=([a-zA-Z0-9_-]+)', link)
+                    if m2:
+                        file_id = m2.group(1)
+
+                if not file_id:
+                    return jsonify({"success": False, "error": "Định dạng link Google Drive không hợp lệ!"})
+
+                try:
+                    import gdown
+                    gdown.download(id=file_id, output=target_file_path, quiet=False)
+                except Exception as gd_err:
+                    uc_url = f"https://drive.usercontent.google.com/download?id={file_id}&export=download"
+                    subprocess.run(["curl.exe", "-L", "-o", target_file_path, uc_url])
+            else:
+                subprocess.run(["curl.exe", "-L", "-o", target_file_path, link], check=True)
 
         if not target_file_path or not os.path.exists(target_file_path):
-            return jsonify({"success": False, "error": "Không tìm thấy file nguồn để xử lý!"})
+            return jsonify({"success": False, "error": "Không thể tải file từ đường dẫn này!"})
 
-        # Nếu là DEB -> convert sang IPA
-        if target_file_path.lower().endswith('.deb'):
-            out_ipa = target_file_path[:-4] + '.ipa'
+        # Kiểm tra nội dung file (Magic bytes)
+        with open(target_file_path, 'rb') as f:
+            header = f.read(16)
+
+        if header.startswith(b'<!DOCTYPE') or header.startswith(b'<html') or b'<body' in header:
+            return jsonify({
+                "success": False,
+                "error": "Link Google Drive này đang ở chế độ Riêng tư (Google chặn tải công khai). Vui lòng vào Google Drive bấm nút 'Chia sẻ' -> đổi thành 'Bất kỳ ai có đường liên kết đều có thể xem', hoặc bạn tải file về máy tính rồi dùng tab 'Chọn File từ Máy Tính' nhé!"
+            })
+
+        # Nếu là DEB (Magic: !<arch>\n)
+        if header.startswith(b'!<arch>\n') or target_file_path.lower().endswith('.deb'):
+            out_ipa = os.path.join(INCOMING_DIR, "converted_app.ipa")
             deb_to_ipa(target_file_path, out_ipa)
             target_file_path = out_ipa
+            with open(target_file_path, 'rb') as f:
+                header = f.read(16)
 
-        # Xử lý IPA
-        if target_file_path.lower().endswith('.ipa'):
+        # Nếu là ZIP / IPA (Magic: PK\x03\x04)
+        if header.startswith(b'PK') or target_file_path.lower().endswith('.ipa'):
+            if not target_file_path.lower().endswith('.ipa'):
+                new_ipa_path = target_file_path + '.ipa'
+                shutil.move(target_file_path, new_ipa_path)
+                target_file_path = new_ipa_path
+
             app_info = extract_ipa_info(target_file_path)
-            safe_name = os.path.basename(target_file_path)
+            safe_name = f"{app_info['bundle_id']}_{app_info['version']}.ipa"
+            final_ipa_path = os.path.join(INCOMING_DIR, safe_name)
+            if target_file_path != final_ipa_path:
+                shutil.move(target_file_path, final_ipa_path)
+
             if not release_url:
                 release_url = f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
 
@@ -689,8 +746,23 @@ def process_upload():
                 "category": category
             })
         else:
-            return jsonify({"success": False, "error": "Định dạng file chưa được hỗ trợ bóc tách tự động!"})
+            return jsonify({"success": False, "error": "File tải về không phải định dạng IPA hoặc DEB hợp lệ!"})
 
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/clean-incoming', methods=['POST'])
+def clean_incoming():
+    try:
+        count = 0
+        if os.path.exists(INCOMING_DIR):
+            for f in os.listdir(INCOMING_DIR):
+                fpath = os.path.join(INCOMING_DIR, f)
+                if os.path.isfile(fpath) and f != '.gitkeep':
+                    os.remove(fpath)
+                    count += 1
+        return jsonify({"success": True, "message": f"Đã dọn dẹp sạch {count} file tạm trong incoming/!"})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 
