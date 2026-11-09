@@ -109,6 +109,12 @@
             "version": "2.2",
             "icon": "ota_apps/icons/com.ifunsoft.daovang.png",
             "plist": "ota_apps/com.ifunsoft.daovang.plist"
+        },
+        {
+            "name": "Bowman",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.lentricasoftware.bowman.png",
+            "plist": "ota_apps/com.lentricasoftware.bowman.plist"
         }
     ],
     "Công Cụ": [
