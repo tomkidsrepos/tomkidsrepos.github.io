@@ -1,14 +1,24 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-APPVN RETRO ADMIN TOOL & AUTOMATION PIPELINE (Tomkids Repo)
------------------------------------------------------------
-Công cụ quản trị cục bộ: Tự động bóc tách IPA, DEB, Nhạc chuông M4R, Sách PDF,
-tạo manifest.plist chuẩn OTA, sửa lỗi icon và đồng bộ lên GitHub Pages & Releases.
+APPVN RETRO ADMIN PORTAL (Flask Edition) - Tomkids Repo
+--------------------------------------------------------
+Hỗ trợ:
+- Kéo thả & Chọn file trực tiếp từ máy tính (.ipa, .deb, .m4r, .mp3, .pdf)
+- Hỗ trợ nhập link online / Google Drive
+- Tự động bóc tách Info.plist, icon, sinh manifest.plist
+- Cập nhật ota_data.json và 1-click Git Push lên tomkidsrepo.cloud
 """
 
 import os
 import sys
+
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except:
+        pass
 import json
 import zipfile
 import plistlib
@@ -17,8 +27,7 @@ import io
 import tarfile
 import subprocess
 import webbrowser
-from http.server import HTTPServer, BaseHTTPRequestHandler
-import urllib.parse
+from flask import Flask, request, jsonify, render_template_string
 
 REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 OTA_APPS_DIR = os.path.join(REPO_DIR, 'ota_apps')
@@ -29,6 +38,10 @@ INCOMING_DIR = os.path.join(REPO_DIR, 'incoming')
 os.makedirs(OTA_APPS_DIR, exist_ok=True)
 os.makedirs(ICONS_DIR, exist_ok=True)
 os.makedirs(INCOMING_DIR, exist_ok=True)
+
+app = Flask(__name__)
+# Cho phép upload file lên đến 2GB
+app.config['MAX_CONTENT_LENGTH'] = 2048 * 1024 * 1024
 
 
 # ==============================================================================
@@ -117,7 +130,7 @@ def extract_ipa_info(ipa_path):
         bundle_id = plist.get('CFBundleIdentifier', 'com.tomkids.app')
         min_os = plist.get('MinimumOSVersion', '4.3')
 
-        # Tìm Icon phù hợp
+        # Tìm Icon
         icon_names = []
         if 'CFBundleIconFiles' in plist:
             icon_names = plist['CFBundleIconFiles']
@@ -210,7 +223,6 @@ def create_ota_plist(app_info, ipa_download_url):
     with open(plist_full_path, 'w', encoding='utf-8') as f:
         f.write(xml_content)
 
-    print(f"[+] Đã tạo manifest plist: {plist_rel_path}")
     return plist_rel_path
 
 
@@ -234,46 +246,121 @@ def update_ota_json(category, app_record):
     with open(DATA_JSON_PATH, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
 
-    print(f"[+] Đã cập nhật ota_data.json cho '{app_record['name']}' vào mục '{category}'")
-
 
 # ==============================================================================
-# 4. WEB ADMIN INTERFACE CỤC BỘ (HTTP://LOCALHOST:8080)
+# 4. GIAO DIỆN WEB HIỆN ĐẠI (CHỌN FILE TRỰC TIẾP TỪ MÁY TÍNH / KÉO THẢ)
 # ==============================================================================
 HTML_TEMPLATE = '''<!DOCTYPE html>
-<html>
+<html lang="vi">
 <head>
     <meta charset="utf-8">
-    <title>AppVN Admin - Tomkids Repo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AppVN Admin Portal - Tomkids Repo</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; background: #0f172a; color: white; padding: 30px; margin: 0; }
-        .container { max-width: 800px; margin: 0 auto; background: #1e293b; padding: 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        h1 { color: #38bdf8; margin-top: 0; display: flex; align-items: center; gap: 10px; font-size: 24px; }
-        .badge { background: #2563eb; color: white; font-size: 12px; padding: 3px 8px; border-radius: 8px; }
-        label { display: block; margin-top: 15px; font-weight: bold; color: #94a3b8; font-size: 14px; }
-        input[type="text"], select { width: 100%; padding: 10px 14px; margin-top: 6px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; font-size: 14px; }
-        .dropzone { border: 2px dashed #38bdf8; border-radius: 12px; padding: 35px 20px; text-align: center; margin-top: 15px; background: rgba(56,189,248,0.05); cursor: pointer; }
-        .dropzone:hover { background: rgba(56,189,248,0.12); }
-        .btn { background: #2563eb; color: white; padding: 12px 24px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 15px; margin-top: 20px; display: inline-block; text-decoration: none; }
-        .btn:hover { background: #1d4ed8; }
-        .btn-green { background: #16a34a; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #0b0f19; color: #f1f5f9; padding: 30px 15px; }
+        .container { max-width: 820px; margin: 0 auto; background: #131c31; padding: 35px; border-radius: 20px; box-shadow: 0 15px 40px rgba(0,0,0,0.6); border: 1px solid #1e293b; }
+        .header { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #1e293b; padding-bottom: 20px; margin-bottom: 25px; }
+        .logo-title { display: flex; align-items: center; gap: 12px; }
+        .logo-title h1 { font-size: 24px; color: #38bdf8; }
+        .badge { background: #2563eb; color: white; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 8px; }
+        
+        .tab-buttons { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid #1e293b; padding-bottom: 12px; }
+        .tab-btn { background: #1e293b; border: 1px solid #334155; color: #94a3b8; padding: 10px 18px; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 14px; transition: 0.2s; }
+        .tab-btn.active { background: #2563eb; color: white; border-color: #3b82f6; }
+
+        .dropzone-box { border: 2px dashed #38bdf8; border-radius: 16px; padding: 40px 20px; text-align: center; background: rgba(56, 189, 248, 0.04); cursor: pointer; transition: 0.2s; position: relative; margin-bottom: 20px; }
+        .dropzone-box:hover, .dropzone-box.dragover { background: rgba(56, 189, 248, 0.12); border-color: #60a5fa; transform: scale(1.01); }
+        .dropzone-icon { font-size: 48px; margin-bottom: 12px; }
+        .dropzone-text { font-size: 16px; font-weight: bold; color: #cbd5e1; margin-bottom: 6px; }
+        .dropzone-sub { font-size: 13px; color: #64748b; }
+        .file-input { display: none; }
+
+        .file-selected-card { display: none; background: #1e293b; padding: 14px 18px; border-radius: 12px; margin-bottom: 20px; align-items: center; justify-content: space-between; border: 1px solid #3b82f6; }
+        .file-name { font-weight: bold; color: #38bdf8; font-size: 14px; word-break: break-all; }
+        .file-size { font-size: 12px; color: #94a3b8; margin-top: 3px; }
+        .btn-remove-file { background: transparent; border: none; color: #ef4444; font-size: 20px; cursor: pointer; }
+
+        label { display: block; margin-top: 15px; font-weight: bold; color: #94a3b8; font-size: 14px; margin-bottom: 6px; }
+        select, input[type="text"] { width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #334155; background: #0b0f19; color: white; font-size: 14px; outline: none; }
+        select:focus, input[type="text"]:focus { border-color: #38bdf8; }
+
+        .btn-submit { width: 100%; padding: 14px; background: #2563eb; color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 25px; transition: 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .btn-submit:hover { background: #1d4ed8; }
+        .btn-submit:disabled { background: #475569; cursor: not-allowed; }
+
+        .progress-wrap { display: none; margin-top: 20px; }
+        .progress-bar-bg { height: 10px; background: #1e293b; border-radius: 5px; overflow: hidden; }
+        .progress-bar-fill { height: 100%; width: 0%; background: #38bdf8; transition: width 0.1s; }
+        .progress-text { font-size: 12px; color: #94a3b8; margin-top: 6px; text-align: center; }
+
+        .alert-box { padding: 15px; border-radius: 12px; margin-top: 20px; font-size: 14px; display: none; line-height: 1.5; }
+        .alert-success { background: rgba(34, 197, 94, 0.15); border: 1px solid #22c55e; color: #4ade80; }
+        .alert-error { background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #f87171; }
+
+        .footer-tools { margin-top: 35px; border-top: 1px solid #1e293b; padding-top: 25px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; align-items: center; }
+        .btn-secondary { background: #1e293b; border: 1px solid #334155; color: #cbd5e1; padding: 10px 16px; border-radius: 10px; font-size: 13px; font-weight: bold; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
+        .btn-secondary:hover { background: #334155; color: white; }
+        .btn-green { background: #16a34a; border-color: #22c55e; color: white; }
         .btn-green:hover { background: #15803d; }
-        .card-list { margin-top: 25px; background: #0f172a; border-radius: 12px; padding: 15px; }
-        .status-msg { margin-top: 15px; padding: 12px; border-radius: 8px; background: #1e3a8a; font-size: 14px; display: none; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1><span>🚀 AppVN Admin Portal</span> <span class="badge">Tomkids Repo</span></h1>
-        <p style="color:#94a3b8; font-size:14px;">Tự động phân tích file IPA, DEB, tạo manifest OTA và cập nhật kho ứng dụng cho iOS cổ.</p>
+        <div class="header">
+            <div class="logo-title">
+                <h1>🚀 AppVN Admin Portal</h1>
+                <span class="badge">Tomkids Repo</span>
+            </div>
+            <a href="https://tomkidsrepo.cloud/app/" target="_blank" class="btn-secondary">🌐 Mở Web AppVN</a>
+        </div>
 
-        <form method="POST" action="/process" enctype="application/x-www-form-urlencoded">
-            <label>1. Tên file trong thư mục "incoming" (hoặc đường link trực tiếp / Google Drive):</label>
-            <input type="text" name="file_source" placeholder="VD: FlappyBird.ipa hoặc https://..." required>
+        <!-- TABS CHỌN NGUỒN FILE -->
+        <div class="tab-buttons">
+            <button class="tab-btn active" id="btn-tab-file" onclick="switchSourceTab('file')">📁 Chọn File từ Máy Tính</button>
+            <button class="tab-btn" id="btn-tab-link" onclick="switchSourceTab('link')">🔗 Nhập Link Ngoài / Google Drive</button>
+            <button class="tab-btn" id="btn-tab-incoming" onclick="switchSourceTab('incoming')">📂 File trong Thư mục incoming/</button>
+        </div>
 
-            <label>2. Chọn Chuyên mục:</label>
-            <select name="category">
-                <option value="Trò Chơi">🎮 Trò Chơi</option>
+        <form id="upload-form" onsubmit="handleFormSubmit(event)">
+            
+            <!-- SECTION 1: CHỌN FILE TỪ MÁY TÍNH -->
+            <div id="section-file">
+                <div class="dropzone-box" id="dropzone" onclick="document.getElementById('file-input').click()">
+                    <div class="dropzone-icon">📥</div>
+                    <div class="dropzone-text">Bấm vào đây để Chọn File từ Máy Tính</div>
+                    <div class="dropzone-sub">Hoặc Kéo và Thả trực tiếp file <b>.ipa, .deb, .m4r, .mp3, .pdf</b> vào khung này</div>
+                    <input type="file" id="file-input" class="file-input" accept=".ipa,.deb,.m4r,.mp3,.pdf,.jpg,.png" onchange="onFileSelected(this.files)">
+                </div>
+
+                <div class="file-selected-card" id="file-selected-card">
+                    <div>
+                        <div class="file-name" id="file-selected-name">ten_file.ipa</div>
+                        <div class="file-size" id="file-selected-size">Dung lượng: 15.4 MB</div>
+                    </div>
+                    <button type="button" class="btn-remove-file" onclick="removeSelectedFile()">✕</button>
+                </div>
+            </div>
+
+            <!-- SECTION 2: NHẬP LINK NGOÀI -->
+            <div id="section-link" style="display:none;">
+                <label>Dán link tải trực tiếp (hoặc link Google Drive chia sẻ công khai):</label>
+                <input type="text" id="link-input" placeholder="https://drive.google.com/file/d/... hoặc https://.../app.ipa">
+            </div>
+
+            <!-- SECTION 3: CHỌN TỪ THƯ MỤC INCOMING -->
+            <div id="section-incoming" style="display:none;">
+                <label>Chọn file có sẵn trong thư mục "incoming/":</label>
+                <select id="incoming-select">
+                    <option value="">-- Bấm để tải danh sách file --</option>
+                </select>
+                <p style="font-size:12px; color:#64748b; margin-top:6px;">Bạn có thể copy hàng loạt file vào thư mục incoming/ trên máy tính để chọn nhanh tại đây.</p>
+            </div>
+
+            <!-- CHỌN CHUYÊN MỤC -->
+            <label>Chọn Chuyên mục:</label>
+            <select id="category-select" required>
+                <option value="Trò Chơi" selected>🎮 Trò Chơi</option>
                 <option value="Mạng Xã Hội">🌐 Mạng Xã Hội</option>
                 <option value="Giải Trí">🎵 Giải Trí / Media</option>
                 <option value="Công Cụ">🛠️ Công Cụ / Tiện ích</option>
@@ -281,139 +368,356 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 <option value="Jailbreak">🔓 Jailbreak</option>
             </select>
 
-            <label>3. Đường dẫn tải trực tiếp trên GitHub Releases (Nếu đã có link):</label>
-            <input type="text" name="release_url" placeholder="Để trống nếu muốn tự tạo đường dẫn Releases mặc định">
+            <!-- TÙY CHỌN LINK GITHUB RELEASES -->
+            <label>Đường dẫn tải trên GitHub Releases (Tùy chọn):</label>
+            <input type="text" id="release-url-input" placeholder="Mặc định: https://github.com/.../releases/download/OTA-Storage/app.ipa">
 
-            <button type="submit" class="btn">⚡ Bắt Đầu Xử Lý Tự Động</button>
+            <!-- NÚT BẮT ĐẦU XỬ LÝ -->
+            <button type="submit" class="btn-submit" id="btn-submit">
+                <span>⚡ Bắt Đầu Xử Lý Tự Động</span>
+            </button>
+
+            <!-- THANH TIẾN TRÌNH UPLOAD -->
+            <div class="progress-wrap" id="progress-wrap">
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text">Đang tải file lên máy chủ cục bộ: 0%</div>
+            </div>
+
+            <!-- THÔNG BÁO KẾT QUẢ -->
+            <div class="alert-box" id="alert-box"></div>
         </form>
 
-        <div style="margin-top: 35px; border-top: 1px solid #334155; padding-top: 20px; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <b style="color: #cbd5e1;">Đồng bộ lên GitHub:</b>
-                <p style="color: #64748b; font-size: 13px; margin: 4px 0 0 0;">Đẩy code và app mới lên tomkidsrepo.cloud</p>
+        <!-- FOOTER & CÔNG CỤ ĐỒNG BỘ -->
+        <div class="footer-tools">
+            <div style="display:flex; gap:10px;">
+                <button type="button" class="btn-secondary" onclick="openIncomingFolder()">📂 Mở Thư Mục incoming/</button>
             </div>
-            <form method="POST" action="/git-push" style="margin:0;">
-                <button type="submit" class="btn btn-green">📤 Git Commit & Push</button>
-            </form>
+            <button type="button" class="btn-secondary btn-green" id="btn-git-push" onclick="triggerGitPush()">📤 Git Commit & Push Lên Web</button>
         </div>
     </div>
+
+    <script>
+        var currentSourceTab = 'file';
+        var chosenFile = null;
+
+        function switchSourceTab(tab) {
+            currentSourceTab = tab;
+            document.getElementById('btn-tab-file').className = (tab === 'file') ? 'tab-btn active' : 'tab-btn';
+            document.getElementById('btn-tab-link').className = (tab === 'link') ? 'tab-btn active' : 'tab-btn';
+            document.getElementById('btn-tab-incoming').className = (tab === 'incoming') ? 'tab-btn active' : 'tab-btn';
+
+            document.getElementById('section-file').style.display = (tab === 'file') ? 'block' : 'none';
+            document.getElementById('section-link').style.display = (tab === 'link') ? 'block' : 'none';
+            document.getElementById('section-incoming').style.display = (tab === 'incoming') ? 'block' : 'none';
+
+            if (tab === 'incoming') {
+                loadIncomingFilesList();
+            }
+        }
+
+        // KÉO VÀ THẢ TRỰC TIẾP
+        var dropzone = document.getElementById('dropzone');
+        ['dragenter', 'dragover'].forEach(function(eName) {
+            dropzone.addEventListener(eName, function(e) {
+                e.preventDefault(); e.stopPropagation();
+                dropzone.classList.add('dragover');
+            });
+        });
+        ['dragleave', 'drop'].forEach(function(eName) {
+            dropzone.addEventListener(eName, function(e) {
+                e.preventDefault(); e.stopPropagation();
+                dropzone.classList.remove('dragover');
+            });
+        });
+        dropzone.addEventListener('drop', function(e) {
+            if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                onFileSelected(e.dataTransfer.files);
+            }
+        });
+
+        function onFileSelected(files) {
+            if (!files || files.length === 0) return;
+            chosenFile = files[0];
+            document.getElementById('dropzone').style.display = 'none';
+            var card = document.getElementById('file-selected-card');
+            card.style.display = 'flex';
+            document.getElementById('file-selected-name').innerText = '📦 ' + chosenFile.name;
+            var sizeMB = (chosenFile.size / (1024 * 1024)).toFixed(2);
+            document.getElementById('file-selected-size').innerText = 'Dung lượng: ' + sizeMB + ' MB';
+        }
+
+        function removeSelectedFile() {
+            chosenFile = null;
+            document.getElementById('file-input').value = '';
+            document.getElementById('dropzone').style.display = 'block';
+            document.getElementById('file-selected-card').style.display = 'none';
+        }
+
+        function loadIncomingFilesList() {
+            fetch('/api/list-incoming')
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    var sel = document.getElementById('incoming-select');
+                    sel.innerHTML = '';
+                    if (!data.files || data.files.length === 0) {
+                        sel.innerHTML = '<option value="">(Thư mục incoming/ hiện đang trống)</option>';
+                        return;
+                    }
+                    data.files.forEach(function(f) {
+                        var opt = document.createElement('option');
+                        opt.value = f;
+                        opt.innerText = f;
+                        sel.appendChild(opt);
+                    });
+                });
+        }
+
+        function openIncomingFolder() {
+            fetch('/api/open-incoming', { method: 'POST' });
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            var alertBox = document.getElementById('alert-box');
+            alertBox.style.display = 'none';
+
+            var category = document.getElementById('category-select').value;
+            var releaseUrl = document.getElementById('release-url-input').value;
+
+            var formData = new FormData();
+            formData.append('category', category);
+            formData.append('release_url', releaseUrl);
+            formData.append('source_type', currentSourceTab);
+
+            if (currentSourceTab === 'file') {
+                if (!chosenFile) {
+                    alert("Vui lòng chọn hoặc kéo thả file từ máy tính!");
+                    return;
+                }
+                formData.append('file', chosenFile);
+            } else if (currentSourceTab === 'link') {
+                var link = document.getElementById('link-input').value.trim();
+                if (!link) {
+                    alert("Vui lòng dán link file cần đưa lên!");
+                    return;
+                }
+                formData.append('link', link);
+            } else if (currentSourceTab === 'incoming') {
+                var incFile = document.getElementById('incoming-select').value;
+                if (!incFile) {
+                    alert("Vui lòng chọn 1 file trong thư mục incoming/!");
+                    return;
+                }
+                formData.append('incoming_file', incFile);
+            }
+
+            var btn = document.getElementById('btn-submit');
+            btn.disabled = true;
+            btn.innerHTML = '<span>⏳ Đang xử lý tự động... Vui lòng đợi</span>';
+
+            var progressWrap = document.getElementById('progress-wrap');
+            var progressFill = document.getElementById('progress-bar-fill');
+            var progressText = document.getElementById('progress-text');
+            progressWrap.style.display = 'block';
+            progressFill.style.width = '0%';
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/api/process', true);
+
+            xhr.upload.onprogress = function(evt) {
+                if (evt.lengthComputable) {
+                    var percent = Math.round((evt.loaded / evt.total) * 100);
+                    progressFill.style.width = percent + '%';
+                    progressText.innerText = 'Đang tải file lên máy chủ: ' + percent + '%';
+                }
+            };
+
+            xhr.onload = function() {
+                btn.disabled = false;
+                btn.innerHTML = '<span>⚡ Bắt Đầu Xử Lý Tự Động</span>';
+                progressWrap.style.display = 'none';
+
+                try {
+                    var res = JSON.parse(xhr.responseText);
+                    if (res.success) {
+                        alertBox.className = 'alert-box alert-success';
+                        alertBox.innerHTML = '<b>🎉 THÀNH CÔNG!</b><br>' +
+                                             '• Đã bóc tách ứng dụng: <b>' + res.app_name + '</b> (v' + res.version + ')<br>' +
+                                             '• Bundle ID: <code>' + res.bundle_id + '</code><br>' +
+                                             '• Đã tạo manifest: <code>' + res.plist + '</code><br>' +
+                                             '• Đã cập nhật vào chuyên mục: <b>' + res.category + '</b><br><br>' +
+                                             '👉 Bạn hãy bấm <b>"Git Commit & Push"</b> ở góc dưới để đưa lên web!';
+                        alertBox.style.display = 'block';
+                        removeSelectedFile();
+                    } else {
+                        alertBox.className = 'alert-box alert-error';
+                        alertBox.innerText = 'Lỗi: ' + res.error;
+                        alertBox.style.display = 'block';
+                    }
+                } catch(err) {
+                    alertBox.className = 'alert-box alert-error';
+                    alertBox.innerText = 'Lỗi phản hồi máy chủ: ' + xhr.responseText;
+                    alertBox.style.display = 'block';
+                }
+            };
+
+            xhr.onerror = function() {
+                btn.disabled = false;
+                btn.innerHTML = '<span>⚡ Bắt Đầu Xử Lý Tự Động</span>';
+                progressWrap.style.display = 'none';
+                alertBox.className = 'alert-box alert-error';
+                alertBox.innerText = 'Không thể kết nối đến máy chủ xử lý!';
+                alertBox.style.display = 'block';
+            };
+
+            xhr.send(formData);
+        }
+
+        function triggerGitPush() {
+            var btn = document.getElementById('btn-git-push');
+            btn.disabled = true;
+            btn.innerText = '⏳ Đang đồng bộ Git...';
+
+            fetch('/api/git-push', { method: 'POST' })
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    btn.disabled = false;
+                    btn.innerText = '📤 Git Commit & Push Lên Web';
+                    alert(data.message);
+                })
+                .catch(function(err) {
+                    btn.disabled = false;
+                    btn.innerText = '📤 Git Commit & Push Lên Web';
+                    alert('Lỗi: ' + err);
+                });
+        }
+    </script>
 </body>
 </html>
 '''
 
-class AdminHTTPHandler(BaseHTTPRequestHandler):
-    def do_GET(self):
-        self.send_response(200)
-        self.send_header('Content-Type', 'text/html; charset=utf-8')
-        self.end_headers()
-        self.wfile.write(HTML_TEMPLATE.encode('utf-8'))
 
-    def do_POST(self):
-        length = int(self.headers.get('Content-Length', 0))
-        body = self.rfile.read(length).decode('utf-8')
-        params = urllib.parse.parse_qs(body)
-
-        if self.path == '/process':
-            source = params.get('file_source', [''])[0].strip()
-            category = params.get('category', ['Trò Chơi'])[0]
-            rel_url = params.get('release_url', [''])[0].strip()
-
-            result_msg = ""
-            try:
-                # Kiểm tra nếu file nằm trong thư mục incoming/
-                local_path = os.path.join(INCOMING_DIR, source)
-                if not os.path.exists(local_path):
-                    local_path = source
-
-                if source.endswith('.deb'):
-                    out_ipa = os.path.join(INCOMING_DIR, os.path.basename(source).replace('.deb', '.ipa'))
-                    deb_to_ipa(local_path, out_ipa)
-                    local_path = out_ipa
-
-                if os.path.exists(local_path) and local_path.endswith('.ipa'):
-                    app_info = extract_ipa_info(local_path)
-                    safe_name = os.path.basename(local_path)
-                    if not rel_url:
-                        rel_url = f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
-
-                    plist_path = create_ota_plist(app_info, rel_url)
-                    record = {
-                        "name": app_info["name"],
-                        "version": app_info["version"],
-                        "icon": app_info["icon"],
-                        "plist": plist_path
-                    }
-                    update_ota_json(category, record)
-                    result_msg = f"Thành công! Đã xử lý '{app_info['name']}' ({app_info['version']}) vào danh mục {category}."
-                else:
-                    result_msg = f"Lỗi: Không tìm thấy file IPA/DEB tại: {local_path}"
-            except Exception as e:
-                result_msg = f"Đã xảy ra lỗi: {str(e)}"
-
-            response_html = f'''<html><head><meta charset="utf-8"></head><body style="background:#0f172a; color:white; font-family:sans-serif; padding:40px; text-align:center;">
-                <h2>{result_msg}</h2>
-                <br><a href="/" style="background:#2563eb; color:white; padding:10px 20px; border-radius:8px; text-decoration:none;">Quay lại Admin</a>
-            </body></html>'''
-            self.send_response(200)
-            self.send_header('Content-Type', 'text/html; charset=utf-8')
-            self.end_headers()
-            self.wfile.write(response_html.encode('utf-8'))
-
-        elif self.path == '/git-push':
-            try:
-                subprocess.run(["git", "add", "."], cwd=REPO_DIR, check=True)
-                subprocess.run(["git", "commit", "-m", "Auto-update apps from AppVN Admin"], cwd=REPO_DIR, check=True)
-                subprocess.run(["git", "push"], cwd=REPO_DIR, check=True)
-                msg = "Đã đồng bộ Git Push thành công lên tomkidsrepo.cloud!"
-            except Exception as e:
-                msg = f"Lỗi Git Push: {str(e)}"
-
-            response_html = f'''<html><head><meta charset="utf-8"></head><body style="background:#0f172a; color:white; font-family:sans-serif; padding:40px; text-align:center;">
-                <h2>{msg}</h2>
-                <br><a href="/" style="background:#2563eb; color:white; padding:10px 20px; border-radius:8px; text-decoration:none;">Quay lại Admin</a>
-            </body></html>'''
-            self.send_response(200)
-            self.send_header('Content-Type', 'text/html; charset=utf-8')
-            self.end_headers()
-            self.wfile.write(response_html.encode('utf-8'))
+# ==============================================================================
+# 5. CÁC API FLASK
+# ==============================================================================
+@app.route('/')
+def index_page():
+    return render_template_string(HTML_TEMPLATE)
 
 
-def run_server(port=8080):
-    server = HTTPServer(('127.0.0.1', port), AdminHTTPHandler)
-    url = f"http://127.0.0.1:{port}"
-    print(f"\n=======================================================")
-    print(f"🚀 AppVN Admin Portal đang chạy tại: {url}")
-    print(f"   Mở trình duyệt trên máy tính để quản trị và đưa app lên!")
-    print(f"=======================================================\n")
+@app.route('/api/list-incoming')
+def list_incoming():
+    files = []
+    if os.path.exists(INCOMING_DIR):
+        for f in os.listdir(INCOMING_DIR):
+            if f.lower().endswith(('.ipa', '.deb', '.m4r', '.mp3', '.pdf', '.jpg', '.png')):
+                files.append(f)
+    return jsonify({"files": files})
+
+
+@app.route('/api/open-incoming', methods=['POST'])
+def open_incoming():
     try:
-        webbrowser.open(url)
+        os.startfile(INCOMING_DIR)
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/process', methods=['POST'])
+def process_upload():
+    try:
+        source_type = request.form.get('source_type', 'file')
+        category = request.form.get('category', 'Trò Chơi')
+        release_url = request.form.get('release_url', '').strip()
+
+        target_file_path = None
+
+        if source_type == 'file':
+            uploaded_file = request.files.get('file')
+            if not uploaded_file or uploaded_file.filename == '':
+                return jsonify({"success": False, "error": "Chưa chọn file!"})
+
+            filename = uploaded_file.filename
+            target_file_path = os.path.join(INCOMING_DIR, filename)
+            uploaded_file.save(target_file_path)
+
+        elif source_type == 'incoming':
+            incoming_name = request.form.get('incoming_file')
+            target_file_path = os.path.join(INCOMING_DIR, incoming_name)
+
+        elif source_type == 'link':
+            link = request.form.get('link')
+            # Nếu là link online, có thể dùng aria2 hoặc curl tải về incoming/
+            filename = os.path.basename(link.split('?')[0]) or "downloaded_app.ipa"
+            target_file_path = os.path.join(INCOMING_DIR, filename)
+            subprocess.run(["curl.exe", "-L", "-o", target_file_path, link], check=True)
+
+        if not target_file_path or not os.path.exists(target_file_path):
+            return jsonify({"success": False, "error": "Không tìm thấy file nguồn để xử lý!"})
+
+        # Nếu là DEB -> convert sang IPA
+        if target_file_path.lower().endswith('.deb'):
+            out_ipa = target_file_path[:-4] + '.ipa'
+            deb_to_ipa(target_file_path, out_ipa)
+            target_file_path = out_ipa
+
+        # Xử lý IPA
+        if target_file_path.lower().endswith('.ipa'):
+            app_info = extract_ipa_info(target_file_path)
+            safe_name = os.path.basename(target_file_path)
+            if not release_url:
+                release_url = f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
+
+            plist_path = create_ota_plist(app_info, release_url)
+            record = {
+                "name": app_info["name"],
+                "version": app_info["version"],
+                "icon": app_info["icon"],
+                "plist": plist_path
+            }
+            update_ota_json(category, record)
+
+            return jsonify({
+                "success": True,
+                "app_name": app_info["name"],
+                "version": app_info["version"],
+                "bundle_id": app_info["bundle_id"],
+                "plist": plist_path,
+                "category": category
+            })
+        else:
+            return jsonify({"success": False, "error": "Định dạng file chưa được hỗ trợ bóc tách tự động!"})
+
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/git-push', methods=['POST'])
+def git_push():
+    try:
+        subprocess.run(["git", "add", "."], cwd=REPO_DIR, check=True)
+        subprocess.run(["git", "commit", "-m", "Auto-update apps from AppVN Admin"], cwd=REPO_DIR, check=True)
+        subprocess.run(["git", "push"], cwd=REPO_DIR, check=True)
+        return jsonify({"success": True, "message": "Đã Git Push thành công lên tomkidsrepo.cloud!"})
+    except Exception as e:
+        return jsonify({"success": False, "message": f"Kết quả: {str(e)}"})
+
+
+def main():
+    port = 8080
+    print("\n=======================================================")
+    print(f"[*] AppVN Admin Portal (Flask) dang chay tai:")
+    print(f"    http://127.0.0.1:{port}")
+    print("=======================================================\n")
+    try:
+        webbrowser.open(f"http://127.0.0.1:{port}")
     except:
         pass
-    server.serve_forever()
+    app.run(host='127.0.0.1', port=port, debug=False)
 
 
 if __name__ == '__main__':
-    if len(sys.argv) > 1 and sys.argv[1] == 'server':
-        run_server()
-    elif len(sys.argv) == 4:
-        # CLI Mode: python appvn_admin.py <file_path> <category> <download_url>
-        fpath = sys.argv[1]
-        cat = sys.argv[2]
-        durl = sys.argv[3]
-        if fpath.endswith('.deb'):
-            out_ipa = fpath.replace('.deb', '.ipa')
-            deb_to_ipa(fpath, out_ipa)
-            fpath = out_ipa
-        info = extract_ipa_info(fpath)
-        plist_path = create_ota_plist(info, durl)
-        rec = {
-            "name": info["name"],
-            "version": info["version"],
-            "icon": info["icon"],
-            "plist": plist_path
-        }
-        update_ota_json(cat, rec)
-        print("Hoàn tất xử lý CLI!")
-    else:
-        # Chạy giao diện Web mặc định
-        run_server()
+    main()
