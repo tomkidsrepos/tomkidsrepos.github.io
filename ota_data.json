@@ -65,6 +65,12 @@
             "version": "0.91",
             "icon": "ota_apps/icons/com.example.Tele6ram.png",
             "plist": "ota_apps/com.example.Tele6ram.plist"
+        },
+        {
+            "name": "Telegacy v1.5",
+            "version": "1.5",
+            "icon": "ota_apps/icons/com.tele.tele6ram.png",
+            "plist": "ota_apps/com.tele.tele6ram.plist"
         }
     ],
     "Trò Chơi": [
