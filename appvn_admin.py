@@ -34,6 +34,7 @@ REPO_DIR = os.path.dirname(os.path.abspath(__file__))
 OTA_APPS_DIR = os.path.join(REPO_DIR, 'ota_apps')
 ICONS_DIR = os.path.join(OTA_APPS_DIR, 'icons')
 DATA_JSON_PATH = os.path.join(REPO_DIR, 'ota_data.json')
+MEDIA_JSON_PATH = os.path.join(REPO_DIR, 'media_data.json')
 INCOMING_DIR = os.path.join(REPO_DIR, 'incoming')
 
 os.makedirs(OTA_APPS_DIR, exist_ok=True)
@@ -329,6 +330,32 @@ def update_ota_json(category, app_record):
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 
+def update_media_json(section, item_record):
+    data = {"books": [], "comics": [], "ringtones": [], "wallpapers": []}
+    if os.path.exists(MEDIA_JSON_PATH):
+        try:
+            with open(MEDIA_JSON_PATH, 'r', encoding='utf-8-sig') as f:
+                data = json.load(f)
+        except:
+            pass
+
+    if section not in data:
+        data[section] = []
+
+    updated = False
+    for i, item in enumerate(data[section]):
+        if item.get('title') == item_record.get('title'):
+            data[section][i] = item_record
+            updated = True
+            break
+
+    if not updated:
+        data[section].insert(0, item_record)
+
+    with open(MEDIA_JSON_PATH, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+
 # ==============================================================================
 # 4. GIAO DIỆN WEB HIỆN ĐẠI (CHỌN FILE TRỰC TIẾP TỪ MÁY TÍNH / KÉO THẢ)
 # ==============================================================================
@@ -442,12 +469,20 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             <!-- CHỌN CHUYÊN MỤC -->
             <label>Chọn Chuyên mục:</label>
             <select id="category-select" required>
-                <option value="Trò Chơi" selected>🎮 Trò Chơi</option>
-                <option value="Mạng Xã Hội">🌐 Mạng Xã Hội</option>
-                <option value="Giải Trí">🎵 Giải Trí / Media</option>
-                <option value="Công Cụ">🛠️ Công Cụ / Tiện ích</option>
-                <option value="Hệ thống">⚙️ Hệ thống</option>
-                <option value="Jailbreak">🔓 Jailbreak</option>
+                <optgroup label="🍎 Kho Ứng Dụng & Game (IPA / DEB)">
+                    <option value="Trò Chơi" selected>🎮 Trò Chơi</option>
+                    <option value="Mạng Xã Hội">🌐 Mạng Xã Hội</option>
+                    <option value="Giải Trí">🎵 Giải Trí / Media</option>
+                    <option value="Công Cụ">🛠️ Công Cụ / Tiện ích</option>
+                    <option value="Hệ thống">⚙️ Hệ thống</option>
+                    <option value="Jailbreak">🔓 Jailbreak</option>
+                </optgroup>
+                <optgroup label="📚 Sách, Truyện & Đa Phương Tiện">
+                    <option value="Sách">📖 Sách (PDF / ePub)</option>
+                    <option value="Truyện">📚 Truyện (Truyện tranh / Manga)</option>
+                    <option value="Nhạc chuông">🎵 Nhạc chuông (.m4r / .mp3)</option>
+                    <option value="Hình nền">🖼️ Hình nền (.jpg / .png)</option>
+                </optgroup>
             </select>
 
             <!-- TÙY CHỌN LINK GITHUB RELEASES -->
@@ -794,8 +829,96 @@ def process_upload():
             with open(target_file_path, 'rb') as f:
                 header = f.read(16)
 
-        # Nếu là ZIP / IPA (Magic: PK\x03\x04)
-        if header.startswith(b'PK') or target_file_path.lower().endswith('.ipa'):
+        # Xử lý Sách & Truyện (.pdf, .epub)
+        if category in ('Sách', 'Truyện'):
+            raw_name = os.path.splitext(os.path.basename(target_file_path))[0]
+            title = raw_name.replace('-', ' ').replace('_', ' ').title()
+            pages = "iBooks / PDF"
+            if target_file_path.lower().endswith('.pdf'):
+                try:
+                    import pypdf
+                    reader = pypdf.PdfReader(target_file_path)
+                    pages = f"{len(reader.pages)} trang"
+                except:
+                    pages = "PDF"
+
+            safe_name = os.path.basename(target_file_path)
+            uploaded_url = upload_to_github_releases(target_file_path, safe_name)
+            final_url = uploaded_url or f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
+
+            section = "books" if category == "Sách" else "comics"
+            record = {
+                "title": title,
+                "author": "Tomkids Library",
+                "type": "PDF / iBooks",
+                "pages": pages,
+                "icon": "📖" if category == "Sách" else "📚",
+                "url": final_url
+            }
+            update_media_json(section, record)
+
+            return jsonify({
+                "success": True,
+                "app_name": title,
+                "version": pages,
+                "bundle_id": "com.apple.iBooks",
+                "plist": final_url,
+                "category": category,
+                "release_url": final_url
+            })
+
+        # Xử lý Nhạc Chuông (.m4r, .mp3)
+        elif category == 'Nhạc chuông':
+            raw_name = os.path.splitext(os.path.basename(target_file_path))[0]
+            title = raw_name.replace('-', ' ').replace('_', ' ').title()
+            safe_name = os.path.basename(target_file_path)
+            uploaded_url = upload_to_github_releases(target_file_path, safe_name)
+            final_url = uploaded_url or f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
+
+            record = {
+                "title": title,
+                "desc": "Nhạc chuông chất lượng cao cho iPhone",
+                "file": final_url,
+                "duration": "0:30"
+            }
+            update_media_json("ringtones", record)
+
+            return jsonify({
+                "success": True,
+                "app_name": title,
+                "version": "Audio",
+                "bundle_id": "com.apple.mobileipod",
+                "plist": final_url,
+                "category": category,
+                "release_url": final_url
+            })
+
+        # Xử lý Hình Nền (.jpg, .png)
+        elif category == 'Hình nền':
+            raw_name = os.path.splitext(os.path.basename(target_file_path))[0]
+            title = raw_name.replace('-', ' ').replace('_', ' ').title()
+            safe_name = os.path.basename(target_file_path)
+            uploaded_url = upload_to_github_releases(target_file_path, safe_name)
+            final_url = uploaded_url or f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
+
+            record = {
+                "title": title,
+                "url": final_url
+            }
+            update_media_json("wallpapers", record)
+
+            return jsonify({
+                "success": True,
+                "app_name": title,
+                "version": "Wallpaper",
+                "bundle_id": "com.apple.mobileslideshow",
+                "plist": final_url,
+                "category": category,
+                "release_url": final_url
+            })
+
+        # Xử lý IPA
+        elif header.startswith(b'PK') or target_file_path.lower().endswith('.ipa'):
             if not target_file_path.lower().endswith('.ipa'):
                 new_ipa_path = target_file_path + '.ipa'
                 shutil.move(target_file_path, new_ipa_path)

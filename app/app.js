@@ -510,33 +510,49 @@ function switchMainCategory(section) {
     }
 }
 
+var rawMediaData = null;
+
+function loadMediaData(callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../media_data.json?t=' + new Date().getTime(), true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200 || xhr.status === 0) {
+                try {
+                    rawMediaData = JSON.parse(xhr.responseText);
+                } catch(e) {}
+            }
+            callback(rawMediaData || {});
+        }
+    };
+    xhr.send();
+}
+
 // 7.1. Chuyên mục Nhạc Chuông (.m4r)
 function renderRingtones() {
-    var ringtones = [
-        { title: "Marimba (Nhạc Chuông Gốc iPhone)", desc: "Âm thanh huyền thoại của Steve Jobs", file: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", duration: "0:30" },
-        { title: "Opening (Nhạc Chuông iOS 7)", desc: "Giai điệu hiện đại tinh tế", file: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3", duration: "0:25" },
-        { title: "Nokia Tune (Original 8-bit)", desc: "Huyền thoại chuông điện thoại cổ", file: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3", duration: "0:15" },
-        { title: "Super Mario Bros Theme", desc: "Nhạc chuông game tuổi thơ", file: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3", duration: "0:28" },
-        { title: "Flappy Bird Jump & Die", desc: "Âm thanh game ức chế nhất lịch sử", file: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3", duration: "0:10" }
-    ];
+    loadMediaData(function(data) {
+        var ringtones = data.ringtones || [
+            { title: "Marimba (Nhạc Chuông Gốc iPhone)", desc: "Âm thanh huyền thoại của Steve Jobs", file: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3", duration: "0:30" }
+        ];
 
-    var html = '<div style="margin-bottom:12px; font-size:13px; color:#475569; padding:0 4px;">' +
-                   'Nhạc chuông định dạng chuẩn <b>.m4r</b> cho iPhone. Bạn có thể nghe thử trực tiếp hoặc tải về:' +
-               '</div>';
+        var html = '<div style="margin-bottom:12px; font-size:13px; color:#475569; padding:0 4px;">' +
+                       'Nhạc chuông định dạng chuẩn <b>.m4r</b> cho iPhone. Bạn có thể nghe thử trực tiếp hoặc tải về:' +
+                   '</div>';
 
-    for (var i = 0; i < ringtones.length; i++) {
-        var r = ringtones[i];
-        html += '<div class="media-item">' +
-                    '<div class="media-item-thumb" onclick="playAudio(\'' + r.file + '\')">▶</div>' +
-                    '<div class="media-item-info">' +
-                        '<div class="media-title">' + r.title + '</div>' +
-                        '<div class="media-sub">' + r.desc + ' • ' + r.duration + '</div>' +
-                    '</div>' +
-                    '<a href="' + r.file + '" download class="media-action-btn">Tải .m4r</a>' +
-                '</div>';
-    }
+        for (var i = 0; i < ringtones.length; i++) {
+            var r = ringtones[i];
+            html += '<div class="media-item">' +
+                        '<div class="media-item-thumb" onclick="playAudio(\'' + r.file + '\')">▶</div>' +
+                        '<div class="media-item-info">' +
+                            '<div class="media-title">' + escapeHtml(r.title) + '</div>' +
+                            '<div class="media-sub">' + escapeHtml(r.desc) + ' • ' + (r.duration || "0:30") + '</div>' +
+                        '</div>' +
+                        '<a href="' + r.file + '" download class="media-action-btn">Tải .m4r</a>' +
+                    '</div>';
+        }
 
-    document.getElementById('media-list-container').innerHTML = html;
+        document.getElementById('media-list-container').innerHTML = html;
+    });
 }
 
 function playAudio(url) {
@@ -555,56 +571,57 @@ function playAudio(url) {
 
 // 7.2. Chuyên mục Sách & Truyện (.pdf / .epub / iBooks)
 function renderBooks() {
-    var books = [
-        { title: "Dế Mèn Phiêu Lưu Ký", author: "Tô Hoài", type: "PDF", pages: "148 trang", icon: "📖", url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
-        { title: "Đắc Nhân Tâm (Bản chuẩn)", author: "Dale Carnegie", type: "PDF / ePub", pages: "320 trang", icon: "📘", url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
-        { title: "Doraemon Trọn Bộ Cổ Điển", author: "Fujiko F. Fujio", type: "Truyện Tranh", pages: "Tập 1 - 45", icon: "📚", url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" },
-        { title: "Conan Thám Tử Lừng Danh", author: "Gosho Aoyama", type: "Truyện Tranh", pages: "Trọn bộ", icon: "🔍", url: "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf" }
-    ];
+    loadMediaData(function(data) {
+        var key = (currentMainSection === 'comics') ? 'comics' : 'books';
+        var books = data[key] || [];
 
-    var html = '<div style="margin-bottom:12px; font-size:13px; color:#475569; padding:0 4px;">' +
-                   'Bấm "Mở trong iBooks" để Safari tự động thêm trực tiếp vào app iBooks của iPhone:' +
-               '</div>';
+        if (books.length === 0) {
+            document.getElementById('media-list-container').innerHTML = 
+                '<div class="loading-state"><p>Chưa có sách hoặc truyện nào trong mục này.</p></div>';
+            return;
+        }
 
-    for (var i = 0; i < books.length; i++) {
-        var b = books[i];
-        html += '<div class="media-item">' +
-                    '<div class="media-item-thumb">' + b.icon + '</div>' +
-                    '<div class="media-item-info">' +
-                        '<div class="media-title">' + b.title + '</div>' +
-                        '<div class="media-sub">' + b.author + ' • ' + b.pages + '</div>' +
-                    '</div>' +
-                    '<a href="' + b.url + '" target="_blank" class="media-action-btn">Mở iBooks</a>' +
-                '</div>';
-    }
+        var html = '<div style="margin-bottom:12px; font-size:13px; color:#475569; padding:0 4px;">' +
+                       'Bấm "Mở trong iBooks" để Safari tự động thêm trực tiếp vào app iBooks của iPhone:' +
+                   '</div>';
 
-    document.getElementById('media-list-container').innerHTML = html;
+        for (var i = 0; i < books.length; i++) {
+            var b = books[i];
+            html += '<div class="media-item">' +
+                        '<div class="media-item-thumb">' + (b.icon || "📖") + '</div>' +
+                        '<div class="media-item-info">' +
+                            '<div class="media-title">' + escapeHtml(b.title) + '</div>' +
+                            '<div class="media-sub">' + escapeHtml(b.author || "Tomkids") + ' • ' + escapeHtml(b.pages || "PDF") + '</div>' +
+                        '</div>' +
+                        '<a href="' + b.url + '" target="_blank" class="media-action-btn">Mở iBooks</a>' +
+                    '</div>';
+        }
+
+        document.getElementById('media-list-container').innerHTML = html;
+    });
 }
 
 // 7.3. Chuyên mục Hình Nền (Retina iOS cổ)
 function renderWallpapers() {
-    var wallpapers = [
-        { title: "iOS 4 Giọt Nước Cổ Điển", url: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=640" },
-        { title: "iOS 7 Dải Ngân Hà Nebula", url: "https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?w=640" },
-        { title: "iPhone 5 Sóng Biển Hoàng Hôn", url: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=640" },
-        { title: "Vân Gỗ Retro Skeuomorphic", url: "https://images.unsplash.com/photo-1546484475-7f7bd55792da?w=640" }
-    ];
+    loadMediaData(function(data) {
+        var wallpapers = data.wallpapers || [];
 
-    var html = '<div style="margin-bottom:12px; font-size:13px; color:#475569; padding:0 4px;">' +
-                   'Nhấn vào hình để xem kích thước lớn, sau đó <b>chạm và giữ 1 giây</b> để chọn <i>Lưu hình ảnh</i> vào Cuộn Camera:' +
-               '</div><div class="wallpaper-grid">';
+        var html = '<div style="margin-bottom:12px; font-size:13px; color:#475569; padding:0 4px;">' +
+                       'Nhấn vào hình để xem kích thước lớn, sau đó <b>chạm và giữ 1 giây</b> để chọn <i>Lưu hình ảnh</i> vào Cuộn Camera:' +
+                   '</div><div class="wallpaper-grid">';
 
-    for (var i = 0; i < wallpapers.length; i++) {
-        var w = wallpapers[i];
-        html += '<div class="wallpaper-card">' +
-                    '<a href="' + w.url + '" target="_blank">' +
-                        '<img class="wallpaper-img" src="' + w.url + '" alt="' + w.title + '">' +
-                    '</a>' +
-                '</div>';
-    }
-    html += '</div>';
+        for (var i = 0; i < wallpapers.length; i++) {
+            var w = wallpapers[i];
+            html += '<div class="wallpaper-card">' +
+                        '<a href="' + w.url + '" target="_blank">' +
+                            '<img class="wallpaper-img" src="' + w.url + '" alt="' + escapeHtml(w.title) + '">' +
+                        '</a>' +
+                    '</div>';
+        }
+        html += '</div>';
 
-    document.getElementById('media-list-container').innerHTML = html;
+        document.getElementById('media-list-container').innerHTML = html;
+    });
 }
 
 // 7.4. Phim & Clips
