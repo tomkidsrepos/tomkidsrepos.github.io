@@ -27,6 +27,7 @@ import io
 import tarfile
 import subprocess
 import webbrowser
+import requests
 from flask import Flask, request, jsonify, render_template_string
 
 REPO_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -166,6 +167,87 @@ def extract_ipa_info(ipa_path):
             "min_os": min_os,
             "icon": icon_rel_path
         }
+
+
+# ==============================================================================
+# 2.5. TỰ ĐỘNG LẤY TOKEN & UPLOAD LÊN GITHUB RELEASES (OTA-Storage)
+# ==============================================================================
+def get_github_token():
+    try:
+        import win32cred
+        for target in ['GitHub - https://api.github.com/tomkidsrepos', 'git:https://github.com']:
+            try:
+                cred = win32cred.CredRead(target, win32cred.CRED_TYPE_GENERIC)
+                raw = cred['CredentialBlob']
+                token = raw.decode('utf-16') if b'\x00' in raw else raw.decode('utf-8')
+                if token and len(token) > 10:
+                    return token
+            except:
+                pass
+    except:
+        pass
+    return os.environ.get('GITHUB_TOKEN', '')
+
+
+def upload_to_github_releases(file_path, target_filename=None):
+    token = get_github_token()
+    if not token:
+        print("[!] Khong tim thay GitHub token tu Windows Credential Manager.")
+        return None
+
+    if not target_filename:
+        target_filename = os.path.basename(file_path)
+
+    owner = "tomkidsrepos"
+    repo = "tomkidsrepos.github.io"
+    tag = "OTA-Storage"
+
+    headers = {
+        "Authorization": f"token {token}",
+        "User-Agent": "TomkidsAppStore",
+        "Accept": "application/vnd.github.v3+json"
+    }
+
+    # 1. Lấy thông tin release OTA-Storage
+    rel_api = f"https://api.github.com/repos/{owner}/{repo}/releases/tags/{tag}"
+    r = requests.get(rel_api, headers=headers)
+    if r.status_code != 200:
+        print(f"[!] Khong the doc release {tag}: {r.status_code}")
+        return None
+
+    rel_data = r.json()
+    rel_id = rel_data['id']
+    assets = rel_data.get('assets', [])
+
+    # 2. Nếu file trùng tên đã tồn tại trên Releases -> Xóa file cũ để ghi đè
+    for a in assets:
+        if a['name'] == target_filename:
+            del_url = f"https://api.github.com/repos/{owner}/{repo}/releases/assets/{a['id']}"
+            requests.delete(del_url, headers=headers)
+            print(f"[*] Da xoa asset cu de ghi de: {target_filename}")
+            break
+
+    # 3. Upload file mới
+    upload_url = f"https://uploads.github.com/repos/{owner}/{repo}/releases/{rel_id}/assets?name={target_filename}"
+    upload_headers = {
+        "Authorization": f"token {token}",
+        "User-Agent": "TomkidsAppStore",
+        "Content-Type": "application/octet-stream"
+    }
+
+    file_size_mb = os.path.getsize(file_path) / (1024 * 1024)
+    print(f"[*] Dang upload len GitHub Releases: {target_filename} ({file_size_mb:.2f} MB)...")
+
+    with open(file_path, 'rb') as f:
+        res = requests.post(upload_url, headers=upload_headers, data=f)
+
+    if res.status_code in (200, 201):
+        dl_url = f"https://github.com/{owner}/{repo}/releases/download/{tag}/{target_filename}"
+        print(f"[+] Da upload thanh cong len GitHub Releases: {dl_url}")
+        return dl_url
+    else:
+        print(f"[!] Loi upload GitHub Releases ({res.status_code}): {res.text[:150]}")
+        return None
 
 
 # ==============================================================================
@@ -725,8 +807,13 @@ def process_upload():
             if target_file_path != final_ipa_path:
                 shutil.move(target_file_path, final_ipa_path)
 
+            # TỰ ĐỘNG UPLOAD LÊN GITHUB RELEASES
             if not release_url:
-                release_url = f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
+                uploaded_dl_url = upload_to_github_releases(final_ipa_path, safe_name)
+                if uploaded_dl_url:
+                    release_url = uploaded_dl_url
+                else:
+                    release_url = f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
 
             plist_path = create_ota_plist(app_info, release_url)
             record = {
@@ -743,7 +830,8 @@ def process_upload():
                 "version": app_info["version"],
                 "bundle_id": app_info["bundle_id"],
                 "plist": plist_path,
-                "category": category
+                "category": category,
+                "release_url": release_url
             })
         else:
             return jsonify({"success": False, "error": "File tải về không phải định dạng IPA hoặc DEB hợp lệ!"})
