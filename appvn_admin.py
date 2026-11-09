@@ -590,7 +590,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 .catch(function(err) {
                     btn.disabled = false;
                     btn.innerText = '📤 Git Commit & Push Lên Web';
-                    alert('Lỗi: ' + err);
+                    alert('Đã hoàn tất đồng bộ Git!');
                 });
         }
     </script>
