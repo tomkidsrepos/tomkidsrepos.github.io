@@ -1,0 +1,1112 @@
+/* ==========================================================================
+   APPVN RETRO STYLESHEET - TỐI ƯU HÓA HOÀN TOÀN CHO SAFARI iOS 4/5/6/7/8/9
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+body {
+    background-color: #f0f2f5;
+    background-image: -webkit-linear-gradient(top, #f8fafc, #e2e8f0);
+    background-image: linear-gradient(180deg, #f8fafc, #e2e8f0);
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #1e293b;
+    margin: 0;
+    padding: 0;
+    padding-top: 86px; /* Chỗ trống cho fixed header và tabs */
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+/* ==========================================================================
+   HEADER BAR (XANH APPVN CỔ ĐIỂN)
+   ========================================================================== */
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 46px;
+    background: #1e88e5;
+    background: -webkit-linear-gradient(top, #2196f3, #1976d2);
+    background: linear-gradient(180deg, #2196f3, #1976d2);
+    border-bottom: 1px solid #1565c0;
+    -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.25);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding: 0 8px;
+    z-index: 100;
+}
+
+.header-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 6px 10px;
+    font-size: 18px;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+}
+
+.header-actions {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.icon-hamburger {
+    width: 20px;
+    height: 14px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
+
+.icon-hamburger span {
+    display: block;
+    height: 2px;
+    background: white;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.header-title-wrap {
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    padding: 6px 12px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+.header-title-wrap:active {
+    background: rgba(255,255,255,0.15);
+}
+
+.header-arrow {
+    font-size: 11px;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+.download-badge {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #ef4444;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 5px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+/* SEARCH BOX BAR */
+.search-box-bar {
+    position: fixed;
+    top: 46px;
+    left: 0;
+    right: 0;
+    background: #e2e8f0;
+    padding: 8px 12px;
+    border-bottom: 1px solid #cbd5e1;
+    z-index: 99;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.search-input {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    height: 32px;
+    border: 1px solid #94a3b8;
+    -webkit-border-radius: 16px;
+    border-radius: 16px;
+    padding: 0 12px;
+    font-size: 14px;
+    outline: none;
+    background: white;
+}
+
+.search-clear-btn {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    color: #64748b;
+    padding: 0 8px;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   SUB NAV TABS (MỚI NHẤT / NỔI BẬT / TẢI NHIỀU)
+   ========================================================================== */
+.sub-nav-tabs {
+    position: fixed;
+    top: 46px;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: white;
+    border-bottom: 1px solid #cbd5e1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    z-index: 98;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.nav-tab {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+    line-height: 38px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #64748b;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    -webkit-transition: 0.15s;
+    transition: 0.15s;
+}
+
+.nav-tab.active {
+    color: #1976d2;
+    border-bottom: 3px solid #1976d2;
+}
+
+/* CATEGORY CHIPS SCROLL (CUỘN NGANG) */
+.category-chips-scroll {
+    background: #f8fafc;
+    padding: 8px 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-bottom: 1px solid #e2e8f0;
+    -webkit-overflow-scrolling: touch;
+}
+
+.chip-item {
+    display: inline-block;
+    padding: 5px 12px;
+    margin-right: 6px;
+    background: #e2e8f0;
+    color: #475569;
+    border: none;
+    -webkit-border-radius: 14px;
+    border-radius: 14px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.chip-item.active {
+    background: #1976d2;
+    color: white;
+}
+
+/* DROPDOWN MENU KHI BẤM TIÊU ĐỀ */
+.category-dropdown {
+    position: fixed;
+    top: 46px;
+    left: 50%;
+    margin-left: -120px;
+    width: 240px;
+    background: white;
+    border: 1px solid #cbd5e1;
+    -webkit-border-radius: 0 0 12px 12px;
+    border-radius: 0 0 12px 12px;
+    -webkit-box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    z-index: 105;
+}
+
+.dropdown-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+    color: #1e293b;
+    cursor: pointer;
+}
+
+.dropdown-item:last-child {
+    border-bottom: none;
+}
+
+.dropdown-item:active {
+    background: #e0f2fe;
+}
+
+/* ==========================================================================
+   APP LIST VIEW (DANH SÁCH ỨNG DỤNG - THEO ẢNH 1 & 3)
+   ========================================================================== */
+.app-list-view {
+    padding: 0;
+    margin-bottom: 30px;
+}
+
+.app-card-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 10px 14px;
+    background: white;
+    border-bottom: 1px solid #e2e8f0;
+    cursor: pointer;
+}
+
+.app-card-item:active {
+    background: #f1f5f9;
+}
+
+.app-index-num {
+    font-size: 15px;
+    font-weight: bold;
+    color: #475569;
+    margin-right: 8px;
+    min-width: 22px;
+    text-align: right;
+}
+
+.app-icon-img {
+    width: 58px;
+    height: 58px;
+    -webkit-border-radius: 13px;
+    border-radius: 13px;
+    margin-right: 12px;
+    -webkit-box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+    background: #f1f5f9;
+}
+
+.app-details {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    min-width: 0; /* Cho phép text truncate */
+}
+
+.app-name {
+    font-size: 15px;
+    font-weight: bold;
+    color: #0f172a;
+    margin-bottom: 3px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app-stars-row {
+    font-size: 12px;
+    color: #2563eb;
+    margin-bottom: 3px;
+}
+
+.app-rating-count {
+    color: #94a3b8;
+    font-size: 11px;
+    margin-left: 2px;
+}
+
+.app-meta-sub {
+    font-size: 11px;
+    color: #64748b;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app-download-btn-wrap {
+    padding-left: 8px;
+    -webkit-flex-shrink: 0;
+    flex-shrink: 0;
+}
+
+.circle-download-btn {
+    width: 36px;
+    height: 36px;
+    -webkit-border-radius: 18px;
+    border-radius: 18px;
+    border: 2px solid #2563eb;
+    background: white;
+    color: #2563eb;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.circle-download-btn:active {
+    background: #2563eb;
+    color: white;
+}
+
+/* ==========================================================================
+   SIDEBAR DRAWER (THEO ẢNH 4: TUANEM, 9999 XU/RUBY/VÀNG)
+   ========================================================================== */
+.drawer-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 200;
+}
+
+.sidebar-drawer {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -275px;
+    width: 270px;
+    background: #0f172a;
+    background: -webkit-linear-gradient(top, #0a1128, #1c2541);
+    background: linear-gradient(180deg, #0a1128, #1c2541);
+    color: white;
+    z-index: 201;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -webkit-transition: -webkit-transform 0.25s ease-out;
+    transition: transform 0.25s ease-out;
+    -webkit-box-shadow: 4px 0 15px rgba(0,0,0,0.5);
+    box-shadow: 4px 0 15px rgba(0,0,0,0.5);
+}
+
+.sidebar-drawer.open {
+    -webkit-transform: translate3d(275px, 0, 0);
+    transform: translate3d(275px, 0, 0);
+}
+
+/* Profile header in sidebar */
+.profile-header {
+    padding: 24px 16px 16px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.profile-avatar-wrap {
+    position: relative;
+    margin-right: 14px;
+}
+
+.profile-avatar {
+    width: 52px;
+    height: 52px;
+    -webkit-border-radius: 26px;
+    border-radius: 26px;
+    background: #2563eb;
+    background: -webkit-linear-gradient(top, #3b82f6, #1d4ed8);
+    background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    border: 2px solid white;
+}
+
+.badge-18 {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    background: #ef4444;
+    color: white;
+    font-size: 9px;
+    font-weight: bold;
+    padding: 1px 4px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border: 1px solid white;
+}
+
+.profile-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 4px;
+    cursor: pointer;
+}
+
+.profile-wallet {
+    font-size: 11px;
+    color: #cbd5e1;
+}
+
+.wallet-item {
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* Sidebar Menu list */
+.sidebar-menu-list {
+    padding: 10px 0;
+}
+
+.menu-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 11px 18px;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+    border-left: 4px solid transparent;
+}
+
+.menu-item:active, .menu-item.active {
+    background: rgba(37,99,235,0.25);
+    color: white;
+    border-left: 4px solid #38bdf8;
+}
+
+.menu-icon {
+    font-size: 18px;
+    margin-right: 14px;
+    width: 24px;
+    text-align: center;
+}
+
+.menu-text {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.menu-badge {
+    background: #e11d48;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+.menu-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.1);
+    margin: 10px 0;
+}
+
+/* Sidebar Bottom Bar */
+.sidebar-bottom-bar {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 10px 0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
+}
+
+.sidebar-nav-btn {
+    color: #94a3b8;
+    font-size: 20px;
+    text-decoration: none;
+    padding: 6px 12px;
+}
+
+.sidebar-nav-btn:active {
+    color: white;
+}
+
+/* ==========================================================================
+   ACTION SHEET POPUP (THEO ẢNH 2: XEM CHI TIẾT / CÀI ĐẶT / TẢI LẠI / XOÁ)
+   ========================================================================== */
+.action-sheet-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 300;
+}
+
+.action-sheet {
+    position: fixed;
+    bottom: -360px;
+    left: 0;
+    right: 0;
+    background: #d1d5db;
+    background: -webkit-linear-gradient(top, #e5e7eb, #d1d5db);
+    background: linear-gradient(180deg, #e5e7eb, #d1d5db);
+    border-top: 1px solid #9ca3af;
+    padding: 16px;
+    z-index: 301;
+    -webkit-transition: -webkit-transform 0.25s ease-out;
+    transition: transform 0.25s ease-out;
+    -webkit-border-radius: 16px 16px 0 0;
+    border-radius: 16px 16px 0 0;
+}
+
+.action-sheet.open {
+    -webkit-transform: translate3d(0, -360px, 0);
+    transform: translate3d(0, -360px, 0);
+}
+
+.action-sheet-header {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    margin-bottom: 14px;
+    padding: 0 4px;
+}
+
+.as-icon {
+    width: 44px;
+    height: 44px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin-right: 12px;
+    border: 1px solid #9ca3af;
+}
+
+.as-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #111827;
+}
+
+.as-sub {
+    font-size: 12px;
+    color: #4b5563;
+}
+
+.action-sheet-buttons {
+    display: block;
+}
+
+.as-btn {
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    border: 1px solid #9ca3af;
+    cursor: pointer;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.7);
+}
+
+.as-btn-default {
+    background: #ffffff;
+    background: -webkit-linear-gradient(top, #ffffff, #e5e7eb);
+    background: linear-gradient(180deg, #ffffff, #e5e7eb);
+    color: #111827;
+}
+
+.as-btn-primary {
+    background: #2563eb;
+    background: -webkit-linear-gradient(top, #3b82f6, #1d4ed8);
+    background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+    color: white;
+    border-color: #1e40af;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+}
+
+.as-btn-danger {
+    background: #ef4444;
+    background: -webkit-linear-gradient(top, #f87171, #dc2626);
+    background: linear-gradient(180deg, #f87171, #dc2626);
+    color: white;
+    border-color: #b91c1c;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.4);
+}
+
+.as-btn-cancel {
+    background: #374151;
+    background: -webkit-linear-gradient(top, #4b5563, #1f2937);
+    background: linear-gradient(180deg, #4b5563, #1f2937);
+    color: white;
+    border-color: #111827;
+    margin-top: 10px;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.6);
+}
+
+/* ==========================================================================
+   DOWNLOAD MANAGER / LỊCH SỬ TẢI (THEO ẢNH 2 & 5)
+   ========================================================================== */
+.download-manager-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: white;
+    z-index: 250;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.dm-header {
+    height: 46px;
+    background: #1976d2;
+    color: white;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+.dm-back-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.dm-title {
+    font-size: 17px;
+}
+
+.dm-tabs {
+    height: 38px;
+    background: #f1f5f9;
+    border-bottom: 1px solid #cbd5e1;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+}
+
+.dm-tab {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+    text-align: center;
+    line-height: 36px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #64748b;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+}
+
+.dm-tab.active {
+    color: #1976d2;
+    border-bottom: 2px solid #1976d2;
+    background: white;
+}
+
+.dm-content {
+    padding: 0;
+}
+
+.dm-item {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid #e2e8f0;
+    cursor: pointer;
+}
+
+.dm-item:active {
+    background: #f8fafc;
+}
+
+.dm-item-icon {
+    width: 48px;
+    height: 48px;
+    -webkit-border-radius: 11px;
+    border-radius: 11px;
+    margin-right: 12px;
+}
+
+.dm-item-info {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.dm-item-name {
+    font-size: 15px;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.dm-item-date {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.dm-item-status {
+    font-size: 12px;
+    color: #16a34a;
+    font-weight: bold;
+}
+
+/* ==========================================================================
+   MODAL CHI TIẾT APP & VÒNG QUAY MAY MẮN
+   ========================================================================== */
+.detail-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 350;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    padding: 16px;
+}
+
+.modal-card {
+    background: white;
+    width: 100%;
+    max-width: 360px;
+    -webkit-border-radius: 16px;
+    border-radius: 16px;
+    overflow: hidden;
+    -webkit-box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.modal-header {
+    background: #1976d2;
+    color: white;
+    padding: 12px 16px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.modal-header h3 {
+    font-size: 16px;
+    margin: 0;
+}
+
+.modal-close-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 16px;
+    max-height: 60vh;
+    overflow-y: auto;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #334155;
+}
+
+.modal-footer {
+    padding: 12px 16px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+}
+
+.modal-btn-install {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: white;
+    border: none;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Vòng quay may mắn */
+.wheel-body {
+    background: #0f172a;
+    color: white;
+    text-align: center;
+}
+
+.wheel-box {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 20px auto;
+}
+
+.wheel-disc {
+    width: 150px;
+    height: 150px;
+    -webkit-border-radius: 75px;
+    border-radius: 75px;
+    background: -webkit-linear-gradient(top, #f59e0b, #ef4444);
+    background: linear-gradient(180deg, #f59e0b, #ef4444);
+    border: 4px solid #fbbf24;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    font-size: 50px;
+    -webkit-transition: -webkit-transform 2.5s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+    transition: transform 2.5s cubic-bezier(0.17, 0.67, 0.12, 0.99);
+}
+
+.wheel-pointer {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    margin-left: -10px;
+    font-size: 20px;
+    color: #fbbf24;
+    z-index: 2;
+}
+
+.wheel-result {
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #4ade80;
+}
+
+/* MEDIA CARD VIEWS (SÁCH, NHẠC CHUÔNG, HÌNH NỀN) */
+.media-list-view {
+    padding: 12px;
+}
+
+.media-item {
+    background: white;
+    padding: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #e2e8f0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}
+
+.media-item-thumb {
+    width: 50px;
+    height: 50px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin-right: 12px;
+    background: #e2e8f0;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.media-item-info {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    flex: 1;
+}
+
+.media-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.media-sub {
+    font-size: 12px;
+    color: #64748b;
+}
+
+.media-action-btn {
+    background: #2563eb;
+    color: white;
+    padding: 6px 14px;
+    -webkit-border-radius: 16px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: bold;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* WALLPAPER GRID */
+.wallpaper-grid {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin: -4px;
+}
+
+.wallpaper-card {
+    width: 50%;
+    padding: 4px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.wallpaper-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    border: 1px solid #cbd5e1;
+    cursor: pointer;
+}
+
+/* LOADING & SPINNER */
+.loading-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: #64748b;
+}
+
+.spinner {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 12px auto;
+    border: 3px solid #cbd5e1;
+    border-top: 3px solid #2563eb;
+    -webkit-border-radius: 16px;
+    border-radius: 16px;
+    -webkit-animation: spin 1s linear infinite;
+    animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* TOAST NOTIFICATION */
+.toast-msg {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    margin-left: -130px;
+    width: 260px;
+    background: rgba(15,23,42,0.92);
+    color: white;
+    padding: 10px 16px;
+    -webkit-border-radius: 20px;
+    border-radius: 20px;
+    font-size: 13px;
+    text-align: center;
+    z-index: 500;
+    display: none;
+    -webkit-box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}

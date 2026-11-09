@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="AppVN">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="apple-touch-icon" href="../CydiaIcon0.png">
+    <title>AppVN - Kho Ứng Dụng Cài Trực Tiếp (Tomkids Repo)</title>
+    <link rel="stylesheet" href="app.css?v=1.0">
+</head>
+<body>
+
+    <!-- OVERLAY NỀN KHI MỞ SIDEBAR MENU -->
+    <div id="drawer-overlay" class="drawer-overlay" onclick="toggleSidebar(false)"></div>
+
+    <!-- SIDEBAR MENU TRƯỢT PHONG CÁCH APPVN (THEO ẢNH iPod) -->
+    <div id="sidebar-drawer" class="sidebar-drawer">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-avatar-wrap">
+                <div class="profile-avatar" id="user-avatar">TE</div>
+                <div class="badge-18">18+</div>
+            </div>
+            <div class="profile-info">
+                <div class="profile-name" id="user-name-display" onclick="changeUserName()">tuanem</div>
+                <div class="profile-wallet">
+                    <span class="wallet-item"><i class="icon-heart">💜</i> <b id="val-xu">9999</b></span>
+                    <span class="wallet-item"><i class="icon-gem">💚</i> <b id="val-ruby">9999</b></span>
+                    <span class="wallet-item"><i class="icon-gold">💛</i> <b id="val-vang">9999</b></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Navigation Menu Items -->
+        <div class="sidebar-menu-list">
+            <a href="javascript:void(0)" class="menu-item active" onclick="switchMainCategory('apps')">
+                <span class="menu-icon icon-ios">🍎</span>
+                <span class="menu-text">iOS (Ứng Dụng & Game)</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-item" onclick="switchMainCategory('books')">
+                <span class="menu-icon icon-sach">📖</span>
+                <span class="menu-text">Sách</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-item" onclick="switchMainCategory('comics')">
+                <span class="menu-icon icon-truyen">📚</span>
+                <span class="menu-text">Truyện</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-item" onclick="switchMainCategory('movies')">
+                <span class="menu-icon icon-phim">🎬</span>
+                <span class="menu-text">Phim</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-item" onclick="switchMainCategory('wallpapers')">
+                <span class="menu-icon icon-hinhnen">🖼️</span>
+                <span class="menu-text">Hình nền</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-item" onclick="switchMainCategory('ringtones')">
+                <span class="menu-icon icon-nhacchuong">🎵</span>
+                <span class="menu-text">Nhạc chuông</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-item" onclick="switchMainCategory('favorites')">
+                <span class="menu-icon icon-yeuthich">⭐</span>
+                <span class="menu-text">Mục yêu thích</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-item" onclick="openWheelModal()">
+                <span class="menu-icon icon-quaythuong">🎰</span>
+                <span class="menu-text">Quay thưởng</span>
+                <span class="menu-badge">Free</span>
+            </a>
+            <a href="javascript:void(0)" class="menu-item" onclick="openGiftModal()">
+                <span class="menu-icon icon-doiqua">🎁</span>
+                <span class="menu-text">Đổi quà</span>
+            </a>
+
+            <div class="menu-divider"></div>
+
+            <a href="cydia://url/https://cydia.saurik.com/api/share#?source=https://tomkidsrepo.cloud/" class="menu-item">
+                <span class="menu-icon icon-cydia">⚡</span>
+                <span class="menu-text">Thêm Nguồn Cydia</span>
+            </a>
+            <a href="../certs/Certificates%20for%20Legacy%20iOS.mobileconfig" class="menu-item">
+                <span class="menu-icon icon-cert">🔒</span>
+                <span class="menu-text">Cài Chứng Chỉ SSL Cổ</span>
+            </a>
+            <a href="../" class="menu-item">
+                <span class="menu-icon icon-home">🏠</span>
+                <span class="menu-text">Trang chủ Tomkids Repo</span>
+            </a>
+        </div>
+
+        <!-- Sidebar Bottom Nav Bar -->
+        <div class="sidebar-bottom-bar">
+            <a href="javascript:void(0)" class="sidebar-nav-btn" onclick="changeUserName()" title="Tài khoản">👤</a>
+            <a href="javascript:void(0)" class="sidebar-nav-btn" onclick="openDownloadManager('history')" title="Lịch sử tải">🕒</a>
+            <a href="https://www.facebook.com/tomkidsstore" target="_blank" class="sidebar-nav-btn" title="Tin nhắn">💬</a>
+            <a href="javascript:void(0)" class="sidebar-nav-btn" onclick="switchMainCategory('favorites')" title="Yêu thích">❤️</a>
+        </div>
+    </div>
+
+    <!-- MAIN APP SHELL -->
+    <div class="app-shell" id="app-shell">
+        
+        <!-- TOP HEADER BAR -->
+        <header class="app-header">
+            <button class="header-btn" onclick="toggleSidebar(true)" title="Menu">
+                <div class="icon-hamburger">
+                    <span></span><span></span><span></span>
+                </div>
+            </button>
+            
+            <div class="header-title-wrap" onclick="toggleCategoryDropdown()">
+                <span class="header-title" id="current-title">Danh mục</span>
+                <span class="header-arrow">▼</span>
+            </div>
+
+            <div class="header-actions">
+                <button class="header-btn" onclick="toggleSearchBox()" title="Tìm kiếm">
+                    <span class="icon-search">🔍</span>
+                </button>
+                <button class="header-btn" onclick="openDownloadManager('downloading')" title="Quản lý tải">
+                    <span class="icon-download-box">📥</span>
+                    <span class="download-badge" id="download-badge" style="display:none;">0</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- SEARCH BOX TRƯỢT XUỐNG -->
+        <div id="search-box-bar" class="search-box-bar" style="display:none;">
+            <input type="text" id="search-input" class="search-input" placeholder="Tìm game, app, nhạc chuông..." oninput="handleSearch(this.value)">
+            <button class="search-clear-btn" onclick="clearSearch()">✕</button>
+        </div>
+
+        <!-- CATEGORY DROPDOWN MENU KHI BẤM VÀO TIÊU ĐỀ -->
+        <div id="category-dropdown" class="category-dropdown" style="display:none;">
+            <div class="dropdown-item" onclick="filterBySubCategory('ALL')">Tất cả danh mục</div>
+            <div class="dropdown-item" onclick="filterBySubCategory('Trò Chơi')">🎮 Trò Chơi</div>
+            <div class="dropdown-item" onclick="filterBySubCategory('Mạng Xã Hội')">🌐 Mạng Xã Hội</div>
+            <div class="dropdown-item" onclick="filterBySubCategory('Giải Trí')">🎵 Giải Trí / Media</div>
+            <div class="dropdown-item" onclick="filterBySubCategory('Công Cụ')">🛠️ Công Cụ / Tiện ích</div>
+            <div class="dropdown-item" onclick="filterBySubCategory('Hệ thống')">⚙️ Hệ thống</div>
+            <div class="dropdown-item" onclick="filterBySubCategory('Jailbreak')">🔓 Jailbreak Apps</div>
+        </div>
+
+        <!-- TAB NAVIGATION (MỚI NHẤT / NỔI BẬT / TẢI NHIỀU) -->
+        <nav class="sub-nav-tabs" id="sub-nav-tabs">
+            <div class="nav-tab" id="tab-newest" onclick="switchTab('newest')">Mới nhất</div>
+            <div class="nav-tab active" id="tab-featured" onclick="switchTab('featured')">Nổi bật</div>
+            <div class="nav-tab" id="tab-popular" onclick="switchTab('popular')">Tải nhiều</div>
+        </nav>
+
+        <!-- CATEGORY FILTER CHIPS (CUỘN NGANG) -->
+        <div class="category-chips-scroll" id="chips-scroll">
+            <button class="chip-item active" onclick="filterBySubCategory('ALL')">Tất cả</button>
+            <button class="chip-item" onclick="filterBySubCategory('Trò Chơi')">Trò Chơi</button>
+            <button class="chip-item" onclick="filterBySubCategory('Mạng Xã Hội')">Mạng Xã Hội</button>
+            <button class="chip-item" onclick="filterBySubCategory('Giải Trí')">Giải Trí</button>
+            <button class="chip-item" onclick="filterBySubCategory('Công Cụ')">Công Cụ</button>
+            <button class="chip-item" onclick="filterBySubCategory('Hệ thống')">Hệ Thống</button>
+            <button class="chip-item" onclick="filterBySubCategory('Jailbreak')">Jailbreak</button>
+        </div>
+
+        <!-- MAIN CONTAINER CHO TỪNG PHÂN VÙNG DỮ LIỆU -->
+        <main class="main-content" id="main-content">
+            <!-- App list view -->
+            <div id="app-list-container" class="app-list-view">
+                <div class="loading-state">
+                    <div class="spinner"></div>
+                    <p>Đang tải kho ứng dụng...</p>
+                </div>
+            </div>
+
+            <!-- Media views (Sách, Nhạc chuông, Hình nền...) -->
+            <div id="media-list-container" class="media-list-view" style="display:none;"></div>
+        </main>
+    </div>
+
+    <!-- ACTION SHEET POPUP CỔ ĐIỂN (THEO ẢNH 2: XEM CHI TIẾT / CÀI ĐẶT / TẢI LẠI / XOÁ / BỎ QUA) -->
+    <div id="action-sheet-overlay" class="action-sheet-overlay" onclick="closeActionSheet()"></div>
+    <div id="action-sheet" class="action-sheet">
+        <div class="action-sheet-header">
+            <img id="as-app-icon" src="../CydiaIcon.png" class="as-icon">
+            <div class="as-header-text">
+                <div id="as-app-title" class="as-title">Tên ứng dụng</div>
+                <div id="as-app-sub" class="as-sub">Phiên bản • Kích thước</div>
+            </div>
+        </div>
+
+        <div class="action-sheet-buttons">
+            <button class="as-btn as-btn-default" onclick="onActionSheetDetail()">Xem chi tiết</button>
+            <button class="as-btn as-btn-primary" onclick="onActionSheetInstall()">Cài đặt</button>
+            <button class="as-btn as-btn-default" onclick="onActionSheetReinstall()">Tải lại</button>
+            <button class="as-btn as-btn-danger" id="as-btn-delete" style="display:none;" onclick="onActionSheetDelete()">Xoá</button>
+            <button class="as-btn as-btn-cancel" onclick="closeActionSheet()">Bỏ qua</button>
+        </div>
+    </div>
+
+    <!-- MODAL XEM CHI TIẾT ỨNG DỤNG -->
+    <div id="detail-modal" class="detail-modal" style="display:none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 id="modal-app-title">Chi Tiết Ứng Dụng</h3>
+                <button class="modal-close-btn" onclick="closeDetailModal()">✕</button>
+            </div>
+            <div class="modal-body" id="modal-detail-body">
+                <!-- Nội dung chi tiết app sẽ nạp bằng JS -->
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn-install" id="modal-btn-install" onclick="onModalInstall()">Cài Đặt Ngay</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL QUẢN LÝ TẢI & LỊCH SỬ (THEO ẢNH 2 & 5) -->
+    <div id="download-manager-modal" class="download-manager-modal" style="display:none;">
+        <div class="dm-header">
+            <button class="dm-back-btn" onclick="closeDownloadManager()">❮ Quay lại</button>
+            <div class="dm-title">Quản lý tải</div>
+            <div style="width:60px;"></div>
+        </div>
+
+        <div class="dm-tabs">
+            <div class="dm-tab active" id="dm-tab-downloaded" onclick="switchDmTab('downloaded')">Đã tải</div>
+            <div class="dm-tab" id="dm-tab-downloading" onclick="switchDmTab('downloading')">Đang tải</div>
+            <div class="dm-tab" id="dm-tab-update" onclick="switchDmTab('update')">Cập nhật</div>
+        </div>
+
+        <div class="dm-content" id="dm-content-list">
+            <!-- Danh sách tải nạp bằng JS -->
+        </div>
+    </div>
+
+    <!-- MODAL VÒNG QUAY MAY MẮN (MINI GAME KIẾM XU PHONG CÁCH APPVN) -->
+    <div id="wheel-modal" class="detail-modal" style="display:none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>🎰 Vòng Quay May Mắn AppVN</h3>
+                <button class="modal-close-btn" onclick="closeWheelModal()">✕</button>
+            </div>
+            <div class="modal-body wheel-body">
+                <p style="font-size:13px; color:#cbd5e1; margin-bottom:15px; text-align:center;">
+                    Quay mỗi ngày để nhận thêm Xu, Ruby và Vàng miễn phí!
+                </p>
+                <div class="wheel-box" id="wheel-box">
+                    <div class="wheel-pointer">▼</div>
+                    <div class="wheel-disc" id="wheel-disc">🎁</div>
+                </div>
+                <div id="wheel-result" class="wheel-result" style="display:none;"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn-install" id="btn-spin" onclick="spinLuckyWheel()">QUAY NGAY (Miễn phí)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST THÔNG BÁO NHANH -->
+    <div id="toast-msg" class="toast-msg"></div>
+
+    <!-- JS TƯƠNG THÍCH HOÀN TOÀN ES5 / WEBKIT CỔ -->
+    <script src="app.js?v=1.0"></script>
+</body>
+</html>
