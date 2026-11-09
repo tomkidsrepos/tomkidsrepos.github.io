@@ -841,7 +841,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         }
 
         function processAllIncoming() {
-            if (!confirm("Hệ thống sẽ tự động quét toàn bộ file (.ipa, .deb, .pdf, .m4r, v.v.) trong thư mục incoming/,\nbóc tách metadata, tạo manifest, và tự động upload lên GitHub Releases (OTA-Storage).\n\nBạn có muốn tiếp tục?")) {
+            if (!confirm("Hệ thống sẽ tự động quét toàn bộ file (.ipa, .deb, .pdf, .m4r, v.v.) trong thư mục incoming/, bóc tách metadata, tạo manifest, và tự động upload lên GitHub Releases (OTA-Storage). Bạn có muốn tiếp tục?")) {
                 return;
             }
 
