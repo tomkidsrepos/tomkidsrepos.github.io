@@ -32,12 +32,12 @@ window.onload = function() {
    ========================================================================== */
 function initUserData() {
     var storedName = localStorage.getItem(STORAGE_USER_NAME);
-    if (!storedName) {
-        storedName = 'tuanem';
+    if (!storedName || storedName === 'tuanem') {
+        storedName = 'Tomkids';
         localStorage.setItem(STORAGE_USER_NAME, storedName);
     }
     document.getElementById('user-name-display').innerText = storedName;
-    document.getElementById('user-avatar').innerText = storedName.substring(0, 2).toUpperCase();
+    document.getElementById('user-avatar').innerText = (storedName === 'Tomkids') ? 'TK' : storedName.substring(0, 2).toUpperCase();
 
     var wallet = getStoredWallet();
     document.getElementById('val-xu').innerText = wallet.xu;
@@ -72,13 +72,13 @@ function updateWallet(addXu, addRuby, addVang) {
 }
 
 function changeUserName() {
-    var current = localStorage.getItem(STORAGE_USER_NAME) || 'tuanem';
+    var current = localStorage.getItem(STORAGE_USER_NAME) || 'Tomkids';
     var newName = prompt("Nhập tên hiển thị tài khoản AppVN của bạn:", current);
     if (newName && newName.trim().length > 0) {
         newName = newName.trim();
         localStorage.setItem(STORAGE_USER_NAME, newName);
         document.getElementById('user-name-display').innerText = newName;
-        document.getElementById('user-avatar').innerText = newName.substring(0, 2).toUpperCase();
+        document.getElementById('user-avatar').innerText = (newName === 'Tomkids') ? 'TK' : newName.substring(0, 2).toUpperCase();
         showToast("Đã đổi tên thành công: " + newName);
     }
 }

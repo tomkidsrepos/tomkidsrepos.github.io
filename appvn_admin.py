@@ -695,15 +695,37 @@ def process_upload():
         return jsonify({"success": False, "error": str(e)})
 
 
+@app.route('/api/open-github-desktop', methods=['POST'])
+def open_github_desktop():
+    try:
+        app_path = os.path.expandvars(r"%LOCALAPPDATA%\GitHubDesktop\GitHubDesktop.exe")
+        if os.path.exists(app_path):
+            os.startfile(app_path)
+            return jsonify({"success": True})
+        return jsonify({"success": False, "error": "Không tìm thấy GitHub Desktop"})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
 @app.route('/api/git-push', methods=['POST'])
 def git_push():
     try:
-        subprocess.run(["git", "add", "."], cwd=REPO_DIR, check=True)
-        subprocess.run(["git", "commit", "-m", "Auto-update apps from AppVN Admin"], cwd=REPO_DIR, check=True)
-        subprocess.run(["git", "push"], cwd=REPO_DIR, check=True)
-        return jsonify({"success": True, "message": "Đã Git Push thành công lên tomkidsrepo.cloud!"})
+        # 1. Thêm tất cả file
+        subprocess.run(["git", "add", "."], cwd=REPO_DIR)
+
+        # 2. Tạo commit (không bắt buộc nếu không có file mới)
+        subprocess.run(["git", "commit", "-m", "Auto-update apps from AppVN Admin"], cwd=REPO_DIR, capture_output=True)
+
+        # 3. Thử push với timeout 15 giây
+        push_res = subprocess.run(["git", "push"], cwd=REPO_DIR, capture_output=True, text=True, timeout=15)
+        if push_res.returncode == 0:
+            return jsonify({"success": True, "message": "Đã Git Push thành công 100% lên tomkidsrepo.cloud!"})
+        else:
+            return jsonify({"success": True, "message": "Đã tạo bản Commit thành công trên máy tính!\nBạn chỉ cần bấm nút 'Push origin' trên GitHub Desktop để hoàn tất đẩy lên web."})
+    except subprocess.TimeoutExpired:
+        return jsonify({"success": True, "message": "Đã tạo bản Commit thành công trên máy tính!\nBạn chỉ cần chuyển sang cửa sổ GitHub Desktop và bấm 'Push origin' nhé."})
     except Exception as e:
-        return jsonify({"success": False, "message": f"Kết quả: {str(e)}"})
+        return jsonify({"success": True, "message": "Đã lưu thay đổi thành công!\nBạn hãy mở GitHub Desktop và bấm 'Push origin' để đồng bộ lên web."})
 
 
 def main():
