@@ -1,6 +1,14 @@
 {
     "books": [
         {
+            "title": "ĐắC NhâN TâM   Dale Carnegie",
+            "author": "Tomkids Library",
+            "type": "PDF / iBooks",
+            "pages": "141 trang",
+            "icon": "📖",
+            "url": "https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/Đắc Nhân Tâm - Dale Carnegie.pdf"
+        },
+        {
             "title": "Tap 1",
             "author": "Tomkids Library",
             "type": "PDF / iBooks",
