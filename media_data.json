@@ -1,6 +1,14 @@
 {
     "books": [
         {
+            "title": "Steve Jobs Suc Manh Cua Su Khac Biet",
+            "author": "Tomkids Library",
+            "type": "PDF / iBooks",
+            "pages": "257 trang",
+            "icon": "📖",
+            "url": "https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/steve-jobs-suc-manh-cua-su-khac-biet.pdf"
+        },
+        {
             "title": "Dế Mèn Phiêu Lưu Ký",
             "author": "Tô Hoài",
             "type": "PDF",
