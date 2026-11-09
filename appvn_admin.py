@@ -426,9 +426,9 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 
         <!-- TABS CHỌN NGUỒN FILE -->
         <div class="tab-buttons">
-            <button class="tab-btn active" id="btn-tab-file" onclick="switchSourceTab('file')">📁 Chọn File từ Máy Tính</button>
-            <button class="tab-btn" id="btn-tab-link" onclick="switchSourceTab('link')">🔗 Nhập Link Ngoài / Google Drive</button>
-            <button class="tab-btn" id="btn-tab-incoming" onclick="switchSourceTab('incoming')">📂 File trong Thư mục incoming/</button>
+            <button type="button" class="tab-btn active" id="btn-tab-file" onclick="switchSourceTab('file', event)">📁 Chọn File từ Máy Tính</button>
+            <button type="button" class="tab-btn" id="btn-tab-link" onclick="switchSourceTab('link', event)">🔗 Nhập Link Ngoài / Google Drive</button>
+            <button type="button" class="tab-btn" id="btn-tab-incoming" onclick="switchSourceTab('incoming', event)">📂 File trong Thư mục incoming/</button>
         </div>
 
         <form id="upload-form" onsubmit="handleFormSubmit(event)">
@@ -523,20 +523,42 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         var currentSourceTab = 'file';
         var chosenFiles = [];
 
-        function switchSourceTab(tab) {
+        function switchSourceTab(tab, e) {
+            if (e) {
+                try { e.preventDefault(); e.stopPropagation(); } catch(ignore) {}
+            }
             currentSourceTab = tab;
-            document.getElementById('btn-tab-file').className = (tab === 'file') ? 'tab-btn active' : 'tab-btn';
-            document.getElementById('btn-tab-link').className = (tab === 'link') ? 'tab-btn active' : 'tab-btn';
-            document.getElementById('btn-tab-incoming').className = (tab === 'incoming') ? 'tab-btn active' : 'tab-btn';
 
-            document.getElementById('section-file').style.display = (tab === 'file') ? 'block' : 'none';
-            document.getElementById('section-link').style.display = (tab === 'link') ? 'block' : 'none';
-            document.getElementById('section-incoming').style.display = (tab === 'incoming') ? 'block' : 'none';
+            var btnFile = document.getElementById('btn-tab-file');
+            var btnLink = document.getElementById('btn-tab-link');
+            var btnInc = document.getElementById('btn-tab-incoming');
+
+            if (btnFile) btnFile.className = (tab === 'file') ? 'tab-btn active' : 'tab-btn';
+            if (btnLink) btnLink.className = (tab === 'link') ? 'tab-btn active' : 'tab-btn';
+            if (btnInc) btnInc.className = (tab === 'incoming') ? 'tab-btn active' : 'tab-btn';
+
+            var secFile = document.getElementById('section-file');
+            var secLink = document.getElementById('section-link');
+            var secInc = document.getElementById('section-incoming');
+
+            if (secFile) secFile.style.display = (tab === 'file') ? 'block' : 'none';
+            if (secLink) secLink.style.display = (tab === 'link') ? 'block' : 'none';
+            if (secInc) secInc.style.display = (tab === 'incoming') ? 'block' : 'none';
 
             if (tab === 'incoming') {
                 loadIncomingFilesList();
             }
         }
+
+        // Đảm bảo gắn sự kiện Click cho các Tab
+        window.addEventListener('DOMContentLoaded', function() {
+            var bFile = document.getElementById('btn-tab-file');
+            var bLink = document.getElementById('btn-tab-link');
+            var bInc = document.getElementById('btn-tab-incoming');
+            if (bFile) bFile.onclick = function(ev) { switchSourceTab('file', ev); };
+            if (bLink) bLink.onclick = function(ev) { switchSourceTab('link', ev); };
+            if (bInc) bInc.onclick = function(ev) { switchSourceTab('incoming', ev); };
+        });
 
         // KÉO VÀ THẢ TRỰC TIẾP
         var dropzone = document.getElementById('dropzone');
@@ -898,6 +920,14 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 # ==============================================================================
 # 5. CÁC API FLASK
 # ==============================================================================
+@app.after_request
+def add_header(response):
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '0'
+    return response
+
+
 @app.route('/')
 def index_page():
     return render_template_string(HTML_TEMPLATE)
