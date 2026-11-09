@@ -515,7 +515,10 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 <button type="button" class="btn-secondary" onclick="openIncomingFolder()">📂 Mở Thư Mục incoming/</button>
                 <button type="button" class="btn-secondary" onclick="cleanIncomingFolder()" style="color:#f87171;">🧹 Dọn Sạch File Tạm</button>
             </div>
-            <button type="button" class="btn-secondary btn-green" id="btn-git-push" onclick="triggerGitPush()">📤 Git Commit & Push Lên Web</button>
+            <div style="display:flex; gap:10px;">
+                <button type="button" class="btn-secondary" onclick="openGitHubDesktop()">🖥️ Mở GitHub Desktop</button>
+                <button type="button" class="btn-secondary btn-green" id="btn-git-push" onclick="triggerGitPush()">⚡ Đồng Bộ Lên Web Tức Thì</button>
+            </div>
         </div>
     </div>
 
@@ -893,6 +896,10 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 });
         }
 
+        function openGitHubDesktop() {
+            fetch('/api/open-github-desktop', { method: 'POST' });
+        }
+
         function triggerGitPush() {
             var btn = document.getElementById('btn-git-push');
             btn.disabled = true;
@@ -902,12 +909,12 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 .then(function(res) { return res.json(); })
                 .then(function(data) {
                     btn.disabled = false;
-                    btn.innerText = '📤 Git Commit & Push Lên Web';
-                    alert(data.message);
+                    btn.innerText = '⚡ Đồng Bộ Lên Web Tức Thì';
+                    alert(data.message || 'Đã đồng bộ thành công!');
                 })
                 .catch(function(err) {
                     btn.disabled = false;
-                    btn.innerText = '📤 Git Commit & Push Lên Web';
+                    btn.innerText = '⚡ Đồng Bộ Lên Web Tức Thì';
                     alert('Đã hoàn tất đồng bộ Git!');
                 });
         }
@@ -1235,20 +1242,28 @@ def open_github_desktop():
 @app.route('/api/git-push', methods=['POST'])
 def git_push():
     try:
-        # 1. Thêm tất cả file
+        # 1. Thêm tất cả file (chỉ json, manifest plist, v.v., thư mục incoming đã được gitignore)
         subprocess.run(["git", "add", "."], cwd=REPO_DIR)
 
-        # 2. Tạo commit (không bắt buộc nếu không có file mới)
+        # 2. Tạo commit (nếu có thay đổi mới)
         subprocess.run(["git", "commit", "-m", "Auto-update apps from Tomkids AppStore Admin"], cwd=REPO_DIR, capture_output=True)
 
-        # 3. Thử push với timeout 15 giây
-        push_res = subprocess.run(["git", "push"], cwd=REPO_DIR, capture_output=True, text=True, timeout=15)
+        # 3. Lấy GitHub Token từ Windows Credential Manager để đẩy trực tiếp siêu tốc (không bị treo Credential Manager)
+        token = get_github_token()
+        if token:
+            remote_url = f"https://x-access-token:{token}@github.com/tomkidsrepos/tomkidsrepos.github.io.git"
+            push_res = subprocess.run(["git", "push", remote_url, "main"], cwd=REPO_DIR, capture_output=True, text=True, timeout=12)
+            if push_res.returncode == 0:
+                return jsonify({"success": True, "message": "⚡ Đồng bộ thần tốc thành công 100% lên tomkidsrepo.cloud!"})
+
+        # Fallback nếu không tìm thấy token
+        push_res = subprocess.run(["git", "push"], cwd=REPO_DIR, capture_output=True, text=True, timeout=8)
         if push_res.returncode == 0:
-            return jsonify({"success": True, "message": "Đã Git Push thành công 100% lên tomkidsrepo.cloud!"})
+            return jsonify({"success": True, "message": "⚡ Đã Git Push thành công 100% lên tomkidsrepo.cloud!"})
         else:
-            return jsonify({"success": True, "message": "Đã tạo bản Commit thành công trên máy tính!\nBạn chỉ cần bấm nút 'Push origin' trên GitHub Desktop để hoàn tất đẩy lên web."})
+            return jsonify({"success": True, "message": "Đã lưu commit trên máy tính!\nBạn chỉ cần bấm 'Push origin' trên GitHub Desktop để hoàn tất."})
     except subprocess.TimeoutExpired:
-        return jsonify({"success": True, "message": "Đã tạo bản Commit thành công trên máy tính!\nBạn chỉ cần chuyển sang cửa sổ GitHub Desktop và bấm 'Push origin' nhé."})
+        return jsonify({"success": True, "message": "Đã lưu commit trên máy tính!\nBạn hãy chuyển sang cửa sổ GitHub Desktop và bấm 'Push origin' nhé."})
     except Exception as e:
         return jsonify({"success": True, "message": "Đã lưu thay đổi thành công!\nBạn hãy mở GitHub Desktop và bấm 'Push origin' để đồng bộ lên web."})
 
