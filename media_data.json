@@ -1,6 +1,38 @@
 {
     "books": [
         {
+            "title": "Tap 1",
+            "author": "Tomkids Library",
+            "type": "PDF / iBooks",
+            "pages": "186 trang",
+            "icon": "📖",
+            "url": "https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/Tap 1.pdf"
+        },
+        {
+            "title": "Chu Thoong   T 01",
+            "author": "Tomkids Library",
+            "type": "PDF / iBooks",
+            "pages": "178 trang",
+            "icon": "📖",
+            "url": "https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/Chu THOONG - T 01.pdf"
+        },
+        {
+            "title": "Cuoc Chien Vu Tru",
+            "author": "Tomkids Library",
+            "type": "PDF / iBooks",
+            "pages": "187 trang",
+            "icon": "📖",
+            "url": "https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/CUOC CHIEN VU TRU.pdf"
+        },
+        {
+            "title": "01 Cuoc Vuot Nguc",
+            "author": "Tomkids Library",
+            "type": "PDF / iBooks",
+            "pages": "68 trang",
+            "icon": "📖",
+            "url": "https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/01-Cuoc Vuot Nguc.pdf"
+        },
+        {
             "title": "Steve Jobs Suc Manh Cua Su Khac Biet",
             "author": "Tomkids Library",
             "type": "PDF / iBooks",
