@@ -1,4 +1,4 @@
-﻿{
+{
     "Mạng Xã Hội": [
         {
             "name": "Facebook",
@@ -103,6 +103,12 @@
             "version": "1.0",
             "icon": "ota_apps/icons/rousseaddict.jellyold.png",
             "plist": "ota_apps/rousseaddict.jellyold.plist"
+        },
+        {
+            "name": "Dao Vang",
+            "version": "2.2",
+            "icon": "ota_apps/icons/com.ifunsoft.daovang.png",
+            "plist": "ota_apps/com.ifunsoft.daovang.plist"
         }
     ],
     "Công Cụ": [
