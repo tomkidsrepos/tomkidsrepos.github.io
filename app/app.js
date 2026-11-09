@@ -73,7 +73,7 @@ function updateWallet(addXu, addRuby, addVang) {
 
 function changeUserName() {
     var current = localStorage.getItem(STORAGE_USER_NAME) || 'Tomkids';
-    var newName = prompt("Nhập tên hiển thị tài khoản AppVN của bạn:", current);
+    var newName = prompt("Nhập tên hiển thị tài khoản Tomkids AppStore của bạn:", current);
     if (newName && newName.trim().length > 0) {
         newName = newName.trim();
         localStorage.setItem(STORAGE_USER_NAME, newName);
@@ -782,7 +782,7 @@ function spinLuckyWheel() {
 
 function openGiftModal() {
     toggleSidebar(false);
-    alert("🎁 Cửa Hàng Đổi Quà AppVN:\n\nHiện tại bạn đang có: " + document.getElementById('val-xu').innerText + " Xu.\nTính năng đổi thẻ cào ảo và danh hiệu VIP đang được hoàn thiện!");
+    alert("🎁 Cửa Hàng Đổi Quà Tomkids AppStore:\n\nHiện tại bạn đang có: " + document.getElementById('val-xu').innerText + " Xu.\nTính năng đổi thẻ cào ảo và danh hiệu VIP đang được hoàn thiện!");
 }
 
 /* ==========================================================================

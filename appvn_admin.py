@@ -255,7 +255,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AppVN Admin Portal - Tomkids Repo</title>
+    <title>Tomkids AppStore Admin Portal</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #0b0f19; color: #f1f5f9; padding: 30px 15px; }
@@ -309,10 +309,10 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
     <div class="container">
         <div class="header">
             <div class="logo-title">
-                <h1>🚀 AppVN Admin Portal</h1>
+                <h1>🚀 Tomkids AppStore Admin</h1>
                 <span class="badge">Tomkids Repo</span>
             </div>
-            <a href="https://tomkidsrepo.cloud/app/" target="_blank" class="btn-secondary">🌐 Mở Web AppVN</a>
+            <a href="https://tomkidsrepo.cloud/app/" target="_blank" class="btn-secondary">🌐 Mở Tomkids AppStore</a>
         </div>
 
         <!-- TABS CHỌN NGUỒN FILE -->
@@ -786,7 +786,7 @@ def git_push():
         subprocess.run(["git", "add", "."], cwd=REPO_DIR)
 
         # 2. Tạo commit (không bắt buộc nếu không có file mới)
-        subprocess.run(["git", "commit", "-m", "Auto-update apps from AppVN Admin"], cwd=REPO_DIR, capture_output=True)
+        subprocess.run(["git", "commit", "-m", "Auto-update apps from Tomkids AppStore Admin"], cwd=REPO_DIR, capture_output=True)
 
         # 3. Thử push với timeout 15 giây
         push_res = subprocess.run(["git", "push"], cwd=REPO_DIR, capture_output=True, text=True, timeout=15)
