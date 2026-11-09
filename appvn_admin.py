@@ -437,9 +437,9 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             <div id="section-file">
                 <div class="dropzone-box" id="dropzone" onclick="document.getElementById('file-input').click()">
                     <div class="dropzone-icon">📥</div>
-                    <div class="dropzone-text">Bấm vào đây để Chọn File từ Máy Tính</div>
-                    <div class="dropzone-sub">Hoặc Kéo và Thả trực tiếp file <b>.ipa, .deb, .m4r, .mp3, .pdf</b> vào khung này</div>
-                    <input type="file" id="file-input" class="file-input" accept=".ipa,.deb,.m4r,.mp3,.pdf,.jpg,.png" onchange="onFileSelected(this.files)">
+                    <div class="dropzone-text">Bấm vào đây để Chọn Một hoặc Nhiều File cùng lúc</div>
+                    <div class="dropzone-sub">Hỗ trợ chọn hàng loạt hoặc Kéo thả nhiều file <b>.ipa, .deb, .m4r, .mp3, .pdf</b> cùng lúc</div>
+                    <input type="file" id="file-input" class="file-input" accept=".ipa,.deb,.m4r,.mp3,.pdf,.jpg,.png" multiple onchange="onFileSelected(this.files)">
                 </div>
 
                 <div class="file-selected-card" id="file-selected-card">
@@ -463,7 +463,10 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 <select id="incoming-select">
                     <option value="">-- Bấm để tải danh sách file --</option>
                 </select>
-                <p style="font-size:12px; color:#64748b; margin-top:6px;">Bạn có thể copy hàng loạt file vào thư mục incoming/ trên máy tính để chọn nhanh tại đây.</p>
+                <div style="margin-top:12px; display:flex; gap:10px;">
+                    <button type="button" class="btn-secondary btn-green" onclick="processAllIncoming()">⚡ Xử Lý TOÀN BỘ File Trong Thư Mục</button>
+                </div>
+                <p style="font-size:12px; color:#64748b; margin-top:8px;">Bạn có thể copy hàng chục file vào thư mục incoming/ trên máy tính rồi bấm nút trên để hệ thống tự động xử lý toàn bộ!</p>
             </div>
 
             <!-- CHỌN CHUYÊN MỤC -->
@@ -518,7 +521,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 
     <script>
         var currentSourceTab = 'file';
-        var chosenFile = null;
+        var chosenFiles = [];
 
         function switchSourceTab(tab) {
             currentSourceTab = tab;
@@ -557,17 +560,31 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 
         function onFileSelected(files) {
             if (!files || files.length === 0) return;
-            chosenFile = files[0];
+            chosenFiles = Array.prototype.slice.call(files);
             document.getElementById('dropzone').style.display = 'none';
             var card = document.getElementById('file-selected-card');
             card.style.display = 'flex';
-            document.getElementById('file-selected-name').innerText = '📦 ' + chosenFile.name;
-            var sizeMB = (chosenFile.size / (1024 * 1024)).toFixed(2);
-            document.getElementById('file-selected-size').innerText = 'Dung lượng: ' + sizeMB + ' MB';
+
+            if (chosenFiles.length === 1) {
+                var f = chosenFiles[0];
+                document.getElementById('file-selected-name').innerText = '📦 ' + f.name;
+                var sizeMB = (f.size / (1024 * 1024)).toFixed(2);
+                document.getElementById('file-selected-size').innerText = 'Dung lượng: ' + sizeMB + ' MB';
+            } else {
+                var totalBytes = 0;
+                for (var i = 0; i < chosenFiles.length; i++) {
+                    totalBytes += chosenFiles[i].size;
+                }
+                var totalMB = (totalBytes / (1024 * 1024)).toFixed(2);
+                document.getElementById('file-selected-name').innerText = '📦 Đã chọn ' + chosenFiles.length + ' files cùng lúc';
+                var names = chosenFiles.map(function(f){ return f.name; }).slice(0, 3).join(', ');
+                if (chosenFiles.length > 3) names += '... và ' + (chosenFiles.length - 3) + ' file khác';
+                document.getElementById('file-selected-size').innerText = 'Tổng dung lượng: ' + totalMB + ' MB (' + names + ')';
+            }
         }
 
         function removeSelectedFile() {
-            chosenFile = null;
+            chosenFiles = [];
             document.getElementById('file-input').value = '';
             document.getElementById('dropzone').style.display = 'block';
             document.getElementById('file-selected-card').style.display = 'none';
@@ -607,6 +624,35 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             }
         }
 
+        function uploadSingleFile(file, category, releaseUrl, onProgress, onDone) {
+            var formData = new FormData();
+            formData.append('source_type', 'file');
+            formData.append('category', category);
+            formData.append('release_url', releaseUrl);
+            formData.append('file', file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/api/process', true);
+            xhr.upload.onprogress = function(evt) {
+                if (evt.lengthComputable && onProgress) {
+                    var percent = Math.round((evt.loaded / evt.total) * 100);
+                    onProgress(percent);
+                }
+            };
+            xhr.onload = function() {
+                try {
+                    var res = JSON.parse(xhr.responseText);
+                    onDone(null, res);
+                } catch(err) {
+                    onDone('Lỗi phản hồi máy chủ: ' + xhr.responseText);
+                }
+            };
+            xhr.onerror = function() {
+                onDone('Không thể kết nối đến máy chủ xử lý!');
+            };
+            xhr.send(formData);
+        }
+
         function handleFormSubmit(e) {
             e.preventDefault();
             var alertBox = document.getElementById('alert-box');
@@ -615,18 +661,91 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             var category = document.getElementById('category-select').value;
             var releaseUrl = document.getElementById('release-url-input').value;
 
+            var progressWrap = document.getElementById('progress-wrap');
+            var progressFill = document.getElementById('progress-bar-fill');
+            var progressText = document.getElementById('progress-text');
+
+            if (currentSourceTab === 'file') {
+                if (!chosenFiles || chosenFiles.length === 0) {
+                    alert("Vui lòng chọn hoặc kéo thả ít nhất 1 file từ máy tính!");
+                    return;
+                }
+
+                var btn = document.getElementById('btn-submit');
+                btn.disabled = true;
+                progressWrap.style.display = 'block';
+
+                var totalFiles = chosenFiles.length;
+                var currentIndex = 0;
+                var batchResults = [];
+
+                function processNext() {
+                    if (currentIndex >= totalFiles) {
+                        btn.disabled = false;
+                        btn.innerHTML = '<span>⚡ Bắt Đầu Xử Lý Tự Động</span>';
+                        progressWrap.style.display = 'none';
+                        removeSelectedFile();
+
+                        var successCount = 0;
+                        var html = '<b>🎉 HOÀN TẤT XỬ LÝ ' + totalFiles + ' FILE:</b><br><ul style="margin: 8px 0 10px 20px; font-size:13px;">';
+                        batchResults.forEach(function(r) {
+                            if (r.success) {
+                                successCount++;
+                                html += '<li>✅ <b>' + r.name + '</b> (' + (r.version || '') + ') - Mục: ' + r.cat + '</li>';
+                            } else {
+                                html += '<li style="color:#f87171;">❌ <b>' + r.file + '</b>: ' + r.error + '</li>';
+                            }
+                        });
+                        html += '</ul>';
+                        html += '<b>Tổng kết: Đã đưa ' + successCount + '/' + totalFiles + ' file lên Tomkids AppStore & GitHub Releases thành công!</b><br>';
+                        html += '👉 Hãy bấm nút <b>"Git Commit & Push Lên Web"</b> ở góc dưới để cập nhật lên tomkidsrepo.cloud!';
+                        alertBox.className = 'alert-box alert-success';
+                        alertBox.innerHTML = html;
+                        alertBox.style.display = 'block';
+                        return;
+                    }
+
+                    var currentFile = chosenFiles[currentIndex];
+                    var fileNum = currentIndex + 1;
+                    btn.innerHTML = '<span>⏳ Đang xử lý file [' + fileNum + '/' + totalFiles + ']... Vui lòng đợi</span>';
+                    progressFill.style.width = '0%';
+                    progressText.innerText = '[' + fileNum + '/' + totalFiles + '] Đang tải ' + currentFile.name + ': 0%';
+
+                    uploadSingleFile(currentFile, category, releaseUrl, function(pct) {
+                        progressFill.style.width = pct + '%';
+                        progressText.innerText = '[' + fileNum + '/' + totalFiles + '] Đang tải & bóc tách ' + currentFile.name + ': ' + pct + '%';
+                    }, function(err, res) {
+                        if (err || !res.success) {
+                            batchResults.push({
+                                file: currentFile.name,
+                                success: false,
+                                error: err || (res ? res.error : 'Lỗi không xác định')
+                            });
+                        } else {
+                            batchResults.push({
+                                file: currentFile.name,
+                                success: true,
+                                name: res.app_name,
+                                version: res.version,
+                                cat: res.category
+                            });
+                        }
+                        currentIndex++;
+                        processNext();
+                    });
+                }
+
+                processNext();
+                return;
+            }
+
+            // Xử lý Tab Link hoặc Tab Incoming (đơn lẻ)
             var formData = new FormData();
             formData.append('category', category);
             formData.append('release_url', releaseUrl);
             formData.append('source_type', currentSourceTab);
 
-            if (currentSourceTab === 'file') {
-                if (!chosenFile) {
-                    alert("Vui lòng chọn hoặc kéo thả file từ máy tính!");
-                    return;
-                }
-                formData.append('file', chosenFile);
-            } else if (currentSourceTab === 'link') {
+            if (currentSourceTab === 'link') {
                 var link = document.getElementById('link-input').value.trim();
                 if (!link) {
                     alert("Vui lòng dán link file cần đưa lên!");
@@ -636,7 +755,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             } else if (currentSourceTab === 'incoming') {
                 var incFile = document.getElementById('incoming-select').value;
                 if (!incFile) {
-                    alert("Vui lòng chọn 1 file trong thư mục incoming/!");
+                    alert("Vui lòng chọn 1 file trong thư mục incoming/ hoặc bấm 'Xử Lý TOÀN BỘ File Trong Thư Mục'!");
                     return;
                 }
                 formData.append('incoming_file', incFile);
@@ -646,9 +765,6 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             btn.disabled = true;
             btn.innerHTML = '<span>⏳ Đang xử lý tự động... Vui lòng đợi</span>';
 
-            var progressWrap = document.getElementById('progress-wrap');
-            var progressFill = document.getElementById('progress-bar-fill');
-            var progressText = document.getElementById('progress-text');
             progressWrap.style.display = 'block';
             progressFill.style.width = '0%';
 
@@ -673,13 +789,11 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     if (res.success) {
                         alertBox.className = 'alert-box alert-success';
                         alertBox.innerHTML = '<b>🎉 THÀNH CÔNG!</b><br>' +
-                                             '• Đã bóc tách ứng dụng: <b>' + res.app_name + '</b> (v' + res.version + ')<br>' +
-                                             '• Bundle ID: <code>' + res.bundle_id + '</code><br>' +
-                                             '• Đã tạo manifest: <code>' + res.plist + '</code><br>' +
+                                             '• Đã bóc tách: <b>' + res.app_name + '</b> (' + (res.version || '') + ')<br>' +
+                                             '• Bundle ID: <code>' + (res.bundle_id || 'N/A') + '</code><br>' +
                                              '• Đã cập nhật vào chuyên mục: <b>' + res.category + '</b><br><br>' +
                                              '👉 Bạn hãy bấm <b>"Git Commit & Push"</b> ở góc dưới để đưa lên web!';
                         alertBox.style.display = 'block';
-                        removeSelectedFile();
                     } else {
                         alertBox.className = 'alert-box alert-error';
                         alertBox.innerText = 'Lỗi: ' + res.error;
@@ -702,6 +816,59 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             };
 
             xhr.send(formData);
+        }
+
+        function processAllIncoming() {
+            if (!confirm("Hệ thống sẽ tự động quét toàn bộ file (.ipa, .deb, .pdf, .m4r, v.v.) trong thư mục incoming/,\nbóc tách metadata, tạo manifest, và tự động upload lên GitHub Releases (OTA-Storage).\n\nBạn có muốn tiếp tục?")) {
+                return;
+            }
+
+            var alertBox = document.getElementById('alert-box');
+            alertBox.style.display = 'none';
+
+            var progressWrap = document.getElementById('progress-wrap');
+            var progressFill = document.getElementById('progress-bar-fill');
+            var progressText = document.getElementById('progress-text');
+            progressWrap.style.display = 'block';
+            progressFill.style.width = '100%';
+            progressText.innerText = '⚡ Đang quét và xử lý hàng loạt toàn bộ file trong thư mục incoming/...';
+
+            var btn = document.getElementById('btn-submit');
+            btn.disabled = true;
+
+            fetch('/api/process-all-incoming', { method: 'POST' })
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    btn.disabled = false;
+                    progressWrap.style.display = 'none';
+                    if (data.success) {
+                        var html = '<b>🎉 HOÀN TẤT XỬ LÝ HÀNG LOẠT: ' + data.processed + '/' + data.total + ' FILE THÀNH CÔNG!</b><br><ul style="margin: 8px 0 10px 20px; font-size:13px;">';
+                        data.results.forEach(function(r) {
+                            if (r.success) {
+                                html += '<li>✅ <b>' + r.name + '</b> (' + (r.version || '') + ') - Mục: ' + r.category + '</li>';
+                            } else {
+                                html += '<li style="color:#f87171;">❌ <b>' + r.file + '</b>: ' + r.error + '</li>';
+                            }
+                        });
+                        html += '</ul>';
+                        html += '👉 Tất cả file đã được đẩy lên GitHub Releases (OTA-Storage).<br>Hãy bấm <b>"Git Commit & Push Lên Web"</b> để hoàn tất đồng bộ lên tomkidsrepo.cloud!';
+                        alertBox.className = 'alert-box alert-success';
+                        alertBox.innerHTML = html;
+                        alertBox.style.display = 'block';
+                        loadIncomingFilesList();
+                    } else {
+                        alertBox.className = 'alert-box alert-error';
+                        alertBox.innerText = 'Lỗi: ' + data.error;
+                        alertBox.style.display = 'block';
+                    }
+                })
+                .catch(function(err) {
+                    btn.disabled = false;
+                    progressWrap.style.display = 'none';
+                    alertBox.className = 'alert-box alert-error';
+                    alertBox.innerText = 'Lỗi kết nối máy chủ: ' + err;
+                    alertBox.style.display = 'block';
+                });
         }
 
         function triggerGitPush() {
@@ -755,6 +922,157 @@ def open_incoming():
         return jsonify({"success": False, "error": str(e)})
 
 
+def process_file_item(target_file_path, category=None, release_url=None):
+    if not target_file_path or not os.path.exists(target_file_path):
+        raise Exception(f"File không tồn tại: {target_file_path}")
+
+    # Kiểm tra nội dung file (Magic bytes)
+    with open(target_file_path, 'rb') as f:
+        header = f.read(16)
+
+    if header.startswith(b'<!DOCTYPE') or header.startswith(b'<html') or b'<body' in header:
+        raise Exception("File tải về là trang web HTML lỗi thay vì file dữ liệu!")
+
+    # Nếu là DEB (Magic: !<arch>\n)
+    if header.startswith(b'!<arch>\n') or target_file_path.lower().endswith('.deb'):
+        out_ipa = os.path.splitext(target_file_path)[0] + ".ipa"
+        deb_to_ipa(target_file_path, out_ipa)
+        target_file_path = out_ipa
+        with open(target_file_path, 'rb') as f:
+            header = f.read(16)
+
+    ext = os.path.splitext(target_file_path)[1].lower()
+
+    # Nhận diện chuyên mục phù hợp
+    is_media_book = ext in ('.pdf', '.epub')
+    is_media_audio = ext in ('.m4r', '.mp3')
+    is_media_img = ext in ('.jpg', '.jpeg', '.png') and not target_file_path.endswith('.ipa')
+
+    if is_media_book:
+        actual_cat = category if category in ('Sách', 'Truyện') else 'Sách'
+        raw_name = os.path.splitext(os.path.basename(target_file_path))[0]
+        title = raw_name.replace('-', ' ').replace('_', ' ').title()
+        pages = "iBooks / PDF"
+        if ext == '.pdf':
+            try:
+                import pypdf
+                reader = pypdf.PdfReader(target_file_path)
+                pages = f"{len(reader.pages)} trang"
+            except:
+                pages = "PDF"
+
+        safe_name = os.path.basename(target_file_path)
+        uploaded_url = upload_to_github_releases(target_file_path, safe_name)
+        final_url = uploaded_url or f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
+
+        section = "books" if actual_cat == "Sách" else "comics"
+        record = {
+            "title": title,
+            "author": "Tomkids Library",
+            "type": "PDF / iBooks",
+            "pages": pages,
+            "icon": "📖" if actual_cat == "Sách" else "📚",
+            "url": final_url
+        }
+        update_media_json(section, record)
+        return {
+            "success": True,
+            "app_name": title,
+            "version": pages,
+            "bundle_id": "com.apple.iBooks",
+            "plist": final_url,
+            "category": actual_cat,
+            "release_url": final_url
+        }
+
+    elif is_media_audio:
+        raw_name = os.path.splitext(os.path.basename(target_file_path))[0]
+        title = raw_name.replace('-', ' ').replace('_', ' ').title()
+        safe_name = os.path.basename(target_file_path)
+        uploaded_url = upload_to_github_releases(target_file_path, safe_name)
+        final_url = uploaded_url or f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
+
+        record = {
+            "title": title,
+            "desc": "Nhạc chuông chất lượng cao cho iPhone",
+            "file": final_url,
+            "duration": "0:30"
+        }
+        update_media_json("ringtones", record)
+        return {
+            "success": True,
+            "app_name": title,
+            "version": "Audio",
+            "bundle_id": "com.apple.mobileipod",
+            "plist": final_url,
+            "category": "Nhạc chuông",
+            "release_url": final_url
+        }
+
+    elif is_media_img:
+        raw_name = os.path.splitext(os.path.basename(target_file_path))[0]
+        title = raw_name.replace('-', ' ').replace('_', ' ').title()
+        safe_name = os.path.basename(target_file_path)
+        uploaded_url = upload_to_github_releases(target_file_path, safe_name)
+        final_url = uploaded_url or f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
+
+        record = {
+            "title": title,
+            "url": final_url
+        }
+        update_media_json("wallpapers", record)
+        return {
+            "success": True,
+            "app_name": title,
+            "version": "Wallpaper",
+            "bundle_id": "com.apple.mobileslideshow",
+            "plist": final_url,
+            "category": "Hình nền",
+            "release_url": final_url
+        }
+
+    elif header.startswith(b'PK') or ext == '.ipa':
+        if not target_file_path.lower().endswith('.ipa'):
+            new_ipa_path = target_file_path + '.ipa'
+            shutil.move(target_file_path, new_ipa_path)
+            target_file_path = new_ipa_path
+
+        app_info = extract_ipa_info(target_file_path)
+        safe_name = f"{app_info['bundle_id']}_{app_info['version']}.ipa"
+        final_ipa_path = os.path.join(INCOMING_DIR, safe_name)
+        if target_file_path != final_ipa_path:
+            shutil.move(target_file_path, final_ipa_path)
+
+        if not release_url:
+            uploaded_dl_url = upload_to_github_releases(final_ipa_path, safe_name)
+            if uploaded_dl_url:
+                release_url = uploaded_dl_url
+            else:
+                release_url = f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
+
+        plist_path = create_ota_plist(app_info, release_url)
+        actual_cat = category if category not in ('Sách', 'Truyện', 'Nhạc chuông', 'Hình nền', None) else 'Trò Chơi'
+        record = {
+            "name": app_info["name"],
+            "version": app_info["version"],
+            "icon": app_info["icon"],
+            "plist": plist_path
+        }
+        update_ota_json(actual_cat, record)
+
+        return {
+            "success": True,
+            "app_name": app_info["name"],
+            "version": app_info["version"],
+            "bundle_id": app_info["bundle_id"],
+            "plist": plist_path,
+            "category": actual_cat,
+            "release_url": release_url
+        }
+    else:
+        raise Exception(f"Định dạng file không được hỗ trợ ({ext})!")
+
+
 @app.route('/api/process', methods=['POST'])
 def process_upload():
     try:
@@ -784,7 +1102,6 @@ def process_upload():
 
             target_file_path = os.path.join(INCOMING_DIR, "downloaded_package")
 
-            # Xử lý nếu là Google Drive link
             if "drive.google.com" in link:
                 import re
                 file_id = None
@@ -808,157 +1125,52 @@ def process_upload():
             else:
                 subprocess.run(["curl.exe", "-L", "-o", target_file_path, link], check=True)
 
-        if not target_file_path or not os.path.exists(target_file_path):
-            return jsonify({"success": False, "error": "Không thể tải file từ đường dẫn này!"})
+        res = process_file_item(target_file_path, category=category, release_url=release_url)
+        return jsonify(res)
 
-        # Kiểm tra nội dung file (Magic bytes)
-        with open(target_file_path, 'rb') as f:
-            header = f.read(16)
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
 
-        if header.startswith(b'<!DOCTYPE') or header.startswith(b'<html') or b'<body' in header:
-            return jsonify({
-                "success": False,
-                "error": "Link Google Drive này đang ở chế độ Riêng tư (Google chặn tải công khai). Vui lòng vào Google Drive bấm nút 'Chia sẻ' -> đổi thành 'Bất kỳ ai có đường liên kết đều có thể xem', hoặc bạn tải file về máy tính rồi dùng tab 'Chọn File từ Máy Tính' nhé!"
-            })
 
-        # Nếu là DEB (Magic: !<arch>\n)
-        if header.startswith(b'!<arch>\n') or target_file_path.lower().endswith('.deb'):
-            out_ipa = os.path.join(INCOMING_DIR, "converted_app.ipa")
-            deb_to_ipa(target_file_path, out_ipa)
-            target_file_path = out_ipa
-            with open(target_file_path, 'rb') as f:
-                header = f.read(16)
+@app.route('/api/process-all-incoming', methods=['POST'])
+def process_all_incoming():
+    try:
+        if not os.path.exists(INCOMING_DIR):
+            return jsonify({"success": False, "error": "Thư mục incoming/ không tồn tại!"})
 
-        # Xử lý Sách & Truyện (.pdf, .epub)
-        if category in ('Sách', 'Truyện'):
-            raw_name = os.path.splitext(os.path.basename(target_file_path))[0]
-            title = raw_name.replace('-', ' ').replace('_', ' ').title()
-            pages = "iBooks / PDF"
-            if target_file_path.lower().endswith('.pdf'):
-                try:
-                    import pypdf
-                    reader = pypdf.PdfReader(target_file_path)
-                    pages = f"{len(reader.pages)} trang"
-                except:
-                    pages = "PDF"
+        valid_exts = ('.ipa', '.deb', '.pdf', '.epub', '.m4r', '.mp3', '.jpg', '.jpeg', '.png')
+        all_entries = [f for f in os.listdir(INCOMING_DIR) if not f.startswith('.') and not f.endswith('.plist')]
+        files = [f for f in all_entries if f.lower().endswith(valid_exts) and os.path.isfile(os.path.join(INCOMING_DIR, f))]
 
-            safe_name = os.path.basename(target_file_path)
-            uploaded_url = upload_to_github_releases(target_file_path, safe_name)
-            final_url = uploaded_url or f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
+        if not files:
+            return jsonify({"success": False, "error": "Không có file hợp lệ (.ipa, .deb, .pdf, .m4r, v.v.) nào trong thư mục incoming/ để xử lý!"})
 
-            section = "books" if category == "Sách" else "comics"
-            record = {
-                "title": title,
-                "author": "Tomkids Library",
-                "type": "PDF / iBooks",
-                "pages": pages,
-                "icon": "📖" if category == "Sách" else "📚",
-                "url": final_url
-            }
-            update_media_json(section, record)
+        results = []
+        for f in sorted(files):
+            fpath = os.path.join(INCOMING_DIR, f)
+            try:
+                res = process_file_item(fpath)
+                results.append({
+                    "file": f,
+                    "success": True,
+                    "name": res.get("app_name"),
+                    "category": res.get("category"),
+                    "version": res.get("version")
+                })
+            except Exception as fe:
+                results.append({
+                    "file": f,
+                    "success": False,
+                    "error": str(fe)
+                })
 
-            return jsonify({
-                "success": True,
-                "app_name": title,
-                "version": pages,
-                "bundle_id": "com.apple.iBooks",
-                "plist": final_url,
-                "category": category,
-                "release_url": final_url
-            })
-
-        # Xử lý Nhạc Chuông (.m4r, .mp3)
-        elif category == 'Nhạc chuông':
-            raw_name = os.path.splitext(os.path.basename(target_file_path))[0]
-            title = raw_name.replace('-', ' ').replace('_', ' ').title()
-            safe_name = os.path.basename(target_file_path)
-            uploaded_url = upload_to_github_releases(target_file_path, safe_name)
-            final_url = uploaded_url or f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
-
-            record = {
-                "title": title,
-                "desc": "Nhạc chuông chất lượng cao cho iPhone",
-                "file": final_url,
-                "duration": "0:30"
-            }
-            update_media_json("ringtones", record)
-
-            return jsonify({
-                "success": True,
-                "app_name": title,
-                "version": "Audio",
-                "bundle_id": "com.apple.mobileipod",
-                "plist": final_url,
-                "category": category,
-                "release_url": final_url
-            })
-
-        # Xử lý Hình Nền (.jpg, .png)
-        elif category == 'Hình nền':
-            raw_name = os.path.splitext(os.path.basename(target_file_path))[0]
-            title = raw_name.replace('-', ' ').replace('_', ' ').title()
-            safe_name = os.path.basename(target_file_path)
-            uploaded_url = upload_to_github_releases(target_file_path, safe_name)
-            final_url = uploaded_url or f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
-
-            record = {
-                "title": title,
-                "url": final_url
-            }
-            update_media_json("wallpapers", record)
-
-            return jsonify({
-                "success": True,
-                "app_name": title,
-                "version": "Wallpaper",
-                "bundle_id": "com.apple.mobileslideshow",
-                "plist": final_url,
-                "category": category,
-                "release_url": final_url
-            })
-
-        # Xử lý IPA
-        elif header.startswith(b'PK') or target_file_path.lower().endswith('.ipa'):
-            if not target_file_path.lower().endswith('.ipa'):
-                new_ipa_path = target_file_path + '.ipa'
-                shutil.move(target_file_path, new_ipa_path)
-                target_file_path = new_ipa_path
-
-            app_info = extract_ipa_info(target_file_path)
-            safe_name = f"{app_info['bundle_id']}_{app_info['version']}.ipa"
-            final_ipa_path = os.path.join(INCOMING_DIR, safe_name)
-            if target_file_path != final_ipa_path:
-                shutil.move(target_file_path, final_ipa_path)
-
-            # TỰ ĐỘNG UPLOAD LÊN GITHUB RELEASES
-            if not release_url:
-                uploaded_dl_url = upload_to_github_releases(final_ipa_path, safe_name)
-                if uploaded_dl_url:
-                    release_url = uploaded_dl_url
-                else:
-                    release_url = f"https://github.com/tomkidsrepos/tomkidsrepos.github.io/releases/download/OTA-Storage/{safe_name}"
-
-            plist_path = create_ota_plist(app_info, release_url)
-            record = {
-                "name": app_info["name"],
-                "version": app_info["version"],
-                "icon": app_info["icon"],
-                "plist": plist_path
-            }
-            update_ota_json(category, record)
-
-            return jsonify({
-                "success": True,
-                "app_name": app_info["name"],
-                "version": app_info["version"],
-                "bundle_id": app_info["bundle_id"],
-                "plist": plist_path,
-                "category": category,
-                "release_url": release_url
-            })
-        else:
-            return jsonify({"success": False, "error": "File tải về không phải định dạng IPA hoặc DEB hợp lệ!"})
-
+        success_count = sum(1 for r in results if r.get("success"))
+        return jsonify({
+            "success": True,
+            "total": len(files),
+            "processed": success_count,
+            "results": results
+        })
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 
