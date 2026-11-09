@@ -121,6 +121,108 @@
             "version": "3.1",
             "icon": "ota_apps/icons/com.jinpingjiejiso.sanguoall.png",
             "plist": "ota_apps/com.jinpingjiejiso.sanguoall.plist"
+        },
+        {
+            "name": "Angry Birds",
+            "version": "1.2.0",
+            "icon": "ota_apps/icons/com.rovio.AngryBirdsHalloween.png",
+            "plist": "ota_apps/com.rovio.AngryBirdsHalloween.plist"
+        },
+        {
+            "name": "Art Of War 2",
+            "version": "1.6",
+            "icon": "ota_apps/icons/com.gear-games.aow21.png",
+            "plist": "ota_apps/com.gear-games.aow21.plist"
+        },
+        {
+            "name": "BeejiveIM",
+            "version": "3.1.0",
+            "icon": "ota_apps/icons/com.beejive.BeejiveIM.png",
+            "plist": "ota_apps/com.beejive.BeejiveIM.plist"
+        },
+        {
+            "name": "BombermanTouch",
+            "version": "1.0.0",
+            "icon": "ota_apps/icons/jp.co.hudson.BombermanTouch2.png",
+            "plist": "ota_apps/jp.co.hudson.BombermanTouch2.plist"
+        },
+        {
+            "name": "Bowling 3D",
+            "version": "1.0.12",
+            "icon": "ota_apps/icons/com.magmamobile.game.Bowling3D.png",
+            "plist": "ota_apps/com.magmamobile.game.Bowling3D.plist"
+        },
+        {
+            "name": "魂斗罗Ⅱ",
+            "version": "1.1.0",
+            "icon": "ota_apps/icons/com.happysky.hundouluo.png",
+            "plist": "ota_apps/com.happysky.hundouluo.plist"
+        },
+        {
+            "name": "Draw War",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.SynquaGames.DrawWar.png",
+            "plist": "ota_apps/com.SynquaGames.DrawWar.plist"
+        },
+        {
+            "name": "Ninja Tabby",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.logicmagi.ninjatabby.png",
+            "plist": "ota_apps/com.logicmagi.ninjatabby.plist"
+        },
+        {
+            "name": "Pocket Oinko",
+            "version": "1.0.0",
+            "icon": "ota_apps/icons/com.nutomix.pocketoinko.png",
+            "plist": "ota_apps/com.nutomix.pocketoinko.plist"
+        },
+        {
+            "name": "Samurai: Dojo",
+            "version": "1.1",
+            "icon": "ota_apps/icons/vn.hip.11434.png",
+            "plist": "ota_apps/vn.hip.11434.plist"
+        },
+        {
+            "name": "SkyForceR",
+            "version": "1.07",
+            "icon": "ota_apps/icons/pl.idreams.skyforcereloaded.png",
+            "plist": "ota_apps/pl.idreams.skyforcereloaded.plist"
+        },
+        {
+            "name": "Sudoku",
+            "version": "1.0.2",
+            "icon": "ota_apps/icons/com.piplay.sudoku.png",
+            "plist": "ota_apps/com.piplay.sudoku.plist"
+        },
+        {
+            "name": "Tap Tap 4",
+            "version": "22540",
+            "icon": "ota_apps/icons/com.tapulous.taptaprevenge4.png",
+            "plist": "ota_apps/com.tapulous.taptaprevenge4.plist"
+        },
+        {
+            "name": "TapFighters",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.HenLungChou.TapFighters.png",
+            "plist": "ota_apps/com.HenLungChou.TapFighters.plist"
+        },
+        {
+            "name": "Y! Messenger",
+            "version": "1.2.3",
+            "icon": "ota_apps/icons/com.yahoo.messenger.png",
+            "plist": "ota_apps/com.yahoo.messenger.plist"
+        },
+        {
+            "name": "Đ.Hình.B.Chữ",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.bugunsoft.picturepuzzle.png",
+            "plist": "ota_apps/com.bugunsoft.picturepuzzle.plist"
+        },
+        {
+            "name": "Flashlight",
+            "version": "2.1.4",
+            "icon": "ota_apps/icons/com.ihandysoft.flashlight.led.pro.png",
+            "plist": "ota_apps/com.ihandysoft.flashlight.led.pro.plist"
         }
     ],
     "Công Cụ": [
