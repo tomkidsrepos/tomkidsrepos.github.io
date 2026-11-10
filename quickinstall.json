@@ -100,14 +100,5 @@
     "color": "green",
     "added": "2026-11-10",
     "description": "Cai Youtube 2.0 chay nen"
-  },
-  {
-    "name": "Cài nhanh tweak AFC2 & AppSync 116",
-    "package_id": "com.merged.afc2appsync116",
-    "version": "1.0",
-    "source_repo": "https://tomkidsrepo.cloud",
-    "color": "green",
-    "added": "2026-11-10",
-    "description": "Merged AFC2 và Appsync Unified 116"
   }
 ]
