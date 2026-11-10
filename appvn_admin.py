@@ -225,20 +225,45 @@ def extract_ipa_info(ipa_path):
 # 2.5. TỰ ĐỘNG LẤY TOKEN & UPLOAD LÊN GITHUB RELEASES (OTA-Storage)
 # ==============================================================================
 def get_github_token():
+    token = os.environ.get('GITHUB_TOKEN', '').strip()
+    if token:
+        return token
     try:
         import win32cred
-        for target in ['GitHub - https://api.github.com/tomkidsrepos', 'git:https://github.com']:
+        targets = [
+            'GitHub - https://api.github.com/tomkidsrepos',
+            'git:https://github.com',
+            'legacy_git:https://github.com',
+            'GitHub - https://api.github.com/'
+        ]
+        for target in targets:
             try:
                 cred = win32cred.CredRead(target, win32cred.CRED_TYPE_GENERIC)
                 raw = cred['CredentialBlob']
-                token = raw.decode('utf-16') if b'\x00' in raw else raw.decode('utf-8')
-                if token and len(token) > 10:
-                    return token
+                t = raw.decode('utf-16') if b'\x00' in raw else raw.decode('utf-8', errors='ignore')
+                t = t.strip().strip('\x00')
+                if t and len(t) > 10:
+                    return t
             except:
                 pass
+
+        # Quét toàn bộ credentials tìm token GitHub
+        try:
+            creds = win32cred.CredEnumerate(None, 0)
+            for c in creds:
+                target = c.get('TargetName', '')
+                if 'github' in target.lower():
+                    raw = c.get('CredentialBlob', b'')
+                    if raw:
+                        t = raw.decode('utf-16') if b'\x00' in raw else raw.decode('utf-8', errors='ignore')
+                        t = t.strip().strip('\x00')
+                        if t and (t.startswith('ghp_') or t.startswith('gho_') or t.startswith('github_pat_') or len(t) >= 30):
+                            return t
+        except:
+            pass
     except:
         pass
-    return os.environ.get('GITHUB_TOKEN', '')
+    return ''
 
 
 def git_push_repo(repo_path, commit_msg, branch='main'):
@@ -248,18 +273,29 @@ def git_push_repo(repo_path, commit_msg, branch='main'):
         subprocess.run(["git", "add", "."], cwd=repo_path)
         subprocess.run(["git", "commit", "-m", commit_msg], cwd=repo_path, capture_output=True)
 
-        token = get_github_token()
         repo_name = os.path.basename(repo_path)
-        if token:
-            remote_url = f"https://x-access-token:{token}@github.com/tomkidsrepos/{repo_name}.git"
-            res = subprocess.run(["git", "push", remote_url, branch], cwd=repo_path, capture_output=True, text=True, timeout=15)
-            if res.returncode == 0:
-                return True, f"Đã đẩy thành công lên {repo_name} ({branch})"
+        token = get_github_token()
 
-        res = subprocess.run(["git", "push", "origin", branch], cwd=repo_path, capture_output=True, text=True, timeout=8)
+        if token:
+            for auth_pattern in [
+                f"https://{token}@github.com/tomkidsrepos/{repo_name}.git",
+                f"https://tomkidsrepos:{token}@github.com/tomkidsrepos/{repo_name}.git",
+                f"https://oauth2:{token}@github.com/tomkidsrepos/{repo_name}.git",
+                f"https://x-access-token:{token}@github.com/tomkidsrepos/{repo_name}.git"
+            ]:
+                res = subprocess.run(["git", "push", auth_pattern, branch], cwd=repo_path, capture_output=True, text=True, timeout=25)
+                if res.returncode == 0:
+                    print(f"[+] Git push {repo_name} thành công qua token!")
+                    return True, f"Đã đẩy thành công lên {repo_name} ({branch})"
+
+        # Thử đẩy bằng git CLI mặc định
+        res = subprocess.run(["git", "push", "origin", branch], cwd=repo_path, capture_output=True, text=True, timeout=20)
         if res.returncode == 0:
+            print(f"[+] Git push {repo_name} thành công qua git origin!")
             return True, f"Đã đẩy thành công lên {repo_name} ({branch})"
-        return True, f"Đã commit trên máy tính ({repo_name}), bạn có thể push qua GitHub Desktop!"
+
+        print(f"[-] Git push {repo_name} cần đẩy qua GitHub Desktop")
+        return False, f"Đã commit trên máy ({repo_name}). Bạn hãy mở GitHub Desktop và bấm 'Push origin' để hoàn tất!"
     except Exception as e:
         return False, str(e)
 
@@ -2117,25 +2153,17 @@ def open_github_desktop():
 @app.route('/api/git-push', methods=['POST'])
 def git_push():
     try:
-        subprocess.run(["git", "add", "."], cwd=REPO_DIR)
-        subprocess.run(["git", "commit", "-m", "Auto-update apps from Tomkids AppStore Admin"], cwd=REPO_DIR, capture_output=True)
+        ok_io, msg_io = git_push_repo(REPO_DIR, "Auto-update apps from Tomkids Admin", branch="main")
+        ok_a1, msg_a1 = git_push_repo(PACKAGE_REPO_A1_DIR, "Auto-update packages from Tomkids Admin", branch="master")
 
-        token = get_github_token()
-        if token:
-            remote_url = f"https://x-access-token:{token}@github.com/tomkidsrepos/tomkidsrepos.github.io.git"
-            push_res = subprocess.run(["git", "push", remote_url, "main"], cwd=REPO_DIR, capture_output=True, text=True, timeout=12)
-            if push_res.returncode == 0:
-                return jsonify({"success": True, "message": "⚡ Đồng bộ thần tốc thành công 100% lên tomkidsrepo.cloud!"})
-
-        push_res = subprocess.run(["git", "push"], cwd=REPO_DIR, capture_output=True, text=True, timeout=8)
-        if push_res.returncode == 0:
-            return jsonify({"success": True, "message": "⚡ Đã Git Push thành công 100% lên tomkidsrepo.cloud!"})
+        if ok_io and ok_a1:
+            return jsonify({"success": True, "message": "⚡ Đồng bộ thần tốc thành công 100% lên GitHub & tomkidsrepo.cloud!"})
+        elif ok_io:
+            return jsonify({"success": True, "message": "🌐 Đã đồng bộ trang chủ lên tomkidsrepo.cloud!\n(Kho DEB package_repo_A1: hãy bấm Push trong GitHub Desktop nếu cần)."})
         else:
-            return jsonify({"success": True, "message": "Đã lưu commit trên máy tính!\nBạn chỉ cần bấm 'Push origin' trên GitHub Desktop để hoàn tất."})
-    except subprocess.TimeoutExpired:
-        return jsonify({"success": True, "message": "Đã lưu commit trên máy tính!\nBạn hãy chuyển sang cửa sổ GitHub Desktop và bấm 'Push origin' nhé."})
+            return jsonify({"success": False, "message": "📁 Đã lưu và commit dữ liệu trên máy tính!\n👉 Bạn chỉ cần mở GitHub Desktop và bấm 'Push origin' là web cập nhật ngay!"})
     except Exception as e:
-        return jsonify({"success": True, "message": "Đã lưu thay đổi thành công!\nBạn hãy mở GitHub Desktop và bấm 'Push origin' để đồng bộ lên web."})
+        return jsonify({"success": False, "message": f"Lỗi: {e}"})
 
 
 # ==============================================================================
@@ -2278,8 +2306,13 @@ def api_quickinstall_save():
         msg = f"🎉 Đã lưu nút cài đặt nhanh '{name}' thành công!"
         if auto_repo_a1 and deb_pushed:
             msg += "\n⚡ File DEB đã được đưa lên package_repo_A1 (GitHub đang tự động build Cydia Packages & sync repo)!"
+        elif auto_repo_a1 and not deb_pushed:
+            msg += "\n⚠️ File DEB đã lưu vào máy nhưng chưa push được. Hãy mở GitHub Desktop để push!"
+
         if push_io_ok:
             msg += "\n🌐 Đã đồng bộ tức thì lên https://tomkidsrepo.cloud/!"
+        else:
+            msg += "\n⚠️ Web tomkidsrepo.cloud: Đã commit trên máy tính. Bạn hãy mở GitHub Desktop và bấm 'Push origin' để cập nhật lên web!"
 
         return jsonify({
             "success": True,
