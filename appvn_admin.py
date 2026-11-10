@@ -1785,6 +1785,75 @@ def open_incoming():
         return jsonify({"success": False, "error": str(e)})
 
 
+def resolve_and_download_link(link, target_path):
+    """
+    Tự động nhận diện và tải file từ mọi định dạng link:
+    1. GitHub repo local (nếu link trỏ tới package_repo_A1 của chính máy tính):
+       -> Tự động đọc tức thì từ D:\\GitHub\\Tomkidsrepos\\package_repo_A1\\...
+    2. GitHub Blob link (https://github.com/.../blob/...):
+       -> Tự động chuyển đổi thành link Raw trực tiếp
+    3. Google Drive link (cả /d/... và id=...):
+       -> Bóc tách file ID và tải tự động
+    4. Link tải trực tiếp / GitHub Releases:
+       -> Tải qua curl.exe hỗ trợ theo dõi redirect (-L)
+    """
+    link = link.strip()
+    if not link:
+        raise Exception("Chưa nhập đường dẫn link!")
+
+    # 1. Kiểm tra nếu link trỏ tới package_repo_A1 trên máy tính
+    if "package_repo_A1" in link:
+        clean_url = link.split('?')[0].split('#')[0]
+        fname = clean_url.split('/')[-1]
+        local_cand = os.path.join(PACKAGE_REPO_A1_DIR, fname)
+        if os.path.exists(local_cand) and os.path.isfile(local_cand):
+            print(f"[+] Nhận diện file có sẵn trong package_repo_A1: {local_cand}")
+            shutil.copy2(local_cand, target_path)
+            return target_path
+
+    # 2. Xử lý link GitHub Blob (chuyển sang Raw)
+    if "github.com" in link and "/blob/" in link:
+        raw_link = link.replace("github.com", "raw.githubusercontent.com").replace("/blob/", "/")
+        print(f"[+] Tự động chuyển link GitHub blob sang raw: {raw_link}")
+        link = raw_link
+
+    # 3. Google Drive
+    if "drive.google.com" in link:
+        import re
+        file_id = None
+        m1 = re.search(r'/d/([a-zA-Z0-9_-]+)', link)
+        if m1:
+            file_id = m1.group(1)
+        else:
+            m2 = re.search(r'id=([a-zA-Z0-9_-]+)', link)
+            if m2:
+                file_id = m2.group(1)
+        if not file_id:
+            raise Exception("Định dạng link Google Drive không hợp lệ!")
+        try:
+            import gdown
+            gdown.download(id=file_id, output=target_path, quiet=False)
+        except:
+            uc_url = f"https://drive.usercontent.google.com/download?id={file_id}&export=download"
+            subprocess.run(["curl.exe", "-L", "-o", target_path, uc_url], check=True)
+    else:
+        # Tải bằng curl.exe hỗ trợ redirect (-L)
+        res = subprocess.run(["curl.exe", "-L", "-s", "-o", target_path, link])
+        if res.returncode != 0:
+            raise Exception(f"Không thể tải file từ link (curl exit code {res.returncode})")
+
+    if not os.path.exists(target_path) or os.path.getsize(target_path) == 0:
+        raise Exception("Tải file thất bại hoặc file nhận về bị rỗng!")
+
+    # Kiểm tra xem có bị nhận nhầm trang HTML hay không
+    with open(target_path, 'rb') as f:
+        head = f.read(50)
+        if b'<!DOCTYPE' in head.upper() or b'<HTML' in head.upper():
+            raise Exception("Link bạn cung cấp dẫn tới trang web hiển thị HTML thay vì file nhị phân trực tiếp!")
+
+    return target_path
+
+
 def process_file_item(target_file_path, category=None, release_url=None):
     if not target_file_path or not os.path.exists(target_file_path):
         raise Exception(f"File không tồn tại: {target_file_path}")
@@ -1963,30 +2032,10 @@ def process_upload():
             if not link:
                 return jsonify({"success": False, "error": "Chưa nhập link!"})
 
-            target_file_path = os.path.join(INCOMING_DIR, "downloaded_package")
-
-            if "drive.google.com" in link:
-                import re
-                file_id = None
-                m1 = re.search(r'/d/([a-zA-Z0-9_-]+)', link)
-                if m1:
-                    file_id = m1.group(1)
-                else:
-                    m2 = re.search(r'id=([a-zA-Z0-9_-]+)', link)
-                    if m2:
-                        file_id = m2.group(1)
-
-                if not file_id:
-                    return jsonify({"success": False, "error": "Định dạng link Google Drive không hợp lệ!"})
-
-                try:
-                    import gdown
-                    gdown.download(id=file_id, output=target_file_path, quiet=False)
-                except Exception as gd_err:
-                    uc_url = f"https://drive.usercontent.google.com/download?id={file_id}&export=download"
-                    subprocess.run(["curl.exe", "-L", "-o", target_file_path, uc_url])
-            else:
-                subprocess.run(["curl.exe", "-L", "-o", target_file_path, link], check=True)
+            clean_url = link.split('?')[0].split('#')[0]
+            url_filename = clean_url.split('/')[-1] or "downloaded_package"
+            target_file_path = os.path.join(INCOMING_DIR, f"temp_{url_filename}")
+            resolve_and_download_link(link, target_file_path)
 
         res = process_file_item(target_file_path, category=category, release_url=release_url)
         return jsonify(res)
@@ -2119,27 +2168,14 @@ def api_quickinstall_extract():
             link = request.form.get('link', '').strip()
             if not link:
                 return jsonify({"success": False, "error": "Chưa nhập link!"})
-            target_path = os.path.join(INCOMING_DIR, "temp_downloaded.deb")
-            if "drive.google.com" in link:
-                import re
-                file_id = None
-                m1 = re.search(r'/d/([a-zA-Z0-9_-]+)', link)
-                if m1:
-                    file_id = m1.group(1)
-                else:
-                    m2 = re.search(r'id=([a-zA-Z0-9_-]+)', link)
-                    if m2:
-                        file_id = m2.group(1)
-                if not file_id:
-                    return jsonify({"success": False, "error": "Link Google Drive không hợp lệ!"})
-                try:
-                    import gdown
-                    gdown.download(id=file_id, output=target_path, quiet=False)
-                except:
-                    uc_url = f"https://drive.usercontent.google.com/download?id={file_id}&export=download"
-                    subprocess.run(["curl.exe", "-L", "-o", target_path, uc_url])
-            else:
-                subprocess.run(["curl.exe", "-L", "-o", target_path, link], check=True)
+
+            clean_url = link.split('?')[0].split('#')[0]
+            url_filename = clean_url.split('/')[-1]
+            if not url_filename.lower().endswith('.deb'):
+                url_filename = "downloaded_package.deb"
+
+            target_path = os.path.join(INCOMING_DIR, f"temp_{url_filename}")
+            resolve_and_download_link(link, target_path)
 
         if not target_path or not os.path.exists(target_path):
             return jsonify({"success": False, "error": "Không tìm thấy file để bóc tách!"})
@@ -2178,7 +2214,8 @@ def api_quickinstall_save():
             if os.path.exists(src_deb_path) and os.path.exists(PACKAGE_REPO_A1_DIR):
                 target_deb_name = f"{package_id}_{version}_iphoneos-arm.deb"
                 dest_deb_path = os.path.join(PACKAGE_REPO_A1_DIR, target_deb_name)
-                shutil.copy2(src_deb_path, dest_deb_path)
+                if os.path.abspath(src_deb_path) != os.path.abspath(dest_deb_path):
+                    shutil.copy2(src_deb_path, dest_deb_path)
                 print(f"[+] Đã copy file DEB vào package_repo_A1: {dest_deb_path}")
 
                 # Commit & push sang package_repo_A1 (branch master)
