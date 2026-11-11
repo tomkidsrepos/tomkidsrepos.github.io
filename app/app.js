@@ -239,7 +239,7 @@ function openActionSheet(index) {
     var downloads = getStoredDownloads();
     var isDownloaded = false;
     for (var d = 0; d < downloads.length; d++) {
-        if (downloads[d].name === selectedApp.name) {
+        if (downloads[d].plist === selectedApp.plist || (downloads[d].name === selectedApp.name && downloads[d].version === selectedApp.version)) {
             isDownloaded = true;
             break;
         }
@@ -281,8 +281,8 @@ function onActionSheetDetail() {
 function onActionSheetDelete() {
     closeActionSheet();
     if (selectedApp) {
-        removeDownloadRecord(selectedApp.name);
-        showToast("Đã xoá " + selectedApp.name + " khỏi lịch sử tải.");
+        removeDownloadRecord(selectedApp.plist, selectedApp.name, selectedApp.version);
+        showToast("Đã xoá " + selectedApp.name + " (" + selectedApp.version + ") khỏi lịch sử tải.");
         updateDownloadBadge();
         // Nếu đang ở màn hình Quản lý tải thì tải lại
         if (document.getElementById('download-manager-modal').style.display === 'block') {
@@ -327,7 +327,7 @@ function recordDownload(app) {
     var dateStr = now.getDate() + "-" + (now.getMonth() + 1) + "-" + now.getFullYear();
 
     for (var i = 0; i < downloads.length; i++) {
-        if (downloads[i].name === app.name) {
+        if (downloads[i].plist === app.plist || (downloads[i].name === app.name && downloads[i].version === app.version)) {
             downloads[i].date = dateStr;
             downloads[i].status = "Đã cài";
             exists = true;
@@ -360,11 +360,12 @@ function getStoredDownloads() {
     }
 }
 
-function removeDownloadRecord(appName) {
+function removeDownloadRecord(appPlist, appName, appVersion) {
     var downloads = getStoredDownloads();
     var filtered = [];
     for (var i = 0; i < downloads.length; i++) {
-        if (downloads[i].name !== appName) {
+        var matchSame = (appPlist && downloads[i].plist === appPlist) || (downloads[i].name === appName && downloads[i].version === appVersion);
+        if (!matchSame) {
             filtered.push(downloads[i]);
         }
     }
@@ -716,7 +717,8 @@ function handleSearch(keyword) {
             results.push(a);
         }
     }
-    renderAppList(results);
+    filteredApps = results;
+    renderAppList(filteredApps);
 }
 
 function clearSearch() {

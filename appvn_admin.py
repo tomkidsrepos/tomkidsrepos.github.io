@@ -20,6 +20,7 @@ Hỗ trợ 2 phân hệ chuyên biệt:
 """
 
 import os
+import re
 import sys
 
 if sys.platform == 'win32':
@@ -164,7 +165,12 @@ def deb_to_ipa(deb_path, output_ipa_path):
 # ==============================================================================
 # 2. TRÍCH XUẤT METADATA TỪ IPA
 # ==============================================================================
-def extract_ipa_info(ipa_path):
+def make_safe_slug(val, fallback='1.0'):
+    s = re.sub(r'[^a-zA-Z0-9._-]+', '_', str(val or '').strip()).strip('._-')
+    return s or fallback
+
+
+def extract_ipa_info(ipa_path, custom_name=None, custom_version=None):
     print(f"[*] Đang phân tích file IPA: {ipa_path}")
     with zipfile.ZipFile(ipa_path, 'r') as ipa:
         info_plist_path = None
@@ -179,8 +185,8 @@ def extract_ipa_info(ipa_path):
         with ipa.open(info_plist_path) as f:
             plist = plistlib.load(f)
 
-        app_name = plist.get('CFBundleDisplayName') or plist.get('CFBundleName', 'App')
-        version = plist.get('CFBundleShortVersionString') or plist.get('CFBundleVersion', '1.0')
+        app_name = (custom_name.strip() if custom_name and custom_name.strip() else None) or plist.get('CFBundleDisplayName') or plist.get('CFBundleName', 'App')
+        version = (custom_version.strip() if custom_version and custom_version.strip() else None) or plist.get('CFBundleShortVersionString') or plist.get('CFBundleVersion', '1.0')
         bundle_id = plist.get('CFBundleIdentifier', 'com.tomkids.app')
         min_os = plist.get('MinimumOSVersion', '4.3')
 
@@ -204,7 +210,9 @@ def extract_ipa_info(ipa_path):
                         if '@2x' in basename or '@3x' in basename:
                             break
 
-        icon_rel_path = f"ota_apps/icons/{bundle_id}.png"
+        safe_bid = make_safe_slug(bundle_id, 'com.tomkids.app')
+        safe_ver = make_safe_slug(version, '1.0')
+        icon_rel_path = f"ota_apps/icons/{safe_bid}_{safe_ver}.png"
         icon_dest = os.path.join(REPO_DIR, icon_rel_path)
         if best_icon:
             with ipa.open(best_icon) as source, open(icon_dest, 'wb') as target:
@@ -215,7 +223,7 @@ def extract_ipa_info(ipa_path):
 
         return {
             "name": app_name,
-            "version": version,
+            "version": str(version),
             "bundle_id": bundle_id,
             "min_os": min_os,
             "icon": icon_rel_path
@@ -383,7 +391,9 @@ def create_ota_plist(app_info, ipa_download_url):
     version = app_info["version"]
     icon_url = f"https://tomkidsrepo.cloud/{app_info['icon']}"
 
-    plist_rel_path = f"ota_apps/{bundle_id}.plist"
+    safe_bid = make_safe_slug(bundle_id, 'com.tomkids.app')
+    safe_ver = make_safe_slug(version, '1.0')
+    plist_rel_path = f"ota_apps/{safe_bid}_{safe_ver}.plist"
     plist_full_path = os.path.join(REPO_DIR, plist_rel_path)
 
     xml_content = f'''<?xml version="1.0" encoding="UTF-8"?>
@@ -439,9 +449,17 @@ def update_ota_json(category, app_record):
     if category not in data:
         data[category] = []
 
+    new_plist = (app_record.get('plist') or '').strip()
+    new_name = (app_record.get('name') or '').strip().lower()
+    new_ver = str(app_record.get('version') or '').strip().lower()
+
     updated = False
     for i, app in enumerate(data[category]):
-        if app.get('plist') == app_record.get('plist') or app.get('name') == app_record.get('name'):
+        old_plist = (app.get('plist') or '').strip()
+        old_name = (app.get('name') or '').strip().lower()
+        old_ver = str(app.get('version') or '').strip().lower()
+
+        if (new_plist and old_plist == new_plist) or (new_name and old_name == new_name and old_ver == new_ver):
             data[category][i] = app_record
             updated = True
             break
@@ -776,6 +794,18 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                         <option value="Hình nền">🖼️ Hình nền (.jpg / .png)</option>
                     </optgroup>
                 </select>
+
+                <!-- TÙY CHỌN TÊN & PHIÊN BẢN RIÊNG (CHỐNG TRÙNG VER) -->
+                <div class="form-row" style="margin-top:12px;">
+                    <div>
+                        <label style="margin-top:0;">Tên hiển thị (Tùy chọn):</label>
+                        <input type="text" id="custom-name-input" placeholder="Để trống = Tự đọc từ file IPA">
+                    </div>
+                    <div>
+                        <label style="margin-top:0;">Phiên bản (Tùy chọn):</label>
+                        <input type="text" id="custom-version-input" placeholder="VD: 1.3 hoặc 2.0 (Trống = Tự đọc IPA)">
+                    </div>
+                </div>
 
                 <!-- TÙY CHỌN LINK GITHUB RELEASES -->
                 <label>Đường dẫn tải trên GitHub Releases (Tùy chọn):</label>
@@ -1154,6 +1184,12 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             formData.append('source_type', 'file');
             formData.append('category', category);
             formData.append('release_url', releaseUrl);
+            if (!chosenFiles || chosenFiles.length <= 1) {
+                var cName = (document.getElementById('custom-name-input') || {}).value || '';
+                var cVer = (document.getElementById('custom-version-input') || {}).value || '';
+                if (cName.trim()) formData.append('custom_name', cName.trim());
+                if (cVer.trim()) formData.append('custom_version', cVer.trim());
+            }
             var showHomeEl = document.getElementById('ota-show-on-home');
             formData.append('show_on_home', (showHomeEl && showHomeEl.checked) ? 'true' : 'false');
             formData.append('file', file);
@@ -1270,6 +1306,10 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             var formData = new FormData();
             formData.append('category', category);
             formData.append('release_url', releaseUrl);
+            var cNameSingle = (document.getElementById('custom-name-input') || {}).value || '';
+            var cVerSingle = (document.getElementById('custom-version-input') || {}).value || '';
+            if (cNameSingle.trim()) formData.append('custom_name', cNameSingle.trim());
+            if (cVerSingle.trim()) formData.append('custom_version', cVerSingle.trim());
             var showHomeEl = document.getElementById('ota-show-on-home');
             formData.append('show_on_home', (showHomeEl && showHomeEl.checked) ? 'true' : 'false');
             formData.append('source_type', currentSourceTab);
@@ -2347,7 +2387,7 @@ def resolve_and_download_link(link, target_path):
     return target_path
 
 
-def process_file_item(target_file_path, category=None, release_url=None, show_on_home=False):
+def process_file_item(target_file_path, category=None, release_url=None, show_on_home=False, custom_name=None, custom_version=None):
     if not target_file_path or not os.path.exists(target_file_path):
         raise Exception(f"File không tồn tại: {target_file_path}")
 
@@ -2462,8 +2502,10 @@ def process_file_item(target_file_path, category=None, release_url=None, show_on
             shutil.move(target_file_path, new_ipa_path)
             target_file_path = new_ipa_path
 
-        app_info = extract_ipa_info(target_file_path)
-        safe_name = f"{app_info['bundle_id']}_{app_info['version']}.ipa"
+        app_info = extract_ipa_info(target_file_path, custom_name=custom_name, custom_version=custom_version)
+        safe_bid = make_safe_slug(app_info['bundle_id'], 'com.tomkids.app')
+        safe_ver = make_safe_slug(app_info['version'], '1.0')
+        safe_name = f"{safe_bid}_{safe_ver}.ipa"
         final_ipa_path = os.path.join(INCOMING_DIR, safe_name)
         if target_file_path != final_ipa_path:
             shutil.move(target_file_path, final_ipa_path)
@@ -2506,6 +2548,8 @@ def process_upload():
         category = request.form.get('category', 'Trò Chơi')
         release_url = request.form.get('release_url', '').strip()
         show_on_home = request.form.get('show_on_home', 'false').lower() == 'true'
+        custom_name = request.form.get('custom_name', '').strip()
+        custom_version = request.form.get('custom_version', '').strip()
 
         target_file_path = None
 
@@ -2532,7 +2576,7 @@ def process_upload():
             target_file_path = os.path.join(INCOMING_DIR, f"temp_{url_filename}")
             resolve_and_download_link(link, target_file_path)
 
-        res = process_file_item(target_file_path, category=category, release_url=release_url, show_on_home=show_on_home)
+        res = process_file_item(target_file_path, category=category, release_url=release_url, show_on_home=show_on_home, custom_name=custom_name, custom_version=custom_version)
         return jsonify(res)
 
     except Exception as e:
