@@ -10,7 +10,8 @@
             "name": "TikTok",
             "version": "1.0",
             "icon": "ota_apps/icons/com.atnik.tiktok.png",
-            "plist": "ota_apps/com.atnik.tiktok.plist"
+            "plist": "ota_apps/com.atnik.tiktok.plist",
+            "hidden": true
         },
         {
             "name": "OldTik",
@@ -205,31 +206,36 @@
             "name": "Tap Tap 4",
             "version": "22540",
             "icon": "ota_apps/icons/com.tapulous.taptaprevenge4.png",
-            "plist": "ota_apps/com.tapulous.taptaprevenge4.plist"
+            "plist": "ota_apps/com.tapulous.taptaprevenge4.plist",
+            "hidden": true
         },
         {
             "name": "TapFighters",
             "version": "1.0",
             "icon": "ota_apps/icons/com.HenLungChou.TapFighters.png",
-            "plist": "ota_apps/com.HenLungChou.TapFighters.plist"
+            "plist": "ota_apps/com.HenLungChou.TapFighters.plist",
+            "hidden": true
         },
         {
             "name": "Y! Messenger",
             "version": "1.2.3",
             "icon": "ota_apps/icons/com.yahoo.messenger.png",
-            "plist": "ota_apps/com.yahoo.messenger.plist"
+            "plist": "ota_apps/com.yahoo.messenger.plist",
+            "hidden": true
         },
         {
             "name": "Đ.Hình.B.Chữ",
             "version": "1.0",
             "icon": "ota_apps/icons/com.bugunsoft.picturepuzzle.png",
-            "plist": "ota_apps/com.bugunsoft.picturepuzzle.plist"
+            "plist": "ota_apps/com.bugunsoft.picturepuzzle.plist",
+            "hidden": true
         },
         {
             "name": "Flashlight",
             "version": "2.1.4",
             "icon": "ota_apps/icons/com.ihandysoft.flashlight.led.pro.png",
-            "plist": "ota_apps/com.ihandysoft.flashlight.led.pro.plist"
+            "plist": "ota_apps/com.ihandysoft.flashlight.led.pro.plist",
+            "hidden": true
         }
     ],
     "Công Cụ": [
@@ -289,7 +295,8 @@
             "name": "oldpipe",
             "version": "1.0",
             "icon": "ota_apps/icons/rousseaddict.oldpipe.png",
-            "plist": "ota_apps/rousseaddict.oldpipe.plist"
+            "plist": "ota_apps/rousseaddict.oldpipe.plist",
+            "hidden": true
         },
         {
             "name": "GoTV",
