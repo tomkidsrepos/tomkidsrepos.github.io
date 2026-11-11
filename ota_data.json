@@ -90,20 +90,23 @@
         {
             "name": "PvZ",
             "version": "1.0",
-            "icon": "ota_apps/icons/com.popcap.PvZ.png",
-            "plist": "ota_apps/com.popcap.PvZ.plist"
+            "icon": "ota_apps/icons/com.popcap.PvZ_1.0.png",
+            "plist": "ota_apps/com.popcap.PvZ_1.0.plist",
+            "show_on_home": false
         },
         {
             "name": "MyTetris-Lite",
             "version": "4.2.1",
-            "icon": "ota_apps/icons/com.hzapptech.tetris-lite.png",
-            "plist": "ota_apps/com.hzapptech.tetris-lite.plist"
+            "icon": "ota_apps/icons/com.hzapptech.tetris-lite_4.2.1.png",
+            "plist": "ota_apps/com.hzapptech.tetris-lite_4.2.1.plist",
+            "show_on_home": false
         },
         {
             "name": "Flappy Bird",
             "version": "1.2",
-            "icon": "ota_apps/icons/com.dotgears.flap.png",
-            "plist": "ota_apps/com.dotgears.flap.plist"
+            "icon": "ota_apps/icons/com.dotgears.flap_1.2.png",
+            "plist": "ota_apps/com.dotgears.flap_1.2.plist",
+            "show_on_home": false
         },
         {
             "name": "jellyold",
@@ -115,8 +118,9 @@
         {
             "name": "Dao Vang",
             "version": "2.2",
-            "icon": "ota_apps/icons/com.ifunsoft.daovang.png",
-            "plist": "ota_apps/com.ifunsoft.daovang.plist"
+            "icon": "ota_apps/icons/com.ifunsoft.daovang_2.2.png",
+            "plist": "ota_apps/com.ifunsoft.daovang_2.2.plist",
+            "show_on_home": false
         },
         {
             "name": "Bowman",
@@ -268,6 +272,174 @@
             "plist": "ota_apps/com.google.ios.youtube_2.0.0.plist",
             "show_on_home": true,
             "hidden": true
+        },
+        {
+            "name": "101 GamesHD",
+            "version": "1.0.6",
+            "icon": "ota_apps/icons/com.nordcurrent.101in1HD_1.0.6.png",
+            "plist": "ota_apps/com.nordcurrent.101in1HD_1.0.6.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "AoZ",
+            "version": "1.2.81",
+            "icon": "ota_apps/icons/com.halfbrick.AoZ_1.2.81.png",
+            "plist": "ota_apps/com.halfbrick.AoZ_1.2.81.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Angry Birds",
+            "version": "1.5.0",
+            "icon": "ota_apps/icons/com.clickgamer.AngryBirds_1.5.0.png",
+            "plist": "ota_apps/com.clickgamer.AngryBirds_1.5.0.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Bomber 2016",
+            "version": "1.2",
+            "icon": "ota_apps/icons/com.bomber2016.bomberclassic_1.2.png",
+            "plist": "ota_apps/com.bomber2016.bomberclassic_1.2.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Caro",
+            "version": "1.0",
+            "icon": "ota_apps/icons/sunnet.game.Carotest_1.0.png",
+            "plist": "ota_apps/sunnet.game.Carotest_1.0.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "魂斗罗",
+            "version": "1.2.3",
+            "icon": "ota_apps/icons/com.punchboxstudios.hundouluojinhuageming_1.2.3.png",
+            "plist": "ota_apps/com.punchboxstudios.hundouluojinhuageming_1.2.3.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Cut the Rope",
+            "version": "1.2",
+            "icon": "ota_apps/icons/com.chillingo.cuttherope_1.2.png",
+            "plist": "ota_apps/com.chillingo.cuttherope_1.2.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Cờ Tướng",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.BHMedia.CoTuongVietNam_1.0.png",
+            "plist": "ota_apps/com.BHMedia.CoTuongVietNam_1.0.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Earn to Die",
+            "version": "1.0.24",
+            "icon": "ota_apps/icons/com.notdoppler.EarntoDie_1.0.24.png",
+            "plist": "ota_apps/com.notdoppler.EarntoDie_1.0.24.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "AWESOME",
+            "version": "1.40",
+            "icon": "ota_apps/icons/com.nicollhunt.fistofawesome_1.40.png",
+            "plist": "ota_apps/com.nicollhunt.fistofawesome_1.40.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Fieldrunners",
+            "version": "1.6.0",
+            "icon": "ota_apps/icons/com.subatomicstudios.Fieldrunners_1.6.0.png",
+            "plist": "ota_apps/com.subatomicstudios.Fieldrunners_1.6.0.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Golden Miner",
+            "version": "1.1",
+            "icon": "ota_apps/icons/com.handcn.GoldMiner_1.1.png",
+            "plist": "ota_apps/com.handcn.GoldMiner_1.1.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Granny",
+            "version": "1.7.2",
+            "icon": "ota_apps/icons/com.dvloper.granny_1.7.2.png",
+            "plist": "ota_apps/com.dvloper.granny_1.7.2.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Hitman GO",
+            "version": "1.6.20476",
+            "icon": "ota_apps/icons/com.squareenixmontreal.hitmango_1.6.20476.png",
+            "plist": "ota_apps/com.squareenixmontreal.hitmango_1.6.20476.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Kung Fury",
+            "version": "1.0",
+            "icon": "ota_apps/icons/se.hellothere.kungfurygame_1.0.png",
+            "plist": "ota_apps/se.hellothere.kungfurygame_1.0.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Lunar Flowers",
+            "version": "1.0.4",
+            "icon": "ota_apps/icons/com.netease.hyyglobal_1.0.4.png",
+            "plist": "ota_apps/com.netease.hyyglobal_1.0.4.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "MechCom 2",
+            "version": "1.1",
+            "icon": "ota_apps/icons/ru.gamedevteam.mechcom2_1.1.png",
+            "plist": "ota_apps/ru.gamedevteam.mechcom2_1.1.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "NY Nights",
+            "version": "1.1.5",
+            "icon": "ota_apps/icons/com.gameloft.NYNights_1.1.5.png",
+            "plist": "ota_apps/com.gameloft.NYNights_1.1.5.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "PAC-MAN",
+            "version": "1.0.5",
+            "icon": "ota_apps/icons/com.namconetworks.pacman_1.0.5.png",
+            "plist": "ota_apps/com.namconetworks.pacman_1.0.5.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Pikachu",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.afoli.pikachu_1.0.png",
+            "plist": "ota_apps/com.afoli.pikachu_1.0.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "RiseOfGlory",
+            "version": "1.3.0",
+            "icon": "ota_apps/icons/com.namcobandaigames.riseofglory_1.3.0.png",
+            "plist": "ota_apps/com.namcobandaigames.riseofglory_1.3.0.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Temple Run",
+            "version": "1.2",
+            "icon": "ota_apps/icons/com.imangi.templerun_1.2.png",
+            "plist": "ota_apps/com.imangi.templerun_1.2.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Bricks n Balls",
+            "version": "2.0.2",
+            "icon": "ota_apps/icons/com.cmplay.bricksballs_2.0.2.png",
+            "plist": "ota_apps/com.cmplay.bricksballs_2.0.2.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Nestopia",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.macbuildserver.Nestopia_1.0.png",
+            "plist": "ota_apps/com.macbuildserver.Nestopia_1.0.plist",
+            "show_on_home": false
         }
     ],
     "Công Cụ": [
