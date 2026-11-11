@@ -389,7 +389,7 @@ Thêm vào Zebra
     <p style="color:#64748b; font-size:12px; margin-top:16px;">* Máy cần đã jailbreak và đã thêm nguồn Tomkids vào Cydia.</p>
 </section>
 
-<section class="info ota-section">
+<section class="info ota-section" id="ota-section">
     <h2 style="text-align:center; margin-bottom:25px;">KHO ỨNG DỤNG (CÀI TRỰC TIẾP)</h2>
     <p style="margin-bottom:20px; color:#cbd5e1;">Lưu ý: máy cần phải jailbreak, đã cài Apple File Conduit 2, AppSync Unified.</p>
     <div id="ota-container"></div>
@@ -415,12 +415,37 @@ Thêm vào Zebra
         }
     }
 
-    function buildOtaList(otaData) {
+    function inArray(arr, val) {
+        if (!arr) return false;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] === val) return true;
+        }
+        return false;
+    }
+
+    function buildOtaList(otaData, settings) {
+        var otaSection = document.getElementById('ota-section');
+        settings = settings || {};
+        if (settings.hide_ota_section === true) {
+            if (otaSection) otaSection.style.display = 'none';
+            return;
+        }
+        if (otaSection) otaSection.style.display = '';
+        var hiddenCats = settings.hidden_categories || [];
         var container = document.getElementById('ota-container');
         if (!container) return;
         var htmlContent = "";
         for (var category in otaData) {
-            var apps = otaData[category];
+            if (inArray(hiddenCats, category)) continue;
+            var rawApps = otaData[category];
+            var apps = [];
+            if (rawApps && rawApps.length) {
+                for (var k = 0; k < rawApps.length; k++) {
+                    var cand = rawApps[k];
+                    if (cand.hidden === true || cand.show_on_home === false) continue;
+                    apps.push(cand);
+                }
+            }
             if (apps.length > 0) {
                 htmlContent += '<div class="accordion-group">' +
                                '<div class="accordion-header" onclick="toggleAccordion(this)">' +
@@ -448,12 +473,16 @@ Thêm vào Zebra
                 htmlContent += '</div></div>';
             }
         }
+        if (!htmlContent) {
+            htmlContent = "<p style='color:#94a3b8;text-align:center;font-size:13px;'>Hien chua co ung dung nao duoc hien thi tren trang chu.</p>";
+        }
         container.innerHTML = htmlContent;
     }
 
     // ─── Quick Install DEB: render từ quickinstall.json ───────────────────────
     function buildQuickInstallList(items) {
         var container = document.getElementById('quickinstall-container');
+        var visibleCount = 0;
         if (!container) return;
         if (!items || items.length === 0) {
             container.innerHTML = '<p style="color:#475569;font-size:13px;padding:20px;">Chưa có package nào.</p>';
@@ -462,6 +491,8 @@ Thêm vào Zebra
         var html = '';
         for (var i = 0; i < items.length; i++) {
             var item = items[i];
+            if (item.hidden === true) continue;
+            visibleCount++;
             var bgColor = item.color === 'blue'   ? '#2563eb' :
                           item.color === 'orange' ? '#ea580c' : '#16a34a';
             var installUrl = 'cydia://package/' + item.package_id;
@@ -479,6 +510,9 @@ Thêm vào Zebra
                         (item.description ? '<p style="font-size:11px;color:#64748b;margin-top:6px;margin-bottom:0;text-align:center;">' + item.description + '</p>' : '') +
                         (item.note ? '<p style="font-size:11px;color:#f59e0b;margin-top:4px;margin-bottom:0;text-align:center;font-style:italic;">&#9432; ' + item.note + '</p>' : '') +
                     '</div>';
+        }
+        if (visibleCount === 0) {
+            html = '<p style="color:#475569;font-size:13px;padding:20px;">Hiện chưa có package nào được hiển thị.</p>';
         }
         container.innerHTML = html;
     }
@@ -505,6 +539,30 @@ Thêm vào Zebra
     // ──────────────────────────────────────────────────────────────────────────
 
     // iOS 6 compatible: use XMLHttpRequest instead of fetch()
+    var _homeSettings = null;
+    var _otaData = null;
+    function tryBuildOta() {
+        if (_homeSettings !== null && _otaData !== null) {
+            buildOtaList(_otaData, _homeSettings);
+        }
+    }
+    var xhrSettings = new XMLHttpRequest();
+    xhrSettings.open('GET', 'home_settings.json?t=' + new Date().getTime(), true);
+    xhrSettings.onreadystatechange = function() {
+        if (xhrSettings.readyState === 4) {
+            if (xhrSettings.status === 200) {
+                try {
+                    _homeSettings = JSON.parse(xhrSettings.responseText) || {};
+                } catch(e) {
+                    _homeSettings = {};
+                }
+            } else {
+                _homeSettings = {};
+            }
+            tryBuildOta();
+        }
+    };
+    xhrSettings.send();
     var xhr = new XMLHttpRequest();
     xhr.open('GET', 'ota_data.json?t=' + new Date().getTime(), true);
     xhr.onreadystatechange = function() {
@@ -512,7 +570,8 @@ Thêm vào Zebra
             if (xhr.status === 200) {
                 try {
                     var data = JSON.parse(xhr.responseText);
-                    buildOtaList(data);
+                    _otaData = data;
+                    tryBuildOta();
                 } catch(e) {
                     document.getElementById('ota-container').innerHTML = "<p style='color:white;text-align:center;'>Loi tai du lieu.</p>";
                 }

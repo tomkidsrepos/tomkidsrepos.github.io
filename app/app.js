@@ -123,6 +123,7 @@ function processAppData() {
         var list = rawAppData[catName] || [];
         for (var i = 0; i < list.length; i++) {
             var item = list[i];
+            if (item.hidden === true) continue;
             // Chuẩn hóa đường dẫn icon và plist
             var iconUrl = item.icon;
             if (iconUrl.indexOf('http') !== 0) {

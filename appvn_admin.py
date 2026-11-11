@@ -46,6 +46,7 @@ ICONS_DIR = os.path.join(OTA_APPS_DIR, 'icons')
 DATA_JSON_PATH = os.path.join(REPO_DIR, 'ota_data.json')
 MEDIA_JSON_PATH = os.path.join(REPO_DIR, 'media_data.json')
 QUICKINSTALL_JSON_PATH = os.path.join(REPO_DIR, 'quickinstall.json')
+HOME_SETTINGS_PATH = os.path.join(REPO_DIR, 'home_settings.json')
 PACKAGE_REPO_A1_DIR = os.path.abspath(os.path.join(REPO_DIR, '..', 'package_repo_A1'))
 INCOMING_DIR = os.path.join(REPO_DIR, 'incoming')
 
@@ -478,6 +479,44 @@ def update_media_json(section, item_record):
         json.dump(data, f, ensure_ascii=False, indent=4)
 
 
+def load_home_settings():
+    default_settings = {"hide_ota_section": False, "hidden_categories": []}
+    if os.path.exists(HOME_SETTINGS_PATH):
+        try:
+            with open(HOME_SETTINGS_PATH, 'r', encoding='utf-8-sig') as f:
+                data = json.load(f)
+            if isinstance(data, dict):
+                return {
+                    "hide_ota_section": bool(data.get("hide_ota_section", False)),
+                    "hidden_categories": list(data.get("hidden_categories", []))
+                }
+        except:
+            pass
+    return default_settings
+
+
+def save_home_settings(settings):
+    with open(HOME_SETTINGS_PATH, 'w', encoding='utf-8') as f:
+        json.dump(settings, f, ensure_ascii=False, indent=4)
+
+
+def load_ota_data():
+    if os.path.exists(DATA_JSON_PATH):
+        try:
+            with open(DATA_JSON_PATH, 'r', encoding='utf-8-sig') as f:
+                data = json.load(f)
+            if isinstance(data, dict):
+                return data
+        except:
+            pass
+    return {}
+
+
+def save_ota_data(data):
+    with open(DATA_JSON_PATH, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
+
 # ==============================================================================
 # 4. GIAO DIỆN WEB QUẢN TRỊ 2 PHÂN HỆ
 # ==============================================================================
@@ -579,22 +618,25 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             }
             var btnApp = document.getElementById('btn-module-appstore');
             var btnDeb = document.getElementById('btn-module-deb');
+            var btnVis = document.getElementById('btn-module-visibility');
             var conApp = document.getElementById('module-appstore-container');
             var conDeb = document.getElementById('module-deb-container');
+            var conVis = document.getElementById('module-visibility-container');
 
-            if (mod === 'appstore') {
-                if (btnApp) btnApp.className = 'module-tab-btn active';
-                if (btnDeb) btnDeb.className = 'module-tab-btn';
-                if (conApp) conApp.style.display = 'block';
-                if (conDeb) conDeb.style.display = 'none';
-            } else {
-                if (btnApp) btnApp.className = 'module-tab-btn';
-                if (btnDeb) btnDeb.className = 'module-tab-btn active';
-                if (conApp) conApp.style.display = 'none';
-                if (conDeb) conDeb.style.display = 'block';
+            if (btnApp) btnApp.className = (mod === 'appstore') ? 'module-tab-btn active' : 'module-tab-btn';
+            if (btnDeb) btnDeb.className = (mod === 'deb') ? 'module-tab-btn active' : 'module-tab-btn';
+            if (btnVis) btnVis.className = (mod === 'visibility') ? 'module-tab-btn active' : 'module-tab-btn';
+
+            if (conApp) conApp.style.display = (mod === 'appstore') ? 'block' : 'none';
+            if (conDeb) conDeb.style.display = (mod === 'deb') ? 'block' : 'none';
+            if (conVis) conVis.style.display = (mod === 'visibility') ? 'block' : 'none';
+
+            if (mod === 'deb') {
                 if (typeof loadQuickInstallList === 'function') loadQuickInstallList();
                 if (typeof loadDebIncomingList === 'function') loadDebIncomingList();
                 if (typeof updateDebPreview === 'function') updateDebPreview();
+            } else if (mod === 'visibility') {
+                if (typeof loadVisibilityManager === 'function') loadVisibilityManager();
             }
         }
 
@@ -649,11 +691,14 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         
         <!-- THANH CHUYỂN PHÂN HỆ CHÍNH -->
         <div class="top-module-bar">
-            <button type="button" class="module-tab-btn active" id="btn-module-appstore" onclick="switchModule('appstore', event)">
-                🍎 Kho AppStore OTA (IPA / Sách / Nhạc)
+            <button type="button" class="module-tab-btn active" id="btn-module-appstore" onclick="switchModule('appstore', event)" style="font-size:13.5px; padding:12px 10px;">
+                🍎 Kho AppStore OTA
             </button>
-            <button type="button" class="module-tab-btn" id="btn-module-deb" onclick="switchModule('deb', event)">
-                ⚡ Cài Đặt Nhanh DEB (Cydia Tweak)
+            <button type="button" class="module-tab-btn" id="btn-module-deb" onclick="switchModule('deb', event)" style="font-size:13.5px; padding:12px 10px;">
+                ⚡ Cài Đặt Nhanh DEB
+            </button>
+            <button type="button" class="module-tab-btn" id="btn-module-visibility" onclick="switchModule('visibility', event)" style="font-size:13.5px; padding:12px 10px;">
+                👁️ Ẩn/Hiện Kho App
             </button>
         </div>
 
@@ -735,6 +780,15 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 <!-- TÙY CHỌN LINK GITHUB RELEASES -->
                 <label>Đường dẫn tải trên GitHub Releases (Tùy chọn):</label>
                 <input type="text" id="release-url-input" placeholder="Mặc định: https://github.com/.../releases/download/OTA-Storage/app.ipa">
+
+                <!-- TÙY CHỌN HIỂN THỊ TRÊN TRANG CHỦ -->
+                <div style="margin-top:14px; background:#0b1222; padding:12px 14px; border-radius:10px; border:1px solid #334155;">
+                    <label style="display:flex; align-items:center; gap:10px; margin-top:0; cursor:pointer; color:#e2e8f0; font-size:13px; font-weight:600;">
+                        <input type="checkbox" id="ota-show-on-home" style="width:17px; height:17px; cursor:pointer;">
+                        <span>🏠 Hiện thêm ở mục "KHO ỨNG DỤNG (CÀI TRỰC TIẾP)" trên trang chủ</span>
+                    </label>
+                    <p style="font-size:11px; color:#94a3b8; margin-top:5px; margin-left:27px;">Mặc định bỏ tích: App mới sẽ chỉ xuất hiện trong Kho App (/app/), tránh bị lặp 2 lần ở trang chủ.</p>
+                </div>
 
                 <!-- NÚT BẮT ĐẦU XỬ LÝ -->
                 <button type="submit" class="btn-submit" id="btn-submit">
@@ -940,6 +994,81 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             </div>
         </div>
 
+
+        <!-- ================================================================= -->
+        <!-- PHÂN HỆ 3: QUẢN LÝ ẨN / HIỆN KHO ỨNG DỤNG (TRANG CHỦ & /APP/) -->
+        <!-- ================================================================= -->
+        <div id="module-visibility-container" style="display:none;">
+            <div class="header" style="margin-bottom:20px;">
+                <h1>👁️ Quản Lý Ẩn / Hiện Kho App</h1>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button type="button" class="btn-secondary" onclick="loadVisibilityManager()">🔄 Làm Mới</button>
+                    <a href="https://tomkidsrepo.cloud/" target="_blank" class="header-link">🌐 Trang Chủ</a>
+                    <a href="https://tomkidsrepo.cloud/app/" target="_blank" class="header-link">📱 Kho App (/app)</a>
+                </div>
+            </div>
+
+            <!-- CÀI ĐẶT HIỂN THỊ TRÊN TRANG CHỦ -->
+            <div class="existing-card" style="margin-top:0; margin-bottom:20px;">
+                <div class="existing-header" style="margin-bottom:12px;">
+                    <h3 style="font-size:15px; color:#38bdf8;">🏠 Khu Ứng Dụng (Cài Trực Tiếp) Trên Trang Chủ</h3>
+                    <button type="button" id="btn-toggle-home-section" class="btn-action" onclick="toggleHomeSection()" style="padding:7px 14px; font-size:12px; font-weight:bold;">
+                        Đang tải...
+                    </button>
+                </div>
+                <p style="font-size:12px; color:#94a3b8; margin-bottom:12px;">
+                    Ẩn/hiện từng chuyên mục ở phần "KHO ỨNG DỤNG (CÀI TRỰC TIẾP)" trên trang chủ (không ảnh hưởng tới kho /app/):
+                </p>
+                <div id="vis-categories-grid" style="display:flex; flex-wrap:wrap; gap:8px;">
+                    <span style="font-size:12px; color:#64748b;">Đang tải chuyên mục...</span>
+                </div>
+            </div>
+
+            <!-- DANH SÁCH TỪNG ỨNG DỤNG -->
+            <div class="existing-card" style="margin-top:0;">
+                <div class="existing-header" style="flex-wrap:wrap; gap:10px;">
+                    <h3 style="font-size:15px; color:#38bdf8;">📱 Danh Sách Ứng Dụng Trong ota_data.json</h3>
+                    <span id="vis-apps-count" class="badge">Đang tải...</span>
+                </div>
+
+                <div style="display:grid; grid-template-columns: 1.5fr 1fr 1fr; gap:10px; margin-bottom:14px;">
+                    <input type="text" id="vis-search-input" placeholder="🔍 Tìm tên ứng dụng..." oninput="renderVisibilityApps()" style="margin-top:0; padding:9px 12px; font-size:13px;">
+                    <select id="vis-cat-filter" onchange="renderVisibilityApps()" style="margin-top:0; padding:9px 12px; font-size:13px;">
+                        <option value="ALL">📂 Tất cả chuyên mục</option>
+                    </select>
+                    <select id="vis-status-filter" onchange="renderVisibilityApps()" style="margin-top:0; padding:9px 12px; font-size:13px;">
+                        <option value="ALL">👁️ Tất cả trạng thái</option>
+                        <option value="HOME">🏠 Đang hiện trên Trang chủ</option>
+                        <option value="APP_ONLY">📱 Chỉ hiện ở /app/</option>
+                        <option value="HIDDEN">🙈 Đang ẩn hoàn toàn</option>
+                    </select>
+                </div>
+
+                <div id="vis-bulk-bar" style="display:none; margin-bottom:12px; padding:10px 12px; background:#0b1222; border:1px solid #334155; border-radius:10px; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+                    <span id="vis-bulk-label" style="font-size:12px; color:#cbd5e1;">Thao tác nhanh chuyên mục đang chọn:</span>
+                    <div style="display:flex; gap:8px;">
+                        <button type="button" class="btn-action" onclick="bulkSelectedCategoryHome(true)" style="background:#14532d; color:#bbf7d0; border-color:#16a34a;">🏠 Hiện tất cả lên Trang chủ</button>
+                        <button type="button" class="btn-action" onclick="bulkSelectedCategoryHome(false)" style="background:#7c2d12; color:#fed7aa; border-color:#ea580c;">🙈 Ẩn tất cả khỏi Trang chủ</button>
+                    </div>
+                </div>
+
+                <div id="vis-apps-list">
+                    <p style="font-size:13px; color:#64748b; text-align:center; padding:15px;">Đang tải danh sách ứng dụng...</p>
+                </div>
+            </div>
+
+            <!-- FOOTER TOOLS CHO VISIBILITY -->
+            <div class="footer-tools">
+                <div style="font-size:12px; color:#94a3b8; display:flex; align-items:center;">
+                    💡 Thay đổi được lưu ngay vào JSON. Bấm Đồng Bộ để đẩy lên tomkidsrepo.cloud!
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <button type="button" class="btn-secondary" onclick="openGitHubDesktop()">🖥️ Mở GitHub Desktop</button>
+                    <button type="button" class="btn-secondary btn-green" onclick="triggerGitPush()">⚡ Đồng Bộ Lên Web Tức Thì</button>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- ================================================================= -->
@@ -1025,6 +1154,8 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             formData.append('source_type', 'file');
             formData.append('category', category);
             formData.append('release_url', releaseUrl);
+            var showHomeEl = document.getElementById('ota-show-on-home');
+            formData.append('show_on_home', (showHomeEl && showHomeEl.checked) ? 'true' : 'false');
             formData.append('file', file);
 
             var xhr = new XMLHttpRequest();
@@ -1139,6 +1270,8 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             var formData = new FormData();
             formData.append('category', category);
             formData.append('release_url', releaseUrl);
+            var showHomeEl = document.getElementById('ota-show-on-home');
+            formData.append('show_on_home', (showHomeEl && showHomeEl.checked) ? 'true' : 'false');
             formData.append('source_type', currentSourceTab);
 
             if (currentSourceTab === 'link') {
@@ -1232,7 +1365,10 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             var btn = document.getElementById('btn-submit');
             btn.disabled = true;
 
-            fetch('/api/process-all-incoming', { method: 'POST' })
+            var incForm = new FormData();
+            var showHomeEl = document.getElementById('ota-show-on-home');
+            incForm.append('show_on_home', (showHomeEl && showHomeEl.checked) ? 'true' : 'false');
+            fetch('/api/process-all-incoming', { method: 'POST', body: incForm })
                 .then(function(res) { return res.json(); })
                 .then(function(data) {
                     btn.disabled = false;
@@ -1540,14 +1676,17 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 
                     var html = '';
                     quickInstallItems.forEach(function(item, idx) {
+                        var isHidden = item.hidden === true;
                         var colorDot = item.color === 'blue' ? '🔵' : (item.color === 'orange' ? '🟠' : '🟢');
                         var badgeHtml = item.ios_range ? '<span style="background:#0f3460; color:#60a5fa; font-size:10px; padding:2px 6px; border-radius:10px; margin-left:6px;">' + item.ios_range + '</span>' : '';
+                        var hiddenBadge = isHidden ? '<span style="background:#7f1d1d; color:#fca5a5; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🙈 Đang ẩn</span>' : '';
+                        var itemStyle = isHidden ? ' style="opacity:0.6; border-style:dashed; border-color:#7f1d1d;"' : '';
 
-                        html += '<div class="existing-item">' +
+                        html += '<div class="existing-item"' + itemStyle + '>' +
                                     '<div class="item-info">' +
                                         '<div class="item-title">' +
                                             '<span style="color:#64748b; font-size:12px; margin-right:4px;">#' + (idx + 1) + '</span> ' +
-                                            colorDot + ' <b>' + item.name + '</b>' + badgeHtml +
+                                            colorDot + ' <b>' + item.name + '</b>' + badgeHtml + hiddenBadge +
                                         '</div>' +
                                         '<div class="item-pkg">ID: ' + item.package_id + ' (v' + (item.version || '1.0') + ')</div>' +
                                         (item.description ? '<div class="item-desc">' + item.description + '</div>' : '') +
@@ -1556,6 +1695,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                                     '<div class="item-actions">' +
                                         (idx > 0 ? '<button type="button" class="btn-action" title="Di chuyển lên" onclick="moveQuickInstallItem(' + idx + ', -1)">⬆️</button>' : '') +
                                         (idx < quickInstallItems.length - 1 ? '<button type="button" class="btn-action" title="Di chuyển xuống" onclick="moveQuickInstallItem(' + idx + ', 1)">⬇️</button>' : '') +
+                                        '<button type="button" class="btn-action" title="' + (isHidden ? 'Hiện lại nút trên trang chủ' : 'Ẩn nút khỏi trang chủ') + '" onclick="toggleHideQuickInstallItem(' + idx + ')" style="' + (isHidden ? 'background:#14532d; color:#bbf7d0; border-color:#16a34a;' : 'background:#451a03; color:#fed7aa; border-color:#d97706;') + '">' + (isHidden ? '👁️ Hiện' : '🙈 Ẩn') + '</button>' +
                                         '<button type="button" class="btn-action" title="Chỉnh sửa nút này" onclick="editQuickInstallItem(' + idx + ')">✏️ Sửa</button>' +
                                         '<button type="button" class="btn-action btn-action-del" title="Xóa nút này" onclick="deleteQuickInstallItem(' + idx + ')">🗑️</button>' +
                                     '</div>' +
@@ -1660,6 +1800,323 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                         alert('Lỗi: ' + data.error);
                     }
                 });
+        }
+
+        function toggleHideQuickInstallItem(idx) {
+            var item = quickInstallItems[idx];
+            if (!item) return;
+
+            fetch('/api/quickinstall/toggle-hide', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ package_id: item.package_id })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    loadQuickInstallList();
+                } else {
+                    alert('Lỗi: ' + data.error);
+                }
+            })
+            .catch(function(err) {
+                alert('Lỗi kết nối: ' + err);
+            });
+        }
+
+        // ─── MODULE 3: QUẢN LÝ ẨN/HIỆN KHO ỨNG DỤNG ──────────────────────
+        var visOtaData = {};
+        var visHomeSettings = { hide_ota_section: false, hidden_categories: [] };
+        var visCategoriesList = [];
+
+        function escapeVisHtml(str) {
+            return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+        }
+
+        function loadVisibilityManager() {
+            fetch('/api/apps/visibility-data?t=' + Date.now())
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    if (!data.success) {
+                        alert('Lỗi tải dữ liệu: ' + (data.error || 'Không xác định'));
+                        return;
+                    }
+                    visOtaData = data.ota_data || {};
+                    visHomeSettings = data.home_settings || { hide_ota_section: false, hidden_categories: [] };
+                    visCategoriesList = Object.keys(visOtaData);
+                    populateVisCategoryFilter();
+                    renderVisibilityHomeControls();
+                    renderVisibilityApps();
+                })
+                .catch(function(err) {
+                    var listEl = document.getElementById('vis-apps-list');
+                    if (listEl) listEl.innerHTML = '<p style="color:#f87171; font-size:13px; text-align:center;">Lỗi tải dữ liệu: ' + err + '</p>';
+                });
+        }
+
+        function populateVisCategoryFilter() {
+            var sel = document.getElementById('vis-cat-filter');
+            if (!sel) return;
+            var currentVal = sel.value || 'ALL';
+            var html = '<option value="ALL">📂 Tất cả chuyên mục</option>';
+            visCategoriesList.forEach(function(cat) {
+                var count = (visOtaData[cat] || []).length;
+                html += '<option value="' + escapeVisHtml(cat) + '">' + escapeVisHtml(cat) + ' (' + count + ')</option>';
+            });
+            sel.innerHTML = html;
+            if (currentVal === 'ALL' || visCategoriesList.indexOf(currentVal) !== -1) {
+                sel.value = currentVal;
+            }
+        }
+
+        function renderVisibilityHomeControls() {
+            var masterBtn = document.getElementById('btn-toggle-home-section');
+            var hideAll = visHomeSettings.hide_ota_section === true;
+            if (masterBtn) {
+                if (hideAll) {
+                    masterBtn.innerText = '🙈 Đang ẨN cả mục trên Trang Chủ (Bấm để Hiện)';
+                    masterBtn.style.background = '#7f1d1d';
+                    masterBtn.style.color = '#fecaca';
+                    masterBtn.style.borderColor = '#dc2626';
+                } else {
+                    masterBtn.innerText = '👁️ Đang HIỆN mục trên Trang Chủ (Bấm để Ẩn)';
+                    masterBtn.style.background = '#14532d';
+                    masterBtn.style.color = '#bbf7d0';
+                    masterBtn.style.borderColor = '#16a34a';
+                }
+            }
+
+            var grid = document.getElementById('vis-categories-grid');
+            if (!grid) return;
+            var hiddenCats = visHomeSettings.hidden_categories || [];
+            if (visCategoriesList.length === 0) {
+                grid.innerHTML = '<span style="font-size:12px; color:#64748b;">Chưa có chuyên mục nào trong ota_data.json.</span>';
+                return;
+            }
+
+            var html = '';
+            visCategoriesList.forEach(function(cat, cIdx) {
+                var isCatHidden = hiddenCats.indexOf(cat) !== -1;
+                var totalCount = (visOtaData[cat] || []).length;
+                var homeCount = (visOtaData[cat] || []).filter(function(a) {
+                    return a.hidden !== true && a.show_on_home !== false;
+                }).length;
+
+                var btnStyle = isCatHidden
+                    ? 'background:#1e1b24; color:#fca5a5; border:1px dashed #ef4444; padding:8px 12px; border-radius:10px; font-size:12px; cursor:pointer;'
+                    : 'background:#0f2942; color:#bae6fd; border:1px solid #0284c7; padding:8px 12px; border-radius:10px; font-size:12px; cursor:pointer;';
+
+                html += '<button type="button" onclick="toggleHomeCategoryIdx(' + cIdx + ')" style="' + btnStyle + '">' +
+                            (isCatHidden ? '🙈 ' : '👁️ ') +
+                            '<b>' + escapeVisHtml(cat) + '</b> ' +
+                            '<span style="opacity:0.8;">(' + homeCount + '/' + totalCount + ' ở Trang chủ)</span>' +
+                        '</button>';
+            });
+            grid.innerHTML = html;
+        }
+
+        function renderVisibilityApps() {
+            var container = document.getElementById('vis-apps-list');
+            var countBadge = document.getElementById('vis-apps-count');
+            var searchInput = document.getElementById('vis-search-input');
+            var catFilterEl = document.getElementById('vis-cat-filter');
+            var statusFilterEl = document.getElementById('vis-status-filter');
+            var bulkBar = document.getElementById('vis-bulk-bar');
+            var bulkLabel = document.getElementById('vis-bulk-label');
+
+            if (!container) return;
+
+            var keyword = (searchInput ? searchInput.value : '').trim().toLowerCase();
+            var catFilter = catFilterEl ? catFilterEl.value : 'ALL';
+            var statusFilter = statusFilterEl ? statusFilterEl.value : 'ALL';
+
+            if (bulkBar) {
+                if (catFilter !== 'ALL') {
+                    bulkBar.style.display = 'flex';
+                    if (bulkLabel) bulkLabel.innerText = 'Thao tác nhanh chuyên mục "' + catFilter + '":';
+                } else {
+                    bulkBar.style.display = 'none';
+                }
+            }
+
+            var html = '';
+            var totalVisibleMatches = 0;
+            var totalAppsAll = 0;
+
+            visCategoriesList.forEach(function(cat, cIdx) {
+                var list = visOtaData[cat] || [];
+                totalAppsAll += list.length;
+                if (catFilter !== 'ALL' && catFilter !== cat) return;
+
+                list.forEach(function(app, aIdx) {
+                    var appName = app.name || 'Không rõ';
+                    if (keyword && appName.toLowerCase().indexOf(keyword) === -1) return;
+
+                    var isHiddenAll = app.hidden === true;
+                    var isShowHome = !isHiddenAll && (app.show_on_home !== false);
+
+                    if (statusFilter === 'HOME' && !isShowHome) return;
+                    if (statusFilter === 'APP_ONLY' && (isHiddenAll || isShowHome)) return;
+                    if (statusFilter === 'HIDDEN' && !isHiddenAll) return;
+
+                    totalVisibleMatches++;
+
+                    var statusBadge = '';
+                    var rowStyle = '';
+                    if (isHiddenAll) {
+                        statusBadge = '<span style="background:#7f1d1d; color:#fca5a5; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🙈 Ẩn hoàn toàn</span>';
+                        rowStyle = ' style="opacity:0.58; border-style:dashed; border-color:#7f1d1d;"';
+                    } else if (isShowHome) {
+                        statusBadge = '<span style="background:#14532d; color:#86efac; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🏠 Trang chủ + 📱 /app/</span>';
+                    } else {
+                        statusBadge = '<span style="background:#1e3a8a; color:#93c5fd; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">📱 Chỉ ở /app/</span>';
+                    }
+
+                    var homeBtnText = isShowHome ? '🏠 Trang chủ: HIỆN' : '🏠 Trang chủ: ẨN';
+                    var homeBtnStyle = isShowHome
+                        ? 'background:#14532d; color:#bbf7d0; border-color:#16a34a;'
+                        : 'background:#1e293b; color:#94a3b8; border-color:#475569;';
+
+                    var allBtnText = isHiddenAll ? '📱 /app/: ĐANG ẨN' : '📱 /app/: HIỆN';
+                    var allBtnStyle = isHiddenAll
+                        ? 'background:#7f1d1d; color:#fecaca; border-color:#dc2626;'
+                        : 'background:#1e3a8a; color:#dbeafe; border-color:#2563eb;';
+
+                    html += '<div class="existing-item"' + rowStyle + '>' +
+                                '<div class="item-info">' +
+                                    '<div class="item-title">' +
+                                        '<b>' + escapeVisHtml(appName) + '</b>' +
+                                        '<span style="color:#94a3b8; font-size:11px; margin-left:6px;">v' + escapeVisHtml(app.version || '1.0') + '</span>' +
+                                        statusBadge +
+                                    '</div>' +
+                                    '<div class="item-pkg" style="color:#94a3b8;">📂 ' + escapeVisHtml(cat) + '</div>' +
+                                '</div>' +
+                                '<div class="item-actions">' +
+                                    '<button type="button" class="btn-action" style="' + homeBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'show_on_home' + String.fromCharCode(39) + ')" title="Bật/tắt hiển thị ở mục Cài trực tiếp trên Trang chủ">' + homeBtnText + '</button>' +
+                                    '<button type="button" class="btn-action" style="' + allBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'hidden' + String.fromCharCode(39) + ')" title="Ẩn/hiện app khỏi toàn bộ web (cả Trang chủ và /app/)">' + allBtnText + '</button>' +
+                                    '<button type="button" class="btn-action btn-action-del" onclick="deleteOtaApp(' + cIdx + ', ' + aIdx + ')" title="Xóa app khỏi ota_data.json">🗑️</button>' +
+                                '</div>' +
+                            '</div>';
+                });
+            });
+
+            if (countBadge) countBadge.innerText = totalVisibleMatches + ' / ' + totalAppsAll + ' app';
+            if (!html) {
+                container.innerHTML = '<p style="font-size:13px; color:#64748b; text-align:center; padding:15px;">Không có ứng dụng nào khớp bộ lọc.</p>';
+            } else {
+                container.innerHTML = html;
+            }
+        }
+
+        function toggleHomeSection() {
+            var nextHide = !(visHomeSettings.hide_ota_section === true);
+            fetch('/api/apps/toggle-home-section', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ hide: nextHide })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    visHomeSettings = data.home_settings;
+                    renderVisibilityHomeControls();
+                } else {
+                    alert('Lỗi: ' + data.error);
+                }
+            });
+        }
+
+        function toggleHomeCategoryIdx(catIdx) {
+            var cat = visCategoriesList[catIdx];
+            if (!cat) return;
+            var hiddenCats = visHomeSettings.hidden_categories || [];
+            var nextHide = hiddenCats.indexOf(cat) === -1;
+
+            fetch('/api/apps/toggle-home-category', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ category: cat, hide: nextHide })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    visHomeSettings = data.home_settings;
+                    renderVisibilityHomeControls();
+                } else {
+                    alert('Lỗi: ' + data.error);
+                }
+            });
+        }
+
+        function toggleAppFlag(catIdx, appIdx, field) {
+            var cat = visCategoriesList[catIdx];
+            if (!cat || !visOtaData[cat] || !visOtaData[cat][appIdx]) return;
+            var item = visOtaData[cat][appIdx];
+            var curVal = (field === 'show_on_home') ? (item.show_on_home !== false) : (item.hidden === true);
+            var nextVal = !curVal;
+
+            fetch('/api/apps/toggle-item', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ category: cat, index: appIdx, field: field, value: nextVal })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    visOtaData[cat][appIdx] = data.item;
+                    renderVisibilityHomeControls();
+                    renderVisibilityApps();
+                } else {
+                    alert('Lỗi: ' + data.error);
+                }
+            });
+        }
+
+        function bulkSelectedCategoryHome(showOnHome) {
+            var catFilterEl = document.getElementById('vis-cat-filter');
+            var cat = catFilterEl ? catFilterEl.value : 'ALL';
+            if (!cat || cat === 'ALL') return;
+
+            fetch('/api/apps/bulk-home-category', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ category: cat, show_on_home: showOnHome })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    (visOtaData[cat] || []).forEach(function(it) { it.show_on_home = showOnHome; });
+                    renderVisibilityHomeControls();
+                    renderVisibilityApps();
+                } else {
+                    alert('Lỗi: ' + data.error);
+                }
+            });
+        }
+
+        function deleteOtaApp(catIdx, appIdx) {
+            var cat = visCategoriesList[catIdx];
+            if (!cat || !visOtaData[cat] || !visOtaData[cat][appIdx]) return;
+            var item = visOtaData[cat][appIdx];
+            if (!confirm('Bạn có chắc chắn muốn XÓA "' + (item.name || 'app này') + '" khỏi danh sách ota_data.json?')) {
+                return;
+            }
+            fetch('/api/apps/delete-item', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ category: cat, index: appIdx })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    visOtaData[cat].splice(appIdx, 1);
+                    populateVisCategoryFilter();
+                    renderVisibilityHomeControls();
+                    renderVisibilityApps();
+                } else {
+                    alert('Lỗi: ' + data.error);
+                }
+            });
         }
 
         function handleDebFormSubmit(e) {
@@ -1890,7 +2347,7 @@ def resolve_and_download_link(link, target_path):
     return target_path
 
 
-def process_file_item(target_file_path, category=None, release_url=None):
+def process_file_item(target_file_path, category=None, release_url=None, show_on_home=False):
     if not target_file_path or not os.path.exists(target_file_path):
         raise Exception(f"File không tồn tại: {target_file_path}")
 
@@ -2024,7 +2481,8 @@ def process_file_item(target_file_path, category=None, release_url=None):
             "name": app_info["name"],
             "version": app_info["version"],
             "icon": app_info["icon"],
-            "plist": plist_path
+            "plist": plist_path,
+            "show_on_home": bool(show_on_home)
         }
         update_ota_json(actual_cat, record)
 
@@ -2047,6 +2505,7 @@ def process_upload():
         source_type = request.form.get('source_type', 'file')
         category = request.form.get('category', 'Trò Chơi')
         release_url = request.form.get('release_url', '').strip()
+        show_on_home = request.form.get('show_on_home', 'false').lower() == 'true'
 
         target_file_path = None
 
@@ -2073,7 +2532,7 @@ def process_upload():
             target_file_path = os.path.join(INCOMING_DIR, f"temp_{url_filename}")
             resolve_and_download_link(link, target_file_path)
 
-        res = process_file_item(target_file_path, category=category, release_url=release_url)
+        res = process_file_item(target_file_path, category=category, release_url=release_url, show_on_home=show_on_home)
         return jsonify(res)
 
     except Exception as e:
@@ -2086,6 +2545,8 @@ def process_all_incoming():
         if not os.path.exists(INCOMING_DIR):
             return jsonify({"success": False, "error": "Thư mục incoming/ không tồn tại!"})
 
+        show_on_home = request.form.get('show_on_home', 'false').lower() == 'true'
+
         valid_exts = ('.ipa', '.deb', '.pdf', '.epub', '.m4r', '.mp3', '.jpg', '.jpeg', '.png')
         all_entries = [f for f in os.listdir(INCOMING_DIR) if not f.startswith('.') and not f.endswith('.plist')]
         files = [f for f in all_entries if f.lower().endswith(valid_exts) and os.path.isfile(os.path.join(INCOMING_DIR, f))]
@@ -2097,7 +2558,7 @@ def process_all_incoming():
         for f in sorted(files):
             fpath = os.path.join(INCOMING_DIR, f)
             try:
-                res = process_file_item(fpath)
+                res = process_file_item(fpath, show_on_home=show_on_home)
                 results.append({
                     "file": f,
                     "success": True,
@@ -2382,6 +2843,145 @@ def api_quickinstall_reorder():
             branch="main"
         )
         return jsonify({"success": True, "message": "Đã lưu và đồng bộ thứ tự các nút!"})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/quickinstall/toggle-hide', methods=['POST'])
+def api_quickinstall_toggle_hide():
+    try:
+        data = request.get_json(silent=True) or {}
+        pkg_id = (data.get('package_id') or request.form.get('package_id') or '').strip()
+        if not pkg_id:
+            return jsonify({"success": False, "error": "Thiếu package_id!"})
+
+        items = load_quickinstall_data()
+        target_item = None
+        for it in items:
+            if it.get('package_id') == pkg_id:
+                it['hidden'] = not bool(it.get('hidden', False))
+                target_item = it
+                break
+
+        if not target_item:
+            return jsonify({"success": False, "error": f"Không tìm thấy package_id: {pkg_id}"})
+
+        save_quickinstall_data(items)
+        push_io_ok, push_io_msg = git_push_repo(
+            REPO_DIR,
+            f"Toggle visibility Quick Install: {pkg_id}",
+            branch="main"
+        )
+        state_text = "ĐÃ ẨN khỏi trang chủ" if target_item['hidden'] else "ĐÃ HIỆN lại trên trang chủ"
+        msg = f"{state_text}: {target_item.get('name', pkg_id)}"
+        if not push_io_ok:
+            msg += f" (Chưa đẩy Git: {push_io_msg} - hãy bấm Đồng Bộ Lên Web Tức Thì)"
+        return jsonify({"success": True, "hidden": target_item['hidden'], "message": msg})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/apps/visibility-data', methods=['GET'])
+def api_apps_visibility_data():
+    try:
+        return jsonify({
+            "success": True,
+            "ota_data": load_ota_data(),
+            "home_settings": load_home_settings()
+        })
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/apps/toggle-home-section', methods=['POST'])
+def api_apps_toggle_home_section():
+    try:
+        data = request.get_json(silent=True) or {}
+        settings = load_home_settings()
+        settings['hide_ota_section'] = bool(data.get('hide', not settings.get('hide_ota_section', False)))
+        save_home_settings(settings)
+        return jsonify({"success": True, "home_settings": settings})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/apps/toggle-home-category', methods=['POST'])
+def api_apps_toggle_home_category():
+    try:
+        data = request.get_json(silent=True) or {}
+        cat = data.get('category', '')
+        if not cat:
+            return jsonify({"success": False, "error": "Thiếu tên chuyên mục!"})
+        settings = load_home_settings()
+        hidden_cats = list(settings.get('hidden_categories', []))
+        hide = data.get('hide')
+        if hide is None:
+            hide = cat not in hidden_cats
+        if hide and cat not in hidden_cats:
+            hidden_cats.append(cat)
+        elif not hide and cat in hidden_cats:
+            hidden_cats = [c for c in hidden_cats if c != cat]
+        settings['hidden_categories'] = hidden_cats
+        save_home_settings(settings)
+        return jsonify({"success": True, "home_settings": settings})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/apps/toggle-item', methods=['POST'])
+def api_apps_toggle_item():
+    try:
+        data = request.get_json(silent=True) or {}
+        cat = data.get('category', '')
+        idx = int(data.get('index', -1))
+        field = data.get('field', '')
+        if field not in ('show_on_home', 'hidden'):
+            return jsonify({"success": False, "error": "Trường cập nhật không hợp lệ!"})
+
+        ota_data = load_ota_data()
+        if cat not in ota_data or idx < 0 or idx >= len(ota_data[cat]):
+            return jsonify({"success": False, "error": "Không tìm thấy ứng dụng cần cập nhật!"})
+
+        item = ota_data[cat][idx]
+        default_val = True if field == 'show_on_home' else False
+        current_val = bool(item.get(field, default_val))
+        new_val = bool(data['value']) if 'value' in data else (not current_val)
+        item[field] = new_val
+        save_ota_data(ota_data)
+        return jsonify({"success": True, "item": item})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/apps/bulk-home-category', methods=['POST'])
+def api_apps_bulk_home_category():
+    try:
+        data = request.get_json(silent=True) or {}
+        cat = data.get('category', '')
+        show_on_home = bool(data.get('show_on_home', True))
+        ota_data = load_ota_data()
+        if cat not in ota_data:
+            return jsonify({"success": False, "error": "Không tìm thấy chuyên mục!"})
+        for item in ota_data[cat]:
+            item['show_on_home'] = show_on_home
+        save_ota_data(ota_data)
+        return jsonify({"success": True})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/apps/delete-item', methods=['POST'])
+def api_apps_delete_item():
+    try:
+        data = request.get_json(silent=True) or {}
+        cat = data.get('category', '')
+        idx = int(data.get('index', -1))
+        ota_data = load_ota_data()
+        if cat not in ota_data or idx < 0 or idx >= len(ota_data[cat]):
+            return jsonify({"success": False, "error": "Không tìm thấy ứng dụng cần xóa!"})
+        removed = ota_data[cat].pop(idx)
+        save_ota_data(ota_data)
+        return jsonify({"success": True, "removed": removed.get("name", "")})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 
