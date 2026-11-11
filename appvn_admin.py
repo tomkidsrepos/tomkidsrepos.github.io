@@ -2025,6 +2025,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     html += '<div class="existing-item"' + rowStyle + '>' +
                                 '<div class="item-info">' +
                                     '<div class="item-title">' +
+                                        '<span style="color:#64748b; font-size:12px; margin-right:4px;">#' + (aIdx + 1) + '</span> ' +
                                         '<b>' + escapeVisHtml(appName) + '</b>' +
                                         '<span style="color:#94a3b8; font-size:11px; margin-left:6px;">v' + escapeVisHtml(app.version || '1.0') + '</span>' +
                                         statusBadge +
@@ -2032,6 +2033,8 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                                     '<div class="item-pkg" style="color:#94a3b8;">📂 ' + escapeVisHtml(cat) + '</div>' +
                                 '</div>' +
                                 '<div class="item-actions">' +
+                                    (aIdx > 0 ? '<button type="button" class="btn-action" title="Di chuyển lên trong chuyên mục" onclick="moveOtaApp(' + cIdx + ', ' + aIdx + ', -1)">⬆️</button>' : '') +
+                                    (aIdx < list.length - 1 ? '<button type="button" class="btn-action" title="Di chuyển xuống trong chuyên mục" onclick="moveOtaApp(' + cIdx + ', ' + aIdx + ', 1)">⬇️</button>' : '') +
                                     '<button type="button" class="btn-action" style="' + homeBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'show_on_home' + String.fromCharCode(39) + ')" title="Bật/tắt hiển thị ở mục Cài trực tiếp trên Trang chủ">' + homeBtnText + '</button>' +
                                     '<button type="button" class="btn-action" style="' + allBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'hidden' + String.fromCharCode(39) + ')" title="Ẩn/hiện app khỏi toàn bộ web (cả Trang chủ và /app/)">' + allBtnText + '</button>' +
                                     '<button type="button" class="btn-action btn-action-del" onclick="deleteOtaApp(' + cIdx + ', ' + aIdx + ')" title="Xóa app khỏi ota_data.json">🗑️</button>' +
@@ -2131,6 +2134,34 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 } else {
                     alert('Lỗi: ' + data.error);
                 }
+            });
+        }
+
+        function moveOtaApp(catIdx, appIdx, dir) {
+            var cat = visCategoriesList[catIdx];
+            if (!cat || !visOtaData[cat]) return;
+            var list = visOtaData[cat];
+            var targetIdx = appIdx + dir;
+            if (targetIdx < 0 || targetIdx >= list.length) return;
+
+            fetch('/api/apps/move-item', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ category: cat, index: appIdx, direction: dir })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    var temp = list[appIdx];
+                    list[appIdx] = list[targetIdx];
+                    list[targetIdx] = temp;
+                    renderVisibilityApps();
+                } else {
+                    alert('Lỗi: ' + data.error);
+                }
+            })
+            .catch(function(err) {
+                alert('Lỗi kết nối: ' + err);
             });
         }
 
@@ -3026,6 +3057,31 @@ def api_apps_delete_item():
         removed = ota_data[cat].pop(idx)
         save_ota_data(ota_data)
         return jsonify({"success": True, "removed": removed.get("name", "")})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/apps/move-item', methods=['POST'])
+def api_apps_move_item():
+    try:
+        data = request.get_json(silent=True) or {}
+        cat = data.get('category', '')
+        idx = int(data.get('index', -1))
+        direction = int(data.get('direction', 0))
+        if direction not in (-1, 1):
+            return jsonify({"success": False, "error": "Hướng di chuyển không hợp lệ!"})
+
+        ota_data = load_ota_data()
+        if cat not in ota_data or idx < 0 or idx >= len(ota_data[cat]):
+            return jsonify({"success": False, "error": "Không tìm thấy ứng dụng!"})
+
+        target_idx = idx + direction
+        if target_idx < 0 or target_idx >= len(ota_data[cat]):
+            return jsonify({"success": False, "error": "Đã ở vị trí đầu hoặc cuối chuyên mục!"})
+
+        ota_data[cat][idx], ota_data[cat][target_idx] = ota_data[cat][target_idx], ota_data[cat][idx]
+        save_ota_data(ota_data)
+        return jsonify({"success": True, "new_index": target_idx})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 

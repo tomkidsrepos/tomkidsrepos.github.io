@@ -296,16 +296,31 @@
     "Giải Trí": [
         {
             "name": "YouTube",
+            "version": "1.0.0",
+            "icon": "ota_apps/icons/com.google.ios.youtube_1.0.0.png",
+            "plist": "ota_apps/com.google.ios.youtube_1.0.0.plist",
+            "show_on_home": true
+        },
+        {
+            "name": "YouTube",
+            "version": "1.3.0",
+            "icon": "ota_apps/icons/com.google.ios.youtube_1.3.0.png",
+            "plist": "ota_apps/com.google.ios.youtube_1.3.0.plist",
+            "show_on_home": true
+        },
+        {
+            "name": "YouTube",
             "version": "1.4.0",
             "icon": "ota_apps/icons/com.google.ios.youtube.png",
             "plist": "ota_apps/com.google.ios.youtube.plist",
             "show_on_home": true
         },
         {
-            "name": "Nhạc Của Tui",
-            "version": "5.3.1",
-            "icon": "ota_apps/icons/com.nhaccuatui.mobile.version2.png",
-            "plist": "ota_apps/com.nhaccuatui.mobile.version2.plist"
+            "name": "YouTube",
+            "version": "2.0.0",
+            "icon": "ota_apps/icons/com.google.ios.youtube_2.0.0.png",
+            "plist": "ota_apps/com.google.ios.youtube_2.0.0.plist",
+            "show_on_home": true
         },
         {
             "name": "NhacCuaTui",
@@ -314,10 +329,28 @@
             "plist": "ota_apps/com.nct.musiclite.plist"
         },
         {
+            "name": "Nhạc Của Tui",
+            "version": "5.3.1",
+            "icon": "ota_apps/icons/com.nhaccuatui.mobile.version2.png",
+            "plist": "ota_apps/com.nhaccuatui.mobile.version2.plist"
+        },
+        {
             "name": "YTNine",
             "version": "1.1.1",
             "icon": "ota_apps/icons/com.himais0giiiin.ytnine.png",
             "plist": "ota_apps/com.himais0giiiin.ytnine.plist"
+        },
+        {
+            "name": "Troubadour",
+            "version": "1.3",
+            "icon": "ota_apps/icons/ru.computershik.troubadour.png",
+            "plist": "ota_apps/ru.computershik.troubadour.plist"
+        },
+        {
+            "name": "Opaline",
+            "version": "1.12.0",
+            "icon": "ota_apps/icons/com.verback.YTLite.png",
+            "plist": "ota_apps/com.verback.YTLite.plist"
         },
         {
             "name": "oldpipe",
@@ -325,12 +358,6 @@
             "icon": "ota_apps/icons/rousseaddict.oldpipe.png",
             "plist": "ota_apps/rousseaddict.oldpipe.plist",
             "hidden": true
-        },
-        {
-            "name": "GoTV",
-            "version": "1.2.2",
-            "icon": "ota_apps/icons/com.ls.GoTV.png",
-            "plist": "ota_apps/com.ls.GoTV.plist"
         },
         {
             "name": "FLAC Player+",
@@ -351,12 +378,6 @@
             "plist": "ota_apps/com.soundwave.app.plist"
         },
         {
-            "name": "Troubadour",
-            "version": "1.3",
-            "icon": "ota_apps/icons/ru.computershik.troubadour.png",
-            "plist": "ota_apps/ru.computershik.troubadour.plist"
-        },
-        {
             "name": "ZingMp3",
             "version": "5.10",
             "icon": "ota_apps/icons/com.caspernguyen.zingmp3.png",
@@ -375,31 +396,10 @@
             "plist": "ota_apps/rousseaddict.tvold.plist"
         },
         {
-            "name": "Opaline",
-            "version": "1.12.0",
-            "icon": "ota_apps/icons/com.verback.YTLite.png",
-            "plist": "ota_apps/com.verback.YTLite.plist"
-        },
-        {
-            "name": "YouTube",
-            "version": "1.0.0",
-            "icon": "ota_apps/icons/com.google.ios.youtube_1.0.0.png",
-            "plist": "ota_apps/com.google.ios.youtube_1.0.0.plist",
-            "show_on_home": true
-        },
-        {
-            "name": "YouTube",
-            "version": "2.0.0",
-            "icon": "ota_apps/icons/com.google.ios.youtube_2.0.0.png",
-            "plist": "ota_apps/com.google.ios.youtube_2.0.0.plist",
-            "show_on_home": true
-        },
-        {
-            "name": "YouTube",
-            "version": "1.3.0",
-            "icon": "ota_apps/icons/com.google.ios.youtube_1.3.0.png",
-            "plist": "ota_apps/com.google.ios.youtube_1.3.0.plist",
-            "show_on_home": true
+            "name": "GoTV",
+            "version": "1.2.2",
+            "icon": "ota_apps/icons/com.ls.GoTV.png",
+            "plist": "ota_apps/com.ls.GoTV.plist"
         }
     ],
     "Hệ thống": [
