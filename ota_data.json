@@ -309,13 +309,6 @@
             "show_on_home": false
         },
         {
-            "name": "魂斗罗",
-            "version": "1.2.3",
-            "icon": "ota_apps/icons/com.punchboxstudios.hundouluojinhuageming_1.2.3.png",
-            "plist": "ota_apps/com.punchboxstudios.hundouluojinhuageming_1.2.3.plist",
-            "show_on_home": false
-        },
-        {
             "name": "Cut the Rope",
             "version": "1.2",
             "icon": "ota_apps/icons/com.chillingo.cuttherope_1.2.png",
