@@ -291,6 +291,13 @@
             "icon": "ota_apps/icons/ru.computershik.mangadex.png",
             "plist": "ota_apps/ru.computershik.mangadex.plist",
             "hidden": true
+        },
+        {
+            "name": "iFile",
+            "version": "2.2.0--1",
+            "icon": "ota_apps/icons/eu.heinelt.ifile_2.2.0--1.png",
+            "plist": "ota_apps/eu.heinelt.ifile_2.2.0--1.plist",
+            "show_on_home": false
         }
     ],
     "Giải Trí": [
