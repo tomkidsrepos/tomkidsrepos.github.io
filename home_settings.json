@@ -1,4 +1,6 @@
 {
     "hide_ota_section": false,
-    "hidden_categories": []
+    "hidden_categories": [
+        "Jailbreak"
+    ]
 }
