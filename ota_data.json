@@ -268,10 +268,10 @@
     "Giải Trí": [
         {
             "name": "YouTube",
-            "version": "2.0.0",
+            "version": "1.4.0",
             "icon": "ota_apps/icons/com.google.ios.youtube.png",
             "plist": "ota_apps/com.google.ios.youtube.plist",
-            "show_on_home": false
+            "show_on_home": true
         },
         {
             "name": "Nhạc Của Tui",
