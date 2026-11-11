@@ -113,7 +113,8 @@
             "version": "1.0",
             "icon": "ota_apps/icons/rousseaddict.jellyold.png",
             "plist": "ota_apps/rousseaddict.jellyold.plist",
-            "hidden": true
+            "hidden": false,
+            "show_on_home": false
         },
         {
             "name": "Dao Vang",
@@ -211,35 +212,40 @@
             "version": "22540",
             "icon": "ota_apps/icons/com.tapulous.taptaprevenge4.png",
             "plist": "ota_apps/com.tapulous.taptaprevenge4.plist",
-            "hidden": true
+            "hidden": false,
+            "show_on_home": false
         },
         {
             "name": "TapFighters",
             "version": "1.0",
             "icon": "ota_apps/icons/com.HenLungChou.TapFighters.png",
             "plist": "ota_apps/com.HenLungChou.TapFighters.plist",
-            "hidden": true
+            "hidden": false,
+            "show_on_home": false
         },
         {
             "name": "Y! Messenger",
             "version": "1.2.3",
             "icon": "ota_apps/icons/com.yahoo.messenger.png",
             "plist": "ota_apps/com.yahoo.messenger.plist",
-            "hidden": true
+            "hidden": false,
+            "show_on_home": false
         },
         {
             "name": "Đ.Hình.B.Chữ",
             "version": "1.0",
             "icon": "ota_apps/icons/com.bugunsoft.picturepuzzle.png",
             "plist": "ota_apps/com.bugunsoft.picturepuzzle.plist",
-            "hidden": true
+            "hidden": false,
+            "show_on_home": false
         },
         {
             "name": "Flashlight",
             "version": "2.1.4",
             "icon": "ota_apps/icons/com.ihandysoft.flashlight.led.pro.png",
             "plist": "ota_apps/com.ihandysoft.flashlight.led.pro.plist",
-            "hidden": true
+            "hidden": false,
+            "show_on_home": false
         },
         {
             "name": "YouTube",
