@@ -230,13 +230,6 @@
             "version": "2.1.4",
             "icon": "ota_apps/icons/com.ihandysoft.flashlight.led.pro.png",
             "plist": "ota_apps/com.ihandysoft.flashlight.led.pro.plist"
-        },
-        {
-            "name": "YouTube",
-            "version": "2.0.0",
-            "icon": "ota_apps/icons/com.google.ios.youtube.png",
-            "plist": "ota_apps/com.google.ios.youtube.plist",
-            "show_on_home": false
         }
     ],
     "Công Cụ": [
