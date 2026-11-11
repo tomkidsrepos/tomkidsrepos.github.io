@@ -393,6 +393,13 @@
             "icon": "ota_apps/icons/com.google.ios.youtube_2.0.0.png",
             "plist": "ota_apps/com.google.ios.youtube_2.0.0.plist",
             "show_on_home": true
+        },
+        {
+            "name": "YouTube",
+            "version": "1.3.0",
+            "icon": "ota_apps/icons/com.google.ios.youtube_1.3.0.png",
+            "plist": "ota_apps/com.google.ios.youtube_1.3.0.plist",
+            "show_on_home": true
         }
     ],
     "Hệ thống": [
