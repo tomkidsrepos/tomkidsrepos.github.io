@@ -582,6 +582,12 @@
             "version": "1.2.2",
             "icon": "ota_apps/icons/com.ls.GoTV.png",
             "plist": "ota_apps/com.ls.GoTV.plist"
+        },
+        {
+            "name": "Côn Bằng TV",
+            "version": "0.5.4",
+            "icon": "ota_apps/icons/vn.conbangtv.legacy.png",
+            "plist": "ota_apps/vn.conbangtv.legacy.plist"
         }
     ],
     "Hệ thống": [
