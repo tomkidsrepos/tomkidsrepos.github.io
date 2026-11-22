@@ -691,6 +691,13 @@
             "icon": "ota_apps/icons/com.soundcloud.TouchApp_2.7.2.png",
             "plist": "ota_apps/com.soundcloud.TouchApp_2.7.2.plist",
             "show_on_home": false
+        },
+        {
+            "name": "CGV Vietnam",
+            "version": "1.3",
+            "icon": "ota_apps/icons/com.cgv.vn_1.3.png",
+            "plist": "ota_apps/com.cgv.vn_1.3.plist",
+            "show_on_home": false
         }
     ],
     "Hệ thống": [
