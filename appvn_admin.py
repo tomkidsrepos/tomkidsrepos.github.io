@@ -48,6 +48,27 @@ DATA_JSON_PATH = os.path.join(REPO_DIR, 'ota_data.json')
 MEDIA_JSON_PATH = os.path.join(REPO_DIR, 'media_data.json')
 QUICKINSTALL_JSON_PATH = os.path.join(REPO_DIR, 'quickinstall.json')
 HOME_SETTINGS_PATH = os.path.join(REPO_DIR, 'home_settings.json')
+AUTH_ACCOUNTS_PATH = os.path.join(REPO_DIR, 'auth_accounts.json')
+
+def load_auth_accounts():
+    default_auth = {'enabled': False, 'accounts': []}
+    if os.path.exists(AUTH_ACCOUNTS_PATH):
+        try:
+            with open(AUTH_ACCOUNTS_PATH, 'r', encoding='utf-8-sig') as f:
+                data = json.load(f)
+            if isinstance(data, dict):
+                return {
+                    'enabled': bool(data.get('enabled', False)),
+                    'accounts': list(data.get('accounts', []))
+                }
+        except Exception:
+            pass
+    return default_auth
+
+def save_auth_accounts(data):
+    with open(AUTH_ACCOUNTS_PATH, 'w', encoding='utf-8') as f:
+        json.dump(data, f, ensure_ascii=False, indent=4)
+
 PACKAGE_REPO_A1_DIR = os.path.abspath(os.path.join(REPO_DIR, '..', 'package_repo_A1'))
 INCOMING_DIR = os.path.join(REPO_DIR, 'incoming')
 
@@ -637,17 +658,21 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             var btnApp = document.getElementById('btn-module-appstore');
             var btnDeb = document.getElementById('btn-module-deb');
             var btnVis = document.getElementById('btn-module-visibility');
+            var btnAcc = document.getElementById('btn-module-accounts');
             var conApp = document.getElementById('module-appstore-container');
             var conDeb = document.getElementById('module-deb-container');
             var conVis = document.getElementById('module-visibility-container');
+            var conAcc = document.getElementById('module-accounts-container');
 
             if (btnApp) btnApp.className = (mod === 'appstore') ? 'module-tab-btn active' : 'module-tab-btn';
             if (btnDeb) btnDeb.className = (mod === 'deb') ? 'module-tab-btn active' : 'module-tab-btn';
             if (btnVis) btnVis.className = (mod === 'visibility') ? 'module-tab-btn active' : 'module-tab-btn';
+            if (btnAcc) btnAcc.className = (mod === 'accounts') ? 'module-tab-btn active' : 'module-tab-btn';
 
             if (conApp) conApp.style.display = (mod === 'appstore') ? 'block' : 'none';
             if (conDeb) conDeb.style.display = (mod === 'deb') ? 'block' : 'none';
             if (conVis) conVis.style.display = (mod === 'visibility') ? 'block' : 'none';
+            if (conAcc) conAcc.style.display = (mod === 'accounts') ? 'block' : 'none';
 
             if (mod === 'deb') {
                 if (typeof loadQuickInstallList === 'function') loadQuickInstallList();
@@ -655,6 +680,8 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 if (typeof updateDebPreview === 'function') updateDebPreview();
             } else if (mod === 'visibility') {
                 if (typeof loadVisibilityManager === 'function') loadVisibilityManager();
+            } else if (mod === 'accounts') {
+                if (typeof loadAccountsManager === 'function') loadAccountsManager();
             }
         }
 
@@ -717,6 +744,9 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             </button>
             <button type="button" class="module-tab-btn" id="btn-module-visibility" onclick="switchModule('visibility', event)" style="font-size:13.5px; padding:12px 10px;">
                 👁️ Ẩn/Hiện Kho App
+            </button>
+            <button type="button" class="module-tab-btn" id="btn-module-accounts" onclick="switchModule('accounts', event)" style="font-size:13.5px; padding:12px 10px;">
+                👥 Quản Lý Tài Khoản
             </button>
         </div>
 
@@ -1023,6 +1053,82 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 </div>
             </div>
         </div>
+
+        <!-- ================================================================= -->
+        <!-- PHÂN HỆ 4: QUẢN LÝ TÀI KHOẢN ĐĂNG NHẬP TOMKIDS APPSTORE -->
+        <!-- ================================================================= -->
+        <div id="module-accounts-container" style="display:none;">
+            <div class="header" style="margin-bottom:20px;">
+                <div class="logo-title">
+                    <h1>👥 Quản Lý Tài Khoản AppStore</h1>
+                    <span class="badge" style="background:#8b5cf6;">Bảo Mật Truy Cập</span>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button type="button" class="btn-secondary" onclick="loadAccountsManager()">🔄 Làm Mới</button>
+                    <a href="https://tomkidsrepo.cloud/app/" target="_blank" class="header-link">📱 Mở Kho App (/app)</a>
+                </div>
+            </div>
+
+            <!-- CARD TRẠNG THÁI KHÓA BẢO VỆ -->
+            <div class="existing-card" style="margin-top:0; margin-bottom:20px;">
+                <div class="existing-header" style="margin-bottom:10px;">
+                    <div>
+                        <h3 style="font-size:16px; color:#a78bfa; margin-bottom:4px;">🔐 Yêu Cầu Đăng Nhập Khi Vào Kho App</h3>
+                        <p style="font-size:12.5px; color:#94a3b8;">
+                            Nếu BẬT: Người dùng bấm vào nút trên trang chủ hoặc vào <code>https://tomkidsrepo.cloud/app/</code> sẽ bắt buộc phải nhập đúng Tài khoản & Mật khẩu mới được vào.
+                        </p>
+                    </div>
+                    <button type="button" id="btn-toggle-auth-protection" class="btn-action" onclick="toggleAuthProtection()" style="padding:10px 18px; font-size:13px; font-weight:bold;">
+                        Đang tải...
+                    </button>
+                </div>
+            </div>
+
+            <!-- CARD FORM CẤP / SỬA TÀI KHOẢN -->
+            <div class="existing-card" style="margin-top:0; margin-bottom:20px;">
+                <div class="existing-header" style="margin-bottom:14px;">
+                    <h3 id="acc-form-title" style="font-size:15px; color:#38bdf8;">➕ Cấp Tài Khoản Mới</h3>
+                    <button type="button" id="btn-acc-cancel-edit" class="btn-secondary" onclick="resetAccountForm()" style="display:none; font-size:12px; padding:6px 12px;">Hủy Sửa</button>
+                </div>
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:12px; margin-bottom:14px;">
+                    <div>
+                        <label style="display:block; font-size:12px; color:#94a3b8; margin-bottom:5px; font-weight:600;">Tên Đăng Nhập (*):</label>
+                        <input type="text" id="acc-username-input" placeholder="VD: user01, khachhang1" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:13px;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; color:#94a3b8; margin-bottom:5px; font-weight:600;">Mật Khẩu / Mã PIN (*):</label>
+                        <input type="text" id="acc-password-input" placeholder="VD: 123456 hoặc mật khẩu dễ nhớ" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:13px;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; color:#94a3b8; margin-bottom:5px; font-weight:600;">Ghi Chú / Tên Người Dùng:</label>
+                        <input type="text" id="acc-note-input" placeholder="VD: iPhone 4s của bạn An" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:13px;">
+                    </div>
+                </div>
+                <div style="display:flex; justify-content:space-between; align-items:center;">
+                    <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#cbd5e1; cursor:pointer;">
+                        <input type="checkbox" id="acc-active-checkbox" checked style="width:16px; height:16px;"> Cho phép tài khoản này đăng nhập
+                    </label>
+                    <button type="button" id="btn-save-account" class="btn-submit" onclick="submitSaveAccount()" style="padding:10px 24px; font-size:13px;">
+                        💾 Lưu Tài Khoản
+                    </button>
+                </div>
+            </div>
+
+            <!-- CARD DANH SÁCH TÀI KHOẢN ĐÃ CẤP -->
+            <div class="existing-card" style="margin-top:0;">
+                <div class="existing-header" style="margin-bottom:12px;">
+                    <h3 style="font-size:15px; color:#f8fafc;">📋 Danh Sách Tài Khoản Đã Cấp (<span id="acc-count-display">0</span>)</h3>
+                </div>
+                <div id="acc-list-container">
+                    <div style="text-align:center; padding:30px; color:#64748b;">Đang nạp danh sách tài khoản...</div>
+                </div>
+                <div style="margin-top:20px; padding-top:16px; border-top:1px solid #1e293b; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <span style="font-size:12px; color:#94a3b8;">💡 Sau khi thêm hoặc sửa tài khoản, hãy bấm Đồng Bộ Lên Web để áp dụng tức thì.</span>
+                    <button type="button" class="btn-secondary btn-green" onclick="triggerGitPush()" style="padding:10px 18px;">⚡ Đồng Bộ Lên Web Tức Thì</button>
+                </div>
+            </div>
+        </div>
+
 
 
         <!-- ================================================================= -->
@@ -2308,6 +2414,212 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     alert('Đã hoàn tất đồng bộ Git!');
                 });
         }
+
+        /* ==========================================================================
+           QUẢN LÝ TÀI KHOẢN APPSTORE (MODULE 4)
+           ========================================================================== */
+        var authManagerData = { enabled: false, accounts: [] };
+        var editingUsername = null;
+
+        function loadAccountsManager() {
+            fetch('/api/auth/data?t=' + Date.now())
+                .then(function(res) { return res.json(); })
+                .then(function(data) {
+                    authManagerData = data || { enabled: false, accounts: [] };
+                    renderAccountsManager();
+                })
+                .catch(function(err) {
+                    console.error('Lỗi nạp auth data:', err);
+                });
+        }
+
+        function renderAccountsManager() {
+            var btnToggle = document.getElementById('btn-toggle-auth-protection');
+            if (btnToggle) {
+                if (authManagerData.enabled) {
+                    btnToggle.className = 'btn-action btn-active';
+                    btnToggle.innerHTML = '🔒 ĐANG BẬT BẢO VỆ (Bấm để Tắt)';
+                    btnToggle.style.background = '#22c55e';
+                    btnToggle.style.color = '#fff';
+                } else {
+                    btnToggle.className = 'btn-action';
+                    btnToggle.innerHTML = '🔓 ĐANG TẮT BẢO VỆ (Bấm để Bật)';
+                    btnToggle.style.background = '#475569';
+                    btnToggle.style.color = '#fff';
+                }
+            }
+
+            var countDisp = document.getElementById('acc-count-display');
+            var accounts = authManagerData.accounts || [];
+            if (countDisp) countDisp.innerText = accounts.length;
+
+            var container = document.getElementById('acc-list-container');
+            if (!container) return;
+
+            if (accounts.length === 0) {
+                container.innerHTML = '<div style="text-align:center; padding:30px; color:#64748b;">Chưa có tài khoản nào được cấp. Hãy nhập thông tin phía trên để cấp tài khoản đầu tiên!</div>';
+                return;
+            }
+
+            var html = '';
+            for (var i = 0; i < accounts.length; i++) {
+                var acc = accounts[i];
+                var isActive = acc.active !== false;
+                var statusBadge = isActive 
+                    ? '<span style="background:#166534; color:#86efac; font-size:11px; padding:3px 8px; border-radius:10px; font-weight:bold;">Hoạt Động</span>'
+                    : '<span style="background:#991b1b; color:#fca5a5; font-size:11px; padding:3px 8px; border-radius:10px; font-weight:bold;">Đã Khóa</span>';
+
+                html += '<div style="display:flex; justify-content:space-between; align-items:center; background:#0f172a; padding:12px 16px; border-radius:10px; margin-bottom:10px; border:1px solid #1e293b; flex-wrap:wrap; gap:10px;">';
+                html += '  <div style="display:flex; align-items:center; gap:12px;">';
+                html += '    <div style="width:36px; height:36px; border-radius:50%; background:#334155; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#f8fafc;">' + escapeHtml(acc.username.substring(0, 2).toUpperCase()) + '</div>';
+                html += '    <div>';
+                html += '      <div style="display:flex; align-items:center; gap:8px;">';
+                html += '        <span style="font-weight:bold; color:#f8fafc; font-size:14px;">' + escapeHtml(acc.username) + '</span>';
+                html += '        ' + statusBadge;
+                html += '      </div>';
+                html += '      <div style="font-size:12px; color:#94a3b8; margin-top:2px;">';
+                html += '        Mật khẩu: <code style="background:#1e293b; padding:1px 6px; border-radius:4px; color:#38bdf8;">' + escapeHtml(acc.password) + '</code>';
+                if (acc.note) {
+                    html += ' • <i>' + escapeHtml(acc.note) + '</i>';
+                }
+                html += '      </div>';
+                html += '    </div>';
+                html += '  </div>';
+                html += '  <div style="display:flex; gap:6px;">';
+                html += '    <button type="button" class="btn-secondary" onclick="editAccount('' + escapeHtml(acc.username) + '')" style="padding:5px 12px; font-size:12px;">✏️ Sửa</button>';
+                html += '    <button type="button" class="btn-secondary" onclick="toggleAccount('' + escapeHtml(acc.username) + '')" style="padding:5px 12px; font-size:12px;">' + (isActive ? '🔒 Khóa' : '🔓 Mở') + '</button>';
+                html += '    <button type="button" class="btn-action btn-danger" onclick="deleteAccount('' + escapeHtml(acc.username) + '')" style="padding:5px 10px; font-size:12px;">🗑️ Xóa</button>';
+                html += '  </div>';
+                html += '</div>';
+            }
+
+            container.innerHTML = html;
+        }
+
+        function toggleAuthProtection() {
+            var newState = !authManagerData.enabled;
+            fetch('/api/auth/toggle-protection', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ enabled: newState })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    authManagerData.enabled = data.enabled;
+                    renderAccountsManager();
+                } else {
+                    alert('Lỗi: ' + (data.error || 'Không xác định'));
+                }
+            });
+        }
+
+        function submitSaveAccount() {
+            var username = document.getElementById('acc-username-input').value.trim();
+            var password = document.getElementById('acc-password-input').value.trim();
+            var note = document.getElementById('acc-note-input').value.trim();
+            var active = document.getElementById('acc-active-checkbox').checked;
+
+            if (!username) {
+                alert('Vui lòng nhập Tên Đăng Nhập!');
+                return;
+            }
+            if (!editingUsername && !password) {
+                alert('Vui lòng nhập Mật Khẩu!');
+                return;
+            }
+
+            fetch('/api/auth/save-account', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    username: username,
+                    password: password,
+                    note: note,
+                    active: active,
+                    is_edit: !!editingUsername
+                })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    alert(data.message || 'Lưu thành công!');
+                    resetAccountForm();
+                    loadAccountsManager();
+                } else {
+                    alert('Lỗi: ' + (data.error || 'Không rõ lỗi'));
+                }
+            });
+        }
+
+        function editAccount(username) {
+            var accounts = authManagerData.accounts || [];
+            for (var i = 0; i < accounts.length; i++) {
+                if (accounts[i].username.toLowerCase() === username.toLowerCase()) {
+                    var acc = accounts[i];
+                    editingUsername = acc.username;
+                    document.getElementById('acc-username-input').value = acc.username;
+                    document.getElementById('acc-username-input').disabled = true;
+                    document.getElementById('acc-password-input').value = acc.password;
+                    document.getElementById('acc-note-input').value = acc.note || '';
+                    document.getElementById('acc-active-checkbox').checked = acc.active !== false;
+
+                    document.getElementById('acc-form-title').innerText = '✏️ Chỉnh Sửa Tài Khoản: ' + acc.username;
+                    document.getElementById('btn-acc-cancel-edit').style.display = 'inline-block';
+                    document.getElementById('btn-save-account').innerText = '💾 Cập Nhật Tài Khoản';
+                    break;
+                }
+            }
+        }
+
+        function resetAccountForm() {
+            editingUsername = null;
+            document.getElementById('acc-username-input').value = '';
+            document.getElementById('acc-username-input').disabled = false;
+            document.getElementById('acc-password-input').value = '';
+            document.getElementById('acc-note-input').value = '';
+            document.getElementById('acc-active-checkbox').checked = true;
+
+            document.getElementById('acc-form-title').innerText = '➕ Cấp Tài Khoản Mới';
+            document.getElementById('btn-acc-cancel-edit').style.display = 'none';
+            document.getElementById('btn-save-account').innerText = '💾 Lưu Tài Khoản';
+        }
+
+        function toggleAccount(username) {
+            fetch('/api/auth/toggle-account', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: username })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    loadAccountsManager();
+                } else {
+                    alert('Lỗi: ' + (data.error || 'Không xác định'));
+                }
+            });
+        }
+
+        function deleteAccount(username) {
+            if (!confirm('Bạn có chắc chắn muốn xóa tài khoản ' + username + ' không?')) {
+                return;
+            }
+            fetch('/api/auth/delete-account', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username: username })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    loadAccountsManager();
+                } else {
+                    alert('Lỗi: ' + (data.error || 'Không xác định'));
+                }
+            });
+        }
+
     </script>
 </body>
 </html>
@@ -2328,6 +2640,103 @@ def add_header(response):
 @app.route('/')
 def index_page():
     return render_template_string(HTML_TEMPLATE)
+
+
+# ==============================================================================
+# QUẢN LÝ TÀI KHOẢN ĐĂNG NHẬP TOMKIDS APPSTORE
+# ==============================================================================
+@app.route('/api/auth/data')
+def get_auth_data():
+    return jsonify(load_auth_accounts())
+
+@app.route('/api/auth/toggle-protection', methods=['POST'])
+def toggle_auth_protection():
+    try:
+        data = load_auth_accounts()
+        req = request.get_json() or {}
+        if 'enabled' in req:
+            data['enabled'] = bool(req['enabled'])
+        else:
+            data['enabled'] = not data.get('enabled', False)
+        save_auth_accounts(data)
+        return jsonify({'success': True, 'enabled': data['enabled']})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/auth/save-account', methods=['POST'])
+def save_auth_account():
+    try:
+        req = request.get_json() or {}
+        username = req.get('username', '').strip()
+        password = req.get('password', '').strip()
+        note = req.get('note', '').strip()
+        active = req.get('active', True)
+        is_edit = req.get('is_edit', False)
+
+        if not username:
+            return jsonify({'success': False, 'error': 'Vui lòng nhập tên đăng nhập!'})
+
+        data = load_auth_accounts()
+        accounts = data.get('accounts', [])
+        
+        found = False
+        for acc in accounts:
+            if acc.get('username', '').lower() == username.lower():
+                found = True
+                if is_edit:
+                    if password:
+                        acc['password'] = password
+                    acc['note'] = note
+                    acc['active'] = active
+                else:
+                    return jsonify({'success': False, 'error': f'Tài khoản {username} đã tồn tại!'})
+                break
+        
+        if not found:
+            if not password:
+                return jsonify({'success': False, 'error': 'Vui lòng nhập mật khẩu cho tài khoản mới!'})
+            accounts.append({
+                'username': username,
+                'password': password,
+                'note': note,
+                'active': active
+            })
+
+        data['accounts'] = accounts
+        save_auth_accounts(data)
+        return jsonify({'success': True, 'message': f'Đã lưu tài khoản {username} thành công!'})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/auth/toggle-account', methods=['POST'])
+def toggle_auth_account():
+    try:
+        req = request.get_json() or {}
+        username = req.get('username', '').strip()
+        data = load_auth_accounts()
+        accounts = data.get('accounts', [])
+        for acc in accounts:
+            if acc.get('username', '').lower() == username.lower():
+                acc['active'] = not acc.get('active', True)
+                save_auth_accounts(data)
+                return jsonify({'success': True, 'active': acc['active']})
+        return jsonify({'success': False, 'error': 'Không tìm thấy tài khoản!'})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
+
+@app.route('/api/auth/delete-account', methods=['POST'])
+def delete_auth_account():
+    try:
+        req = request.get_json() or {}
+        username = req.get('username', '').strip()
+        data = load_auth_accounts()
+        accounts = data.get('accounts', [])
+        new_accs = [acc for acc in accounts if acc.get('username', '').lower() != username.lower()]
+        data['accounts'] = new_accs
+        save_auth_accounts(data)
+        return jsonify({'success': True, 'message': f'Đã xóa tài khoản {username}!'})
+    except Exception as e:
+        return jsonify({'success': False, 'error': str(e)})
 
 
 @app.route('/api/list-incoming')

@@ -25,7 +25,7 @@
                 <div class="badge-18">18+</div>
             </div>
             <div class="profile-info">
-                <div class="profile-name" id="user-name-display" onclick="changeUserName()">Tomkids</div>
+                <div style="display:flex; align-items:center; gap:8px;"><div class="profile-name" id="user-name-display" onclick="changeUserName()">Tomkids</div><button type="button" onclick="logoutAppStore()" style="background:#ef4444; color:#fff; border:none; padding:2px 8px; font-size:11px; -webkit-border-radius:6px; border-radius:6px; cursor:pointer;" title="Đăng xuất khỏi kho app">Thoát</button></div>
                 <div class="profile-wallet">
                     <span class="wallet-item"><i class="icon-heart">💜</i> <b id="val-xu">9999</b></span>
                     <span class="wallet-item"><i class="icon-gem">💚</i> <b id="val-ruby">9999</b></span>
@@ -255,7 +255,31 @@
     </div>
 
     <!-- TOAST THÔNG BÁO NHANH -->
-    <div id="toast-msg" class="toast-msg"></div>
+        <!-- MODAL ĐĂNG NHẬP (DÀNH CHO TRUY CẬP TRỰC TIẾP /app/) -->
+    <div id="app-auth-overlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(15,23,42,0.95); z-index:999999; text-align:center;">
+        <div style="display:inline-block; background:#1e293b; width:88%; max-width:320px; margin-top:70px; padding:22px 18px; -webkit-border-radius:16px; border-radius:16px; border:2px solid #38bdf8; text-align:left; color:#f8fafc; -webkit-box-shadow:0 10px 30px rgba(0,0,0,0.9); box-shadow:0 10px 30px rgba(0,0,0,0.9);">
+            <div style="text-align:center; margin-bottom:14px;">
+                <div style="font-size:32px; margin-bottom:4px;">🔐</div>
+                <h3 style="margin:0; font-size:18px; color:#38bdf8; font-weight:bold;">TOMKIDS APPSTORE</h3>
+                <p style="margin:6px 0 0 0; font-size:12px; color:#94a3b8;">Nhập tài khoản để mở khóa kho ứng dụng</p>
+            </div>
+            <div style="margin-bottom:12px;">
+                <label style="display:block; font-size:12px; color:#cbd5e1; margin-bottom:4px; font-weight:bold;">Tên đăng nhập:</label>
+                <input type="text" id="app-auth-user" placeholder="Nhập tên tài khoản" autocorrect="off" autocapitalize="none" style="width:100%; padding:9px 10px; -webkit-border-radius:8px; border-radius:8px; border:1px solid #475569; background:#0f172a; color:#fff; font-size:14px; -webkit-box-sizing:border-box; box-sizing:border-box;">
+            </div>
+            <div style="margin-bottom:14px;">
+                <label style="display:block; font-size:12px; color:#cbd5e1; margin-bottom:4px; font-weight:bold;">Mật khẩu / Mã PIN:</label>
+                <input type="password" id="app-auth-pass" placeholder="Nhập mật khẩu" style="width:100%; padding:9px 10px; -webkit-border-radius:8px; border-radius:8px; border:1px solid #475569; background:#0f172a; color:#fff; font-size:14px; -webkit-box-sizing:border-box; box-sizing:border-box;">
+            </div>
+            <div id="app-auth-err" style="display:none; color:#f87171; font-size:12px; margin-bottom:12px; text-align:center; font-weight:bold;"></div>
+            <div style="display:flex; gap:10px;">
+                <button type="button" onclick="window.location.href='../'" style="flex:1; padding:10px 0; background:#475569; color:#fff; border:none; -webkit-border-radius:10px; border-radius:10px; font-size:13px; font-weight:bold; cursor:pointer;">Về Trang Chủ</button>
+                <button type="button" onclick="submitAppAuth()" style="flex:1.5; padding:10px 0; background:#22c55e; color:#fff; border:none; -webkit-border-radius:10px; border-radius:10px; font-size:14px; font-weight:bold; cursor:pointer;">Đăng Nhập 🚀</button>
+            </div>
+        </div>
+    </div>
+
+      <div id="toast-msg" class="toast-msg"></div>
 
     <!-- JS TƯƠNG THÍCH HOÀN TOÀN ES5 / WEBKIT CỔ -->
     <script src="app.js?v=1.0"></script>

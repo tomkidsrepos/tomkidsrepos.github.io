@@ -19,12 +19,17 @@ var STORAGE_USER_NAME = 'appvn_username';
 var STORAGE_WALLET = 'appvn_wallet';
 var STORAGE_DOWNLOADS = 'appvn_downloads';
 var STORAGE_FAVORITES = 'appvn_favorites';
+var STORAGE_AUTH_USER = 'appvn_auth_user';
 
 // Khởi chạy khi tài liệu sẵn sàng
 window.onload = function() {
-    initUserData();
-    loadOtaData();
-    updateDownloadBadge();
+    checkAppAuth(function(isAllowed) {
+        if (isAllowed) {
+            initUserData();
+            loadOtaData();
+            updateDownloadBadge();
+        }
+    });
 };
 
 /* ==========================================================================
@@ -820,4 +825,116 @@ function showToast(message) {
 function escapeHtml(str) {
     if (!str) return '';
     return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+
+/* ==========================================================================
+   XÁC THỰC BẢO VỆ KHO APP (THÍCH ỨNG SAFARI IOS CỔ 5, 6, 7, 8, 9, 10)
+   ========================================================================== */
+var globalAuthData = null;
+
+function checkAppAuth(callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../auth_accounts.json?t=' + (new Date()).getTime(), true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200 || xhr.status === 0) {
+                try {
+                    globalAuthData = JSON.parse(xhr.responseText);
+                } catch(e) {
+                    globalAuthData = { enabled: false, accounts: [] };
+                }
+            } else {
+                globalAuthData = { enabled: false, accounts: [] };
+            }
+
+            if (!globalAuthData || !globalAuthData.enabled) {
+                if (callback) callback(true);
+                return;
+            }
+
+            // Kiểm tra session hiện tại
+            var sessionUser = localStorage.getItem(STORAGE_AUTH_USER);
+            if (sessionUser) {
+                var accounts = globalAuthData.accounts || [];
+                for (var i = 0; i < accounts.length; i++) {
+                    if (accounts[i].username.toLowerCase() === sessionUser.toLowerCase()) {
+                        if (accounts[i].active !== false) {
+                            if (callback) callback(true);
+                            return;
+                        }
+                    }
+                }
+            }
+
+            // Chưa đăng nhập hoặc tài khoản bị khóa -> Hiện modal đăng nhập
+            showAppAuthModal();
+            if (callback) callback(false);
+        }
+    };
+    xhr.send(null);
+}
+
+function showAppAuthModal() {
+    var overlay = document.getElementById('app-auth-overlay');
+    if (overlay) {
+        overlay.style.display = 'block';
+        document.getElementById('app-auth-user').value = '';
+        document.getElementById('app-auth-pass').value = '';
+        document.getElementById('app-auth-err').style.display = 'none';
+    }
+}
+
+function submitAppAuth() {
+    var u = document.getElementById('app-auth-user').value.replace(/^\s+|\s+$/g, '');
+    var p = document.getElementById('app-auth-pass').value.replace(/^\s+|\s+$/g, '');
+    var err = document.getElementById('app-auth-err');
+
+    if (!u || !p) {
+        err.innerText = 'Vui lòng nhập đầy đủ Tài khoản và Mật khẩu!';
+        err.style.display = 'block';
+        return;
+    }
+
+    if (!globalAuthData || !globalAuthData.enabled) {
+        localStorage.setItem(STORAGE_AUTH_USER, u);
+        localStorage.setItem(STORAGE_USER_NAME, u);
+        document.getElementById('app-auth-overlay').style.display = 'none';
+        initUserData();
+        loadOtaData();
+        updateDownloadBadge();
+        return;
+    }
+
+    var accounts = globalAuthData.accounts || [];
+    for (var i = 0; i < accounts.length; i++) {
+        var acc = accounts[i];
+        if (acc.username.toLowerCase() === u.toLowerCase()) {
+            if (acc.active === false) {
+                err.innerText = 'Tài khoản này hiện đang bị khóa!';
+                err.style.display = 'block';
+                return;
+            }
+            if (acc.password === p) {
+                localStorage.setItem(STORAGE_AUTH_USER, acc.username);
+                localStorage.setItem(STORAGE_USER_NAME, acc.username);
+                document.getElementById('app-auth-overlay').style.display = 'none';
+                initUserData();
+                loadOtaData();
+                updateDownloadBadge();
+                return;
+            }
+        }
+    }
+
+    err.innerText = 'Sai tài khoản hoặc mật khẩu!';
+    err.style.display = 'block';
+}
+
+function logoutAppStore() {
+    if (confirm('Bạn có chắc chắn muốn đăng xuất tài khoản khỏi Tomkids AppStore không?')) {
+        localStorage.removeItem(STORAGE_AUTH_USER);
+        localStorage.removeItem(STORAGE_USER_NAME);
+        window.location.href = '../';
+    }
 }
