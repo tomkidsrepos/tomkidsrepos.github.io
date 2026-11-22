@@ -161,7 +161,7 @@ function getAuthorFromName(name) {
     if (name.indexOf('Zing') >= 0) return 'VNG Corp';
     if (name.indexOf('Contra') >= 0) return 'PunchBox';
     if (name.indexOf('Opera') >= 0) return 'Opera Software';
-    return 'Tomkids Team';
+    return 'Collected & uploaded by Tomkids Team';
 }
 
 /* ==========================================================================
