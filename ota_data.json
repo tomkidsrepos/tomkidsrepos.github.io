@@ -444,6 +444,13 @@
             "icon": "ota_apps/icons/com.macbuildserver.Nestopia_1.0.png",
             "plist": "ota_apps/com.macbuildserver.Nestopia_1.0.plist",
             "show_on_home": false
+        },
+        {
+            "name": "App",
+            "version": "1.18.166",
+            "icon": "ota_apps/icons/com.supercell.soil_1.18.166.png",
+            "plist": "ota_apps/com.supercell.soil_1.18.166.plist",
+            "show_on_home": false
         }
     ],
     "Công Cụ": [
