@@ -1,4 +1,11 @@
 {
     "enabled": false,
-    "accounts": []
+    "accounts": [
+        {
+            "username": "Long1",
+            "password": "Tom26",
+            "note": "Long",
+            "active": true
+        }
+    ]
 }

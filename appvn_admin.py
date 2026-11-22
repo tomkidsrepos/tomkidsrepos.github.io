@@ -2418,10 +2418,24 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         /* ==========================================================================
            QUẢN LÝ TÀI KHOẢN APPSTORE (MODULE 4)
            ========================================================================== */
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
         var authManagerData = { enabled: false, accounts: [] };
         var editingUsername = null;
 
         function loadAccountsManager() {
+            var btnToggle = document.getElementById('btn-toggle-auth-protection');
+            if (btnToggle) btnToggle.innerText = 'Đang tải...';
+
             fetch('/api/auth/data?t=' + Date.now())
                 .then(function(res) { return res.json(); })
                 .then(function(data) {
@@ -2430,6 +2444,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 })
                 .catch(function(err) {
                     console.error('Lỗi nạp auth data:', err);
+                    alert('Lỗi nạp dữ liệu tài khoản: ' + err);
                 });
         }
 
@@ -2469,6 +2484,8 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     ? '<span style="background:#166534; color:#86efac; font-size:11px; padding:3px 8px; border-radius:10px; font-weight:bold;">Hoạt Động</span>'
                     : '<span style="background:#991b1b; color:#fca5a5; font-size:11px; padding:3px 8px; border-radius:10px; font-weight:bold;">Đã Khóa</span>';
 
+                var safeUser = encodeURIComponent(acc.username);
+
                 html += '<div style="display:flex; justify-content:space-between; align-items:center; background:#0f172a; padding:12px 16px; border-radius:10px; margin-bottom:10px; border:1px solid #1e293b; flex-wrap:wrap; gap:10px;">';
                 html += '  <div style="display:flex; align-items:center; gap:12px;">';
                 html += '    <div style="width:36px; height:36px; border-radius:50%; background:#334155; display:flex; align-items:center; justify-content:center; font-weight:bold; color:#f8fafc;">' + escapeHtml(acc.username.substring(0, 2).toUpperCase()) + '</div>';
@@ -2486,9 +2503,9 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 html += '    </div>';
                 html += '  </div>';
                 html += '  <div style="display:flex; gap:6px;">';
-                html += '    <button type="button" class="btn-secondary" onclick="editAccount('' + escapeHtml(acc.username) + '')" style="padding:5px 12px; font-size:12px;">✏️ Sửa</button>';
-                html += '    <button type="button" class="btn-secondary" onclick="toggleAccount('' + escapeHtml(acc.username) + '')" style="padding:5px 12px; font-size:12px;">' + (isActive ? '🔒 Khóa' : '🔓 Mở') + '</button>';
-                html += '    <button type="button" class="btn-action btn-danger" onclick="deleteAccount('' + escapeHtml(acc.username) + '')" style="padding:5px 10px; font-size:12px;">🗑️ Xóa</button>';
+                html += '    <button type="button" class="btn-secondary" onclick="editAccount(decodeURIComponent(\'' + safeUser + '\'))" style="padding:5px 12px; font-size:12px;">✏️ Sửa</button>';
+                html += '    <button type="button" class="btn-secondary" onclick="toggleAccount(decodeURIComponent(\'' + safeUser + '\'))" style="padding:5px 12px; font-size:12px;">' + (isActive ? '🔒 Khóa' : '🔓 Mở') + '</button>';
+                html += '    <button type="button" class="btn-action btn-danger" onclick="deleteAccount(decodeURIComponent(\'' + safeUser + '\'))" style="padding:5px 10px; font-size:12px;">🗑️ Xóa</button>';
                 html += '  </div>';
                 html += '</div>';
             }
