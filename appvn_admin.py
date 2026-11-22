@@ -1108,7 +1108,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#cbd5e1; cursor:pointer;">
                         <input type="checkbox" id="acc-active-checkbox" checked style="width:16px; height:16px;"> Cho phép tài khoản này đăng nhập
                     </label>
-                    <button type="button" id="btn-save-account" class="btn-submit" onclick="submitSaveAccount()" style="padding:10px 24px; font-size:13px;">
+                    <button type="button" id="btn-save-account" class="btn-submit" onclick="submitSaveAccount()" style="padding:10px 24px; font-size:13px; background:#2563eb !important; cursor:pointer !important; opacity:1 !important; pointer-events:auto !important;">
                         💾 Lưu Tài Khoản
                     </button>
                 </div>
@@ -2436,16 +2436,28 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             var btnToggle = document.getElementById('btn-toggle-auth-protection');
             if (btnToggle) btnToggle.innerText = 'Đang tải...';
 
-            fetch('/api/auth/data?t=' + Date.now())
-                .then(function(res) { return res.json(); })
-                .then(function(data) {
-                    authManagerData = data || { enabled: false, accounts: [] };
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/api/auth/data?t=' + (new Date()).getTime(), true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4) {
+                    if (xhr.status === 200) {
+                        try {
+                            authManagerData = JSON.parse(xhr.responseText) || { enabled: false, accounts: [] };
+                        } catch(e) {
+                            authManagerData = { enabled: false, accounts: [] };
+                        }
+                    } else {
+                        console.error('Lỗi HTTP status:', xhr.status);
+                        authManagerData = { enabled: false, accounts: [] };
+                    }
                     renderAccountsManager();
-                })
-                .catch(function(err) {
-                    console.error('Lỗi nạp auth data:', err);
-                    alert('Lỗi nạp dữ liệu tài khoản: ' + err);
-                });
+                }
+            };
+            xhr.onerror = function(err) {
+                console.error('Lỗi mạng nạp auth data:', err);
+                renderAccountsManager();
+            };
+            xhr.send(null);
         }
 
         function renderAccountsManager() {
@@ -2503,9 +2515,9 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 html += '    </div>';
                 html += '  </div>';
                 html += '  <div style="display:flex; gap:6px;">';
-                html += '    <button type="button" class="btn-secondary" onclick="editAccount(decodeURIComponent(\'' + safeUser + '\'))" style="padding:5px 12px; font-size:12px;">✏️ Sửa</button>';
-                html += '    <button type="button" class="btn-secondary" onclick="toggleAccount(decodeURIComponent(\'' + safeUser + '\'))" style="padding:5px 12px; font-size:12px;">' + (isActive ? '🔒 Khóa' : '🔓 Mở') + '</button>';
-                html += '    <button type="button" class="btn-action btn-danger" onclick="deleteAccount(decodeURIComponent(\'' + safeUser + '\'))" style="padding:5px 10px; font-size:12px;">🗑️ Xóa</button>';
+                html += '    <button type="button" class="btn-secondary" data-user="' + safeUser + '" onclick="onEditAccClick(this)" style="padding:5px 12px; font-size:12px;">✏️ Sửa</button>';
+                html += '    <button type="button" class="btn-secondary" data-user="' + safeUser + '" onclick="onToggleAccClick(this)" style="padding:5px 12px; font-size:12px;">' + (isActive ? '🔒 Khóa' : '🔓 Mở') + '</button>';
+                html += '    <button type="button" class="btn-action btn-danger" data-user="' + safeUser + '" onclick="onDeleteAccClick(this)" style="padding:5px 10px; font-size:12px;">🗑️ Xóa</button>';
                 html += '  </div>';
                 html += '</div>';
             }
@@ -2532,7 +2544,16 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
         }
 
         function submitSaveAccount() {
-            var username = document.getElementById('acc-username-input').value.trim();
+            console.log('submitSaveAccount clicked!');
+            var usernameEl = document.getElementById('acc-username-input');
+            var passwordEl = document.getElementById('acc-password-input');
+            var noteEl = document.getElementById('acc-note-input');
+            var activeEl = document.getElementById('acc-active-checkbox');
+
+            var username = usernameEl ? usernameEl.value.trim() : '';
+            var password = passwordEl ? passwordEl.value.trim() : '';
+            var note = noteEl ? noteEl.value.trim() : '';
+            var active = activeEl ? activeEl.checked : true;
             var password = document.getElementById('acc-password-input').value.trim();
             var note = document.getElementById('acc-note-input').value.trim();
             var active = document.getElementById('acc-active-checkbox').checked;
@@ -2567,6 +2588,19 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     alert('Lỗi: ' + (data.error || 'Không rõ lỗi'));
                 }
             });
+        }
+
+        function onEditAccClick(btn) {
+            var u = decodeURIComponent(btn.getAttribute('data-user'));
+            editAccount(u);
+        }
+        function onToggleAccClick(btn) {
+            var u = decodeURIComponent(btn.getAttribute('data-user'));
+            toggleAccount(u);
+        }
+        function onDeleteAccClick(btn) {
+            var u = decodeURIComponent(btn.getAttribute('data-user'));
+            deleteAccount(u);
         }
 
         function editAccount(username) {
