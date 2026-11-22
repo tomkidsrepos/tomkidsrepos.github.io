@@ -587,7 +587,8 @@
             "name": "Côn Bằng TV",
             "version": "0.5.4",
             "icon": "ota_apps/icons/vn.conbangtv.legacy.png",
-            "plist": "ota_apps/vn.conbangtv.legacy.plist"
+            "plist": "ota_apps/vn.conbangtv.legacy.plist",
+            "hidden": true
         }
     ],
     "Hệ thống": [
