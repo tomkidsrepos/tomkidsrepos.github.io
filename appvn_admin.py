@@ -3506,7 +3506,7 @@ def main():
             webbrowser.open(f"http://127.0.0.1:{port}")
         except:
             pass
-    app.run(host='127.0.0.1', port=port, debug=True)
+    app.run(host='127.0.0.1', port=port, debug=False)
 
 
 if __name__ == '__main__':
