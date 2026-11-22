@@ -513,7 +513,7 @@
             "version": "2.5",
             "icon": "ota_apps/icons/com.elecont.EWeatherClock_2.5.png",
             "plist": "ota_apps/com.elecont.EWeatherClock_2.5.plist",
-            "show_on_home": false
+            "show_on_home": true
         },
         {
             "name": "iClock",
@@ -563,6 +563,27 @@
             "icon": "ota_apps/icons/com.avatron.Air-Display_1.6.1.png",
             "plist": "ota_apps/com.avatron.Air-Display_1.6.1.plist",
             "show_on_home": false
+        },
+        {
+            "name": "ExcelContacts",
+            "version": "2.5.10",
+            "icon": "ota_apps/icons/com.yuyy.ExcelContacts_2.5.10.png",
+            "plist": "ota_apps/com.yuyy.ExcelContacts_2.5.10.plist",
+            "show_on_home": true
+        },
+        {
+            "name": "AVPlayer",
+            "version": "2.50",
+            "icon": "ota_apps/icons/AVPlayer.eplayworks.com_2.50.png",
+            "plist": "ota_apps/AVPlayer.eplayworks.com_2.50.plist",
+            "show_on_home": true
+        },
+        {
+            "name": "ChatGPT",
+            "version": "1.0.2",
+            "icon": "ota_apps/icons/bag.xml.ChatGPT_1.0.2.png",
+            "plist": "ota_apps/bag.xml.ChatGPT_1.0.2.plist",
+            "show_on_home": true
         }
     ],
     "Giải Trí": [
