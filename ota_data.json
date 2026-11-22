@@ -451,6 +451,13 @@
             "icon": "ota_apps/icons/com.supercell.soil_1.18.166.png",
             "plist": "ota_apps/com.supercell.soil_1.18.166.plist",
             "show_on_home": false
+        },
+        {
+            "name": "Stickman Jump",
+            "version": "1.1.0",
+            "icon": "ota_apps/icons/mobi.smartad.stickmanjump_1.1.0.png",
+            "plist": "ota_apps/mobi.smartad.stickmanjump_1.1.0.plist",
+            "show_on_home": true
         }
     ],
     "Công Cụ": [
