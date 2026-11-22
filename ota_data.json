@@ -684,6 +684,13 @@
             "plist": "ota_apps/vn.conbangtv.legacy.plist",
             "hidden": false,
             "show_on_home": false
+        },
+        {
+            "name": "SoundCloud",
+            "version": "2.7.2",
+            "icon": "ota_apps/icons/com.soundcloud.TouchApp_2.7.2.png",
+            "plist": "ota_apps/com.soundcloud.TouchApp_2.7.2.plist",
+            "show_on_home": false
         }
     ],
     "Hệ thống": [
