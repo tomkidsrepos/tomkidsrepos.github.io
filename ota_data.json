@@ -584,6 +584,13 @@
             "icon": "ota_apps/icons/bag.xml.ChatGPT_1.0.2.png",
             "plist": "ota_apps/bag.xml.ChatGPT_1.0.2.plist",
             "show_on_home": true
+        },
+        {
+            "name": "Appvn",
+            "version": "4.4.1",
+            "icon": "ota_apps/icons/com.appstore.vn_4.4.1.png",
+            "plist": "ota_apps/com.appstore.vn_4.4.1.plist",
+            "show_on_home": true
         }
     ],
     "Giải Trí": [
