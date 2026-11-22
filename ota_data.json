@@ -458,6 +458,13 @@
             "icon": "ota_apps/icons/mobi.smartad.stickmanjump_1.1.0.png",
             "plist": "ota_apps/mobi.smartad.stickmanjump_1.1.0.plist",
             "show_on_home": true
+        },
+        {
+            "name": "StickMan Movies",
+            "version": "1.0",
+            "icon": "ota_apps/icons/co.cc.willsapps.stickmanmovies_1.0.png",
+            "plist": "ota_apps/co.cc.willsapps.stickmanmovies_1.0.plist",
+            "show_on_home": false
         }
     ],
     "Công Cụ": [
@@ -492,6 +499,69 @@
             "version": "2.2.0--1",
             "icon": "ota_apps/icons/eu.heinelt.ifile_2.2.0--1.png",
             "plist": "ota_apps/eu.heinelt.ifile_2.2.0--1.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Adobe Reader",
+            "version": "11.6.4",
+            "icon": "ota_apps/icons/com.adobe.Adobe-Reader_11.6.4.png",
+            "plist": "ota_apps/com.adobe.Adobe-Reader_11.6.4.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "eWeather HD",
+            "version": "2.5",
+            "icon": "ota_apps/icons/com.elecont.EWeatherClock_2.5.png",
+            "plist": "ota_apps/com.elecont.EWeatherClock_2.5.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "iClock",
+            "version": "1.0.3",
+            "icon": "ota_apps/icons/com.lymobilesoft.clock_1.0.3.png",
+            "plist": "ota_apps/com.lymobilesoft.clock_1.0.3.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Flashlight™",
+            "version": "2.0.1",
+            "icon": "ota_apps/icons/com.empowereddesignapps.flashlightPlus_2.0.1.png",
+            "plist": "ota_apps/com.empowereddesignapps.flashlightPlus_2.0.1.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "File Manager",
+            "version": "1.4",
+            "icon": "ota_apps/icons/de.zuhanden.filemanager_1.4.png",
+            "plist": "ota_apps/de.zuhanden.filemanager_1.4.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "DocsToGo",
+            "version": "4.0.14.453",
+            "icon": "ota_apps/icons/com.dataviz.DocsToGoEAS_4.0.14.453.png",
+            "plist": "ota_apps/com.dataviz.DocsToGoEAS_4.0.14.453.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Translate",
+            "version": "2.1.1.7574",
+            "icon": "ota_apps/icons/com.google.Translate_2.1.1.7574.png",
+            "plist": "ota_apps/com.google.Translate_2.1.1.7574.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Box",
+            "version": "2.4.4",
+            "icon": "ota_apps/icons/net.box.BoxNet_2.4.4.png",
+            "plist": "ota_apps/net.box.BoxNet_2.4.4.plist",
+            "show_on_home": false
+        },
+        {
+            "name": "Air Display",
+            "version": "1.6.1",
+            "icon": "ota_apps/icons/com.avatron.Air-Display_1.6.1.png",
+            "plist": "ota_apps/com.avatron.Air-Display_1.6.1.plist",
             "show_on_home": false
         }
     ],
