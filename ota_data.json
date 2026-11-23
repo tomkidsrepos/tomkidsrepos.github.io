@@ -728,7 +728,7 @@
             "show_on_home": false
         },
         {
-            "name": "Côn Bằng TV",
+            "name": "Côn Bằng TV Ver 0.6.1",
             "version": "0.6.1",
             "icon": "ota_apps/icons/vn.conbangtv.legacy_0.6.1.png",
             "plist": "ota_apps/vn.conbangtv.legacy_0.6.1.plist",
