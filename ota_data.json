@@ -4,13 +4,15 @@
             "name": "Facebook",
             "version": "11.0",
             "icon": "ota_apps/icons/com.facebook.Facebook.png",
-            "plist": "ota_apps/com.facebook.Facebook.plist"
+            "plist": "ota_apps/com.facebook.Facebook.plist",
+            "show_on_guest": true
         },
         {
             "name": "Messenger",
             "version": "2.7.2",
             "icon": "ota_apps/icons/com.facebook.Messenger.png",
-            "plist": "ota_apps/com.facebook.Messenger.plist"
+            "plist": "ota_apps/com.facebook.Messenger.plist",
+            "show_on_guest": true
         },
         {
             "name": "TikTok",
@@ -85,7 +87,8 @@
             "name": "Contra",
             "version": "1.2.3",
             "icon": "ota_apps/icons/com.punchboxstudios.hundouluojinhuageming.png",
-            "plist": "ota_apps/com.punchboxstudios.hundouluojinhuageming.plist"
+            "plist": "ota_apps/com.punchboxstudios.hundouluojinhuageming.plist",
+            "show_on_guest": true
         },
         {
             "name": "PvZ",
@@ -106,7 +109,8 @@
             "version": "1.2",
             "icon": "ota_apps/icons/com.dotgears.flap_1.2.png",
             "plist": "ota_apps/com.dotgears.flap_1.2.plist",
-            "show_on_home": false
+            "show_on_home": false,
+            "show_on_guest": true
         },
         {
             "name": "jellyold",

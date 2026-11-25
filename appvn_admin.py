@@ -1104,6 +1104,48 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                         <input type="text" id="acc-note-input" placeholder="VD: iPhone 4s của bạn An" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:13px;">
                     </div>
                 </div>
+
+                <!-- PHÂN QUYỀN TRUY CẬP NỘI DUNG -->
+                <div style="background:#0b1329; border:1px solid #1e3a8a; border-radius:12px; padding:14px 16px; margin-bottom:16px;">
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
+                        <span style="font-size:13px; font-weight:bold; color:#60a5fa;">🔑 Phân Quyền Truy Cập Nội Dung:</span>
+                        <div style="display:flex; gap:6px;">
+                            <button type="button" class="btn-action" onclick="setPermPreset('ALL')" style="font-size:11px; padding:4px 9px;">Chọn Tất Cả</button>
+                            <button type="button" class="btn-action" onclick="setPermPreset('GUEST_ONLY')" style="font-size:11px; padding:4px 9px; background:#581c87; color:#e9d5ff; border-color:#9333ea;">🌟 Chỉ Xem Tab Guest</button>
+                            <button type="button" class="btn-action" onclick="setPermPreset('NONE')" style="font-size:11px; padding:4px 9px;">Bỏ Chọn</button>
+                        </div>
+                    </div>
+                    
+                    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px; font-size:12.5px; color:#e2e8f0;">
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#1e293b; padding:8px 10px; border-radius:8px; border:1px solid #334155;">
+                            <input type="checkbox" id="perm-all" value="ALL" onchange="onPermAllChanged(this)" style="width:16px; height:16px;"> <b>🌐 Tất Cả</b>
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#3b0764; padding:8px 10px; border-radius:8px; border:1px solid #7e22ce; color:#f3e8ff;">
+                            <input type="checkbox" id="perm-guest" value="GUEST" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> <b>🌟 Tab Guest</b>
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
+                            <input type="checkbox" value="Trò Chơi" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🎮 Trò Chơi
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
+                            <input type="checkbox" value="Mạng Xã Hội" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🌐 Mạng Xã Hội
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
+                            <input type="checkbox" value="Giải Trí" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🎵 Giải Trí
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
+                            <input type="checkbox" value="Công Cụ" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🛠️ Công Cụ
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
+                            <input type="checkbox" value="Hệ thống" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> ⚙️ Hệ thống
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
+                            <input type="checkbox" value="Jailbreak" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🔓 Jailbreak
+                        </label>
+                    </div>
+                    <div style="font-size:11.5px; color:#94a3b8; margin-top:8px;">
+                        💡 <i>Nếu chọn <b>"🌟 Tab Guest"</b>: Khách chỉ được thấy và tải các ứng dụng bạn đã tích chọn ở nút <b>[🌟 Guest: BẬT]</b> trong mục Ẩn/Hiện Kho App.</i>
+                    </div>
+                </div>
                 <div style="display:flex; justify-content:space-between; align-items:center;">
                     <label style="display:flex; align-items:center; gap:8px; font-size:13px; color:#cbd5e1; cursor:pointer;">
                         <input type="checkbox" id="acc-active-checkbox" checked style="width:16px; height:16px;"> Cho phép tài khoản này đăng nhập
@@ -1176,6 +1218,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                         <option value="ALL">👁️ Tất cả trạng thái</option>
                         <option value="HOME">🏠 Đang hiện trên Trang chủ</option>
                         <option value="APP_ONLY">📱 Chỉ hiện ở /app/</option>
+                        <option value="GUEST">🌟 Được hiện ở Tab Guest</option>
                         <option value="HIDDEN">🙈 Đang ẩn hoàn toàn</option>
                     </select>
                 </div>
@@ -2109,14 +2152,18 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 
                     var statusBadge = '';
                     var rowStyle = '';
+                    var guestBadge = isShowGuest ? '<span style="background:#581c87; color:#e9d5ff; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:4px;">🌟 Tab Guest</span>' : '';
                     if (isHiddenAll) {
                         statusBadge = '<span style="background:#7f1d1d; color:#fca5a5; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🙈 Ẩn hoàn toàn</span>';
                         rowStyle = ' style="opacity:0.58; border-style:dashed; border-color:#7f1d1d;"';
                     } else if (isShowHome) {
-                        statusBadge = '<span style="background:#14532d; color:#86efac; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🏠 Trang chủ + 📱 /app/</span>';
+                        statusBadge = '<span style="background:#14532d; color:#86efac; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🏠 Trang chủ + 📱 /app/</span>' + guestBadge;
                     } else {
-                        statusBadge = '<span style="background:#1e3a8a; color:#93c5fd; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">📱 Chỉ ở /app/</span>';
+                        statusBadge = '<span style="background:#1e3a8a; color:#93c5fd; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">📱 Chỉ ở /app/</span>' + guestBadge;
                     }
+
+                    var isShowGuest = (app.show_on_guest === true);
+                    if (statusFilter === 'GUEST' && !isShowGuest) return;
 
                     var homeBtnText = isShowHome ? '🏠 Trang chủ: HIỆN' : '🏠 Trang chủ: ẨN';
                     var homeBtnStyle = isShowHome
@@ -2127,6 +2174,11 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     var allBtnStyle = isHiddenAll
                         ? 'background:#7f1d1d; color:#fecaca; border-color:#dc2626;'
                         : 'background:#1e3a8a; color:#dbeafe; border-color:#2563eb;';
+
+                    var guestBtnText = isShowGuest ? '🌟 Guest: BẬT' : '🌟 Guest: TẮT';
+                    var guestBtnStyle = isShowGuest
+                        ? 'background:#581c87; color:#e9d5ff; border-color:#9333ea;'
+                        : 'background:#1e293b; color:#94a3b8; border-color:#475569;';
 
                     html += '<div class="existing-item"' + rowStyle + '>' +
                                 '<div class="item-info">' +
@@ -2142,6 +2194,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                                     (aIdx > 0 ? '<button type="button" class="btn-action" title="Di chuyển lên trong chuyên mục" onclick="moveOtaApp(' + cIdx + ', ' + aIdx + ', -1)">⬆️</button>' : '') +
                                     (aIdx < list.length - 1 ? '<button type="button" class="btn-action" title="Di chuyển xuống trong chuyên mục" onclick="moveOtaApp(' + cIdx + ', ' + aIdx + ', 1)">⬇️</button>' : '') +
                                     '<button type="button" class="btn-action" style="' + homeBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'show_on_home' + String.fromCharCode(39) + ')" title="Bật/tắt hiển thị ở mục Cài trực tiếp trên Trang chủ">' + homeBtnText + '</button>' +
+                                    '<button type="button" class="btn-action" style="' + guestBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'show_on_guest' + String.fromCharCode(39) + ')" title="Tích chọn cho phép app này xuất hiện ở Tab Guest (Khách)">' + guestBtnText + '</button>' +
                                     '<button type="button" class="btn-action" style="' + allBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'hidden' + String.fromCharCode(39) + ')" title="Ẩn/hiện app khỏi toàn bộ web (cả Trang chủ và /app/)">' + allBtnText + '</button>' +
                                     '<button type="button" class="btn-action btn-action-del" onclick="deleteOtaApp(' + cIdx + ', ' + aIdx + ')" title="Xóa app khỏi ota_data.json">🗑️</button>' +
                                 '</div>' +
@@ -2506,8 +2559,19 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 html += '        <span style="font-weight:bold; color:#f8fafc; font-size:14px;">' + escapeHtml(acc.username) + '</span>';
                 html += '        ' + statusBadge;
                 html += '      </div>';
+                var perms = acc.allowed_categories || ['ALL'];
+                var permBadges = '';
+                if (acc.is_guest || perms.indexOf('GUEST') !== -1) {
+                    permBadges = '<span style="background:#581c87; color:#e9d5ff; font-size:11px; padding:2px 7px; border-radius:8px; font-weight:bold;">🌟 Chỉ Tab Guest</span>';
+                } else if (perms.indexOf('ALL') !== -1) {
+                    permBadges = '<span style="background:#0369a1; color:#e0f2fe; font-size:11px; padding:2px 7px; border-radius:8px;">🌐 Xem Tất Cả</span>';
+                } else {
+                    permBadges = '<span style="background:#334155; color:#cbd5e1; font-size:11px; padding:2px 7px; border-radius:8px;">📂 ' + escapeHtml(perms.join(', ')) + '</span>';
+                }
+
                 html += '      <div style="font-size:12px; color:#94a3b8; margin-top:2px;">';
                 html += '        Mật khẩu: <code style="background:#1e293b; padding:1px 6px; border-radius:4px; color:#38bdf8;">' + escapeHtml(acc.password) + '</code>';
+                html += '        • Quyền: ' + permBadges;
                 if (acc.note) {
                     html += ' • <i>' + escapeHtml(acc.note) + '</i>';
                 }
@@ -2543,6 +2607,66 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             });
         }
 
+        
+        function getSelectedPermissions() {
+            var allCb = document.getElementById('perm-all');
+            if (allCb && allCb.checked) return ['ALL'];
+            var perms = [];
+            var cbs = document.querySelectorAll('.perm-cat-check');
+            for (var i = 0; i < cbs.length; i++) {
+                if (cbs[i].checked) perms.push(cbs[i].value);
+            }
+            return perms.length > 0 ? perms : ['ALL'];
+        }
+
+        function setSelectedPermissions(perms, isGuest) {
+            perms = perms || ['ALL'];
+            var allCb = document.getElementById('perm-all');
+            var isAll = perms.indexOf('ALL') !== -1;
+            if (allCb) allCb.checked = isAll;
+
+            var cbs = document.querySelectorAll('.perm-cat-check');
+            for (var i = 0; i < cbs.length; i++) {
+                var val = cbs[i].value;
+                if (isAll) {
+                    cbs[i].checked = false;
+                } else {
+                    cbs[i].checked = (perms.indexOf(val) !== -1) || (val === 'GUEST' && isGuest);
+                }
+            }
+        }
+
+        function onPermAllChanged(cb) {
+            if (cb.checked) {
+                var cbs = document.querySelectorAll('.perm-cat-check');
+                for (var i = 0; i < cbs.length; i++) cbs[i].checked = false;
+            }
+        }
+
+        function onPermCatChanged() {
+            var anyChecked = false;
+            var cbs = document.querySelectorAll('.perm-cat-check');
+            for (var i = 0; i < cbs.length; i++) {
+                if (cbs[i].checked) { anyChecked = true; break; }
+            }
+            var allCb = document.getElementById('perm-all');
+            if (anyChecked && allCb) allCb.checked = false;
+        }
+
+        function setPermPreset(preset) {
+            var allCb = document.getElementById('perm-all');
+            var cbs = document.querySelectorAll('.perm-cat-check');
+            for (var i = 0; i < cbs.length; i++) cbs[i].checked = false;
+            if (preset === 'ALL') {
+                if (allCb) allCb.checked = true;
+            } else if (preset === 'GUEST_ONLY') {
+                if (allCb) allCb.checked = false;
+                var g = document.getElementById('perm-guest');
+                if (g) g.checked = true;
+            } else if (preset === 'NONE') {
+                if (allCb) allCb.checked = false;
+            }
+        }
         function submitSaveAccount() {
             console.log('submitSaveAccount clicked!');
             var usernameEl = document.getElementById('acc-username-input');
@@ -2554,9 +2678,8 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             var password = passwordEl ? passwordEl.value.trim() : '';
             var note = noteEl ? noteEl.value.trim() : '';
             var active = activeEl ? activeEl.checked : true;
-            var password = document.getElementById('acc-password-input').value.trim();
-            var note = document.getElementById('acc-note-input').value.trim();
-            var active = document.getElementById('acc-active-checkbox').checked;
+            var perms = getSelectedPermissions();
+            var isGuest = perms.indexOf('GUEST') !== -1;
 
             if (!username) {
                 alert('Vui lòng nhập Tên Đăng Nhập!');
@@ -2575,6 +2698,8 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     password: password,
                     note: note,
                     active: active,
+                    allowed_categories: perms,
+                    is_guest: isGuest,
                     is_edit: !!editingUsername
                 })
             })
@@ -2587,10 +2712,13 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 } else {
                     alert('Lỗi: ' + (data.error || 'Không rõ lỗi'));
                 }
+            })
+            .catch(function(err) {
+                alert('Lỗi kết nối: ' + err);
             });
         }
 
-        function onEditAccClick(btn) {
+function onEditAccClick(btn) {
             var u = decodeURIComponent(btn.getAttribute('data-user'));
             editAccount(u);
         }
@@ -2614,6 +2742,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     document.getElementById('acc-password-input').value = acc.password;
                     document.getElementById('acc-note-input').value = acc.note || '';
                     document.getElementById('acc-active-checkbox').checked = acc.active !== false;
+                    setSelectedPermissions(acc.allowed_categories || ['ALL'], acc.is_guest === true);
 
                     document.getElementById('acc-form-title').innerText = '✏️ Chỉnh Sửa Tài Khoản: ' + acc.username;
                     document.getElementById('btn-acc-cancel-edit').style.display = 'inline-block';
@@ -2630,6 +2759,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             document.getElementById('acc-password-input').value = '';
             document.getElementById('acc-note-input').value = '';
             document.getElementById('acc-active-checkbox').checked = true;
+            setPermPreset('ALL');
 
             document.getElementById('acc-form-title').innerText = '➕ Cấp Tài Khoản Mới';
             document.getElementById('btn-acc-cancel-edit').style.display = 'none';
@@ -2723,6 +2853,10 @@ def save_auth_account():
         note = req.get('note', '').strip()
         active = req.get('active', True)
         is_edit = req.get('is_edit', False)
+        allowed_categories = req.get('allowed_categories', ['ALL'])
+        if not allowed_categories or not isinstance(allowed_categories, list):
+            allowed_categories = ['ALL']
+        is_guest = req.get('is_guest', False) or ('GUEST' in allowed_categories)
 
         if not username:
             return jsonify({'success': False, 'error': 'Vui lòng nhập tên đăng nhập!'})
@@ -2739,6 +2873,8 @@ def save_auth_account():
                         acc['password'] = password
                     acc['note'] = note
                     acc['active'] = active
+                    acc['allowed_categories'] = allowed_categories
+                    acc['is_guest'] = is_guest
                 else:
                     return jsonify({'success': False, 'error': f'Tài khoản {username} đã tồn tại!'})
                 break
@@ -2750,7 +2886,9 @@ def save_auth_account():
                 'username': username,
                 'password': password,
                 'note': note,
-                'active': active
+                'active': active,
+                'allowed_categories': allowed_categories,
+                'is_guest': is_guest
             })
 
         data['accounts'] = accounts
@@ -3470,7 +3608,7 @@ def api_apps_toggle_item():
         cat = data.get('category', '')
         idx = int(data.get('index', -1))
         field = data.get('field', '')
-        if field not in ('show_on_home', 'hidden'):
+        if field not in ('show_on_home', 'hidden', 'show_on_guest'):
             return jsonify({"success": False, "error": "Trường cập nhật không hợp lệ!"})
 
         ota_data = load_ota_data()
@@ -3479,6 +3617,8 @@ def api_apps_toggle_item():
 
         item = ota_data[cat][idx]
         default_val = True if field == 'show_on_home' else False
+        if field == 'show_on_guest':
+            default_val = False
         current_val = bool(item.get(field, default_val))
         new_val = bool(data['value']) if 'value' in data else (not current_val)
         item[field] = new_val

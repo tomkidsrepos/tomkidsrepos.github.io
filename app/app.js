@@ -28,6 +28,7 @@ window.onload = function() {
             initUserData();
             loadOtaData();
             updateDownloadBadge();
+            applyUserPermissionsUI();
         }
     });
 };
@@ -144,6 +145,7 @@ function processAppData() {
                 name: item.name || 'Không rõ',
                 version: item.version || '1.0',
                 category: catName,
+                show_on_guest: (item.show_on_guest === true),
                 icon: iconUrl,
                 plist: plistUrl,
                 rating: 5,
@@ -174,9 +176,30 @@ function getAuthorFromName(name) {
    ========================================================================== */
 function applyFilterAndRender() {
     filteredApps = [];
+    var allowedCats = (globalCurrentUserAcc && globalCurrentUserAcc.allowed_categories) ? globalCurrentUserAcc.allowed_categories : ['ALL'];
+    var isGuestUser = (globalCurrentUserAcc && (globalCurrentUserAcc.is_guest === true || allowedCats.indexOf('GUEST') !== -1));
+
     for (var i = 0; i < allAppsFlat.length; i++) {
         var app = allAppsFlat[i];
-        if (currentCategory === 'ALL' || app.category === currentCategory) {
+
+        // Nếu là tài khoản Guest: chỉ được phép xem các app được tích show_on_guest === true
+        if (isGuestUser) {
+            if (app.show_on_guest !== true) continue;
+        } else if (allowedCats.indexOf('ALL') === -1) {
+            // Tài khoản bị giới hạn chuyên mục cụ thể
+            if (currentCategory === 'GUEST') {
+                if (app.show_on_guest !== true) continue;
+            } else if (allowedCats.indexOf(app.category) === -1) {
+                continue;
+            }
+        }
+
+        // Lọc theo Tab/Menu hiện tại
+        if (currentCategory === 'GUEST') {
+            if (app.show_on_guest === true) {
+                filteredApps.push(app);
+            }
+        } else if (currentCategory === 'ALL' || app.category === currentCategory) {
             filteredApps.push(app);
         }
     }
@@ -681,11 +704,13 @@ function filterBySubCategory(cat) {
     // Cập nhật chip button
     var chips = document.querySelectorAll ? document.querySelectorAll('.chip-item') : [];
     for (var i = 0; i < chips.length; i++) {
-        var text = chips[i].innerText;
-        if ((cat === 'ALL' && text === 'Tất cả') || text.indexOf(cat) >= 0) {
-            chips[i].className = 'chip-item active';
+        var chip = chips[i];
+        var dataCat = chip.getAttribute('data-cat');
+        var text = chip.innerText;
+        if (dataCat === cat || (cat === 'ALL' && text === 'Tất cả') || (cat !== 'ALL' && text.indexOf(cat) >= 0)) {
+            chip.className = 'chip-item active';
         } else {
-            chips[i].className = 'chip-item';
+            chip.className = 'chip-item';
         }
     }
 
@@ -832,6 +857,7 @@ function escapeHtml(str) {
    XÁC THỰC BẢO VỆ KHO APP (THÍCH ỨNG SAFARI IOS CỔ 5, 6, 7, 8, 9, 10)
    ========================================================================== */
 var globalAuthData = null;
+var globalCurrentUserAcc = null;
 
 function checkAppAuth(callback) {
     var xhr = new XMLHttpRequest();
@@ -860,6 +886,7 @@ function checkAppAuth(callback) {
                 for (var i = 0; i < accounts.length; i++) {
                     if (accounts[i].username.toLowerCase() === sessionUser.toLowerCase()) {
                         if (accounts[i].active !== false) {
+                            globalCurrentUserAcc = accounts[i];
                             if (callback) callback(true);
                             return;
                         }
@@ -916,12 +943,14 @@ function submitAppAuth() {
                 return;
             }
             if (acc.password === p) {
+                globalCurrentUserAcc = acc;
                 localStorage.setItem(STORAGE_AUTH_USER, acc.username);
                 localStorage.setItem(STORAGE_USER_NAME, acc.username);
                 document.getElementById('app-auth-overlay').style.display = 'none';
                 initUserData();
                 loadOtaData();
                 updateDownloadBadge();
+                applyUserPermissionsUI();
                 return;
             }
         }
@@ -936,5 +965,55 @@ function logoutAppStore() {
         localStorage.removeItem(STORAGE_AUTH_USER);
         localStorage.removeItem(STORAGE_USER_NAME);
         window.location.href = '../';
+    }
+}
+
+
+function applyUserPermissionsUI() {
+    if (!globalCurrentUserAcc) return;
+    var allowedCats = globalCurrentUserAcc.allowed_categories || ['ALL'];
+    var isGuest = (globalCurrentUserAcc.is_guest === true || allowedCats.indexOf('GUEST') !== -1);
+
+    var chips = document.querySelectorAll ? document.querySelectorAll('.chip-item') : [];
+    var ddItems = document.querySelectorAll ? document.querySelectorAll('.dropdown-item') : [];
+
+    if (isGuest) {
+        // Tài khoản khách: Ẩn tất cả các tab khác, chỉ giữ lại tab Guest
+        for (var i = 0; i < chips.length; i++) {
+            var cat = chips[i].getAttribute('data-cat');
+            if (cat === 'GUEST') {
+                chips[i].style.display = 'inline-block';
+            } else {
+                chips[i].style.display = 'none';
+            }
+        }
+        for (var j = 0; j < ddItems.length; j++) {
+            var cat2 = ddItems[j].getAttribute('data-cat');
+            if (cat2 === 'GUEST') {
+                ddItems[j].style.display = 'block';
+            } else {
+                ddItems[j].style.display = 'none';
+            }
+        }
+        // Tự động chuyển thẳng sang tab Guest
+        filterBySubCategory('GUEST');
+    } else if (allowedCats.indexOf('ALL') === -1) {
+        // Tài khoản giới hạn theo chuyên mục
+        for (var i = 0; i < chips.length; i++) {
+            var cat = chips[i].getAttribute('data-cat');
+            if (cat === 'ALL' || cat === 'GUEST' || allowedCats.indexOf(cat) !== -1) {
+                chips[i].style.display = 'inline-block';
+            } else {
+                chips[i].style.display = 'none';
+            }
+        }
+        for (var j = 0; j < ddItems.length; j++) {
+            var cat2 = ddItems[j].getAttribute('data-cat');
+            if (cat2 === 'ALL' || cat2 === 'GUEST' || allowedCats.indexOf(cat2) !== -1) {
+                ddItems[j].style.display = 'block';
+            } else {
+                ddItems[j].style.display = 'none';
+            }
+        }
     }
 }

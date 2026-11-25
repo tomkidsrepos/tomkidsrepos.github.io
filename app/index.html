@@ -134,7 +134,8 @@
 
         <!-- CATEGORY DROPDOWN MENU KHI BẤM VÀO TIÊU ĐỀ -->
         <div id="category-dropdown" class="category-dropdown" style="display:none;">
-            <div class="dropdown-item" onclick="filterBySubCategory('ALL')">Tất cả danh mục</div>
+            <div class="dropdown-item" data-cat="ALL" onclick="filterBySubCategory('ALL')">Tất cả danh mục</div>
+            <div class="dropdown-item" data-cat="GUEST" onclick="filterBySubCategory('GUEST')" style="color:#d8b4fe; font-weight:bold;">🌟 Khách (Guest)</div>
             <div class="dropdown-item" onclick="filterBySubCategory('Trò Chơi')">🎮 Trò Chơi</div>
             <div class="dropdown-item" onclick="filterBySubCategory('Mạng Xã Hội')">🌐 Mạng Xã Hội</div>
             <div class="dropdown-item" onclick="filterBySubCategory('Giải Trí')">🎵 Giải Trí / Media</div>
@@ -152,7 +153,8 @@
 
         <!-- CATEGORY FILTER CHIPS (CUỘN NGANG) -->
         <div class="category-chips-scroll" id="chips-scroll">
-            <button class="chip-item active" onclick="filterBySubCategory('ALL')">Tất cả</button>
+            <button class="chip-item active" data-cat="ALL" onclick="filterBySubCategory('ALL')">Tất cả</button>
+            <button class="chip-item" id="chip-guest" data-cat="GUEST" onclick="filterBySubCategory('GUEST')" style="color:#d8b4fe; font-weight:bold; border-color:#7e22ce;">🌟 Guest</button>
             <button class="chip-item" onclick="filterBySubCategory('Trò Chơi')">Trò Chơi</button>
             <button class="chip-item" onclick="filterBySubCategory('Mạng Xã Hội')">Mạng Xã Hội</button>
             <button class="chip-item" onclick="filterBySubCategory('Giải Trí')">Giải Trí</button>

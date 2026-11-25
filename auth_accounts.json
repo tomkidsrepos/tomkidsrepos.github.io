@@ -5,13 +5,21 @@
             "username": "Long1",
             "password": "Tom26",
             "note": "Long",
-            "active": true
+            "active": true,
+            "allowed_categories": [
+                "ALL"
+            ],
+            "is_guest": false
         },
         {
             "username": "Guest",
             "password": "Tomkids",
             "note": "Hội IOS Cổ",
-            "active": true
+            "active": true,
+            "allowed_categories": [
+                "GUEST"
+            ],
+            "is_guest": true
         }
     ]
 }
