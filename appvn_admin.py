@@ -2437,13 +2437,6 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 }
             });
         }
-                    renderVisibilityHomeControls();
-                    renderVisibilityApps();
-                } else {
-                    alert('Lỗi: ' + data.error);
-                }
-            });
-        }
 
         function bulkSelectedCategoryHome(showOnHome) {
             var catFilterEl = document.getElementById('vis-cat-filter');
@@ -3015,14 +3008,15 @@ function onEditAccClick(btn) {
 
             // Presets
             if (presetsCon) {
-                var phtml = '<button type="button" class="btn-action" onclick="setPermPreset(\'ALL\')" style="font-size:11px; padding:4px 9px;">Chọn Tất Cả</button>';
+                var q = String.fromCharCode(39);
+                var phtml = '<button type="button" class="btn-action" onclick="setPermPreset(' + q + 'ALL' + q + ')" style="font-size:11px; padding:4px 9px;">Chọn Tất Cả</button>';
                 for (var i = 0; i < cachedTabs.length; i++) {
                     var tab = cachedTabs[i];
                     if (tab.type === 'curated') {
-                        phtml += '<button type="button" class="btn-action" onclick="setPermPreset(\'' + tab.id + '\')" style="font-size:11px; padding:4px 9px; background:' + (tab.color || '#581c87') + '33; color:' + (tab.color || '#e9d5ff') + '; border-color:' + (tab.color || '#9333ea') + ';">' + (tab.icon || '🌟') + ' Chỉ ' + escapeHtml(tab.name) + '</button>';
+                        phtml += '<button type="button" class="btn-action" onclick="setPermPreset(' + q + tab.id + q + ')" style="font-size:11px; padding:4px 9px; background:' + (tab.color || '#581c87') + '33; color:' + (tab.color || '#e9d5ff') + '; border-color:' + (tab.color || '#9333ea') + ';">' + (tab.icon || '🌟') + ' Chỉ ' + escapeHtml(tab.name) + '</button>';
                     }
                 }
-                phtml += '<button type="button" class="btn-action" onclick="setPermPreset(\'NONE\')" style="font-size:11px; padding:4px 9px;">Bỏ Chọn</button>';
+                phtml += '<button type="button" class="btn-action" onclick="setPermPreset(' + q + 'NONE' + q + ')" style="font-size:11px; padding:4px 9px;">Bỏ Chọn</button>';
                 presetsCon.innerHTML = phtml;
             }
 
@@ -3268,7 +3262,7 @@ function onEditAccClick(btn) {
                 alert('Không thể xóa Tab hệ thống!');
                 return;
             }
-            if (!confirm('Bạn có chắc chắn muốn XÓA Tab "' + t.name + '" (ID: ' + t.id + ')?\nCác thiết lập phân quyền liên quan đến tab này cũng sẽ được gỡ bỏ.')) {
+            if (!confirm('Bạn có chắc chắn muốn XÓA Tab "' + t.name + '" (ID: ' + t.id + ')?\\nCác thiết lập phân quyền liên quan đến tab này cũng sẽ được gỡ bỏ.')) {
                 return;
             }
 
@@ -3313,6 +3307,9 @@ function onEditAccClick(btn) {
                 alert('Lỗi kết nối: ' + err);
             });
         }
+
+        // Tự động nạp sẵn dữ liệu Tab khi tải trang
+        loadTabsManager();
 
     </script>
 </body>
