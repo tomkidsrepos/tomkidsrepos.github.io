@@ -17,7 +17,8 @@
             "note": "Hội IOS Cổ",
             "active": true,
             "allowed_categories": [
-                "GUEST"
+                "GUEST",
+                "Mạng Xã Hội"
             ],
             "is_guest": true
         }
