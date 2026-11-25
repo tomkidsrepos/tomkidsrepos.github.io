@@ -21,6 +21,18 @@
                 "Mạng Xã Hội"
             ],
             "is_guest": true
+        },
+        {
+            "username": "Long2",
+            "password": "Tomkids26",
+            "note": "Tuấn Long",
+            "active": true,
+            "allowed_categories": [
+                "Trò Chơi",
+                "Mạng Xã Hội",
+                "Giải Trí"
+            ],
+            "is_guest": false
         }
     ]
 }
