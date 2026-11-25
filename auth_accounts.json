@@ -6,6 +6,12 @@
             "password": "Tom26",
             "note": "Long",
             "active": true
+        },
+        {
+            "username": "Guest",
+            "password": "Tomkids",
+            "note": "Hội IOS Cổ",
+            "active": true
         }
     ]
 }
