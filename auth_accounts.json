@@ -20,7 +20,7 @@
                 "GUEST",
                 "Mạng Xã Hội"
             ],
-            "is_guest": true
+            "is_guest": false
         },
         {
             "username": "Long2",

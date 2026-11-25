@@ -157,6 +157,7 @@ function processAppData() {
     }
 
     applyFilterAndRender();
+    applyUserPermissionsUI();
 }
 
 function getAuthorFromName(name) {
@@ -177,30 +178,24 @@ function getAuthorFromName(name) {
 function applyFilterAndRender() {
     filteredApps = [];
     var allowedCats = (globalCurrentUserAcc && globalCurrentUserAcc.allowed_categories) ? globalCurrentUserAcc.allowed_categories : ['ALL'];
-    var isGuestUser = (globalCurrentUserAcc && (globalCurrentUserAcc.is_guest === true || allowedCats.indexOf('GUEST') !== -1));
+    var hasAll = (allowedCats.indexOf('ALL') !== -1);
 
     for (var i = 0; i < allAppsFlat.length; i++) {
         var app = allAppsFlat[i];
-
-        // Nếu là tài khoản Guest: chỉ được phép xem các app được tích show_on_guest === true
-        if (isGuestUser) {
-            if (app.show_on_guest !== true) continue;
-        } else if (allowedCats.indexOf('ALL') === -1) {
-            // Tài khoản bị giới hạn chuyên mục cụ thể
-            if (currentCategory === 'GUEST') {
-                if (app.show_on_guest !== true) continue;
-            } else if (allowedCats.indexOf(app.category) === -1) {
-                continue;
-            }
-        }
 
         // Lọc theo Tab/Menu hiện tại
         if (currentCategory === 'GUEST') {
             if (app.show_on_guest === true) {
                 filteredApps.push(app);
             }
-        } else if (currentCategory === 'ALL' || app.category === currentCategory) {
-            filteredApps.push(app);
+        } else if (currentCategory === 'ALL') {
+            if (hasAll || allowedCats.indexOf(app.category) !== -1) {
+                filteredApps.push(app);
+            }
+        } else if (app.category === currentCategory) {
+            if (hasAll || allowedCats.indexOf(app.category) !== -1) {
+                filteredApps.push(app);
+            }
         }
     }
 
@@ -699,15 +694,22 @@ function switchTab(tabName) {
 
 function filterBySubCategory(cat) {
     currentCategory = cat;
-    document.getElementById('category-dropdown').style.display = 'none';
+    var dd = document.getElementById('category-dropdown');
+    if (dd) dd.style.display = 'none';
+
+    var titleEl = document.getElementById('current-title');
+    if (titleEl) {
+        if (cat === 'ALL') titleEl.innerText = 'Danh mục';
+        else if (cat === 'GUEST') titleEl.innerText = '🌟 Guest';
+        else titleEl.innerText = cat;
+    }
 
     // Cập nhật chip button
     var chips = document.querySelectorAll ? document.querySelectorAll('.chip-item') : [];
     for (var i = 0; i < chips.length; i++) {
         var chip = chips[i];
         var dataCat = chip.getAttribute('data-cat');
-        var text = chip.innerText;
-        if (dataCat === cat || (cat === 'ALL' && text === 'Tất cả') || (cat !== 'ALL' && text.indexOf(cat) >= 0)) {
+        if (dataCat === cat) {
             chip.className = 'chip-item active';
         } else {
             chip.className = 'chip-item';
@@ -972,48 +974,52 @@ function logoutAppStore() {
 function applyUserPermissionsUI() {
     if (!globalCurrentUserAcc) return;
     var allowedCats = globalCurrentUserAcc.allowed_categories || ['ALL'];
-    var isGuest = (globalCurrentUserAcc.is_guest === true || allowedCats.indexOf('GUEST') !== -1);
+    var hasAll = (allowedCats.indexOf('ALL') !== -1);
+    var isPureGuest = (!hasAll && allowedCats.length === 1 && allowedCats[0] === 'GUEST');
 
     var chips = document.querySelectorAll ? document.querySelectorAll('.chip-item') : [];
     var ddItems = document.querySelectorAll ? document.querySelectorAll('.dropdown-item') : [];
 
-    if (isGuest) {
-        // Tài khoản khách: Ẩn tất cả các tab khác, chỉ giữ lại tab Guest
-        for (var i = 0; i < chips.length; i++) {
-            var cat = chips[i].getAttribute('data-cat');
-            if (cat === 'GUEST') {
+    for (var i = 0; i < chips.length; i++) {
+        var cat = chips[i].getAttribute('data-cat');
+        if (hasAll) {
+            chips[i].style.display = 'inline-block';
+        } else if (isPureGuest) {
+            chips[i].style.display = (cat === 'GUEST') ? 'inline-block' : 'none';
+        } else {
+            if (cat === 'ALL') {
+                chips[i].style.display = 'none';
+            } else if (allowedCats.indexOf(cat) !== -1) {
                 chips[i].style.display = 'inline-block';
             } else {
                 chips[i].style.display = 'none';
             }
         }
-        for (var j = 0; j < ddItems.length; j++) {
-            var cat2 = ddItems[j].getAttribute('data-cat');
-            if (cat2 === 'GUEST') {
+    }
+
+    for (var j = 0; j < ddItems.length; j++) {
+        var cat2 = ddItems[j].getAttribute('data-cat');
+        if (hasAll) {
+            ddItems[j].style.display = 'block';
+        } else if (isPureGuest) {
+            ddItems[j].style.display = (cat2 === 'GUEST') ? 'block' : 'none';
+        } else {
+            if (cat2 === 'ALL') {
+                ddItems[j].style.display = 'none';
+            } else if (allowedCats.indexOf(cat2) !== -1) {
                 ddItems[j].style.display = 'block';
             } else {
                 ddItems[j].style.display = 'none';
             }
         }
-        // Tự động chuyển thẳng sang tab Guest
+    }
+
+    // Điều hướng tab hiển thị phù hợp:
+    if (isPureGuest) {
         filterBySubCategory('GUEST');
-    } else if (allowedCats.indexOf('ALL') === -1) {
-        // Tài khoản giới hạn theo chuyên mục
-        for (var i = 0; i < chips.length; i++) {
-            var cat = chips[i].getAttribute('data-cat');
-            if (cat === 'ALL' || cat === 'GUEST' || allowedCats.indexOf(cat) !== -1) {
-                chips[i].style.display = 'inline-block';
-            } else {
-                chips[i].style.display = 'none';
-            }
-        }
-        for (var j = 0; j < ddItems.length; j++) {
-            var cat2 = ddItems[j].getAttribute('data-cat');
-            if (cat2 === 'ALL' || cat2 === 'GUEST' || allowedCats.indexOf(cat2) !== -1) {
-                ddItems[j].style.display = 'block';
-            } else {
-                ddItems[j].style.display = 'none';
-            }
+    } else if (!hasAll) {
+        if (allowedCats.indexOf(currentCategory) === -1) {
+            filterBySubCategory(allowedCats[0]);
         }
     }
 }

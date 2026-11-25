@@ -2561,12 +2561,20 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 html += '      </div>';
                 var perms = acc.allowed_categories || ['ALL'];
                 var permBadges = '';
-                if (acc.is_guest || perms.indexOf('GUEST') !== -1) {
-                    permBadges = '<span style="background:#581c87; color:#e9d5ff; font-size:11px; padding:2px 7px; border-radius:8px; font-weight:bold;">🌟 Chỉ Tab Guest</span>';
-                } else if (perms.indexOf('ALL') !== -1) {
+                if (perms.indexOf('ALL') !== -1) {
                     permBadges = '<span style="background:#0369a1; color:#e0f2fe; font-size:11px; padding:2px 7px; border-radius:8px;">🌐 Xem Tất Cả</span>';
+                } else if (perms.length === 1 && perms[0] === 'GUEST') {
+                    permBadges = '<span style="background:#581c87; color:#e9d5ff; font-size:11px; padding:2px 7px; border-radius:8px; font-weight:bold;">🌟 Chỉ Tab Guest</span>';
                 } else {
-                    permBadges = '<span style="background:#334155; color:#cbd5e1; font-size:11px; padding:2px 7px; border-radius:8px;">📂 ' + escapeHtml(perms.join(', ')) + '</span>';
+                    var badges = [];
+                    for (var k = 0; k < perms.length; k++) {
+                        if (perms[k] === 'GUEST') {
+                            badges.push('🌟 Tab Guest');
+                        } else {
+                            badges.push(perms[k]);
+                        }
+                    }
+                    permBadges = '<span style="background:#334155; color:#cbd5e1; font-size:11px; padding:2px 7px; border-radius:8px;">📂 ' + escapeHtml(badges.join(', ')) + '</span>';
                 }
 
                 html += '      <div style="font-size:12px; color:#94a3b8; margin-top:2px;">';
@@ -2631,7 +2639,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 if (isAll) {
                     cbs[i].checked = false;
                 } else {
-                    cbs[i].checked = (perms.indexOf(val) !== -1) || (val === 'GUEST' && isGuest);
+                    cbs[i].checked = (perms.indexOf(val) !== -1);
                 }
             }
         }
@@ -2679,7 +2687,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             var note = noteEl ? noteEl.value.trim() : '';
             var active = activeEl ? activeEl.checked : true;
             var perms = getSelectedPermissions();
-            var isGuest = perms.indexOf('GUEST') !== -1;
+            var isGuest = (perms.length === 1 && perms[0] === 'GUEST');
 
             if (!username) {
                 alert('Vui lòng nhập Tên Đăng Nhập!');
@@ -2856,7 +2864,7 @@ def save_auth_account():
         allowed_categories = req.get('allowed_categories', ['ALL'])
         if not allowed_categories or not isinstance(allowed_categories, list):
             allowed_categories = ['ALL']
-        is_guest = req.get('is_guest', False) or ('GUEST' in allowed_categories)
+        is_guest = (allowed_categories == ['GUEST'])
 
         if not username:
             return jsonify({'success': False, 'error': 'Vui lòng nhập tên đăng nhập!'})
