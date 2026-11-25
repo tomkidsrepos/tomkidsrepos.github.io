@@ -1,5 +1,6 @@
 {
     "enabled": true,
+    "session_timeout_minutes": 15,
     "accounts": [
         {
             "username": "Long1",

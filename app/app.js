@@ -20,6 +20,7 @@ var STORAGE_WALLET = 'appvn_wallet';
 var STORAGE_DOWNLOADS = 'appvn_downloads';
 var STORAGE_FAVORITES = 'appvn_favorites';
 var STORAGE_AUTH_USER = 'appvn_auth_user';
+var STORAGE_SESSION_ACTIVE = 'appvn_session_active';
 
 // Cấu hình Tab & Chuyên mục mặc định (sẽ được ghi đè tự động từ app_tabs.json)
 var appTabs = [
@@ -116,13 +117,17 @@ window.onload = function() {
    1. QUẢN LÝ TÀI KHOẢN & VÍ XU / RUBY / VÀNG (PHONG CÁCH APPVN)
    ========================================================================== */
 function initUserData() {
-    var storedName = localStorage.getItem(STORAGE_USER_NAME);
+    var storedName = null;
+    try {
+        storedName = sessionStorage.getItem(STORAGE_USER_NAME);
+    } catch(e) {}
     if (!storedName || storedName === 'tuanem') {
         storedName = 'Tomkids';
-        localStorage.setItem(STORAGE_USER_NAME, storedName);
     }
-    document.getElementById('user-name-display').innerText = storedName;
-    document.getElementById('user-avatar').innerText = (storedName === 'Tomkids') ? 'TK' : storedName.substring(0, 2).toUpperCase();
+    var nameEl = document.getElementById('user-name-display');
+    if (nameEl) nameEl.innerText = storedName;
+    var avatarEl = document.getElementById('user-avatar');
+    if (avatarEl) avatarEl.innerText = (storedName === 'Tomkids') ? 'TK' : storedName.substring(0, 2).toUpperCase();
 
     var wallet = getStoredWallet();
     document.getElementById('val-xu').innerText = wallet.xu;
@@ -988,6 +993,12 @@ function escapeHtml(str) {
 var globalAuthData = null;
 var globalCurrentUserAcc = null;
 
+function touchUserSession() {
+    try {
+        sessionStorage.setItem(STORAGE_SESSION_ACTIVE, (new Date()).getTime().toString());
+    } catch(e) {}
+}
+
 function checkAppAuth(callback) {
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '../auth_accounts.json?t=' + (new Date()).getTime(), true);
@@ -1008,14 +1019,49 @@ function checkAppAuth(callback) {
                 return;
             }
 
-            // Kiểm tra session hiện tại
-            var sessionUser = localStorage.getItem(STORAGE_AUTH_USER);
+            // 1. Dọn sạch dữ liệu đăng nhập cũ trong localStorage (xóa bỏ phiên lưu vĩnh viễn trên máy)
+            try {
+                localStorage.removeItem(STORAGE_AUTH_USER);
+                localStorage.removeItem(STORAGE_USER_NAME);
+            } catch(e) {}
+
+            // 2. Kiểm tra phiên tạm thời trong sessionStorage
+            var sessionUser = null;
+            try {
+                sessionUser = sessionStorage.getItem(STORAGE_AUTH_USER);
+            } catch(e) {}
+
+            // 3. Kiểm tra thời gian nhàn rỗi / tắt máy (Session Timeout)
+            if (sessionUser) {
+                var lastActiveStr = null;
+                try {
+                    lastActiveStr = sessionStorage.getItem(STORAGE_SESSION_ACTIVE);
+                } catch(e) {}
+
+                var timeoutMin = (globalAuthData && typeof globalAuthData.session_timeout_minutes === 'number')
+                    ? globalAuthData.session_timeout_minutes : 15;
+
+                if (timeoutMin > 0 && lastActiveStr) {
+                    var lastActiveTime = parseInt(lastActiveStr, 10);
+                    var nowTime = (new Date()).getTime();
+                    if (nowTime - lastActiveTime > timeoutMin * 60 * 1000) {
+                        try {
+                            sessionStorage.removeItem(STORAGE_AUTH_USER);
+                            sessionStorage.removeItem(STORAGE_USER_NAME);
+                            sessionStorage.removeItem(STORAGE_SESSION_ACTIVE);
+                        } catch(e) {}
+                        sessionUser = null;
+                    }
+                }
+            }
+
             if (sessionUser) {
                 var accounts = globalAuthData.accounts || [];
                 for (var i = 0; i < accounts.length; i++) {
                     if (accounts[i].username.toLowerCase() === sessionUser.toLowerCase()) {
                         if (accounts[i].active !== false) {
                             globalCurrentUserAcc = accounts[i];
+                            touchUserSession();
                             if (callback) callback(true);
                             return;
                         }
@@ -1023,7 +1069,7 @@ function checkAppAuth(callback) {
                 }
             }
 
-            // Chưa đăng nhập hoặc tài khoản bị khóa -> Hiện modal đăng nhập
+            // Chưa đăng nhập hoặc phiên đã kết thúc -> Hiện modal đăng nhập
             showAppAuthModal();
             if (callback) callback(false);
         }
@@ -1053,8 +1099,13 @@ function submitAppAuth() {
     }
 
     if (!globalAuthData || !globalAuthData.enabled) {
-        localStorage.setItem(STORAGE_AUTH_USER, u);
-        localStorage.setItem(STORAGE_USER_NAME, u);
+        try {
+            sessionStorage.setItem(STORAGE_AUTH_USER, u);
+            sessionStorage.setItem(STORAGE_USER_NAME, u);
+            sessionStorage.setItem(STORAGE_SESSION_ACTIVE, (new Date()).getTime().toString());
+            localStorage.removeItem(STORAGE_AUTH_USER);
+            localStorage.removeItem(STORAGE_USER_NAME);
+        } catch(e) {}
         document.getElementById('app-auth-overlay').style.display = 'none';
         initUserData();
         loadOtaData();
@@ -1073,8 +1124,13 @@ function submitAppAuth() {
             }
             if (acc.password === p) {
                 globalCurrentUserAcc = acc;
-                localStorage.setItem(STORAGE_AUTH_USER, acc.username);
-                localStorage.setItem(STORAGE_USER_NAME, acc.username);
+                try {
+                    sessionStorage.setItem(STORAGE_AUTH_USER, acc.username);
+                    sessionStorage.setItem(STORAGE_USER_NAME, acc.username);
+                    sessionStorage.setItem(STORAGE_SESSION_ACTIVE, (new Date()).getTime().toString());
+                    localStorage.removeItem(STORAGE_AUTH_USER);
+                    localStorage.removeItem(STORAGE_USER_NAME);
+                } catch(e) {}
                 document.getElementById('app-auth-overlay').style.display = 'none';
                 initUserData();
                 loadOtaData();
@@ -1091,11 +1147,58 @@ function submitAppAuth() {
 
 function logoutAppStore() {
     if (confirm('Bạn có chắc chắn muốn đăng xuất tài khoản khỏi Tomkids AppStore không?')) {
-        localStorage.removeItem(STORAGE_AUTH_USER);
-        localStorage.removeItem(STORAGE_USER_NAME);
+        try {
+            sessionStorage.removeItem(STORAGE_AUTH_USER);
+            sessionStorage.removeItem(STORAGE_USER_NAME);
+            sessionStorage.removeItem(STORAGE_SESSION_ACTIVE);
+            localStorage.removeItem(STORAGE_AUTH_USER);
+            localStorage.removeItem(STORAGE_USER_NAME);
+        } catch(e) {}
         window.location.href = '../';
     }
 }
+
+// Lắng nghe tương tác người dùng để duy trì phiên khi đang sử dụng
+if (window.addEventListener) {
+    window.addEventListener('click', touchUserSession, false);
+    window.addEventListener('touchstart', touchUserSession, false);
+    window.addEventListener('scroll', touchUserSession, false);
+    window.addEventListener('pageshow', function() {
+        checkAppAuth();
+    }, false);
+} else if (window.attachEvent) {
+    window.attachEvent('onclick', touchUserSession);
+}
+
+// Kiểm tra phiên định kỳ mỗi 15 giây
+setInterval(function() {
+    if (globalAuthData && globalAuthData.enabled && globalCurrentUserAcc) {
+        var lastActiveStr = null;
+        try {
+            lastActiveStr = sessionStorage.getItem(STORAGE_SESSION_ACTIVE);
+        } catch(e) {}
+        var timeoutMin = (globalAuthData && typeof globalAuthData.session_timeout_minutes === 'number')
+            ? globalAuthData.session_timeout_minutes : 15;
+        if (timeoutMin > 0 && lastActiveStr) {
+            var lastActiveTime = parseInt(lastActiveStr, 10);
+            var nowTime = (new Date()).getTime();
+            if (nowTime - lastActiveTime > timeoutMin * 60 * 1000) {
+                try {
+                    sessionStorage.removeItem(STORAGE_AUTH_USER);
+                    sessionStorage.removeItem(STORAGE_USER_NAME);
+                    sessionStorage.removeItem(STORAGE_SESSION_ACTIVE);
+                } catch(e) {}
+                globalCurrentUserAcc = null;
+                showAppAuthModal();
+                var err = document.getElementById('app-auth-err');
+                if (err) {
+                    err.innerText = 'Phiên làm việc đã kết thúc do không hoạt động hoặc thiết bị đã tắt. Vui lòng đăng nhập lại!';
+                    err.style.display = 'block';
+                }
+            }
+        }
+    }
+}, 15000);
 
 
 function applyUserPermissionsUI() {
