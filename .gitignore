@@ -11,3 +11,7 @@ work_ota/
 scratch/
 __pycache__/
 *.pyc
+
+# Công cụ Admin nội bộ (không phục vụ trên web công khai GitHub Pages)
+appvn_admin.py
+*.bat
