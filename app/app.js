@@ -129,7 +129,7 @@ function processAppData() {
         var list = rawAppData[catName] || [];
         for (var i = 0; i < list.length; i++) {
             var item = list[i];
-            if (item.hidden === true) continue;
+            if (item.hidden === true && item.show_on_private !== true) continue;
             // Chuẩn hóa đường dẫn icon và plist
             var iconUrl = item.icon;
             if (iconUrl.indexOf('http') !== 0) {
@@ -145,7 +145,9 @@ function processAppData() {
                 name: item.name || 'Không rõ',
                 version: item.version || '1.0',
                 category: catName,
+                hidden: (item.hidden === true),
                 show_on_guest: (item.show_on_guest === true),
+                show_on_private: (item.show_on_private === true),
                 icon: iconUrl,
                 plist: plistUrl,
                 rating: 5,
@@ -179,22 +181,32 @@ function applyFilterAndRender() {
     filteredApps = [];
     var allowedCats = (globalCurrentUserAcc && globalCurrentUserAcc.allowed_categories) ? globalCurrentUserAcc.allowed_categories : ['ALL'];
     var hasAll = (allowedCats.indexOf('ALL') !== -1);
+    var hasPrivatePerm = (hasAll || allowedCats.indexOf('PRIVATE') !== -1);
 
     for (var i = 0; i < allAppsFlat.length; i++) {
         var app = allAppsFlat[i];
 
         // Lọc theo Tab/Menu hiện tại
-        if (currentCategory === 'GUEST') {
-            if (app.show_on_guest === true) {
+        if (currentCategory === 'PRIVATE') {
+            if (hasPrivatePerm && app.show_on_private === true) {
                 filteredApps.push(app);
             }
-        } else if (currentCategory === 'ALL') {
-            if (hasAll || allowedCats.indexOf(app.category) !== -1) {
-                filteredApps.push(app);
-            }
-        } else if (app.category === currentCategory) {
-            if (hasAll || allowedCats.indexOf(app.category) !== -1) {
-                filteredApps.push(app);
+        } else {
+            // Các tab khác không hiển thị app bị ẩn hoàn toàn (hidden === true)
+            if (app.hidden === true) continue;
+
+            if (currentCategory === 'GUEST') {
+                if (app.show_on_guest === true) {
+                    filteredApps.push(app);
+                }
+            } else if (currentCategory === 'ALL') {
+                if (hasAll || allowedCats.indexOf(app.category) !== -1) {
+                    filteredApps.push(app);
+                }
+            } else if (app.category === currentCategory) {
+                if (hasAll || allowedCats.indexOf(app.category) !== -1) {
+                    filteredApps.push(app);
+                }
             }
         }
     }
@@ -710,6 +722,7 @@ function filterBySubCategory(cat) {
     if (titleEl) {
         if (cat === 'ALL') titleEl.innerText = 'Danh mục';
         else if (cat === 'GUEST') titleEl.innerText = '🌟 Guest';
+        else if (cat === 'PRIVATE') titleEl.innerText = '🔒 Private';
         else titleEl.innerText = cat;
     }
 
@@ -984,7 +997,9 @@ function applyUserPermissionsUI() {
     if (!globalCurrentUserAcc) return;
     var allowedCats = globalCurrentUserAcc.allowed_categories || ['ALL'];
     var hasAll = (allowedCats.indexOf('ALL') !== -1);
+    var hasPrivate = (hasAll || allowedCats.indexOf('PRIVATE') !== -1);
     var isPureGuest = (!hasAll && allowedCats.length === 1 && allowedCats[0] === 'GUEST');
+    var isPurePrivate = (!hasAll && allowedCats.length === 1 && allowedCats[0] === 'PRIVATE');
 
     var chips = document.querySelectorAll ? document.querySelectorAll('.chip-item') : [];
     var ddItems = document.querySelectorAll ? document.querySelectorAll('.dropdown-item') : [];
@@ -995,9 +1010,13 @@ function applyUserPermissionsUI() {
             chips[i].style.display = 'inline-block';
         } else if (isPureGuest) {
             chips[i].style.display = (cat === 'GUEST') ? 'inline-block' : 'none';
+        } else if (isPurePrivate) {
+            chips[i].style.display = (cat === 'PRIVATE') ? 'inline-block' : 'none';
         } else {
             if (cat === 'ALL') {
                 chips[i].style.display = 'none';
+            } else if (cat === 'PRIVATE') {
+                chips[i].style.display = hasPrivate ? 'inline-block' : 'none';
             } else if (allowedCats.indexOf(cat) !== -1) {
                 chips[i].style.display = 'inline-block';
             } else {
@@ -1012,9 +1031,13 @@ function applyUserPermissionsUI() {
             ddItems[j].style.display = 'block';
         } else if (isPureGuest) {
             ddItems[j].style.display = (cat2 === 'GUEST') ? 'block' : 'none';
+        } else if (isPurePrivate) {
+            ddItems[j].style.display = (cat2 === 'PRIVATE') ? 'block' : 'none';
         } else {
             if (cat2 === 'ALL') {
                 ddItems[j].style.display = 'none';
+            } else if (cat2 === 'PRIVATE') {
+                ddItems[j].style.display = hasPrivate ? 'block' : 'none';
             } else if (allowedCats.indexOf(cat2) !== -1) {
                 ddItems[j].style.display = 'block';
             } else {
@@ -1026,6 +1049,8 @@ function applyUserPermissionsUI() {
     // Điều hướng tab hiển thị phù hợp:
     if (isPureGuest) {
         filterBySubCategory('GUEST');
+    } else if (isPurePrivate) {
+        filterBySubCategory('PRIVATE');
     } else if (!hasAll) {
         if (allowedCats.indexOf(currentCategory) === -1) {
             filterBySubCategory(allowedCats[0]);

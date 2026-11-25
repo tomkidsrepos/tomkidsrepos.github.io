@@ -1109,9 +1109,10 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 <div style="background:#0b1329; border:1px solid #1e3a8a; border-radius:12px; padding:14px 16px; margin-bottom:16px;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
                         <span style="font-size:13px; font-weight:bold; color:#60a5fa;">🔑 Phân Quyền Truy Cập Nội Dung:</span>
-                        <div style="display:flex; gap:6px;">
+                        <div style="display:flex; gap:6px; flex-wrap:wrap;">
                             <button type="button" class="btn-action" onclick="setPermPreset('ALL')" style="font-size:11px; padding:4px 9px;">Chọn Tất Cả</button>
                             <button type="button" class="btn-action" onclick="setPermPreset('GUEST_ONLY')" style="font-size:11px; padding:4px 9px; background:#581c87; color:#e9d5ff; border-color:#9333ea;">🌟 Chỉ Xem Tab Guest</button>
+                            <button type="button" class="btn-action" onclick="setPermPreset('PRIVATE_ONLY')" style="font-size:11px; padding:4px 9px; background:#831843; color:#fce7f3; border-color:#db2777;">🔒 Chỉ Tab Private</button>
                             <button type="button" class="btn-action" onclick="setPermPreset('NONE')" style="font-size:11px; padding:4px 9px;">Bỏ Chọn</button>
                         </div>
                     </div>
@@ -1122,6 +1123,9 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                         </label>
                         <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#3b0764; padding:8px 10px; border-radius:8px; border:1px solid #7e22ce; color:#f3e8ff;">
                             <input type="checkbox" id="perm-guest" value="GUEST" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> <b>🌟 Tab Guest</b>
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#831843; padding:8px 10px; border-radius:8px; border:1px solid #db2777; color:#fce7f3;">
+                            <input type="checkbox" id="perm-private" value="PRIVATE" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> <b>🔒 Tab Private</b>
                         </label>
                         <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
                             <input type="checkbox" value="Trò Chơi" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🎮 Trò Chơi
@@ -1142,8 +1146,9 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                             <input type="checkbox" value="Jailbreak" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🔓 Jailbreak
                         </label>
                     </div>
-                    <div style="font-size:11.5px; color:#94a3b8; margin-top:8px;">
-                        💡 <i>Nếu chọn <b>"🌟 Tab Guest"</b>: Khách chỉ được thấy và tải các ứng dụng bạn đã tích chọn ở nút <b>[🌟 Guest: BẬT]</b> trong mục Ẩn/Hiện Kho App.</i>
+                    <div style="font-size:11.5px; color:#94a3b8; margin-top:8px; line-height:1.6;">
+                        💡 <i><b>"🌟 Tab Guest"</b>: Khách chỉ thấy các app bạn bật ở nút <b>[🌟 Guest: BẬT]</b> trong mục Ẩn/Hiện Kho App.</i><br>
+                        🔒 <i><b>"🔒 Tab Private"</b>: Chỉ tài khoản có quyền này mới thấy tab PRIVATE và truy cập các app bạn bật ở nút <b>[🔒 Private: BẬT]</b>.</i>
                     </div>
                 </div>
                 <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1219,6 +1224,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                         <option value="HOME">🏠 Đang hiện trên Trang chủ</option>
                         <option value="APP_ONLY">📱 Chỉ hiện ở /app/</option>
                         <option value="GUEST">🌟 Được hiện ở Tab Guest</option>
+                        <option value="PRIVATE">🔒 Được hiện ở Tab Private</option>
                         <option value="HIDDEN">🙈 Đang ẩn hoàn toàn</option>
                     </select>
                 </div>
@@ -2143,27 +2149,30 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 
                     var isHiddenAll = app.hidden === true;
                     var isShowHome = !isHiddenAll && (app.show_on_home !== false);
+                    var isShowGuest = (app.show_on_guest === true);
+                    var isShowPrivate = (app.show_on_private === true);
 
                     if (statusFilter === 'HOME' && !isShowHome) return;
                     if (statusFilter === 'APP_ONLY' && (isHiddenAll || isShowHome)) return;
                     if (statusFilter === 'HIDDEN' && !isHiddenAll) return;
+                    if (statusFilter === 'GUEST' && !isShowGuest) return;
+                    if (statusFilter === 'PRIVATE' && !isShowPrivate) return;
 
                     totalVisibleMatches++;
 
+                    var guestBadge = isShowGuest ? '<span style="background:#581c87; color:#e9d5ff; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:4px;">🌟 Tab Guest</span>' : '';
+                    var privateBadge = isShowPrivate ? '<span style="background:#831843; color:#fce7f3; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:4px;">🔒 Tab Private</span>' : '';
+
                     var statusBadge = '';
                     var rowStyle = '';
-                    var guestBadge = isShowGuest ? '<span style="background:#581c87; color:#e9d5ff; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:4px;">🌟 Tab Guest</span>' : '';
                     if (isHiddenAll) {
-                        statusBadge = '<span style="background:#7f1d1d; color:#fca5a5; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🙈 Ẩn hoàn toàn</span>';
+                        statusBadge = '<span style="background:#7f1d1d; color:#fca5a5; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🙈 Ẩn hoàn toàn</span>' + guestBadge + privateBadge;
                         rowStyle = ' style="opacity:0.58; border-style:dashed; border-color:#7f1d1d;"';
                     } else if (isShowHome) {
-                        statusBadge = '<span style="background:#14532d; color:#86efac; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🏠 Trang chủ + 📱 /app/</span>' + guestBadge;
+                        statusBadge = '<span style="background:#14532d; color:#86efac; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🏠 Trang chủ + 📱 /app/</span>' + guestBadge + privateBadge;
                     } else {
-                        statusBadge = '<span style="background:#1e3a8a; color:#93c5fd; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">📱 Chỉ ở /app/</span>' + guestBadge;
+                        statusBadge = '<span style="background:#1e3a8a; color:#93c5fd; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">📱 Chỉ ở /app/</span>' + guestBadge + privateBadge;
                     }
-
-                    var isShowGuest = (app.show_on_guest === true);
-                    if (statusFilter === 'GUEST' && !isShowGuest) return;
 
                     var homeBtnText = isShowHome ? '🏠 Trang chủ: HIỆN' : '🏠 Trang chủ: ẨN';
                     var homeBtnStyle = isShowHome
@@ -2178,6 +2187,11 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     var guestBtnText = isShowGuest ? '🌟 Guest: BẬT' : '🌟 Guest: TẮT';
                     var guestBtnStyle = isShowGuest
                         ? 'background:#581c87; color:#e9d5ff; border-color:#9333ea;'
+                        : 'background:#1e293b; color:#94a3b8; border-color:#475569;';
+
+                    var privateBtnText = isShowPrivate ? '🔒 Private: BẬT' : '🔒 Private: TẮT';
+                    var privateBtnStyle = isShowPrivate
+                        ? 'background:#831843; color:#fce7f3; border-color:#db2777;'
                         : 'background:#1e293b; color:#94a3b8; border-color:#475569;';
 
                     html += '<div class="existing-item"' + rowStyle + '>' +
@@ -2195,6 +2209,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                                     (aIdx < list.length - 1 ? '<button type="button" class="btn-action" title="Di chuyển xuống trong chuyên mục" onclick="moveOtaApp(' + cIdx + ', ' + aIdx + ', 1)">⬇️</button>' : '') +
                                     '<button type="button" class="btn-action" style="' + homeBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'show_on_home' + String.fromCharCode(39) + ')" title="Bật/tắt hiển thị ở mục Cài trực tiếp trên Trang chủ">' + homeBtnText + '</button>' +
                                     '<button type="button" class="btn-action" style="' + guestBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'show_on_guest' + String.fromCharCode(39) + ')" title="Tích chọn cho phép app này xuất hiện ở Tab Guest (Khách)">' + guestBtnText + '</button>' +
+                                    '<button type="button" class="btn-action" style="' + privateBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'show_on_private' + String.fromCharCode(39) + ')" title="Tích chọn cho phép app này xuất hiện ở Tab Private (Riêng tư)">' + privateBtnText + '</button>' +
                                     '<button type="button" class="btn-action" style="' + allBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'hidden' + String.fromCharCode(39) + ')" title="Ẩn/hiện app khỏi toàn bộ web (cả Trang chủ và /app/)">' + allBtnText + '</button>' +
                                     '<button type="button" class="btn-action btn-action-del" onclick="deleteOtaApp(' + cIdx + ', ' + aIdx + ')" title="Xóa app khỏi ota_data.json">🗑️</button>' +
                                 '</div>' +
@@ -2565,11 +2580,15 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     permBadges = '<span style="background:#0369a1; color:#e0f2fe; font-size:11px; padding:2px 7px; border-radius:8px;">🌐 Xem Tất Cả</span>';
                 } else if (perms.length === 1 && perms[0] === 'GUEST') {
                     permBadges = '<span style="background:#581c87; color:#e9d5ff; font-size:11px; padding:2px 7px; border-radius:8px; font-weight:bold;">🌟 Chỉ Tab Guest</span>';
+                } else if (perms.length === 1 && perms[0] === 'PRIVATE') {
+                    permBadges = '<span style="background:#831843; color:#fce7f3; font-size:11px; padding:2px 7px; border-radius:8px; font-weight:bold;">🔒 Chỉ Tab Private</span>';
                 } else {
                     var badges = [];
                     for (var k = 0; k < perms.length; k++) {
                         if (perms[k] === 'GUEST') {
                             badges.push('🌟 Tab Guest');
+                        } else if (perms[k] === 'PRIVATE') {
+                            badges.push('🔒 Tab Private');
                         } else {
                             badges.push(perms[k]);
                         }
@@ -2671,6 +2690,10 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 if (allCb) allCb.checked = false;
                 var g = document.getElementById('perm-guest');
                 if (g) g.checked = true;
+            } else if (preset === 'PRIVATE_ONLY') {
+                if (allCb) allCb.checked = false;
+                var p = document.getElementById('perm-private');
+                if (p) p.checked = true;
             } else if (preset === 'NONE') {
                 if (allCb) allCb.checked = false;
             }
@@ -3616,7 +3639,7 @@ def api_apps_toggle_item():
         cat = data.get('category', '')
         idx = int(data.get('index', -1))
         field = data.get('field', '')
-        if field not in ('show_on_home', 'hidden', 'show_on_guest'):
+        if field not in ('show_on_home', 'hidden', 'show_on_guest', 'show_on_private'):
             return jsonify({"success": False, "error": "Trường cập nhật không hợp lệ!"})
 
         ota_data = load_ota_data()
@@ -3625,7 +3648,7 @@ def api_apps_toggle_item():
 
         item = ota_data[cat][idx]
         default_val = True if field == 'show_on_home' else False
-        if field == 'show_on_guest':
+        if field in ('show_on_guest', 'show_on_private'):
             default_val = False
         current_val = bool(item.get(field, default_val))
         new_val = bool(data['value']) if 'value' in data else (not current_val)

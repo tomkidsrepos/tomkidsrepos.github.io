@@ -754,6 +754,13 @@
             "icon": "ota_apps/icons/vn.conbangtv.legacy_0.6.1.png",
             "plist": "ota_apps/vn.conbangtv.legacy_0.6.1.plist",
             "show_on_home": false
+        },
+        {
+            "name": "TurboTV",
+            "version": "1.17.7",
+            "icon": "ota_apps/icons/com.bun.tubepro_1.17.7.png",
+            "plist": "ota_apps/com.bun.tubepro_1.17.7.plist",
+            "show_on_home": false
         }
     ],
     "Hệ thống": [
