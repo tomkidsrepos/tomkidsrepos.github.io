@@ -15,3 +15,4 @@ __pycache__/
 # Công cụ Admin nội bộ (không phục vụ trên web công khai GitHub Pages)
 appvn_admin.py
 *.bat
+.docs_internal/
