@@ -389,17 +389,18 @@ body {
 }
 
 /* ==========================================================================
-   SIDEBAR DRAWER (THEO ẢNH 4: TUANEM, 9999 XU/RUBY/VÀNG)
+   SIDEBAR DRAWER & PUSH LAYOUT (ĐẨY NỘI DUNG SANG PHẢI KHI MỞ MENU)
    ========================================================================== */
 .drawer-overlay {
     display: none;
     position: fixed;
     top: 0;
-    left: 0;
+    left: 270px;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.6);
+    background: transparent;
     z-index: 200;
+    cursor: pointer;
 }
 
 .sidebar-drawer {
@@ -421,9 +422,27 @@ body {
     box-shadow: 4px 0 15px rgba(0,0,0,0.5);
 }
 
-.sidebar-drawer.open {
+.sidebar-drawer.open,
+body.sidebar-open .sidebar-drawer {
     -webkit-transform: translate3d(275px, 0, 0);
     transform: translate3d(275px, 0, 0);
+}
+
+/* APP SHELL PUSH (ĐẨY TOÀN BỘ NỘI DUNG BÊN DƯỚI SANG PHẢI) */
+.app-shell {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    -webkit-transition: -webkit-transform 0.25s ease-out;
+    transition: transform 0.25s ease-out;
+}
+
+.app-shell.pushed,
+body.sidebar-open .app-shell {
+    -webkit-transform: translate3d(270px, 0, 0);
+    transform: translate3d(270px, 0, 0);
+    -webkit-box-shadow: -4px 0 15px rgba(0,0,0,0.25);
+    box-shadow: -4px 0 15px rgba(0,0,0,0.25);
 }
 
 /* Profile header in sidebar */

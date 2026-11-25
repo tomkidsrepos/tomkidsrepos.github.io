@@ -673,12 +673,21 @@ function renderFavorites() {
 function toggleSidebar(show) {
     var drawer = document.getElementById('sidebar-drawer');
     var overlay = document.getElementById('drawer-overlay');
-    if (show) {
-        overlay.style.display = 'block';
-        drawer.className = 'sidebar-drawer open';
+    var appShell = document.getElementById('app-shell');
+
+    var isOpen = drawer && drawer.className.indexOf('open') !== -1;
+    var shouldOpen = (typeof show === 'boolean') ? show : !isOpen;
+
+    if (shouldOpen) {
+        if (drawer) drawer.className = 'sidebar-drawer open';
+        if (appShell) appShell.className = 'app-shell pushed';
+        if (overlay) overlay.style.display = 'block';
+        document.body.className = (document.body.className.replace(/\s*sidebar-open/g, '') + ' sidebar-open').trim();
     } else {
-        overlay.style.display = 'none';
-        drawer.className = 'sidebar-drawer';
+        if (drawer) drawer.className = 'sidebar-drawer';
+        if (appShell) appShell.className = 'app-shell';
+        if (overlay) overlay.style.display = 'none';
+        document.body.className = document.body.className.replace(/\s*sidebar-open/g, '').trim();
     }
 }
 
