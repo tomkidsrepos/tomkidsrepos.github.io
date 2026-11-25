@@ -21,14 +21,93 @@ var STORAGE_DOWNLOADS = 'appvn_downloads';
 var STORAGE_FAVORITES = 'appvn_favorites';
 var STORAGE_AUTH_USER = 'appvn_auth_user';
 
+// Cấu hình Tab & Chuyên mục mặc định (sẽ được ghi đè tự động từ app_tabs.json)
+var appTabs = [
+    { id: "ALL", name: "Tất cả", icon: "🌐", color: "#38bdf8", type: "all" },
+    { id: "GUEST", name: "Guest", icon: "🌟", color: "#a855f7", type: "curated", field: "show_on_guest" },
+    { id: "PRIVATE", name: "Private", icon: "🔒", color: "#ec4899", type: "curated", field: "show_on_private" },
+    { id: "Trò Chơi", name: "Trò Chơi", icon: "🎮", color: "#3b82f6", type: "category" },
+    { id: "Mạng Xã Hội", name: "Mạng Xã Hội", icon: "🌐", color: "#3b82f6", type: "category" },
+    { id: "Giải Trí", name: "Giải Trí", icon: "🎵", color: "#3b82f6", type: "category" },
+    { id: "Công Cụ", name: "Công Cụ", icon: "🛠️", color: "#3b82f6", type: "category" },
+    { id: "Hệ thống", name: "Hệ thống", icon: "⚙️", color: "#3b82f6", type: "category" },
+    { id: "Jailbreak", name: "Jailbreak", icon: "🔓", color: "#3b82f6", type: "category" }
+];
+
+function isAppInCuratedTab(app, tab) {
+    if (!app || !tab) return false;
+    var field = tab.field || ('show_on_' + tab.id.toLowerCase());
+    if (app[field] === true) return true;
+    if (app.custom_tabs && app.custom_tabs.indexOf(tab.id) !== -1) return true;
+    return false;
+}
+
+function loadAppTabs(callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '../app_tabs.json?t=' + (new Date()).getTime(), true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200 || xhr.status === 0) {
+                try {
+                    var data = JSON.parse(xhr.responseText);
+                    if (data && data.tabs && data.tabs.length > 0) {
+                        appTabs = data.tabs;
+                    }
+                } catch(e) {}
+            }
+            renderDynamicTabsUI();
+            if (typeof callback === 'function') callback();
+        }
+    };
+    xhr.send(null);
+}
+
+function renderDynamicTabsUI() {
+    var chipsContainer = document.getElementById('chips-scroll');
+    var ddContainer = document.getElementById('category-dropdown');
+
+    if (chipsContainer) {
+        var chipsHtml = '';
+        for (var i = 0; i < appTabs.length; i++) {
+            var tab = appTabs[i];
+            var isActive = (currentCategory === tab.id);
+            var activeClass = isActive ? 'chip-item active' : 'chip-item';
+            var customStyle = '';
+            if (tab.type === 'curated') {
+                customStyle = 'style="color:' + (tab.color || '#a855f7') + '; font-weight:bold; border-color:' + (tab.color || '#a855f7') + ';"';
+            }
+            var label = (tab.icon ? tab.icon + ' ' : '') + tab.name;
+            chipsHtml += '<button class="' + activeClass + '" id="chip-' + tab.id.toLowerCase() + '" data-cat="' + escapeHtml(tab.id) + '" onclick="filterBySubCategory(\'' + escapeHtml(tab.id) + '\')" ' + customStyle + '>' + escapeHtml(label) + '</button>';
+        }
+        chipsContainer.innerHTML = chipsHtml;
+    }
+
+    if (ddContainer) {
+        var ddHtml = '';
+        for (var j = 0; j < appTabs.length; j++) {
+            var tab2 = appTabs[j];
+            var ddStyle = '';
+            if (tab2.type === 'curated') {
+                ddStyle = 'style="color:' + (tab2.color || '#a855f7') + '; font-weight:bold;"';
+            }
+            var ddLabel = (tab2.icon ? tab2.icon + ' ' : '') + tab2.name;
+            ddHtml += '<div class="dropdown-item" data-cat="' + escapeHtml(tab2.id) + '" onclick="filterBySubCategory(\'' + escapeHtml(tab2.id) + '\')" ' + ddStyle + '>' + escapeHtml(ddLabel) + '</div>';
+        }
+        ddContainer.innerHTML = ddHtml;
+    }
+
+    applyUserPermissionsUI();
+}
+
 // Khởi chạy khi tài liệu sẵn sàng
 window.onload = function() {
     checkAppAuth(function(isAllowed) {
         if (isAllowed) {
             initUserData();
-            loadOtaData();
+            loadAppTabs(function() {
+                loadOtaData();
+            });
             updateDownloadBadge();
-            applyUserPermissionsUI();
         }
     });
 };
@@ -129,32 +208,42 @@ function processAppData() {
         var list = rawAppData[catName] || [];
         for (var i = 0; i < list.length; i++) {
             var item = list[i];
-            if (item.hidden === true && item.show_on_private !== true) continue;
             // Chuẩn hóa đường dẫn icon và plist
-            var iconUrl = item.icon;
+            var iconUrl = item.icon || '';
             if (iconUrl.indexOf('http') !== 0) {
                 iconUrl = '../' + iconUrl;
             }
-            var plistUrl = item.plist;
+            var plistUrl = item.plist || '';
             if (plistUrl.indexOf('http') !== 0) {
                 plistUrl = 'https://tomkidsrepo.cloud/' + plistUrl;
             }
 
-            allAppsFlat.push({
+            var appObj = {
                 index: appCounter++,
                 name: item.name || 'Không rõ',
                 version: item.version || '1.0',
                 category: catName,
                 hidden: (item.hidden === true),
+                show_on_home: (item.show_on_home !== false),
                 show_on_guest: (item.show_on_guest === true),
                 show_on_private: (item.show_on_private === true),
+                custom_tabs: item.custom_tabs || [],
                 icon: iconUrl,
                 plist: plistUrl,
                 rating: 5,
                 ratingCount: Math.floor(Math.random() * 20) + 1,
                 author: getAuthorFromName(item.name),
-                size: (item.name.length * 3.5 + 4).toFixed(1) + ' MB'
-            });
+                size: (item.name ? (item.name.length * 3.5 + 4).toFixed(1) : '10.5') + ' MB'
+            };
+
+            // Copy dynamic show_on_* properties
+            for (var prop in item) {
+                if (item.hasOwnProperty(prop) && prop.indexOf('show_on_') === 0) {
+                    appObj[prop] = item[prop];
+                }
+            }
+
+            allAppsFlat.push(appObj);
         }
     }
 
@@ -163,6 +252,7 @@ function processAppData() {
 }
 
 function getAuthorFromName(name) {
+    if (!name) return 'Tomkids Team';
     if (name.indexOf('Flappy') >= 0) return 'Adam Carter';
     if (name.indexOf('PvZ') >= 0 || name.indexOf('Bejeweled') >= 0) return 'PopCap';
     if (name.indexOf('Facebook') >= 0 || name.indexOf('Messenger') >= 0) return 'Meta Inc.';
@@ -181,25 +271,28 @@ function applyFilterAndRender() {
     filteredApps = [];
     var allowedCats = (globalCurrentUserAcc && globalCurrentUserAcc.allowed_categories) ? globalCurrentUserAcc.allowed_categories : ['ALL'];
     var hasAll = (allowedCats.indexOf('ALL') !== -1);
-    var hasPrivatePerm = (hasAll || allowedCats.indexOf('PRIVATE') !== -1);
+
+    var currentTabObj = null;
+    for (var t = 0; t < appTabs.length; t++) {
+        if (appTabs[t].id.toLowerCase() === currentCategory.toLowerCase()) {
+            currentTabObj = appTabs[t];
+            break;
+        }
+    }
 
     for (var i = 0; i < allAppsFlat.length; i++) {
         var app = allAppsFlat[i];
 
-        // Lọc theo Tab/Menu hiện tại
-        if (currentCategory === 'PRIVATE') {
-            if (hasPrivatePerm && app.show_on_private === true) {
+        if (currentTabObj && currentTabObj.type === 'curated') {
+            var hasPermForCurated = (hasAll || allowedCats.indexOf(currentTabObj.id) !== -1);
+            if (hasPermForCurated && isAppInCuratedTab(app, currentTabObj)) {
                 filteredApps.push(app);
             }
         } else {
             // Các tab khác không hiển thị app bị ẩn hoàn toàn (hidden === true)
             if (app.hidden === true) continue;
 
-            if (currentCategory === 'GUEST') {
-                if (app.show_on_guest === true) {
-                    filteredApps.push(app);
-                }
-            } else if (currentCategory === 'ALL') {
+            if (currentCategory === 'ALL') {
                 if (hasAll || allowedCats.indexOf(app.category) !== -1) {
                     filteredApps.push(app);
                 }
@@ -720,10 +813,22 @@ function filterBySubCategory(cat) {
 
     var titleEl = document.getElementById('current-title');
     if (titleEl) {
-        if (cat === 'ALL') titleEl.innerText = 'Danh mục';
-        else if (cat === 'GUEST') titleEl.innerText = '🌟 Guest';
-        else if (cat === 'PRIVATE') titleEl.innerText = '🔒 Private';
-        else titleEl.innerText = cat;
+        if (cat === 'ALL') {
+            titleEl.innerText = 'Danh mục';
+        } else {
+            var found = null;
+            for (var k = 0; k < appTabs.length; k++) {
+                if (appTabs[k].id.toLowerCase() === cat.toLowerCase()) {
+                    found = appTabs[k];
+                    break;
+                }
+            }
+            if (found) {
+                titleEl.innerText = (found.icon ? found.icon + ' ' : '') + found.name;
+            } else {
+                titleEl.innerText = cat;
+            }
+        }
     }
 
     // Cập nhật chip button
@@ -997,9 +1102,6 @@ function applyUserPermissionsUI() {
     if (!globalCurrentUserAcc) return;
     var allowedCats = globalCurrentUserAcc.allowed_categories || ['ALL'];
     var hasAll = (allowedCats.indexOf('ALL') !== -1);
-    var hasPrivate = (hasAll || allowedCats.indexOf('PRIVATE') !== -1);
-    var isPureGuest = (!hasAll && allowedCats.length === 1 && allowedCats[0] === 'GUEST');
-    var isPurePrivate = (!hasAll && allowedCats.length === 1 && allowedCats[0] === 'PRIVATE');
 
     var chips = document.querySelectorAll ? document.querySelectorAll('.chip-item') : [];
     var ddItems = document.querySelectorAll ? document.querySelectorAll('.dropdown-item') : [];
@@ -1008,15 +1110,9 @@ function applyUserPermissionsUI() {
         var cat = chips[i].getAttribute('data-cat');
         if (hasAll) {
             chips[i].style.display = 'inline-block';
-        } else if (isPureGuest) {
-            chips[i].style.display = (cat === 'GUEST') ? 'inline-block' : 'none';
-        } else if (isPurePrivate) {
-            chips[i].style.display = (cat === 'PRIVATE') ? 'inline-block' : 'none';
         } else {
             if (cat === 'ALL') {
                 chips[i].style.display = 'none';
-            } else if (cat === 'PRIVATE') {
-                chips[i].style.display = hasPrivate ? 'inline-block' : 'none';
             } else if (allowedCats.indexOf(cat) !== -1) {
                 chips[i].style.display = 'inline-block';
             } else {
@@ -1029,15 +1125,9 @@ function applyUserPermissionsUI() {
         var cat2 = ddItems[j].getAttribute('data-cat');
         if (hasAll) {
             ddItems[j].style.display = 'block';
-        } else if (isPureGuest) {
-            ddItems[j].style.display = (cat2 === 'GUEST') ? 'block' : 'none';
-        } else if (isPurePrivate) {
-            ddItems[j].style.display = (cat2 === 'PRIVATE') ? 'block' : 'none';
         } else {
             if (cat2 === 'ALL') {
                 ddItems[j].style.display = 'none';
-            } else if (cat2 === 'PRIVATE') {
-                ddItems[j].style.display = hasPrivate ? 'block' : 'none';
             } else if (allowedCats.indexOf(cat2) !== -1) {
                 ddItems[j].style.display = 'block';
             } else {
@@ -1047,13 +1137,11 @@ function applyUserPermissionsUI() {
     }
 
     // Điều hướng tab hiển thị phù hợp:
-    if (isPureGuest) {
-        filterBySubCategory('GUEST');
-    } else if (isPurePrivate) {
-        filterBySubCategory('PRIVATE');
-    } else if (!hasAll) {
+    if (!hasAll) {
         if (allowedCats.indexOf(currentCategory) === -1) {
-            filterBySubCategory(allowedCats[0]);
+            if (allowedCats.length > 0) {
+                filterBySubCategory(allowedCats[0]);
+            }
         }
     }
 }

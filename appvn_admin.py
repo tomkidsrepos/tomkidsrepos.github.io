@@ -49,6 +49,35 @@ MEDIA_JSON_PATH = os.path.join(REPO_DIR, 'media_data.json')
 QUICKINSTALL_JSON_PATH = os.path.join(REPO_DIR, 'quickinstall.json')
 HOME_SETTINGS_PATH = os.path.join(REPO_DIR, 'home_settings.json')
 AUTH_ACCOUNTS_PATH = os.path.join(REPO_DIR, 'auth_accounts.json')
+APP_TABS_PATH = os.path.join(REPO_DIR, 'app_tabs.json')
+
+def load_app_tabs():
+    default_tabs = [
+        {"id": "ALL", "name": "Tất cả", "icon": "🌐", "color": "#38bdf8", "type": "all", "system": True, "description": "Hiển thị tất cả ứng dụng theo quyền của tài khoản"},
+        {"id": "GUEST", "name": "Guest", "icon": "🌟", "color": "#a855f7", "type": "curated", "system": True, "field": "show_on_guest", "description": "Dành cho khách, chỉ hiện các app được tích chọn"},
+        {"id": "PRIVATE", "name": "Private", "icon": "🔒", "color": "#ec4899", "type": "curated", "system": False, "field": "show_on_private", "description": "Dành riêng cho chủ nhân hoặc tài khoản được cấp phép"},
+        {"id": "Trò Chơi", "name": "Trò Chơi", "icon": "🎮", "color": "#3b82f6", "type": "category", "system": True, "description": "Chuyên mục Trò chơi / Game"},
+        {"id": "Mạng Xã Hội", "name": "Mạng Xã Hội", "icon": "🌐", "color": "#3b82f6", "type": "category", "system": True, "description": "Chuyên mục Mạng xã hội / Chat"},
+        {"id": "Giải Trí", "name": "Giải Trí", "icon": "🎵", "color": "#3b82f6", "type": "category", "system": True, "description": "Chuyên mục Giải trí / Media / Âm nhạc"},
+        {"id": "Công Cụ", "name": "Công Cụ", "icon": "🛠️", "color": "#3b82f6", "type": "category", "system": True, "description": "Chuyên mục Tiện ích / Công cụ hệ điều hành"},
+        {"id": "Hệ thống", "name": "Hệ thống", "icon": "⚙️", "color": "#3b82f6", "type": "category", "system": True, "description": "Chuyên mục Tinh chỉnh hệ thống"},
+        {"id": "Jailbreak", "name": "Jailbreak", "icon": "🔓", "color": "#3b82f6", "type": "category", "system": True, "description": "Chuyên mục Ứng dụng Jailbreak"}
+    ]
+    if os.path.exists(APP_TABS_PATH):
+        try:
+            with open(APP_TABS_PATH, 'r', encoding='utf-8-sig') as f:
+                data = json.load(f)
+            if isinstance(data, dict) and 'tabs' in data and isinstance(data['tabs'], list):
+                return data['tabs']
+            elif isinstance(data, list):
+                return data
+        except Exception:
+            pass
+    return default_tabs
+
+def save_app_tabs(tabs):
+    with open(APP_TABS_PATH, 'w', encoding='utf-8') as f:
+        json.dump({'tabs': tabs}, f, ensure_ascii=False, indent=4)
 
 def load_auth_accounts():
     default_auth = {'enabled': False, 'accounts': []}
@@ -659,20 +688,24 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             var btnDeb = document.getElementById('btn-module-deb');
             var btnVis = document.getElementById('btn-module-visibility');
             var btnAcc = document.getElementById('btn-module-accounts');
+            var btnTabs = document.getElementById('btn-module-tabs');
             var conApp = document.getElementById('module-appstore-container');
             var conDeb = document.getElementById('module-deb-container');
             var conVis = document.getElementById('module-visibility-container');
             var conAcc = document.getElementById('module-accounts-container');
+            var conTabs = document.getElementById('module-tabs-container');
 
             if (btnApp) btnApp.className = (mod === 'appstore') ? 'module-tab-btn active' : 'module-tab-btn';
             if (btnDeb) btnDeb.className = (mod === 'deb') ? 'module-tab-btn active' : 'module-tab-btn';
             if (btnVis) btnVis.className = (mod === 'visibility') ? 'module-tab-btn active' : 'module-tab-btn';
             if (btnAcc) btnAcc.className = (mod === 'accounts') ? 'module-tab-btn active' : 'module-tab-btn';
+            if (btnTabs) btnTabs.className = (mod === 'tabs') ? 'module-tab-btn active' : 'module-tab-btn';
 
             if (conApp) conApp.style.display = (mod === 'appstore') ? 'block' : 'none';
             if (conDeb) conDeb.style.display = (mod === 'deb') ? 'block' : 'none';
             if (conVis) conVis.style.display = (mod === 'visibility') ? 'block' : 'none';
             if (conAcc) conAcc.style.display = (mod === 'accounts') ? 'block' : 'none';
+            if (conTabs) conTabs.style.display = (mod === 'tabs') ? 'block' : 'none';
 
             if (mod === 'deb') {
                 if (typeof loadQuickInstallList === 'function') loadQuickInstallList();
@@ -682,6 +715,8 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 if (typeof loadVisibilityManager === 'function') loadVisibilityManager();
             } else if (mod === 'accounts') {
                 if (typeof loadAccountsManager === 'function') loadAccountsManager();
+            } else if (mod === 'tabs') {
+                if (typeof loadTabsManager === 'function') loadTabsManager();
             }
         }
 
@@ -747,6 +782,9 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             </button>
             <button type="button" class="module-tab-btn" id="btn-module-accounts" onclick="switchModule('accounts', event)" style="font-size:13.5px; padding:12px 10px;">
                 👥 Quản Lý Tài Khoản
+            </button>
+            <button type="button" class="module-tab-btn" id="btn-module-tabs" onclick="switchModule('tabs', event)" style="font-size:13.5px; padding:12px 10px;">
+                🏷️ Quản Lý Tab
             </button>
         </div>
 
@@ -1109,46 +1147,18 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 <div style="background:#0b1329; border:1px solid #1e3a8a; border-radius:12px; padding:14px 16px; margin-bottom:16px;">
                     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; flex-wrap:wrap; gap:8px;">
                         <span style="font-size:13px; font-weight:bold; color:#60a5fa;">🔑 Phân Quyền Truy Cập Nội Dung:</span>
-                        <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                        <div id="perm-presets-container" style="display:flex; gap:6px; flex-wrap:wrap;">
                             <button type="button" class="btn-action" onclick="setPermPreset('ALL')" style="font-size:11px; padding:4px 9px;">Chọn Tất Cả</button>
-                            <button type="button" class="btn-action" onclick="setPermPreset('GUEST_ONLY')" style="font-size:11px; padding:4px 9px; background:#581c87; color:#e9d5ff; border-color:#9333ea;">🌟 Chỉ Xem Tab Guest</button>
-                            <button type="button" class="btn-action" onclick="setPermPreset('PRIVATE_ONLY')" style="font-size:11px; padding:4px 9px; background:#831843; color:#fce7f3; border-color:#db2777;">🔒 Chỉ Tab Private</button>
+                            <button type="button" class="btn-action" onclick="setPermPreset('GUEST')" style="font-size:11px; padding:4px 9px; background:#581c87; color:#e9d5ff; border-color:#9333ea;">🌟 Chỉ Xem Tab Guest</button>
+                            <button type="button" class="btn-action" onclick="setPermPreset('PRIVATE')" style="font-size:11px; padding:4px 9px; background:#831843; color:#fce7f3; border-color:#db2777;">🔒 Chỉ Tab Private</button>
                             <button type="button" class="btn-action" onclick="setPermPreset('NONE')" style="font-size:11px; padding:4px 9px;">Bỏ Chọn</button>
                         </div>
                     </div>
                     
-                    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px; font-size:12.5px; color:#e2e8f0;">
-                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#1e293b; padding:8px 10px; border-radius:8px; border:1px solid #334155;">
-                            <input type="checkbox" id="perm-all" value="ALL" onchange="onPermAllChanged(this)" style="width:16px; height:16px;"> <b>🌐 Tất Cả</b>
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#3b0764; padding:8px 10px; border-radius:8px; border:1px solid #7e22ce; color:#f3e8ff;">
-                            <input type="checkbox" id="perm-guest" value="GUEST" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> <b>🌟 Tab Guest</b>
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#831843; padding:8px 10px; border-radius:8px; border:1px solid #db2777; color:#fce7f3;">
-                            <input type="checkbox" id="perm-private" value="PRIVATE" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> <b>🔒 Tab Private</b>
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
-                            <input type="checkbox" value="Trò Chơi" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🎮 Trò Chơi
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
-                            <input type="checkbox" value="Mạng Xã Hội" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🌐 Mạng Xã Hội
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
-                            <input type="checkbox" value="Giải Trí" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🎵 Giải Trí
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
-                            <input type="checkbox" value="Công Cụ" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🛠️ Công Cụ
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
-                            <input type="checkbox" value="Hệ thống" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> ⚙️ Hệ thống
-                        </label>
-                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">
-                            <input type="checkbox" value="Jailbreak" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> 🔓 Jailbreak
-                        </label>
+                    <div id="perm-checkboxes-container" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap:10px; font-size:12.5px; color:#e2e8f0;">
+                        <span style="color:#64748b; font-size:12px;">Đang tải danh sách Tab phân quyền...</span>
                     </div>
-                    <div style="font-size:11.5px; color:#94a3b8; margin-top:8px; line-height:1.6;">
-                        💡 <i><b>"🌟 Tab Guest"</b>: Khách chỉ thấy các app bạn bật ở nút <b>[🌟 Guest: BẬT]</b> trong mục Ẩn/Hiện Kho App.</i><br>
-                        🔒 <i><b>"🔒 Tab Private"</b>: Chỉ tài khoản có quyền này mới thấy tab PRIVATE và truy cập các app bạn bật ở nút <b>[🔒 Private: BẬT]</b>.</i>
+                    <div id="perm-notes-container" style="font-size:11.5px; color:#94a3b8; margin-top:8px; line-height:1.6;">
                     </div>
                 </div>
                 <div style="display:flex; justify-content:space-between; align-items:center;">
@@ -1246,6 +1256,93 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             <div class="footer-tools">
                 <div style="font-size:12px; color:#94a3b8; display:flex; align-items:center;">
                     💡 Thay đổi được lưu ngay vào JSON. Bấm Đồng Bộ để đẩy lên tomkidsrepo.cloud!
+                </div>
+                <div style="display:flex; gap:10px;">
+                    <button type="button" class="btn-secondary" onclick="openGitHubDesktop()">🖥️ Mở GitHub Desktop</button>
+                    <button type="button" class="btn-secondary btn-green" onclick="triggerGitPush()">⚡ Đồng Bộ Lên Web Tức Thì</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================================================================= -->
+        <!-- PHÂN HỆ 5: QUẢN LÝ TAB & CHUYÊN MỤC TRÊN WEB APPSTORE -->
+        <!-- ================================================================= -->
+        <div id="module-tabs-container" style="display:none;">
+            <div class="header" style="margin-bottom:20px;">
+                <div class="logo-title">
+                    <h1>🏷️ Quản Lý Tab Kho App</h1>
+                    <span class="badge" style="background:#0ea5e9;">Cấu Hình Động</span>
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <button type="button" class="btn-secondary" onclick="loadTabsManager()">🔄 Làm Mới</button>
+                    <a href="https://tomkidsrepo.cloud/app/" target="_blank" class="header-link">📱 Mở Kho App (/app)</a>
+                </div>
+            </div>
+
+            <!-- CARD FORM THÊM / SỬA TAB -->
+            <div class="existing-card" style="margin-top:0; margin-bottom:20px;">
+                <div class="existing-header" style="margin-bottom:14px;">
+                    <h3 id="tab-form-title" style="font-size:15px; color:#38bdf8;">➕ Thêm Tab Mới</h3>
+                    <button type="button" id="btn-tab-cancel-edit" class="btn-secondary" onclick="resetTabForm()" style="display:none; font-size:12px; padding:6px 12px;">Hủy Sửa</button>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-bottom:14px;">
+                    <div>
+                        <label style="display:block; font-size:12px; color:#94a3b8; margin-bottom:5px; font-weight:600;">Mã Tab / ID (*):</label>
+                        <input type="text" id="tab-id-input" placeholder="VD: VIP, NHAC, PHIM..." style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:13px;">
+                        <span style="font-size:11px; color:#64748b; margin-top:3px; display:block;">Không dấu, viết liền (VD: VIP, HOT, PRIVATE)</span>
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; color:#94a3b8; margin-bottom:5px; font-weight:600;">Tên Hiển Thị (*):</label>
+                        <input type="text" id="tab-name-input" placeholder="VD: VIP, Tuyển Chọn, Phim..." style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:13px;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; color:#94a3b8; margin-bottom:5px; font-weight:600;">Biểu Tượng (Icon Emoji):</label>
+                        <input type="text" id="tab-icon-input" placeholder="VD: 👑, 🎬, 🌟, 🔒, 📱" value="🏷️" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:13px;">
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; color:#94a3b8; margin-bottom:5px; font-weight:600;">Màu Chủ Đạo (Màu Nút & Viền):</label>
+                        <div style="display:flex; gap:8px; align-items:center;">
+                            <input type="color" id="tab-color-picker" value="#3b82f6" onchange="document.getElementById('tab-color-input').value = this.value" style="width:40px; height:38px; border:none; background:transparent; cursor:pointer;">
+                            <input type="text" id="tab-color-input" value="#3b82f6" oninput="document.getElementById('tab-color-picker').value = this.value" placeholder="#3b82f6" style="flex:1; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:13px;">
+                        </div>
+                    </div>
+                    <div>
+                        <label style="display:block; font-size:12px; color:#94a3b8; margin-bottom:5px; font-weight:600;">Loại Tab (*):</label>
+                        <select id="tab-type-select" style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:13px;">
+                            <option value="curated">🌟 Tuyển Chọn (Curated) - Bạn tự tích chọn app đưa vào</option>
+                            <option value="category">📂 Chuyên Mục (Category) - Nhóm tự động theo thể loại</option>
+                        </select>
+                    </div>
+                    <div style="grid-column: 1 / -1;">
+                        <label style="display:block; font-size:12px; color:#94a3b8; margin-bottom:5px; font-weight:600;">Mô Tả / Ghi Chú:</label>
+                        <input type="text" id="tab-desc-input" placeholder="VD: Dành riêng cho thành viên VIP, các app độc quyền..." style="width:100%; padding:10px 12px; border-radius:8px; border:1px solid #334155; background:#0f172a; color:#fff; font-size:13px;">
+                    </div>
+                </div>
+
+                <div style="display:flex; gap:10px; justify-content:flex-end;">
+                    <button type="button" id="btn-save-tab" class="btn-action btn-active" onclick="submitSaveTab()" style="padding:10px 24px; font-size:13px; font-weight:bold; background:#0284c7; color:#fff; border:none; border-radius:8px; cursor:pointer;">
+                        💾 Lưu Tab
+                    </button>
+                </div>
+            </div>
+
+            <!-- CARD DANH SÁCH CÁC TAB HIỆN CÓ -->
+            <div class="existing-card" style="margin-top:0;">
+                <div class="existing-header" style="flex-wrap:wrap; gap:10px;">
+                    <h3 style="font-size:15px; color:#38bdf8;">📋 Danh Sách Tab Hiện Tại (<span id="tabs-count-display">0</span>)</h3>
+                    <span style="font-size:12px; color:#94a3b8;">Dùng nút ⬆️ ⬇️ để đổi thứ tự xuất hiện trên thanh cuộn Web App</span>
+                </div>
+
+                <div id="tabs-list-container">
+                    <p style="font-size:13px; color:#64748b; text-align:center; padding:15px;">Đang tải danh sách Tab...</p>
+                </div>
+            </div>
+
+            <!-- FOOTER TOOLS CHO TABS -->
+            <div class="footer-tools">
+                <div style="font-size:12px; color:#94a3b8; display:flex; align-items:center;">
+                    💡 Khi thêm/sửa/xóa Tab, toàn bộ mục Ẩn/Hiện Kho App, Phân Quyền Tài Khoản và Web App (/app/) đều tự động đồng bộ theo!
                 </div>
                 <div style="display:flex; gap:10px;">
                     <button type="button" class="btn-secondary" onclick="openGitHubDesktop()">🖥️ Mở GitHub Desktop</button>
@@ -2038,8 +2135,10 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                     }
                     visOtaData = data.ota_data || {};
                     visHomeSettings = data.home_settings || { hide_ota_section: false, hidden_categories: [] };
+                    cachedTabs = data.tabs || cachedTabs;
                     visCategoriesList = Object.keys(visOtaData);
                     populateVisCategoryFilter();
+                    populateVisStatusFilter();
                     renderVisibilityHomeControls();
                     renderVisibilityApps();
                 })
@@ -2062,6 +2161,32 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             if (currentVal === 'ALL' || visCategoriesList.indexOf(currentVal) !== -1) {
                 sel.value = currentVal;
             }
+        }
+
+        function populateVisStatusFilter() {
+            var sel = document.getElementById('vis-status-filter');
+            if (!sel) return;
+            var currentVal = sel.value || 'ALL';
+            var html = '<option value="ALL">👁️ Tất cả trạng thái</option>' +
+                       '<option value="HOME">🏠 Đang hiện trên Trang chủ</option>' +
+                       '<option value="APP_ONLY">📱 Chỉ hiện ở /app/</option>';
+            for (var i = 0; i < cachedTabs.length; i++) {
+                var tab = cachedTabs[i];
+                if (tab.type === 'curated') {
+                    html += '<option value="CURATED_' + tab.id + '">' + (tab.icon || '🌟') + ' Được hiện ở Tab ' + escapeVisHtml(tab.name) + '</option>';
+                }
+            }
+            html += '<option value="HIDDEN">🙈 Đang ẩn hoàn toàn</option>';
+            sel.innerHTML = html;
+            sel.value = currentVal;
+        }
+
+        function isAppInCuratedTab(app, tab) {
+            if (!app || !tab) return false;
+            var field = tab.field || ('show_on_' + tab.id.toLowerCase());
+            if (app[field] === true) return true;
+            if (app.custom_tabs && app.custom_tabs.indexOf(tab.id) !== -1) return true;
+            return false;
         }
 
         function renderVisibilityHomeControls() {
@@ -2149,29 +2274,42 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
 
                     var isHiddenAll = app.hidden === true;
                     var isShowHome = !isHiddenAll && (app.show_on_home !== false);
-                    var isShowGuest = (app.show_on_guest === true);
-                    var isShowPrivate = (app.show_on_private === true);
 
                     if (statusFilter === 'HOME' && !isShowHome) return;
                     if (statusFilter === 'APP_ONLY' && (isHiddenAll || isShowHome)) return;
                     if (statusFilter === 'HIDDEN' && !isHiddenAll) return;
-                    if (statusFilter === 'GUEST' && !isShowGuest) return;
-                    if (statusFilter === 'PRIVATE' && !isShowPrivate) return;
+                    if (statusFilter.indexOf('CURATED_') === 0) {
+                        var targetTabId = statusFilter.substring(8);
+                        var targetTab = null;
+                        for (var ti = 0; ti < cachedTabs.length; ti++) {
+                            if (cachedTabs[ti].id.toLowerCase() === targetTabId.toLowerCase()) {
+                                targetTab = cachedTabs[ti];
+                                break;
+                            }
+                        }
+                        if (!targetTab || !isAppInCuratedTab(app, targetTab)) return;
+                    }
 
                     totalVisibleMatches++;
 
-                    var guestBadge = isShowGuest ? '<span style="background:#581c87; color:#e9d5ff; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:4px;">🌟 Tab Guest</span>' : '';
-                    var privateBadge = isShowPrivate ? '<span style="background:#831843; color:#fce7f3; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:4px;">🔒 Tab Private</span>' : '';
+                    // Render dynamic badges for all curated tabs
+                    var curatedBadges = '';
+                    for (var cti = 0; cti < cachedTabs.length; cti++) {
+                        var curTab = cachedTabs[cti];
+                        if (curTab.type === 'curated' && isAppInCuratedTab(app, curTab)) {
+                            curatedBadges += '<span style="background:' + (curTab.color || '#581c87') + '33; border:1px solid ' + (curTab.color || '#9333ea') + '; color:' + (curTab.color || '#e9d5ff') + '; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:4px;">' + (curTab.icon || '🌟') + ' Tab ' + escapeVisHtml(curTab.name) + '</span>';
+                        }
+                    }
 
                     var statusBadge = '';
                     var rowStyle = '';
                     if (isHiddenAll) {
-                        statusBadge = '<span style="background:#7f1d1d; color:#fca5a5; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🙈 Ẩn hoàn toàn</span>' + guestBadge + privateBadge;
+                        statusBadge = '<span style="background:#7f1d1d; color:#fca5a5; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🙈 Ẩn hoàn toàn</span>' + curatedBadges;
                         rowStyle = ' style="opacity:0.58; border-style:dashed; border-color:#7f1d1d;"';
                     } else if (isShowHome) {
-                        statusBadge = '<span style="background:#14532d; color:#86efac; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🏠 Trang chủ + 📱 /app/</span>' + guestBadge + privateBadge;
+                        statusBadge = '<span style="background:#14532d; color:#86efac; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">🏠 Trang chủ + 📱 /app/</span>' + curatedBadges;
                     } else {
-                        statusBadge = '<span style="background:#1e3a8a; color:#93c5fd; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">📱 Chỉ ở /app/</span>' + guestBadge + privateBadge;
+                        statusBadge = '<span style="background:#1e3a8a; color:#93c5fd; font-size:10px; padding:2px 7px; border-radius:10px; margin-left:6px;">📱 Chỉ ở /app/</span>' + curatedBadges;
                     }
 
                     var homeBtnText = isShowHome ? '🏠 Trang chủ: HIỆN' : '🏠 Trang chủ: ẨN';
@@ -2184,15 +2322,20 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                         ? 'background:#7f1d1d; color:#fecaca; border-color:#dc2626;'
                         : 'background:#1e3a8a; color:#dbeafe; border-color:#2563eb;';
 
-                    var guestBtnText = isShowGuest ? '🌟 Guest: BẬT' : '🌟 Guest: TẮT';
-                    var guestBtnStyle = isShowGuest
-                        ? 'background:#581c87; color:#e9d5ff; border-color:#9333ea;'
-                        : 'background:#1e293b; color:#94a3b8; border-color:#475569;';
-
-                    var privateBtnText = isShowPrivate ? '🔒 Private: BẬT' : '🔒 Private: TẮT';
-                    var privateBtnStyle = isShowPrivate
-                        ? 'background:#831843; color:#fce7f3; border-color:#db2777;'
-                        : 'background:#1e293b; color:#94a3b8; border-color:#475569;';
+                    // Dynamic curated buttons
+                    var curatedButtonsHtml = '';
+                    for (var cbi = 0; cbi < cachedTabs.length; cbi++) {
+                        var curTabBtn = cachedTabs[cbi];
+                        if (curTabBtn.type === 'curated') {
+                            var isCurOn = isAppInCuratedTab(app, curTabBtn);
+                            var cBtnText = (curTabBtn.icon || '🌟') + ' ' + curTabBtn.name + ': ' + (isCurOn ? 'BẬT' : 'TẮT');
+                            var cBtnStyle = isCurOn
+                                ? ('background:' + (curTabBtn.color || '#581c87') + '; color:#fff; border-color:' + (curTabBtn.color || '#9333ea') + ';')
+                                : 'background:#1e293b; color:#94a3b8; border-color:#475569;';
+                            var cField = curTabBtn.field || ('show_on_' + curTabBtn.id.toLowerCase());
+                            curatedButtonsHtml += '<button type="button" class="btn-action" style="' + cBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + cField + String.fromCharCode(39) + ', ' + String.fromCharCode(39) + curTabBtn.id + String.fromCharCode(39) + ')" title="Tích chọn cho phép app này xuất hiện ở Tab ' + escapeVisHtml(curTabBtn.name) + '">' + cBtnText + '</button>';
+                        }
+                    }
 
                     html += '<div class="existing-item"' + rowStyle + '>' +
                                 '<div class="item-info">' +
@@ -2208,8 +2351,7 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                                     (aIdx > 0 ? '<button type="button" class="btn-action" title="Di chuyển lên trong chuyên mục" onclick="moveOtaApp(' + cIdx + ', ' + aIdx + ', -1)">⬆️</button>' : '') +
                                     (aIdx < list.length - 1 ? '<button type="button" class="btn-action" title="Di chuyển xuống trong chuyên mục" onclick="moveOtaApp(' + cIdx + ', ' + aIdx + ', 1)">⬇️</button>' : '') +
                                     '<button type="button" class="btn-action" style="' + homeBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'show_on_home' + String.fromCharCode(39) + ')" title="Bật/tắt hiển thị ở mục Cài trực tiếp trên Trang chủ">' + homeBtnText + '</button>' +
-                                    '<button type="button" class="btn-action" style="' + guestBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'show_on_guest' + String.fromCharCode(39) + ')" title="Tích chọn cho phép app này xuất hiện ở Tab Guest (Khách)">' + guestBtnText + '</button>' +
-                                    '<button type="button" class="btn-action" style="' + privateBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'show_on_private' + String.fromCharCode(39) + ')" title="Tích chọn cho phép app này xuất hiện ở Tab Private (Riêng tư)">' + privateBtnText + '</button>' +
+                                    curatedButtonsHtml +
                                     '<button type="button" class="btn-action" style="' + allBtnStyle + '" onclick="toggleAppFlag(' + cIdx + ', ' + aIdx + ', ' + String.fromCharCode(39) + 'hidden' + String.fromCharCode(39) + ')" title="Ẩn/hiện app khỏi toàn bộ web (cả Trang chủ và /app/)">' + allBtnText + '</button>' +
                                     '<button type="button" class="btn-action btn-action-del" onclick="deleteOtaApp(' + cIdx + ', ' + aIdx + ')" title="Xóa app khỏi ota_data.json">🗑️</button>' +
                                 '</div>' +
@@ -2265,22 +2407,36 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             });
         }
 
-        function toggleAppFlag(catIdx, appIdx, field) {
+        function toggleAppFlag(catIdx, appIdx, field, tabId) {
             var cat = visCategoriesList[catIdx];
             if (!cat || !visOtaData[cat] || !visOtaData[cat][appIdx]) return;
             var item = visOtaData[cat][appIdx];
-            var curVal = (field === 'show_on_home') ? (item.show_on_home !== false) : (item.hidden === true);
+            var curVal = false;
+            if (field === 'show_on_home') {
+                curVal = (item.show_on_home !== false);
+            } else if (field === 'hidden') {
+                curVal = (item.hidden === true);
+            } else {
+                curVal = (item[field] === true) || (item.custom_tabs && tabId && item.custom_tabs.indexOf(tabId) !== -1);
+            }
             var nextVal = !curVal;
 
             fetch('/api/apps/toggle-item', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ category: cat, index: appIdx, field: field, value: nextVal })
+                body: JSON.stringify({ category: cat, index: appIdx, field: field, tab_id: tabId, value: nextVal })
             })
             .then(function(res) { return res.json(); })
             .then(function(data) {
                 if (data.success) {
                     visOtaData[cat][appIdx] = data.item;
+                    renderVisibilityHomeControls();
+                    renderVisibilityApps();
+                } else {
+                    alert('Lỗi: ' + data.error);
+                }
+            });
+        }
                     renderVisibilityHomeControls();
                     renderVisibilityApps();
                 } else {
@@ -2504,28 +2660,39 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             var btnToggle = document.getElementById('btn-toggle-auth-protection');
             if (btnToggle) btnToggle.innerText = 'Đang tải...';
 
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', '/api/auth/data?t=' + (new Date()).getTime(), true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === 4) {
-                    if (xhr.status === 200) {
-                        try {
-                            authManagerData = JSON.parse(xhr.responseText) || { enabled: false, accounts: [] };
-                        } catch(e) {
+            fetch('/api/tabs/list?t=' + (new Date()).getTime())
+            .then(function(res) { return res.json(); })
+            .then(function(tData) {
+                if (tData.success) {
+                    cachedTabs = tData.tabs || [];
+                    renderPermCheckboxes();
+                }
+            })
+            .catch(function(e) { console.error('Lỗi nạp tabs:', e); })
+            .finally(function() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', '/api/auth/data?t=' + (new Date()).getTime(), true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4) {
+                        if (xhr.status === 200) {
+                            try {
+                                authManagerData = JSON.parse(xhr.responseText) || { enabled: false, accounts: [] };
+                            } catch(e) {
+                                authManagerData = { enabled: false, accounts: [] };
+                            }
+                        } else {
+                            console.error('Lỗi HTTP status:', xhr.status);
                             authManagerData = { enabled: false, accounts: [] };
                         }
-                    } else {
-                        console.error('Lỗi HTTP status:', xhr.status);
-                        authManagerData = { enabled: false, accounts: [] };
+                        renderAccountsManager();
                     }
+                };
+                xhr.onerror = function(err) {
+                    console.error('Lỗi mạng nạp auth data:', err);
                     renderAccountsManager();
-                }
-            };
-            xhr.onerror = function(err) {
-                console.error('Lỗi mạng nạp auth data:', err);
-                renderAccountsManager();
-            };
-            xhr.send(null);
+                };
+                xhr.send(null);
+            });
         }
 
         function renderAccountsManager() {
@@ -2578,22 +2745,25 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
                 var permBadges = '';
                 if (perms.indexOf('ALL') !== -1) {
                     permBadges = '<span style="background:#0369a1; color:#e0f2fe; font-size:11px; padding:2px 7px; border-radius:8px;">🌐 Xem Tất Cả</span>';
-                } else if (perms.length === 1 && perms[0] === 'GUEST') {
-                    permBadges = '<span style="background:#581c87; color:#e9d5ff; font-size:11px; padding:2px 7px; border-radius:8px; font-weight:bold;">🌟 Chỉ Tab Guest</span>';
-                } else if (perms.length === 1 && perms[0] === 'PRIVATE') {
-                    permBadges = '<span style="background:#831843; color:#fce7f3; font-size:11px; padding:2px 7px; border-radius:8px; font-weight:bold;">🔒 Chỉ Tab Private</span>';
                 } else {
                     var badges = [];
                     for (var k = 0; k < perms.length; k++) {
-                        if (perms[k] === 'GUEST') {
-                            badges.push('🌟 Tab Guest');
-                        } else if (perms[k] === 'PRIVATE') {
-                            badges.push('🔒 Tab Private');
+                        var pId = perms[k];
+                        var foundTab = null;
+                        for (var tIdx = 0; tIdx < cachedTabs.length; tIdx++) {
+                            if (cachedTabs[tIdx].id.toLowerCase() === pId.toLowerCase()) {
+                                foundTab = cachedTabs[tIdx];
+                                break;
+                            }
+                        }
+                        if (foundTab) {
+                            var tabBStyle = 'background:' + (foundTab.color || '#334155') + '33; color:' + (foundTab.color || '#cbd5e1') + '; border:1px solid ' + (foundTab.color || '#334155') + '; font-size:11px; padding:2px 7px; border-radius:8px; margin-right:4px;';
+                            badges.push('<span style="' + tabBStyle + '">' + (foundTab.icon ? foundTab.icon + ' ' : '') + escapeHtml(foundTab.name) + '</span>');
                         } else {
-                            badges.push(perms[k]);
+                            badges.push('<span style="background:#334155; color:#cbd5e1; font-size:11px; padding:2px 7px; border-radius:8px; margin-right:4px;">' + escapeHtml(pId) + '</span>');
                         }
                     }
-                    permBadges = '<span style="background:#334155; color:#cbd5e1; font-size:11px; padding:2px 7px; border-radius:8px;">📂 ' + escapeHtml(badges.join(', ')) + '</span>';
+                    permBadges = badges.join('');
                 }
 
                 html += '      <div style="font-size:12px; color:#94a3b8; margin-top:2px;">';
@@ -2686,16 +2856,21 @@ HTML_TEMPLATE = '''<!DOCTYPE html>
             for (var i = 0; i < cbs.length; i++) cbs[i].checked = false;
             if (preset === 'ALL') {
                 if (allCb) allCb.checked = true;
-            } else if (preset === 'GUEST_ONLY') {
-                if (allCb) allCb.checked = false;
-                var g = document.getElementById('perm-guest');
-                if (g) g.checked = true;
-            } else if (preset === 'PRIVATE_ONLY') {
-                if (allCb) allCb.checked = false;
-                var p = document.getElementById('perm-private');
-                if (p) p.checked = true;
             } else if (preset === 'NONE') {
                 if (allCb) allCb.checked = false;
+            } else {
+                if (allCb) allCb.checked = false;
+                var targetCb = document.getElementById('perm-' + preset.toLowerCase());
+                if (targetCb) {
+                    targetCb.checked = true;
+                } else {
+                    for (var j = 0; j < cbs.length; j++) {
+                        if (cbs[j].value.toLowerCase() === preset.toLowerCase()) {
+                            cbs[j].checked = true;
+                            break;
+                        }
+                    }
+                }
             }
         }
         function submitSaveAccount() {
@@ -2829,6 +3004,313 @@ function onEditAccClick(btn) {
                 } else {
                     alert('Lỗi: ' + (data.error || 'Không xác định'));
                 }
+            });
+        }
+
+        function renderPermCheckboxes() {
+            var container = document.getElementById('perm-checkboxes-container');
+            var presetsCon = document.getElementById('perm-presets-container');
+            var notesCon = document.getElementById('perm-notes-container');
+            if (!container) return;
+
+            // Presets
+            if (presetsCon) {
+                var phtml = '<button type="button" class="btn-action" onclick="setPermPreset(\'ALL\')" style="font-size:11px; padding:4px 9px;">Chọn Tất Cả</button>';
+                for (var i = 0; i < cachedTabs.length; i++) {
+                    var tab = cachedTabs[i];
+                    if (tab.type === 'curated') {
+                        phtml += '<button type="button" class="btn-action" onclick="setPermPreset(\'' + tab.id + '\')" style="font-size:11px; padding:4px 9px; background:' + (tab.color || '#581c87') + '33; color:' + (tab.color || '#e9d5ff') + '; border-color:' + (tab.color || '#9333ea') + ';">' + (tab.icon || '🌟') + ' Chỉ ' + escapeHtml(tab.name) + '</button>';
+                    }
+                }
+                phtml += '<button type="button" class="btn-action" onclick="setPermPreset(\'NONE\')" style="font-size:11px; padding:4px 9px;">Bỏ Chọn</button>';
+                presetsCon.innerHTML = phtml;
+            }
+
+            // Checkboxes
+            var chtml = '';
+            chtml += '<label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#1e293b; padding:8px 10px; border-radius:8px; border:1px solid #334155;">' +
+                     '<input type="checkbox" id="perm-all" value="ALL" onchange="onPermAllChanged(this)" style="width:16px; height:16px;"> <b>🌐 Tất Cả</b></label>';
+
+            for (var j = 0; j < cachedTabs.length; j++) {
+                var cTab = cachedTabs[j];
+                if (cTab.type === 'curated') {
+                    chtml += '<label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:' + (cTab.color || '#3b0764') + '22; padding:8px 10px; border-radius:8px; border:1px solid ' + (cTab.color || '#7e22ce') + '; color:#fff;">' +
+                             '<input type="checkbox" id="perm-' + cTab.id.toLowerCase() + '" value="' + cTab.id + '" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> <b>' + (cTab.icon || '🌟') + ' Tab ' + escapeHtml(cTab.name) + '</b></label>';
+                }
+            }
+
+            for (var k = 0; k < cachedTabs.length; k++) {
+                var catTab = cachedTabs[k];
+                if (catTab.type === 'category') {
+                    chtml += '<label style="display:flex; align-items:center; gap:6px; cursor:pointer; background:#0f172a; padding:8px 10px; border-radius:8px; border:1px solid #1e293b;">' +
+                             '<input type="checkbox" id="perm-' + catTab.id.toLowerCase() + '" value="' + catTab.id + '" class="perm-cat-check" onchange="onPermCatChanged()" style="width:16px; height:16px;"> ' + (catTab.icon || '📂') + ' ' + escapeHtml(catTab.name) + '</label>';
+                }
+            }
+
+            container.innerHTML = chtml;
+
+            // Notes
+            if (notesCon) {
+                var nhtml = '';
+                for (var m = 0; m < cachedTabs.length; m++) {
+                    var nTab = cachedTabs[m];
+                    if (nTab.type === 'curated') {
+                        nhtml += '💡 <i><b>"' + (nTab.icon || '🌟') + ' Tab ' + escapeHtml(nTab.name) + '"</b>: ' + escapeHtml(nTab.description || 'Chỉ thấy các app được bật ở nút tương ứng trong mục Ẩn/Hiện Kho App.') + '</i><br>';
+                    }
+                }
+                notesCon.innerHTML = nhtml;
+            }
+        }
+
+        /* ==========================================================================
+           QUẢN LÝ TAB KHO APP (MODULE 5)
+           ========================================================================== */
+        var cachedTabs = [];
+        var editingTabId = null;
+
+        function loadTabsManager() {
+            var countDisp = document.getElementById('tabs-count-display');
+            if (countDisp) countDisp.innerText = '...';
+
+            fetch('/api/tabs/list?t=' + (new Date()).getTime())
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    cachedTabs = data.tabs || [];
+                    renderTabsManager();
+                    renderPermCheckboxes();
+                } else {
+                    alert('Lỗi nạp danh sách Tab: ' + data.error);
+                }
+            })
+            .catch(function(err) {
+                console.error('Lỗi nạp Tab:', err);
+            });
+        }
+
+        function renderTabsManager() {
+            var countDisp = document.getElementById('tabs-count-display');
+            if (countDisp) countDisp.innerText = cachedTabs.length;
+
+            var container = document.getElementById('tabs-list-container');
+            if (!container) return;
+
+            if (cachedTabs.length === 0) {
+                container.innerHTML = '<p style="font-size:13px; color:#64748b; text-align:center; padding:15px;">Chưa có Tab nào.</p>';
+                return;
+            }
+
+            var html = '';
+            for (var i = 0; i < cachedTabs.length; i++) {
+                var t = cachedTabs[i];
+                var isSystem = t.system === true;
+                var typeBadge = (t.type === 'curated')
+                    ? '<span style="background:#581c87; color:#e9d5ff; font-size:11px; padding:2px 8px; border-radius:8px; font-weight:bold;">🌟 Tuyển Chọn</span>'
+                    : (t.type === 'all'
+                        ? '<span style="background:#0369a1; color:#e0f2fe; font-size:11px; padding:2px 8px; border-radius:8px; font-weight:bold;">🌐 Toàn Bộ</span>'
+                        : '<span style="background:#1e293b; color:#94a3b8; font-size:11px; padding:2px 8px; border-radius:8px;">📂 Chuyên Mục</span>');
+
+                var colorDot = '<span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:' + (t.color || '#3b82f6') + '; margin-right:6px; vertical-align:middle;"></span>';
+
+                html += '<div class="existing-item" style="border-left:4px solid ' + (t.color || '#3b82f6') + ';">';
+                html += '  <div class="item-info">';
+                html += '    <div class="item-title">';
+                html += '      <span style="color:#64748b; font-size:12px; margin-right:4px;">#' + (i + 1) + '</span>';
+                html += '      <span style="font-size:16px;">' + (t.icon || '🏷️') + '</span>';
+                html += '      <b style="color:#f8fafc; font-size:14px;">' + escapeHtml(t.name) + '</b>';
+                html += '      <code style="background:#0f172a; color:#38bdf8; padding:1px 6px; border-radius:4px; font-size:11px;">' + escapeHtml(t.id) + '</code>';
+                html += '      ' + typeBadge;
+                if (isSystem) {
+                    html += '<span style="background:#334155; color:#94a3b8; font-size:10px; padding:2px 6px; border-radius:6px; margin-left:4px;">Hệ thống</span>';
+                }
+                html += '    </div>';
+                html += '    <div style="font-size:12px; color:#94a3b8; margin-top:4px;">' + colorDot + escapeHtml(t.description || 'Không có mô tả') + '</div>';
+                html += '  </div>';
+                html += '  <div class="item-actions">';
+                if (i > 0) {
+                    html += '<button type="button" class="btn-action" title="Di chuyển lên" onclick="moveTab(' + i + ', -1)">⬆️</button>';
+                }
+                if (i < cachedTabs.length - 1) {
+                    html += '<button type="button" class="btn-action" title="Di chuyển xuống" onclick="moveTab(' + i + ', 1)">⬇️</button>';
+                }
+                html += '<button type="button" class="btn-action" title="Chỉnh sửa Tab" onclick="editTab(' + i + ')">✏️ Sửa</button>';
+                if (!isSystem) {
+                    html += '<button type="button" class="btn-action btn-action-del" title="Xóa Tab" onclick="deleteTab(' + i + ')">🗑️ Xóa</button>';
+                }
+                html += '  </div>';
+                html += '</div>';
+            }
+
+            container.innerHTML = html;
+        }
+
+        function resetTabForm() {
+            editingTabId = null;
+            var titleEl = document.getElementById('tab-form-title');
+            var btnCancel = document.getElementById('btn-tab-cancel-edit');
+            var btnSave = document.getElementById('btn-save-tab');
+            var idInput = document.getElementById('tab-id-input');
+            var nameInput = document.getElementById('tab-name-input');
+            var iconInput = document.getElementById('tab-icon-input');
+            var colorInput = document.getElementById('tab-color-input');
+            var colorPicker = document.getElementById('tab-color-picker');
+            var typeSelect = document.getElementById('tab-type-select');
+            var descInput = document.getElementById('tab-desc-input');
+
+            if (titleEl) titleEl.innerText = '➕ Thêm Tab Mới';
+            if (btnCancel) btnCancel.style.display = 'none';
+            if (btnSave) btnSave.innerText = '💾 Lưu Tab';
+            if (idInput) { idInput.value = ''; idInput.disabled = false; }
+            if (nameInput) nameInput.value = '';
+            if (iconInput) iconInput.value = '🏷️';
+            if (colorInput) colorInput.value = '#3b82f6';
+            if (colorPicker) colorPicker.value = '#3b82f6';
+            if (typeSelect) { typeSelect.value = 'curated'; typeSelect.disabled = false; }
+            if (descInput) descInput.value = '';
+        }
+
+        function editTab(idx) {
+            var t = cachedTabs[idx];
+            if (!t) return;
+            editingTabId = t.id;
+
+            var titleEl = document.getElementById('tab-form-title');
+            var btnCancel = document.getElementById('btn-tab-cancel-edit');
+            var btnSave = document.getElementById('btn-save-tab');
+            var idInput = document.getElementById('tab-id-input');
+            var nameInput = document.getElementById('tab-name-input');
+            var iconInput = document.getElementById('tab-icon-input');
+            var colorInput = document.getElementById('tab-color-input');
+            var colorPicker = document.getElementById('tab-color-picker');
+            var typeSelect = document.getElementById('tab-type-select');
+            var descInput = document.getElementById('tab-desc-input');
+
+            if (titleEl) titleEl.innerText = '✏️ Chỉnh Sửa Tab: ' + t.name;
+            if (btnCancel) btnCancel.style.display = 'inline-block';
+            if (btnSave) btnSave.innerText = '💾 Cập Nhật Tab';
+
+            if (idInput) {
+                idInput.value = t.id;
+                idInput.disabled = (t.system === true);
+            }
+            if (nameInput) nameInput.value = t.name;
+            if (iconInput) iconInput.value = t.icon || '🏷️';
+            if (colorInput) colorInput.value = t.color || '#3b82f6';
+            if (colorPicker) colorPicker.value = t.color || '#3b82f6';
+            if (typeSelect) {
+                typeSelect.value = t.type;
+                typeSelect.disabled = (t.system === true);
+            }
+            if (descInput) descInput.value = t.description || '';
+
+            window.scrollTo({ top: document.getElementById('module-tabs-container').offsetTop, behavior: 'smooth' });
+        }
+
+        function submitSaveTab() {
+            var idInput = document.getElementById('tab-id-input');
+            var nameInput = document.getElementById('tab-name-input');
+            var iconInput = document.getElementById('tab-icon-input');
+            var colorInput = document.getElementById('tab-color-input');
+            var typeSelect = document.getElementById('tab-type-select');
+            var descInput = document.getElementById('tab-desc-input');
+
+            var tabId = idInput ? idInput.value.trim() : '';
+            var name = nameInput ? nameInput.value.trim() : '';
+            var icon = iconInput ? iconInput.value.trim() : '🏷️';
+            var color = colorInput ? colorInput.value.trim() : '#3b82f6';
+            var tabType = typeSelect ? typeSelect.value : 'curated';
+            var desc = descInput ? descInput.value.trim() : '';
+
+            if (!tabId) {
+                alert('Vui lòng nhập Mã Tab / ID!');
+                return;
+            }
+            if (!name) {
+                alert('Vui lòng nhập Tên Hiển Thị của Tab!');
+                return;
+            }
+
+            fetch('/api/tabs/save', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    id: tabId,
+                    name: name,
+                    icon: icon,
+                    color: color,
+                    type: tabType,
+                    description: desc,
+                    is_edit: !!editingTabId,
+                    old_id: editingTabId
+                })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    alert(data.message || 'Lưu Tab thành công!');
+                    resetTabForm();
+                    cachedTabs = data.tabs || [];
+                    renderTabsManager();
+                    renderPermCheckboxes();
+                } else {
+                    alert('Lỗi: ' + data.error);
+                }
+            })
+            .catch(function(err) {
+                alert('Lỗi kết nối: ' + err);
+            });
+        }
+
+        function deleteTab(idx) {
+            var t = cachedTabs[idx];
+            if (!t) return;
+            if (t.system) {
+                alert('Không thể xóa Tab hệ thống!');
+                return;
+            }
+            if (!confirm('Bạn có chắc chắn muốn XÓA Tab "' + t.name + '" (ID: ' + t.id + ')?\nCác thiết lập phân quyền liên quan đến tab này cũng sẽ được gỡ bỏ.')) {
+                return;
+            }
+
+            fetch('/api/tabs/delete', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id: t.id })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    alert(data.message || 'Xóa thành công!');
+                    cachedTabs = data.tabs || [];
+                    renderTabsManager();
+                    renderPermCheckboxes();
+                } else {
+                    alert('Lỗi: ' + data.error);
+                }
+            })
+            .catch(function(err) {
+                alert('Lỗi kết nối: ' + err);
+            });
+        }
+
+        function moveTab(idx, dir) {
+            fetch('/api/tabs/reorder', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ index: idx, direction: dir })
+            })
+            .then(function(res) { return res.json(); })
+            .then(function(data) {
+                if (data.success) {
+                    cachedTabs = data.tabs || [];
+                    renderTabsManager();
+                    renderPermCheckboxes();
+                } else {
+                    alert('Lỗi: ' + data.error);
+                }
+            })
+            .catch(function(err) {
+                alert('Lỗi kết nối: ' + err);
             });
         }
 
@@ -3591,7 +4073,8 @@ def api_apps_visibility_data():
         return jsonify({
             "success": True,
             "ota_data": load_ota_data(),
-            "home_settings": load_home_settings()
+            "home_settings": load_home_settings(),
+            "tabs": load_app_tabs()
         })
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
@@ -3639,7 +4122,22 @@ def api_apps_toggle_item():
         cat = data.get('category', '')
         idx = int(data.get('index', -1))
         field = data.get('field', '')
-        if field not in ('show_on_home', 'hidden', 'show_on_guest', 'show_on_private'):
+        tab_id = data.get('tab_id', '')
+
+        # Tự động suy ra field nếu truyền tab_id
+        if tab_id and not field:
+            if tab_id.upper() == 'GUEST':
+                field = 'show_on_guest'
+            elif tab_id.upper() == 'PRIVATE':
+                field = 'show_on_private'
+            else:
+                field = f"show_on_{tab_id.lower()}"
+
+        is_valid_field = (
+            field in ('show_on_home', 'hidden', 'show_on_guest', 'show_on_private')
+            or field.startswith('show_on_')
+        )
+        if not is_valid_field:
             return jsonify({"success": False, "error": "Trường cập nhật không hợp lệ!"})
 
         ota_data = load_ota_data()
@@ -3648,13 +4146,191 @@ def api_apps_toggle_item():
 
         item = ota_data[cat][idx]
         default_val = True if field == 'show_on_home' else False
-        if field in ('show_on_guest', 'show_on_private'):
-            default_val = False
         current_val = bool(item.get(field, default_val))
         new_val = bool(data['value']) if 'value' in data else (not current_val)
         item[field] = new_val
+
+        # Đồng bộ danh sách custom_tabs nếu là trường tuyển chọn curated
+        if field.startswith('show_on_') and field != 'show_on_home':
+            custom_tabs = list(item.get('custom_tabs', []))
+            tab_key = tab_id if tab_id else field.replace('show_on_', '').upper()
+            if new_val:
+                if tab_key not in custom_tabs:
+                    custom_tabs.append(tab_key)
+            else:
+                if tab_key in custom_tabs:
+                    custom_tabs.remove(tab_key)
+            item['custom_tabs'] = custom_tabs
+
         save_ota_data(ota_data)
         return jsonify({"success": True, "item": item})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+# ==============================================================================
+# APIS QUẢN LÝ TAB ĐỘNG (THÊM, SỬA, XÓA, ĐỔI THỨ TỰ)
+# ==============================================================================
+@app.route('/api/tabs/list', methods=['GET'])
+def api_tabs_list():
+    try:
+        tabs = load_app_tabs()
+        return jsonify({"success": True, "tabs": tabs})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/tabs/save', methods=['POST'])
+def api_tabs_save():
+    try:
+        data = request.get_json(silent=True) or {}
+        tab_id = str(data.get('id', '')).strip()
+        name = str(data.get('name', '')).strip()
+        icon = str(data.get('icon', '🏷️')).strip() or '🏷️'
+        color = str(data.get('color', '#3b82f6')).strip() or '#3b82f6'
+        tab_type = str(data.get('type', 'curated')).strip()
+        description = str(data.get('description', '')).strip()
+        is_edit = bool(data.get('is_edit', False))
+        old_id = str(data.get('old_id', '')).strip()
+
+        if not tab_id:
+            return jsonify({"success": False, "error": "Mã Tab (ID) không được để trống!"})
+        if not name:
+            return jsonify({"success": False, "error": "Tên Tab không được để trống!"})
+        if tab_type not in ('curated', 'category'):
+            return jsonify({"success": False, "error": "Loại tab phải là 'curated' hoặc 'category'!"})
+
+        tabs = load_app_tabs()
+        existing_idx = -1
+        for i, t in enumerate(tabs):
+            target_match = old_id if (is_edit and old_id) else tab_id
+            if t.get('id', '').lower() == target_match.lower():
+                existing_idx = i
+                break
+
+        if not is_edit:
+            if existing_idx != -1:
+                return jsonify({"success": False, "error": f"Tab với mã '{tab_id}' đã tồn tại!"})
+            new_tab = {
+                "id": tab_id,
+                "name": name,
+                "icon": icon,
+                "color": color,
+                "type": tab_type,
+                "system": False,
+                "description": description
+            }
+            if tab_type == 'curated':
+                new_tab["field"] = f"show_on_{tab_id.lower()}"
+            tabs.append(new_tab)
+        else:
+            if existing_idx == -1:
+                return jsonify({"success": False, "error": f"Không tìm thấy tab '{old_id or tab_id}' để sửa!"})
+            target_tab = tabs[existing_idx]
+            is_system = target_tab.get('system', False)
+
+            target_tab['name'] = name
+            target_tab['icon'] = icon
+            target_tab['color'] = color
+            target_tab['description'] = description
+
+            if not is_system:
+                target_tab['type'] = tab_type
+                if tab_type == 'curated':
+                    target_tab['field'] = f"show_on_{tab_id.lower()}"
+                elif 'field' in target_tab:
+                    del target_tab['field']
+
+                if old_id and old_id.lower() != tab_id.lower():
+                    for i, t in enumerate(tabs):
+                        if i != existing_idx and t.get('id', '').lower() == tab_id.lower():
+                            return jsonify({"success": False, "error": f"Mã Tab '{tab_id}' đã trùng với tab khác!"})
+                    target_tab['id'] = tab_id
+
+                    # Cập nhật trong auth_accounts
+                    try:
+                        auth_data = load_auth_accounts()
+                        changed_auth = False
+                        for acc in auth_data.get('accounts', []):
+                            cats = acc.get('allowed_categories', [])
+                            if old_id in cats:
+                                idx_c = cats.index(old_id)
+                                cats[idx_c] = tab_id
+                                changed_auth = True
+                        if changed_auth:
+                            save_auth_accounts(auth_data)
+                    except Exception:
+                        pass
+
+        save_app_tabs(tabs)
+        return jsonify({"success": True, "tabs": tabs, "message": "Lưu Tab thành công!"})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/tabs/delete', methods=['POST'])
+def api_tabs_delete():
+    try:
+        data = request.get_json(silent=True) or {}
+        tab_id = str(data.get('id', '')).strip()
+        if not tab_id:
+            return jsonify({"success": False, "error": "Thiếu mã Tab cần xóa!"})
+
+        tabs = load_app_tabs()
+        target_idx = -1
+        for i, t in enumerate(tabs):
+            if t.get('id', '').lower() == tab_id.lower():
+                target_idx = i
+                break
+
+        if target_idx == -1:
+            return jsonify({"success": False, "error": f"Không tìm thấy tab '{tab_id}'!"})
+
+        if tabs[target_idx].get('system', False):
+            return jsonify({"success": False, "error": f"Không thể xóa Tab hệ thống mặc định '{tab_id}'!"})
+
+        deleted_tab = tabs.pop(target_idx)
+        save_app_tabs(tabs)
+
+        # Xóa khỏi auth_accounts nếu có
+        try:
+            auth_data = load_auth_accounts()
+            changed_auth = False
+            for acc in auth_data.get('accounts', []):
+                cats = acc.get('allowed_categories', [])
+                if tab_id in cats:
+                    cats.remove(tab_id)
+                    changed_auth = True
+            if changed_auth:
+                save_auth_accounts(auth_data)
+        except Exception:
+            pass
+
+        return jsonify({"success": True, "tabs": tabs, "message": f"Đã xóa tab '{deleted_tab.get('name', tab_id)}' thành công!"})
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/api/tabs/reorder', methods=['POST'])
+def api_tabs_reorder():
+    try:
+        data = request.get_json(silent=True) or {}
+        idx = int(data.get('index', -1))
+        direction = int(data.get('direction', 0))
+        if direction not in (-1, 1):
+            return jsonify({"success": False, "error": "Hướng di chuyển không hợp lệ!"})
+
+        tabs = load_app_tabs()
+        if idx < 0 or idx >= len(tabs):
+            return jsonify({"success": False, "error": "Vị trí tab không hợp lệ!"})
+
+        target_idx = idx + direction
+        if target_idx < 0 or target_idx >= len(tabs):
+            return jsonify({"success": False, "error": "Đã ở vị trí đầu hoặc cuối danh sách!"})
+
+        tabs[idx], tabs[target_idx] = tabs[target_idx], tabs[idx]
+        save_app_tabs(tabs)
+        return jsonify({"success": True, "tabs": tabs})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 

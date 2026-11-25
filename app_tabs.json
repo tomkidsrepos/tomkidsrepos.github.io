@@ -1,0 +1,87 @@
+{
+    "tabs": [
+        {
+            "id": "ALL",
+            "name": "Tất cả",
+            "icon": "🌐",
+            "color": "#38bdf8",
+            "type": "all",
+            "system": true,
+            "description": "Hiển thị tất cả ứng dụng theo quyền của tài khoản"
+        },
+        {
+            "id": "GUEST",
+            "name": "Guest",
+            "icon": "🌟",
+            "color": "#a855f7",
+            "type": "curated",
+            "system": true,
+            "field": "show_on_guest",
+            "description": "Dành cho khách, chỉ hiện các app được tích chọn"
+        },
+        {
+            "id": "PRIVATE",
+            "name": "Private",
+            "icon": "🔒",
+            "color": "#ec4899",
+            "type": "curated",
+            "system": false,
+            "field": "show_on_private",
+            "description": "Dành riêng cho chủ nhân hoặc tài khoản được cấp phép"
+        },
+        {
+            "id": "Trò Chơi",
+            "name": "Trò Chơi",
+            "icon": "🎮",
+            "color": "#3b82f6",
+            "type": "category",
+            "system": true,
+            "description": "Chuyên mục Trò chơi / Game"
+        },
+        {
+            "id": "Mạng Xã Hội",
+            "name": "Mạng Xã Hội",
+            "icon": "🌐",
+            "color": "#3b82f6",
+            "type": "category",
+            "system": true,
+            "description": "Chuyên mục Mạng xã hội / Chat"
+        },
+        {
+            "id": "Giải Trí",
+            "name": "Giải Trí",
+            "icon": "🎵",
+            "color": "#3b82f6",
+            "type": "category",
+            "system": true,
+            "description": "Chuyên mục Giải trí / Media / Âm nhạc"
+        },
+        {
+            "id": "Công Cụ",
+            "name": "Công Cụ",
+            "icon": "🛠️",
+            "color": "#3b82f6",
+            "type": "category",
+            "system": true,
+            "description": "Chuyên mục Tiện ích / Công cụ hệ điều hành"
+        },
+        {
+            "id": "Hệ thống",
+            "name": "Hệ thống",
+            "icon": "⚙️",
+            "color": "#3b82f6",
+            "type": "category",
+            "system": true,
+            "description": "Chuyên mục Tinh chỉnh hệ thống"
+        },
+        {
+            "id": "Jailbreak",
+            "name": "Jailbreak",
+            "icon": "🔓",
+            "color": "#3b82f6",
+            "type": "category",
+            "system": true,
+            "description": "Chuyên mục Ứng dụng Jailbreak"
+        }
+    ]
+}

@@ -5,7 +5,9 @@
             "version": "11.0",
             "icon": "ota_apps/icons/com.facebook.Facebook.png",
             "plist": "ota_apps/com.facebook.Facebook.plist",
-            "show_on_guest": true
+            "show_on_guest": true,
+            "show_on_private": false,
+            "custom_tabs": []
         },
         {
             "name": "Messenger",
