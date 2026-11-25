@@ -31,7 +31,8 @@
             "name": "TikTak+",
             "version": "0.5.1",
             "icon": "ota_apps/icons/com.atnik.tiktok.png",
-            "plist": "ota_apps/com.samcejko.tikieplus.plist"
+            "plist": "ota_apps/com.samcejko.tikieplus.plist",
+            "show_on_guest": true
         },
         {
             "name": "BáoMới",
@@ -95,7 +96,8 @@
             "version": "1.0",
             "icon": "ota_apps/icons/com.popcap.PvZ_1.0.png",
             "plist": "ota_apps/com.popcap.PvZ_1.0.plist",
-            "show_on_home": false
+            "show_on_home": false,
+            "show_on_guest": true
         },
         {
             "name": "MyTetris-Lite",
@@ -125,33 +127,38 @@
             "version": "2.2",
             "icon": "ota_apps/icons/com.ifunsoft.daovang_2.2.png",
             "plist": "ota_apps/com.ifunsoft.daovang_2.2.plist",
-            "show_on_home": false
+            "show_on_home": false,
+            "show_on_guest": true
         },
         {
             "name": "Bowman",
             "version": "1.0",
             "icon": "ota_apps/icons/com.lentricasoftware.bowman.png",
-            "plist": "ota_apps/com.lentricasoftware.bowman.plist"
+            "plist": "ota_apps/com.lentricasoftware.bowman.plist",
+            "show_on_guest": true
         },
         {
             "name": "Game Thùng",
             "version": "3.1",
             "icon": "ota_apps/icons/com.jinpingjiejiso.sanguoall.png",
-            "plist": "ota_apps/com.jinpingjiejiso.sanguoall.plist"
+            "plist": "ota_apps/com.jinpingjiejiso.sanguoall.plist",
+            "show_on_guest": true
         },
         {
             "name": "Angry Birds",
             "version": "1.2.0",
             "icon": "ota_apps/icons/com.rovio.AngryBirdsHalloween.png",
             "plist": "ota_apps/com.rovio.AngryBirdsHalloween.plist",
-            "show_on_home": false
+            "show_on_home": false,
+            "show_on_guest": true
         },
         {
             "name": "Art Of War 2",
             "version": "1.6",
             "icon": "ota_apps/icons/com.gear-games.aow21.png",
             "plist": "ota_apps/com.gear-games.aow21.plist",
-            "show_on_home": false
+            "show_on_home": false,
+            "show_on_guest": true
         },
         {
             "name": "BeejiveIM",
@@ -477,7 +484,8 @@
             "version": "3.1.3",
             "icon": "ota_apps/icons/com.apple.iBooks.png",
             "plist": "ota_apps/com.apple.iBooks.plist",
-            "show_on_home": false
+            "show_on_home": false,
+            "show_on_guest": true
         },
         {
             "name": "Send Anywhere",
@@ -489,7 +497,8 @@
             "name": "Lịch Việt",
             "version": "2.9",
             "icon": "ota_apps/icons/com.vietlotus.lichvietfree.png",
-            "plist": "ota_apps/com.vietlotus.lichvietfree.plist"
+            "plist": "ota_apps/com.vietlotus.lichvietfree.plist",
+            "show_on_guest": true
         },
         {
             "name": "MangaDex",
@@ -503,7 +512,8 @@
             "version": "2.2.0--1",
             "icon": "ota_apps/icons/eu.heinelt.ifile_2.2.0--1.png",
             "plist": "ota_apps/eu.heinelt.ifile_2.2.0--1.plist",
-            "show_on_home": false
+            "show_on_home": false,
+            "show_on_guest": true
         },
         {
             "name": "Adobe Reader",
@@ -610,7 +620,8 @@
             "version": "1.3.0",
             "icon": "ota_apps/icons/com.google.ios.youtube_1.3.0.png",
             "plist": "ota_apps/com.google.ios.youtube_1.3.0.plist",
-            "show_on_home": true
+            "show_on_home": true,
+            "show_on_guest": true
         },
         {
             "name": "YouTube",
@@ -636,27 +647,31 @@
             "name": "Nhạc Của Tui",
             "version": "5.3.1",
             "icon": "ota_apps/icons/com.nhaccuatui.mobile.version2.png",
-            "plist": "ota_apps/com.nhaccuatui.mobile.version2.plist"
+            "plist": "ota_apps/com.nhaccuatui.mobile.version2.plist",
+            "show_on_guest": true
         },
         {
             "name": "YTNine",
             "version": "1.1.1",
             "icon": "ota_apps/icons/com.himais0giiiin.ytnine.png",
             "plist": "ota_apps/com.himais0giiiin.ytnine.plist",
-            "show_on_home": true
+            "show_on_home": true,
+            "show_on_guest": true
         },
         {
             "name": "Troubadour",
             "version": "1.3",
             "icon": "ota_apps/icons/ru.computershik.troubadour.png",
             "plist": "ota_apps/ru.computershik.troubadour.plist",
-            "show_on_home": true
+            "show_on_home": true,
+            "show_on_guest": true
         },
         {
             "name": "Opaline",
             "version": "1.12.0",
             "icon": "ota_apps/icons/com.verback.YTLite.png",
-            "plist": "ota_apps/com.verback.YTLite.plist"
+            "plist": "ota_apps/com.verback.YTLite.plist",
+            "show_on_guest": true
         },
         {
             "name": "oldpipe",
@@ -700,14 +715,16 @@
             "version": "1.0",
             "icon": "ota_apps/icons/rousseaddict.tvold.png",
             "plist": "ota_apps/rousseaddict.tvold.plist",
-            "show_on_home": true
+            "show_on_home": true,
+            "show_on_guest": true
         },
         {
             "name": "GoTV",
             "version": "1.2.2",
             "icon": "ota_apps/icons/com.ls.GoTV.png",
             "plist": "ota_apps/com.ls.GoTV.plist",
-            "show_on_home": true
+            "show_on_home": true,
+            "show_on_guest": true
         },
         {
             "name": "Côn Bằng TV",
