@@ -3111,6 +3111,25 @@ Depiction: http://repo.victorlobe.me/depictions/depiction.html?id=com.victorlobe
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: AppStoreFix
 
+Package: com.victorlobe.appstorefix
+Version: 3.1.2
+Architecture: iphoneos-arm
+Maintainer: Victor <contact@victorlobe.me>
+Installed-Size: 204
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Conflicts: com.skyglow.itunesstorex, net.nekokawa.appstorefix
+Filename: package_repo_A1/com.victorlobe.appstorefix_3.1.2_iphoneos-arm.deb
+Size: 115162
+MD5sum: 9c700d58e836efb169679b8dbe14368a
+SHA1: c5f95eb0a71a93b7a74181382f4938270dee8a59
+SHA256: 64925b53513cb79eeadb15d7f99fb34b848aa54affb321bf9409067425ea3676
+Section: Tweaks
+Description: Fixes the App Store, iTunes Store, iBooks and Podcasts on iOS 3,5 and 6!
+Author: Victor <contact@victorlobe.me>
+Depiction: http://repo.victorlobe.me/depictions/depiction.html?id=com.victorlobe.appstorefix
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: AppStoreFix
+
 Package: com.victorlobe.googlefix
 Version: 1.0.2
 Architecture: iphoneos-arm
@@ -3128,6 +3147,62 @@ Author: Victor
 Depiction: http://repo.victorlobe.me/depictions/depiction.html?id=com.victorlobe.googlefix
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: GoogleFix
+
+Package: com.victorlobe.googlefix
+Version: 2.0.1
+Architecture: iphoneos-arm
+Maintainer: Victor
+Installed-Size: 400
+Depends: mobilesubstrate (>= 0.9.5000), preferenceloader
+Filename: package_repo_A1/com.victorlobe.googlefix_2.0.1_iphoneos-arm.deb
+Size: 138216
+MD5sum: 229b99b0f7176c2b44ce87640a9371b3
+SHA1: 068e0ff076c7752039e732f35bfce2c7411c3521
+SHA256: 3015c360234f31dd698eebf52a66f0df5d23951c925a266e6fd2376fc467f3c4
+Section: Tweaks
+Description: Fixes Google on iOS 6
+Author: Victor
+Depiction: http://repo.victorlobe.me/depictions/depiction.html?id=com.victorlobe.googlefix
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: GoogleFix
+
+Package: com.victorlobe.icloudmailfix
+Version: 2.0.3
+Architecture: iphoneos-arm
+Maintainer: Victor <contact@victorlobe.me>
+Installed-Size: 1884
+Depends: mobilesubstrate, preferenceloader, firmware (>= 6.0)
+Filename: package_repo_A1/com.victorlobe.icloudmailfix_2.0.3_iphoneos-arm.deb
+Size: 906168
+MD5sum: 47d2a688283f4c3d72e6583d06a55ac8
+SHA1: a8401c849ca53347f987f50efc3defd1801bdb57
+SHA256: ab0e738c886bf3f508519b3bbd76ba039496f5be1cb17903eb82f1176a11859a
+Section: Tweaks
+Priority: optional
+Description: Fix iCloud Mail and Notes!
+Author: Victor <contact@victorlobe.me>
+Compatibility: iOS 6.0+
+Depiction: http://repo.victorlobe.me/depictions/depiction.html?id=com.victorlobe.icloudmailfix
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: iCloudMailFix
+
+Package: com.victorlobe.safarioldreddit
+Version: 1.0.1-1+debug
+Architecture: iphoneos-arm
+Maintainer: Victor
+Installed-Size: 44
+Depends: mobilesubstrate (>= 0.9.5000)
+Filename: package_repo_A1/com.victorlobe.safarioldreddit_1.0.1-1+debug_iphoneos-arm.deb
+Size: 4808
+MD5sum: 835a3c3504a66a3298d503675769ec02
+SHA1: 7fbaf38b781f7cdd0d1757c1065be5b40eb6fe15
+SHA256: 15a6ad8ae9150333b508565c1c379474d06ae650731cc1b0696a87f6601dc80c
+Section: Tweaks
+Description: Redirects all Reddit URLs to old.reddit.com. Currently works on iOS 6.0 and upwards. Later versions will support older iOS Versions since I need to find the SDKs.
+Author: Victor
+Depiction: http://repo.victorlobe.me/depictions/depiction.html?id=com.victorlobe.safarioldreddit
+Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
+Name: SafariOldReddit
 
 Package: com.void.themeready
 Version: 0.9.1-59
@@ -26807,287 +26882,6 @@ Depiction: http://cydia.gsm.vn/t1852/
 Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
 Name: Cut.The.Rope Experiments Hack
 Sponsor: iPhone GSM.VN <http://gsm.vn/f339/>
-
-
-Package: com.hackyouriphone.gbaemu
-Version: 1.5.29
-Architecture: iphoneos-arm
-Maintainer: iDevid <repo@hackyouriphone.org>
-Depends: firmware (>= 4.3), gsc.armv7
-Filename: -CydiaVn-Games/gbaemu_1.5.29.deb
-Size: 4518542
-MD5sum: 4e60b48ad08cc15554d1ae69fd87f45d
-SHA1: 019c9208941bcff743506ac140ed1629e9ae0bc7
-SHA256: 0e8eb07d9be924f87337c9ebcd221172e8f7fbf0682cc7a8f6b9a30e94764f3c
-Section: HYI - Applications
-Homepage: http://repo.hackyouriphone.org/depiction/depiction.php?filename=gbaemu
-Description: full-featured Gameboy Advance emulator
-Author: Robert Broglia <info@explusalpha.com>
-Depiction: http://repo.hackyouriphone.org/depiction/depiction.php?filename=gbaemu
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: GBA.emu
-
-Package: iphone.gsm.kyodai
-Version: 1.2
-Architecture: iphoneos-arm
-Maintainer: GSMVN Team <support@gsm.vn>
-Depends: gsmicon
-Filename: -CydiaVn-Games/Kyodai.deb
-Size: 5003600
-MD5sum: 4b2589f0ed357c79e3a03a21527fb975
-SHA1: bd07b12a21d8173ce764712d55bce1ccac900e77
-SHA256: 7c9506b0907c291466e71135aeae9272eed08fcd23c0ae0bf84b436a911c8dae
-Section: !GSMVN-Games
-Homepage: http://iphone.gsm.vn/cydia/moreinfo/info.html
-Description: Games Pikachu tren iPhone.
-Author: GSMVN Team <support@gsm.vn>
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: Kyodai
-Sponsr: GSMVN Team <support@gsm.vn>
-
-Package: vn.gsm.600romsnespart1
-Version: 3.0
-Architecture: iphoneos-arm
-Maintainer: GSMVN Team <support@gsm.vn>
-Depends: gsmicon, vn.gsm.nes3
-Filename: -CydiaVn-Games/600_roms_nes_part1.deb
-Size: 8192062
-MD5sum: ef3b29d83255cf26e38e007b8e0da480
-SHA1: 30b8097c38cf038fe38f0c192fa22f0d7b9974f5
-SHA256: 56c5de1bd402cf74eada60392cace46dd632efc8d4d506c6cf1cf13b0932c660
-Section: !GSMVN-Games
-Description: 600 ROMs NES Part 01 cho iPhone!
-Author: GSMVN Team <support@gsm.vn>
-Depiction: http://iphone.gsm.vn/moreinfo/romsnes.php
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: 600 ROMs NES Part1
-Sponsr: GSMVN Team <support@gsm.vn>
-Website: http://iphone.gsm.vn/moreinfo/info.html
-
-Package: vn.gsm.600romsnespart2
-Version: 3.0
-Architecture: iphoneos-arm
-Maintainer: GSMVN Team <support@gsm.vn>
-Depends: gsmicon, vn.gsm.nes3
-Filename: -CydiaVn-Games/600_roms_nes_part2.deb
-Size: 15182154
-MD5sum: 22226eb9a6290cdde95dd0bdaf0a52bf
-SHA1: 76d79c2a6e1df5507c7c693bb162f845e4d557da
-SHA256: 6db63ff2bae23628c1f509f7f2687c0c0767e87410655d509dd597f2b3889a13
-Section: !GSMVN-Games
-Description: 600 ROMs NES Part 02 cho iPhone!
-Author: GSMVN Team <support@gsm.vn>
-Depiction: http://iphone.gsm.vn/moreinfo/romsnes.php
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: 600 ROMs NES Part1
-Sponsr: GSMVN Team <support@gsm.vn>
-Website: http://iphone.gsm.vn/moreinfo/info.html
-
-Package: vn.gsm.600romsnespart3
-Version: 3.0
-Architecture: iphoneos-arm
-Maintainer: GSMVN Team <support@gsm.vn>
-Depends: gsmicon, vn.gsm.nes3
-Filename: -CydiaVn-Games/600_roms_nes_part3.deb
-Size: 12476412
-MD5sum: b0a0a42b72dc5096775dd16ab1ee5f75
-SHA1: cc6dba6bbd1d39eeee9f8217270bd4fbdefceec2
-SHA256: 0a6564c6605a3535ea6e854953606aa03a17dca82033adebce6f23dee4428858
-Section: !GSMVN-Games
-Description: 600 ROMs NES Part 03 cho iPhone!
-Author: GSMVN Team <support@gsm.vn>
-Depiction: http://iphone.gsm.vn/moreinfo/romsnes.php
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: 600 ROMs NES Part3
-Sponsr: GSMVN Team <support@gsm.vn>
-Website: http://iphone.gsm.vn/moreinfo/info.html
-
-Package: vn.gsm.600romsnespart4
-Version: 3.0
-Architecture: iphoneos-arm
-Maintainer: GSMVN Team <support@gsm.vn>
-Depends: gsmicon, vn.gsm.nes3
-Filename: -CydiaVn-Games/600_roms_nes_part4.deb
-Size: 15970016
-MD5sum: f1f2b073622049088a6b2f79bec533d7
-SHA1: bafed4d20ae8529a6e4c32479da6d7a36844be29
-SHA256: e88a13b1e7c20bac18aca89201af11d3abb58b31fd4a7b6eb55c4b8df5437f47
-Section: !GSMVN-Games
-Description: 600 ROMs NES Part 04 cho iPhone!
-Author: GSMVN Team <support@gsm.vn>
-Depiction: http://iphone.gsm.vn/moreinfo/romsnes.php
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: 600 ROMs NES Part4
-Sponsr: GSMVN Team <support@gsm.vn>
-Website: http://iphone.gsm.vn/moreinfo/info.html
-
-Package: vn.gsm.600romsnespart5
-Version: 3.0
-Architecture: iphoneos-arm
-Maintainer: GSMVN Team <support@gsm.vn>
-Depends: gsmicon, vn.gsm.nes3
-Filename: -CydiaVn-Games/600_roms_nes_part5.deb
-Size: 16079930
-MD5sum: 0a6fa09f693c5d3908544e0c0e821413
-SHA1: 71f15cd4051a8169f21c0140f4c04408b0682373
-SHA256: 8c53a22fb5b00b69ef08015acee7baa92dc55862c3bdde0e7046b86a76e41e88
-Section: !GSMVN-Games
-Description: 600 ROMs NES Part 05 cho iPhone!
-Author: GSMVN Team <support@gsm.vn>
-Depiction: http://iphone.gsm.vn/moreinfo/romsnes.php
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: 600 ROMs NES Part5
-Sponsr: GSMVN Team <support@gsm.vn>
-Website: http://iphone.gsm.vn/moreinfo/info.html
-
-Package: vn.gsm.a2600emu
-Version: 1.5.29
-Architecture: iphoneos-arm
-Maintainer: Cydia.vn <repo@cydia.vn>
-Installed-Size: 4613
-Depends: firmware (>= 3.1)
-Filename: -CydiaVn-Games/a2600emu_1.5.29.deb
-Size: 1623126
-MD5sum: 84a4255185edb1686eeb499421797ba6
-SHA1: c555f8263dd1bd90b63aaa992f835deaddfc756b
-SHA256: c2542e3ee22befbd9694f1b2297a84cc6526d1605291ff72a6ef8034fdfc7bd9
-Section: !CydiaVn-Games
-Homepage: http://cydia.vn/
-Description: full-featured Atari 2600 VCS emulator
-Author: Robert Broglia
-Depiction: http://cydia.vn/depic/t2165/
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: 2600.emu
-Sponsor: Cydia.vn Blog's <http://cydia.vn/>
-
-Package: vn.gsm.c64emu
-Version: 1.5.29
-Architecture: iphoneos-arm
-Installed-Size: 5526
-Depends: firmware (>= 4.3)
-Filename: -CydiaVn-Games/c64emu_1.5.29.deb
-Size: 2352324
-MD5sum: ea3876ce4cbdf6605b29a575e8ff1ebd
-SHA1: 7d8b92ebc3bbbdab01180c0225e6f24837af362a
-SHA256: 859e04c61d62d3ddc50b143a4524a476097f0097b5e6a11aae012ea16b6c2c3d
-Section: !CydiaVn-Games
-Description: Advanced Commodore 64 (C64) emulator
-Author: Robert Broglia
-Depiction: http://cydia.vn/depic/t5713/
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: C64.emu
-
-Package: vn.gsm.chinesechess
-Version: 2.0
-Architecture: iphoneos-arm
-Maintainer: GSMVN Team <support@gsm.vn>
-Depends: gsmicon
-Filename: -CydiaVn-Games/ChineseChess.deb
-Size: 1612296
-MD5sum: 6c019b554adcf3526070beac3a42489c
-SHA1: 3ae550207bf027ea09237a88b69cbb9b1dce6394
-SHA256: e30b32a9f497e08f41d58ef6cf5ef428c1e5e81784215a2b3969728f895a3bf1
-Section: !GSMVN-Games
-Priority: optional
-Homepage: http://iphone.gsm.vn/moreinfo/info.html
-Description: Cờ Tướng cho iphone!
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: CChess
-
-Package: vn.gsm.emupatcher
-Version: 1.5.4
-Architecture: iphoneos-arm
-Maintainer: Cydia.vn <repo@cydia.vn>
-Depends: sed
-Filename: -CydiaVn-Games/emupatcher_1.5.4.deb
-Size: 120240
-MD5sum: b4d071df79a1bb30d827e87bd745dbf3
-SHA1: 0dec265fa879142249e778de795b9ffc0caf8f6c
-SHA256: 3f86cac243c60f76cc0b45d9f629b0543ebf549cb0c679b71587a8abf28fd978
-Section: !GSMVN-Games
-Description: EMUPatcher will patch all the .EMU apps. A non pirate method of piracy. Created by Fabius
-Author: Fabius & sadam
-Depiction: http://cydia.gsm.vn/t1398/
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: EMUPatcher
-Sponsor: Cydia.vn Blog's <http://cydia.vn/>
-
-Package: vn.gsm.gbcemu
-Version: 1.5.29
-Architecture: iphoneos-arm
-Maintainer: Cydia.vn <repo@cydia.vn>
-Installed-Size: 2312
-Depends: firmware (>= 3.1)
-Filename: -CydiaVn-Games/gbcemu_1.5.29.deb
-Size: 1047040
-MD5sum: 755746657f88f858f35b4276b2c04848
-SHA1: 6173c9023ec5e2d7a4a6f99d67cf6160d39187ad
-SHA256: a76355d51fc7621a3535bcc6c987142c0227f37dfdba9e64b01b40d3ad0feb55
-Section: !CydiaVn-Games
-Homepage: http://cydia.vn/
-Description: full-featured Gameboy Color emulator
-Author: Robert Broglia
-Depiction: http://cydia.vn/depic/t1399/
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: GBC.emu
-Sponsor: Cydia.vn Blog's <http://cydia.vn/>
-
-Package: vn.gsm.gpsphone
-Version: 7.1.3
-Architecture: iphoneos-arm
-Maintainer: Thieu.Bocap <repo@cydia.vn>
-Depends: gsmicon
-Filename: -CydiaVn-Games/gpsphone_7.1.3.deb
-Size: 1343372
-MD5sum: 08d60935fb74447fd97f3109de62b5c1
-SHA1: 303cebf6b6fbeb04e55dfd65eee62624c10dc1c4
-SHA256: dd2db6704ed98d96a26343e8a3ebc5d66d400ab07d81c7a88da24b1f93bbc3d3
-Section: !GSMVN-Games
-Homepage: http://cydia.vn/
-Description: Fast Gameboy Advance emulator!
-Author: ZodTTD
-Depiction: http://cydia.gsm.vn/t517/
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: gpSPhone
-
-Package: vn.gsm.ines
-Version: 1.3
-Architecture: iphoneos-arm
-Maintainer: Thieu.Bocap <support@gsm.vn>
-Installed-Size: 1633
-Depends: ch.ringwald.btstack, gsmicon
-Filename: -CydiaVn-Games/ines_1.3.deb
-Size: 1005796
-MD5sum: 0e19518e62c2f6216df290bc580bc80c
-SHA1: e1ed01ff139d1cc63e59726321483c6b795ad043
-SHA256: f9d90a1a402018d05b9b3ac198a5684ec11e11eddda7ac093a254a706161bffe
-Section: !GSMVN-Games
-Description: Full-featured NES Emulator. Built-in downloader for roms, Wiimote support.
-Author: Bslapps <bslapapps@gmail.com>
-Depiction: http://iphone.gsm.vn/info/ines.php
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: iNES
-
-Package: vn.gsm.thanbaiiwin
-Version: 3.3.3
-Architecture: iphoneos-arm
-Maintainer: Thieu.Bocap <repo@cydia.vn>
-Installed-Size: 18015
-Depends: gsmicon, firmware(>= 4.0)
-Replaces: vn.iwin.iwinonline
-Filename: -CydiaVn-Games/iwinonline_3.3.3.deb
-Size: 13053790
-MD5sum: 4e0120554bccd5f1554a3803b40914e8
-SHA1: 171ede3b35e4b6195313b5706f9679bf84096e48
-SHA256: b92691f6ba247435cef076b9e0cab4726825a94c5cc293c2653c54d5b25f77a6
-Section: !GSMVN-Games
-Homepage: http://iphone.gsm.vn/
-Description: Games Phỏm, Tiến Lên, Tá Lả online thuần Việt đầu tiên trên iOS!
-Author: GSM.VN <repo@cydia.vn>
-Depiction: http://cydia.gsm.vn/t1243/
-Icon: https://tomkidsrepo.cloud/CydiaIcon.png?v=2
-Name: iWin 2012 Than Bai Online
-Sponsor: Cydia.vn Blog's <http://cydia.vn/blog>
 
 
 Package: vn.gsm.7lovefont
