@@ -740,6 +740,13 @@
             "custom_tabs": [
                 "GUEST"
             ]
+        },
+        {
+            "name": "Spotify",
+            "version": "1.8.1",
+            "icon": "ota_apps/icons/com.spotify.client_1.8.1.png",
+            "plist": "ota_apps/com.spotify.client_1.8.1.plist",
+            "show_on_home": true
         }
     ],
     "Hệ thống": [
