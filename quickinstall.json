@@ -101,5 +101,15 @@
     "color": "green",
     "added": "2026-11-10",
     "description": "Cai Youtube 2.0 chay nen"
+  },
+  {
+    "name": "Cài tweak Euphora (Fix Spotifix)",
+    "package_id": "codes.wilma24.spotifix",
+    "version": "0.1.48-1",
+    "source_repo": "https://tomkidsrepo.cloud",
+    "color": "green",
+    "added": "2026-11-27",
+    "description": "Restores Spotify on iOS 2–12. Recommends Premium.",
+    "note": "Fix đăng nhập Spotify"
   }
 ]
