@@ -747,6 +747,20 @@
             "icon": "ota_apps/icons/com.spotify.client_1.8.1.png",
             "plist": "ota_apps/com.spotify.client_1.8.1.plist",
             "show_on_home": true
+        },
+        {
+            "name": "SoundCloud",
+            "version": "1.0",
+            "icon": "ota_apps/icons/com.soundcloud.TouchApp_1.0.png",
+            "plist": "ota_apps/com.soundcloud.TouchApp_1.0.plist",
+            "show_on_home": true
+        },
+        {
+            "name": "SoundHound",
+            "version": "6.2.2",
+            "icon": "ota_apps/icons/com.melodis.soundhound.free_6.2.2.png",
+            "plist": "ota_apps/com.melodis.soundhound.free_6.2.2.plist",
+            "show_on_home": true
         }
     ],
     "Hệ thống": [
